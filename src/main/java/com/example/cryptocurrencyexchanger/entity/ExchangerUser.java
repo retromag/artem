@@ -39,6 +39,9 @@ public class ExchangerUser {
     @Column(name = "enabled")
     private boolean enabled;
 
+    @Column(name = "all_privileges")
+    private boolean allPrivileges;
+
     @EqualsAndHashCode.Exclude
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
