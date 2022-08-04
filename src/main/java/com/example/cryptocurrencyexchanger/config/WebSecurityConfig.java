@@ -1,6 +1,6 @@
 package com.example.cryptocurrencyexchanger.config;
 
-import com.example.cryptocurrencyexchanger.service.ExchangerUserService;
+import com.example.cryptocurrencyexchanger.service.user.ExchangerUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,12 +28,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers()
                 .hasRole("ADMIN")
                 .antMatchers().hasAnyRole("USER", "ADMIN")
-                .antMatchers("/").permitAll()
+                .antMatchers("/",
+                        "/registration/confirm/**")
+                .permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/")
+                    .defaultSuccessUrl("/")
                 .permitAll()
                 .and()
                 .logout()

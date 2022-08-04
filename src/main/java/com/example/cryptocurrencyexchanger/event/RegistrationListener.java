@@ -1,8 +1,10 @@
 package com.example.cryptocurrencyexchanger.event;
 
 import com.example.cryptocurrencyexchanger.entity.ExchangerUser;
-import com.example.cryptocurrencyexchanger.service.UserService;
+import com.example.cryptocurrencyexchanger.service.token.TokenService;
+import com.example.cryptocurrencyexchanger.service.user.UserService;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
@@ -14,18 +16,14 @@ import org.springframework.mail.javamail.JavaMailSender;
 
 @Log4j2
 @Component
+@AllArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class RegistrationListener implements ApplicationListener<OnRegistrationCompleteEvent> {
 
     UserService userService;
+    TokenService tokenService;
     MessageSource messages;
     JavaMailSender mailSender;
-
-    public RegistrationListener(UserService userService, MessageSource messages, JavaMailSender mailSender) {
-        this.userService = userService;
-        this.messages = messages;
-        this.mailSender = mailSender;
-    }
 
     @Override
     public void onApplicationEvent(@NonNull OnRegistrationCompleteEvent event) {
@@ -34,7 +32,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
 
     private void confirmRegistration(OnRegistrationCompleteEvent event) {
         ExchangerUser user = event.getUser();
-        userService.createVerificationTokenForUser(user, event.getToken());
+        tokenService.createVerificationTokenForUser(user, event.getToken());
 
         final SimpleMailMessage email = constructEmailMessage(event, user, event.getToken());
         mailSender.send(email);
@@ -45,7 +43,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         final String recipientAddress = user.getEmail();
         final String subject = "Registration Confirmation";
         final String confirmationUrl = event.getAppUrl() + "/registration/confirm?token=" + token;
-        final String message = messages.getMessage("message.regSuccLink", null,
+        final String message = messages.getMessage("message.regSuccessfulLink", null,
                 "You registered successfully. To confirm your registration, please click on the below link.", event.getLocale());
         final SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(recipientAddress);

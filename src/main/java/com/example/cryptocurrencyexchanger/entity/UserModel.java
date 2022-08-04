@@ -18,12 +18,6 @@ import javax.validation.constraints.NotEmpty;
         @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")})
 public class UserModel {
     @NotEmpty
-    private String firstName;
-
-    @NotEmpty
-    private String lastName;
-
-    @NotEmpty
     private String password;
 
     @NotEmpty
@@ -32,12 +26,6 @@ public class UserModel {
     @Email
     @NotEmpty
     private String email;
-
-    private String telephoneNumber;
-
-    @Email
-    @NotEmpty
-    private String confirmEmail;
 
     private boolean allPrivileges;
 }

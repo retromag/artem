@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -10,15 +11,44 @@
 
 </head>
 <body>
-    <form class="registration">
-        <p>Регистрация</p>
-        <input type="email" class="email">
-        <input type="password" class="password"><br>
-        <input type="password" class="password"><br>
+    <form th:action="@{/registration}" th:object="${user}" method="post">
+        <div th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+            <p th:each="error : ${#fields.errors('email')}"
+               th:text="${error}">Validation error</p>
+            <label for="email">E-mail</label>
+            <input id="email"
+                   class="email"
+                   type="email"
+                   th:field="*{email}"/>
+        </div>
+        <div th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+            <p th:each="error : ${#fields.errors('password')}"
+               th:text="${error}">Validation error</p>
+            <label for="password">Password</label>
+            <input id="password"
+                   class="password"
+                   type="password"
+                   th:field="*{password}"/>
+        </div>
+        <div th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
+            <p th:each="error : ${#fields.errors('confirmPassword')}"
+               th:text="${error}">Validation error</p>
+            <label for="confirmPassword">Confirm password</label>
+            <input id="confirmPassword"
+                   class="password"
+                   type="password"
+                   th:field="*{confirmPassword}"/>
+        </div>
         <label><input type="radio">Нажимаю кнопку зарегистрироваться, соглашаюсь с правилами обмена</label><br>
         <label><input type="radio">Получать уведомления об акциях и скидках</label><br>
-        <button>Регистрация</button>
-        <a href="login.html">ВОЙТИ</a>
+
+        <p th:if="${#fields.hasGlobalErrors()}"
+           th:each="error : ${#fields.errors('global')}"
+           th:text="${error}">Validation error</p>
+
+        <button type="submit">Регистрация</button>
+
+        <a th:href="@{/login}">ВОЙТИ</a>
     </form>
 </body>
 </html>

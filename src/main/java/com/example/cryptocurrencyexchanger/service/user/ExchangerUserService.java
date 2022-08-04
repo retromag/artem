@@ -1,12 +1,10 @@
-package com.example.cryptocurrencyexchanger.service;
+package com.example.cryptocurrencyexchanger.service.user;
 
 import com.example.cryptocurrencyexchanger.config.PasswordEncoder;
 import com.example.cryptocurrencyexchanger.entity.ExchangerUser;
 import com.example.cryptocurrencyexchanger.entity.UserModel;
 import com.example.cryptocurrencyexchanger.entity.UserRole;
-import com.example.cryptocurrencyexchanger.entity.VerificationToken;
 import com.example.cryptocurrencyexchanger.repo.UserRepository;
-import com.example.cryptocurrencyexchanger.repo.VerificationTokenRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -15,7 +13,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -27,7 +24,6 @@ import java.util.stream.Collectors;
 public class ExchangerUserService implements UserService {
 
     UserRepository userRepository;
-    VerificationTokenRepository verificationTokenRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -58,10 +54,9 @@ public class ExchangerUserService implements UserService {
     }
 
     @Override
-    @Transactional
-    public void createVerificationTokenForUser(ExchangerUser user, String token) {
-        final VerificationToken myToken = new VerificationToken(token, user);
-        verificationTokenRepository.save(myToken);
+    public void activateUser(ExchangerUser user) {
+        user.setEnabled(true);
+        userRepository.save(user);
     }
 
     private ExchangerUser createUser(UserModel userModel) {

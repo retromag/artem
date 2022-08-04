@@ -1,4 +1,4 @@
-package com.example.cryptocurrencyexchanger.service;
+package com.example.cryptocurrencyexchanger.service.user;
 
 import com.example.cryptocurrencyexchanger.entity.ExchangerUser;
 import com.example.cryptocurrencyexchanger.entity.UserModel;
@@ -9,5 +9,5 @@ public interface UserService extends UserDetailsService {
 
     ExchangerUser saveNewUser(UserModel userModel);
 
-    void createVerificationTokenForUser(ExchangerUser user, final String token);
+    void activateUser(ExchangerUser user);
 }
