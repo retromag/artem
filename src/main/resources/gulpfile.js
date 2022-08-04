@@ -19,7 +19,7 @@ gulp.task('browser-sync', function() {
     browserSync({
         server: {
             baseDir: '../resources',
-            index: 'templates/main.html'
+            index: 'templates/index.html'
         },
         notify: false
     });
@@ -63,8 +63,8 @@ gulp.task('prebuild', function() {
     var buildImg = gulp.src('static/images/**/*')
         .pipe(gulp.dest('dist/img'));
 
-    var buildHtml = gulp.src('templates/*.html')
-        .pipe(gulp.dest('dist'));
+    // var buildHtml = gulp.src('templates/*.html')
+    //     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('build', gulp.parallel('clean', 'prebuild'));
