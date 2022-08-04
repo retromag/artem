@@ -59,6 +59,12 @@ public class ExchangerUserService implements UserService {
         userRepository.save(user);
     }
 
+    @Override
+    public void changeUserPassword(ExchangerUser user, String password) {
+        user.setPassword(PasswordEncoder.passwordEncoder().encode(password));
+        userRepository.save(user);
+    }
+
     private ExchangerUser createUser(UserModel userModel) {
         ExchangerUser user = new ExchangerUser();
         user.setEmail(userModel.getEmail());
