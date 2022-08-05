@@ -10,13 +10,32 @@
 
 </head>
 <body>
-    <form class="login">
-        <p>Вход на сайт</p>
-        <input type="email" class="email"><br>
-        <input type="password" class="password"><br>
-        <a href="#">Забыли пароль?</a><br>
-        <a href="registration.html">Регистрация</a>
-        <button>ВОЙТИ</button>
+    <header>
+        <div class="container">
+            <div class="header_block">
+                <div class="logo_wrapper">
+                    <div class="logo_img_wrapper">
+                        <img src="../static/images/logo.png" alt="" class="logo_img">
+                    </div>
+                    <p class="logo_text">HELMETSWAP</p>
+                </div>
+                <nav class="nav_menu_wrapper">
+                    <ul class="nav_menu">
+                        <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="../static/images/ru.png" alt="" class="flag"></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <form class="login auth_form_container">
+        <p class="auth_text">Вход на сайт</p>
+        <input type="email" class="input_email input_general input_auth" placeholder="Ваш E-mail"><br>
+        <input type="password" class="input_password input_general input_auth" placeholder="Введите пароль"><br>
+        <a href="forgot_password.html" class="forgot_passw_text">Забыли пароль?</a><br>
+        <div class="auth_btns_wrapper">
+            <button class="btn_general">ВОЙТИ</button>
+            <a href="registration.html" class="btn_secondary">Регистрация</a>
+        </div>
     </form>
 
 </body>
