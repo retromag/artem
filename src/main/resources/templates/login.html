@@ -5,12 +5,30 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
     <title>Document</title>
 
 </head>
 <body>
-    <form th:action="@{/login}" method="post" class="login">
+    <header>
+        <div class="container">
+            <div class="header_block">
+                <div class="logo_wrapper">
+                    <div class="logo_img_wrapper">
+                        <img src="/images/logo.png" alt="" class="logo_img">
+                    </div>
+                    <p class="logo_text">HELMETSWAP</p>
+                </div>
+                <nav class="nav_menu_wrapper">
+                    <ul class="nav_menu">
+                        <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="/images/ru.png" alt="" class="flag"></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <form th:action="@{/login}" method="post" class="login auth_form_container">
+        <p class="auth_text">Вход на сайт</p>
         <div th:if="${param.error}">
             <div>
                 Invalid username or password.
@@ -18,31 +36,27 @@
         </div>
 
         <div>
-            <label for="username">Email</label>
             <input type="email"
-                   class="email"
+                   class="email input_email input_general input_auth"
                    id="username"
                    name="username"
-                   autofocus="autofocus"/>
+                   autofocus="autofocus"
+                   placeholder="Ваш E-mail"
+            />
         </div>
         <div>
-            <label for="password">Password</label>
             <input type="password"
-                   class="password"
+                   class="password input_password input_general input_auth"
                    id="password"
-                   name="password"/>
+                   name="password"
+                   placeholder="Введите пароль"
+            />
         </div>
+        <a  th:href="@{/forgot_password}" class="forgot_passw_text">Забыли пароль?</a><br>
 
-        <div>
-            <button type="submit">
-                Login
-            </button>
-        </div>
-        <div>
-            <a th:href="@{/forgetPassword}">Forgot your password?</a>
-        </div>
-        <div>
-            <a th:href="@{/registration}">Register here</a>
+        <div class="auth_btns_wrapper">
+            <button  type="submit" class="btn_general">ВОЙТИ</button>
+            <a th:href="@{/registration}" class="btn_secondary">Регистрация</a>
         </div>
     </form>
 
