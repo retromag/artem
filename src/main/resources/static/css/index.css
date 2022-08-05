@@ -337,6 +337,38 @@ input:checked + .slider:before {
   margin-bottom: 30px;
 }
 
+.reserves__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #FFFFFF;
+  border: 1px solid #B3DAFF;
+  -webkit-box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
+          box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
+  border-radius: 20px;
+  padding: 10px 15px;
+  margin-top: 10px;
+}
+.reserves__item_wrapper {
+  width: 33%;
+}
+.reserves__block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.reserves_btn_add_block {
+  margin-top: 50px;
+}
+
 /* Breakpoint sizes */
 /**/
 /* Create the mixin (usually in a separate .scss file) */
