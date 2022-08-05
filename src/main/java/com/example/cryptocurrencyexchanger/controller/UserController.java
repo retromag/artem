@@ -1,9 +1,10 @@
 package com.example.cryptocurrencyexchanger.controller;
 
-import com.example.cryptocurrencyexchanger.entity.ExchangerUser;
-import com.example.cryptocurrencyexchanger.entity.UserModel;
-import com.example.cryptocurrencyexchanger.entity.VerificationToken;
+import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
+import com.example.cryptocurrencyexchanger.entity.user.UserModel;
+import com.example.cryptocurrencyexchanger.entity.user.VerificationToken;
 import com.example.cryptocurrencyexchanger.event.OnRegistrationCompleteEvent;
+import com.example.cryptocurrencyexchanger.service.security.SecurityService;
 import com.example.cryptocurrencyexchanger.service.token.TokenService;
 import com.example.cryptocurrencyexchanger.service.user.UserService;
 import lombok.AccessLevel;
@@ -12,6 +13,10 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
+import org.springframework.mail.MailAuthenticationException;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -22,6 +27,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -35,9 +41,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class UserController {
+
     UserService userService;
     TokenService tokenService;
     MessageSource messages;
+    JavaMailSender mailSender;
+    SecurityService securityService;
     ApplicationEventPublisher eventPublisher;
 
     @GetMapping("/login")
@@ -74,7 +83,7 @@ public class UserController {
         eventPublisher.publishEvent(new OnRegistrationCompleteEvent(user, request.getLocale(), appUrl, token));
         model.addAttribute("token", token);
 
-        return "mailSent";
+        return "activationMailSent";
     }
 
     @Transactional
@@ -108,5 +117,87 @@ public class UserController {
         userService.activateUser(user);
 
         return "accApproved";
+    }
+
+    @PostMapping("/resetPassword")
+    public String resetPassword(final HttpServletRequest request, final Model model, @RequestParam("email") final String userEmail) {
+        ExchangerUser user = userService.findByEmail(userEmail);
+        if (user == null) {
+            model.addAttribute("message", messages.getMessage("message.userNotFound", null, request.getLocale()));
+            return "redirect:/login";
+        }
+
+        final String token = UUID.randomUUID().toString();
+        tokenService.createPasswordResetTokenForUser(user, token);
+        try {
+            final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+            final SimpleMailMessage email = constructResetTokenEmail(appUrl, request.getLocale(), token, user);
+            mailSender.send(email);
+        } catch (final MailAuthenticationException e) {
+            log.trace("MailAuthenticationException", e);
+            return "redirect:/emailError";
+        } catch (final Exception e) {
+            log.trace(e.getLocalizedMessage(), e);
+            model.addAttribute("message", e.getLocalizedMessage());
+            return "redirect:/emailError";
+        }
+
+        return "resetPasswordEmailSent";
+    }
+
+    @GetMapping("/user/reset/password")
+    public String showChangePasswordPage(@RequestParam("token") String token, RedirectAttributes redirectAttributes) {
+        String result = securityService.validatePasswordResetToken(token);
+        if (result != null) {
+            return "redirect:/login";
+        } else {
+            redirectAttributes.addAttribute("token", token);
+            return "redirect:/update/password";
+        }
+    }
+
+    @PostMapping("/user/save/password")
+    public String savePassword(@RequestParam("password") final String password, @RequestParam("token") String token) {
+        Optional<ExchangerUser> user = tokenService.getUserByPasswordResetToken(token);
+        user.ifPresent(appUser -> userService.changeUserPassword(appUser, password));
+        return "redirect:/login";
+    }
+
+    @PostMapping("/user/update/password")
+    public String changeUserPassword(@RequestParam("password") String password,
+                                     @RequestParam("oldpassword") String oldPassword) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        if (!userService.checkIfValidOldPassword(user, oldPassword)) {
+//            throw new ValidPasswordException("Old password is invalid");
+        }
+        userService.changeUserPassword(user, password);
+        return "redirect:/login";
+    }
+
+    @GetMapping("/forgetPassword")
+    public String showForgetPasswordPage() {
+        return "forgetPassword";
+    }
+
+    @GetMapping("/update/password")
+    public String redirectToUpdatePasswordPage() {
+        return "updatePassword";
+    }
+
+    private SimpleMailMessage constructResetTokenEmail(String contextPath, Locale locale, String token, ExchangerUser user) {
+        final String url = contextPath + "/user/reset/password?token=" + token;
+        final String message = messages.getMessage("message.resetPassword",
+                null, locale);
+        return constructEmail(message + " \r\n" + url, user);
+    }
+
+    private SimpleMailMessage constructEmail(String body, ExchangerUser user) {
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setFrom("noreply@HELMETSWAP.com");
+        email.setSubject("Reset Password");
+        email.setText(body);
+        email.setTo(user.getEmail());
+        return email;
     }
 }

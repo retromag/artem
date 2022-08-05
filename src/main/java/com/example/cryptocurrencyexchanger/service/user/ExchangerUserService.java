@@ -1,9 +1,9 @@
 package com.example.cryptocurrencyexchanger.service.user;
 
 import com.example.cryptocurrencyexchanger.config.PasswordEncoder;
-import com.example.cryptocurrencyexchanger.entity.ExchangerUser;
-import com.example.cryptocurrencyexchanger.entity.UserModel;
-import com.example.cryptocurrencyexchanger.entity.UserRole;
+import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
+import com.example.cryptocurrencyexchanger.entity.user.UserModel;
+import com.example.cryptocurrencyexchanger.entity.user.UserRole;
 import com.example.cryptocurrencyexchanger.repo.UserRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -43,23 +43,34 @@ public class ExchangerUserService implements UserService {
                 mapRolesToAuthorities(user.getRoles()));
     }
     @Override
-    public ExchangerUser findByEmail(String email) {
+    public ExchangerUser findByEmail(final String email) {
         return userRepository.findByEmail(email);
     }
 
     @Override
-    public ExchangerUser saveNewUser(UserModel userModel) {
+    public ExchangerUser saveNewUser(final UserModel userModel) {
         ExchangerUser user = createUser(userModel);
         return userRepository.save(user);
     }
 
     @Override
-    public void activateUser(ExchangerUser user) {
+    public void activateUser(final ExchangerUser user) {
         user.setEnabled(true);
         userRepository.save(user);
     }
 
-    private ExchangerUser createUser(UserModel userModel) {
+    @Override
+    public void changeUserPassword(final ExchangerUser user, final String password) {
+        user.setPassword(PasswordEncoder.passwordEncoder().encode(password));
+        userRepository.save(user);
+    }
+
+    @Override
+    public boolean checkIfValidOldPassword(final ExchangerUser user, final String oldPassword) {
+        return PasswordEncoder.passwordEncoder().matches(oldPassword, user.getPassword());
+    }
+
+    private ExchangerUser createUser(final UserModel userModel) {
         ExchangerUser user = new ExchangerUser();
         user.setEmail(userModel.getEmail());
         user.setPassword(PasswordEncoder.passwordEncoder().encode(userModel.getPassword()));

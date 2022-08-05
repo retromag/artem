@@ -1,4 +1,4 @@
-package com.example.cryptocurrencyexchanger.entity;
+package com.example.cryptocurrencyexchanger.entity.user;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

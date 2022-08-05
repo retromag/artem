@@ -1,4 +1,4 @@
-package com.example.cryptocurrencyexchanger.entity;
+package com.example.cryptocurrencyexchanger.entity.user;
 
 import com.example.cryptocurrencyexchanger.util.FieldMatch;
 import lombok.AllArgsConstructor;

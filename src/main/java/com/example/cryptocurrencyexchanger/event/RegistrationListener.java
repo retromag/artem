@@ -1,6 +1,6 @@
 package com.example.cryptocurrencyexchanger.event;
 
-import com.example.cryptocurrencyexchanger.entity.ExchangerUser;
+import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
 import com.example.cryptocurrencyexchanger.service.token.TokenService;
 import com.example.cryptocurrencyexchanger.service.user.UserService;
 import lombok.AccessLevel;
