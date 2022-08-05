@@ -1,9 +1,11 @@
 package com.example.cryptocurrencyexchanger.controller;
 
+import com.example.cryptocurrencyexchanger.entity.coin.Coin;
 import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
 import com.example.cryptocurrencyexchanger.entity.user.UserModel;
 import com.example.cryptocurrencyexchanger.entity.user.VerificationToken;
 import com.example.cryptocurrencyexchanger.event.OnRegistrationCompleteEvent;
+import com.example.cryptocurrencyexchanger.service.coin.CoinService;
 import com.example.cryptocurrencyexchanger.service.security.SecurityService;
 import com.example.cryptocurrencyexchanger.service.token.TokenService;
 import com.example.cryptocurrencyexchanger.service.user.UserService;
@@ -31,10 +33,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Log4j2
 @Controller
@@ -44,6 +43,7 @@ public class UserController {
 
     UserService userService;
     TokenService tokenService;
+    CoinService coinService;
     MessageSource messages;
     JavaMailSender mailSender;
     SecurityService securityService;
@@ -119,7 +119,7 @@ public class UserController {
         return "accApproved";
     }
 
-    @PostMapping("/resetPassword")
+    @PostMapping("/reset/password")
     public String resetPassword(final HttpServletRequest request, final Model model, @RequestParam("email") final String userEmail) {
         ExchangerUser user = userService.findByEmail(userEmail);
         if (user == null) {
@@ -175,9 +175,19 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @GetMapping("/forgetPassword")
+    @GetMapping("/reserves")
+    public String showAllReserves(Model model) {
+        List<Coin> coinList = coinService.getAllCoins();
+
+        model.addAttribute("coins", coinList);
+
+        return "reserves";
+    }
+
+
+    @GetMapping("/forgot/password")
     public String showForgetPasswordPage() {
-        return "forgetPassword";
+        return "forgot_password";
     }
 
     @GetMapping("/update/password")

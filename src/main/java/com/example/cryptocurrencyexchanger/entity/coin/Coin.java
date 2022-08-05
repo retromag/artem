@@ -10,14 +10,18 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-@Table(name = "coin")
-public class ExchangerCoin {
+@Table(name = "reserve")
+public class Coin {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
+
+    private String wallet;
+
+    private String image;
 
     private int amount;
 }
