@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -10,36 +11,65 @@
 
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header_block">
-                <div class="logo_wrapper">
-                    <div class="logo_img_wrapper">
-                        <img src="../static/images/logo.png" alt="" class="logo_img">
-                    </div>
-                    <p class="logo_text">HELMETSWAP</p>
+<header>
+    <div class="container">
+        <div class="header_block">
+            <div class="logo_wrapper">
+                <div class="logo_img_wrapper">
+                    <img src="../static/images/logo.png" alt="" class="logo_img">
                 </div>
-                <nav class="nav_menu_wrapper">
-                    <ul class="nav_menu">
-                        <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="../static/images/ru.png" alt="" class="flag"></li>
-                    </ul>
-                </nav>
+                <p class="logo_text">HELMETSWAP</p>
             </div>
+            <nav class="nav_menu_wrapper">
+                <ul class="nav_menu">
+                    <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="../static/images/ru.png" alt="" class="flag"></li>
+                </ul>
+            </nav>
         </div>
-    </header>
-    <form class="registration auth_form_container">
-        <p class="auth_text">Регистрация</p>
-        <input type="email" class="input_email input_general input_auth" placeholder="Ваш E-mail"><br>
-        <input type="password" class="input_password input_general input_auth" placeholder="Введите пароль"><br>
-        <input type="password" class="input_password input_general input_auth" placeholder="Введите пароль повторно"><br>
+    </div>
+</header>
+<form class="registration auth_form_container" th:action="@{/registration}" th:object="${user}" method="post">
+    <p class="auth_text">Регистрация</p>
+    <div th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+        <p th:each="error : ${#fields.errors('email')}"
+           th:text="${error}">Validation error</p>
+        <input type="email"
+               id="email"
+               class="email input_email input_general input_auth"
+               placeholder="Ваш E-mail"
+               th:field="*{email}"
+        ><br>
+    </div>
+    <div th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+        <p th:each="error : ${#fields.errors('password')}"
+           th:text="${error}">Validation error</p>
+        <input type="password"
+               id="password"
+               class="input_password input_general input_auth"
+               placeholder="Введите пароль"
+               th:field="*{password}"
+        ><br>
+    </div>
+    <div th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
+        <p th:each="error : ${#fields.errors('confirmPassword')}"
+           th:text="${error}">Validation error</p>
+        <input id="confirmPassword"
+               type="password"
+               placeholder="Введите пароль повторно"
+               class="password input_password input_general input_auth"
+               th:field="*{confirmPassword}"/>
+    </div>
         <div class="checkbox_wrapper">
-            <div><label class="switch"><input type="checkbox" id="approve"><span class="slider round"></span></label><label for="approve" class="checkbox_label">Нажимаю кнопку зарегистрироваться, соглашаюсь с правилами обмена</label></div>
-            <div><label class="switch"><input type="checkbox" id="notification"><span class="slider round"></span></label><label  class="checkbox_label" for="notification">Получать уведомления об акциях и скидках</label></div>
-        </div>
-        <div class="auth_btns_wrapper">
-            <button class="btn_general">Регистрация</button>
-            <a href="login.html" class="btn_secondary">ВОЙТИ</a>
-        </div>
-    </form>
+        <div><label class="switch"><input type="checkbox" id="approve"><span class="slider round"></span></label><label for="approve" class="checkbox_label">Нажимаю кнопку зарегистрироваться, соглашаюсь с правилами обмена</label></div>
+        <div><label class="switch"><input type="checkbox" id="notification"><span class="slider round"></span></label><label  class="checkbox_label" for="notification">Получать уведомления об акциях и скидках</label></div>
+    </div>
+    <p th:if="${#fields.hasGlobalErrors()}"
+       th:each="error : ${#fields.errors('global')}"
+       th:text="${error}">Validation error</p>
+    <div class="auth_btns_wrapper">
+        <button type="submit" class="btn_general">Регистрация</button>
+        <a th:href="@{/login}" class="btn_secondary">ВОЙТИ</a>
+    </div>
+</form>
 </body>
 </html>
