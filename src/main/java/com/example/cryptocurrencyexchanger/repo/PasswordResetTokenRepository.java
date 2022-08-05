@@ -1,6 +1,6 @@
 package com.example.cryptocurrencyexchanger.repo;
 
-import com.example.cryptocurrencyexchanger.entity.PasswordResetToken;
+import com.example.cryptocurrencyexchanger.entity.user.PasswordResetToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

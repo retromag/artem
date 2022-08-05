@@ -1,6 +1,6 @@
 package com.example.cryptocurrencyexchanger.service.security;
 
-import com.example.cryptocurrencyexchanger.entity.PasswordResetToken;
+import com.example.cryptocurrencyexchanger.entity.user.PasswordResetToken;
 import com.example.cryptocurrencyexchanger.repo.PasswordResetTokenRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,7 @@
 package com.example.cryptocurrencyexchanger.service.token;
 
-import com.example.cryptocurrencyexchanger.entity.ExchangerUser;
-import com.example.cryptocurrencyexchanger.entity.VerificationToken;
+import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
+import com.example.cryptocurrencyexchanger.entity.user.VerificationToken;
 
 import java.util.Optional;
 

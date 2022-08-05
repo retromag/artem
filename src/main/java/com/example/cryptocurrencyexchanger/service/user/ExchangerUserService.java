@@ -1,9 +1,9 @@
 package com.example.cryptocurrencyexchanger.service.user;
 
 import com.example.cryptocurrencyexchanger.config.PasswordEncoder;
-import com.example.cryptocurrencyexchanger.entity.ExchangerUser;
-import com.example.cryptocurrencyexchanger.entity.UserModel;
-import com.example.cryptocurrencyexchanger.entity.UserRole;
+import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
+import com.example.cryptocurrencyexchanger.entity.user.UserModel;
+import com.example.cryptocurrencyexchanger.entity.user.UserRole;
 import com.example.cryptocurrencyexchanger.repo.UserRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

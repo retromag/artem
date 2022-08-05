@@ -1,8 +1,8 @@
 package com.example.cryptocurrencyexchanger.controller;
 
-import com.example.cryptocurrencyexchanger.entity.ExchangerUser;
-import com.example.cryptocurrencyexchanger.entity.UserModel;
-import com.example.cryptocurrencyexchanger.entity.VerificationToken;
+import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
+import com.example.cryptocurrencyexchanger.entity.user.UserModel;
+import com.example.cryptocurrencyexchanger.entity.user.VerificationToken;
 import com.example.cryptocurrencyexchanger.event.OnRegistrationCompleteEvent;
 import com.example.cryptocurrencyexchanger.service.security.SecurityService;
 import com.example.cryptocurrencyexchanger.service.token.TokenService;

@@ -1,8 +1,8 @@
 package com.example.cryptocurrencyexchanger.service.token;
 
-import com.example.cryptocurrencyexchanger.entity.ExchangerUser;
-import com.example.cryptocurrencyexchanger.entity.PasswordResetToken;
-import com.example.cryptocurrencyexchanger.entity.VerificationToken;
+import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
+import com.example.cryptocurrencyexchanger.entity.user.PasswordResetToken;
+import com.example.cryptocurrencyexchanger.entity.user.VerificationToken;
 import com.example.cryptocurrencyexchanger.repo.PasswordResetTokenRepository;
 import com.example.cryptocurrencyexchanger.repo.VerificationTokenRepository;
 import lombok.AccessLevel;
