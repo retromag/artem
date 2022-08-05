@@ -16,6 +16,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.mail.MailAuthenticationException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -162,6 +163,18 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @PostMapping("/user/update/password")
+    public String changeUserPassword(@RequestParam("password") String password,
+                                     @RequestParam("oldpassword") String oldPassword) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        if (!userService.checkIfValidOldPassword(user, oldPassword)) {
+//            throw new ValidPasswordException("Old password is invalid");
+        }
+        userService.changeUserPassword(user, password);
+        return "redirect:/login";
+    }
+
     @GetMapping("/forgetPassword")
     public String showForgetPasswordPage() {
         return "forgetPassword";
@@ -171,7 +184,6 @@ public class UserController {
     public String redirectToUpdatePasswordPage() {
         return "updatePassword";
     }
-
 
     private SimpleMailMessage constructResetTokenEmail(String contextPath, Locale locale, String token, ExchangerUser user) {
         final String url = contextPath + "/user/reset/password?token=" + token;

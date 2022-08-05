@@ -43,29 +43,34 @@ public class ExchangerUserService implements UserService {
                 mapRolesToAuthorities(user.getRoles()));
     }
     @Override
-    public ExchangerUser findByEmail(String email) {
+    public ExchangerUser findByEmail(final String email) {
         return userRepository.findByEmail(email);
     }
 
     @Override
-    public ExchangerUser saveNewUser(UserModel userModel) {
+    public ExchangerUser saveNewUser(final UserModel userModel) {
         ExchangerUser user = createUser(userModel);
         return userRepository.save(user);
     }
 
     @Override
-    public void activateUser(ExchangerUser user) {
+    public void activateUser(final ExchangerUser user) {
         user.setEnabled(true);
         userRepository.save(user);
     }
 
     @Override
-    public void changeUserPassword(ExchangerUser user, String password) {
+    public void changeUserPassword(final ExchangerUser user, final String password) {
         user.setPassword(PasswordEncoder.passwordEncoder().encode(password));
         userRepository.save(user);
     }
 
-    private ExchangerUser createUser(UserModel userModel) {
+    @Override
+    public boolean checkIfValidOldPassword(final ExchangerUser user, final String oldPassword) {
+        return PasswordEncoder.passwordEncoder().matches(oldPassword, user.getPassword());
+    }
+
+    private ExchangerUser createUser(final UserModel userModel) {
         ExchangerUser user = new ExchangerUser();
         user.setEmail(userModel.getEmail());
         user.setPassword(PasswordEncoder.passwordEncoder().encode(userModel.getPassword()));
