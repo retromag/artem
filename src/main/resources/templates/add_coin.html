@@ -32,30 +32,33 @@
         </div>
     </div>
 </header>
-<form th:action="@{/reserves/add}" method="post">
+<form th:action="@{/reserves/add}" method="post" class="auth_form_container">
     <p class="auth_text">Добавить новую крипту</p>
 
     <div>
         <input type="text"
                name="name"
                placeholder="Bitcoin"
+               class="input_general input_auth"
         />
     </div>
     <div>
         <input type="text"
                name="amount"
                placeholder="1 BTC"
+               class="input_general input_auth"
         />
     </div>
     <div>
         <input type="text"
                name="wallet"
                placeholder="bc1q5pyzwtk52c5sh4xhqw04w0cju6up5h6tf5dn3l"
+               class="input_general input_auth"
         />
     </div>
 
-    <div>
-        <button type="submit">Добавить монету</button>
+    <div class="btn_add_coin_wrapper">
+        <button type="submit" class="btn_general btn_add_coin">Добавить монету</button>
     </div>
 </form>
 

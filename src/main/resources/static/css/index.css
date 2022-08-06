@@ -264,6 +264,14 @@ header {
     line-height: 40px;
   }
 }
+.btn_add_coin_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
 
 .input_general {
   background: #FFFFFF;

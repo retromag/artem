@@ -162,6 +162,14 @@ header {
       line-height: 40px;
     }
   }
+  &_add {
+    &_coin {
+      &_wrapper {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
 }
 .input {
   &_general {
