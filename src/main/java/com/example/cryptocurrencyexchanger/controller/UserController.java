@@ -25,10 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -178,7 +175,7 @@ public class UserController {
 
     @GetMapping("/reserves")
     public String showAllReserves(Model model) {
-        List<Coin> coinList = coinService.getAllCoins();
+        Set<Coin> coinList = coinService.getAllCoins();
 
         model.addAttribute("coins", coinList);
 
@@ -195,6 +192,25 @@ public class UserController {
     @PostMapping("/reserves/add")
     public String addNewCoin(Coin coin) {
         coinService.addNewCoin(coin);
+
+        return "redirect:/reserves";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/reserves/update/{id}")
+    public String updateCoinPage(@PathVariable("id") Long id, Model model) {
+        Coin coin = coinService.findCoinById(id);
+        System.out.println(coin.toString());
+
+        model.addAttribute("coin", coin);
+
+        return "update_coin";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @PostMapping("/reserves/update/coin")
+    public String updateCoin(@Valid Coin coin) {
+        coinService.updateCoin(coin);
 
         return "redirect:/reserves";
     }
