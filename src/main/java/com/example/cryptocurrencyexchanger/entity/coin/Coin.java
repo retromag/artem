@@ -1,8 +1,10 @@
 package com.example.cryptocurrencyexchanger.entity.coin;
 
 import lombok.*;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -18,11 +20,16 @@ public class Coin {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NonNull
     private String name;
 
+    @NonNull
     private String wallet;
 
-    private String image;
+    @Column(precision = 8, scale = 4)
+    private BigDecimal margin;
 
     private String amount;
+
+    private String image;
 }

@@ -54,6 +54,7 @@
                                     <p class="coin_amount" th:text="${coin.amount}">44 BTC</p>
                                 </div>
                                 <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                    <p class="coin_amount" th:text="${coin.margin}"></p>
                                     <a th:href="@{/reserves/update/{id}(id=${coin.id})}" type="button"
                                        class="coin_edit_btn">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
