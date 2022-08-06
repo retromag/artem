@@ -6,24 +6,47 @@
     border: 1px solid #B3DAFF;
     box-shadow: 0 7px 25px rgb(30 120 255 / 25%);
     border-radius: 20px;
-    padding: 10px 15px;
+    padding: 15px;
     margin-top: 10px;
 
     &_wrapper {
       width: 33%;
+      padding: 0 15px;
     }
 
+    &_img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+
+      &_wrapper {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &_left_col {
+      display: flex;
+      align-items: center;
+    }
   }
 
   &__block {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    margin: 0 -15px;
   }
 
   &_btn_add {
     &_block {
       margin-top: 50px;
     }
+  }
+}
+.coin {
+  &_name {
+    margin-left: 8px;
+    font-weight: 500;
   }
 }
