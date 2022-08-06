@@ -7,11 +7,12 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
 @Table(name = "coin")
-public class ExchangerCoin {
+public class Coin {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,5 +20,9 @@ public class ExchangerCoin {
 
     private String name;
 
-    private int amount;
+    private String wallet;
+
+    private String image;
+
+    private String amount;
 }

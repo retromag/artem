@@ -1,6 +1,6 @@
 <!doctype html>
-<html lang="en">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang=""><head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -52,7 +52,7 @@
                    placeholder="Введите пароль"
             />
         </div>
-        <a  th:href="@{/forgot_password}" class="forgot_passw_text">Забыли пароль?</a><br>
+        <a  th:href="@{/forgot/password}" class="forgot_passw_text">Забыли пароль?</a><br>
 
         <div class="auth_btns_wrapper">
             <button  type="submit" class="btn_general">ВОЙТИ</button>
