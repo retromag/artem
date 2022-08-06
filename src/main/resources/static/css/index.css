@@ -349,24 +349,50 @@ input:checked + .slider:before {
   -webkit-box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
           box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
   border-radius: 20px;
-  padding: 10px 15px;
+  padding: 15px;
   margin-top: 10px;
 }
 .reserves__item_wrapper {
   width: 33%;
+  padding: 0 15px;
+}
+.reserves__item_img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.reserves__item_img_wrapper {
+  width: 24px;
+  height: 24px;
+}
+.reserves__item_left_col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .reserves__block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  margin: 0 -15px;
+}
+.reserves_btn_add {
+  width: 32%;
 }
 .reserves_btn_add_block {
   margin-top: 50px;
+}
+
+.coin_name {
+  margin-left: 8px;
+  font-weight: 500;
 }
 
 /* Breakpoint sizes */
