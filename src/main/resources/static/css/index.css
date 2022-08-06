@@ -383,6 +383,9 @@ input:checked + .slider:before {
       flex-wrap: wrap;
   margin: 0 -15px;
 }
+.reserves_btn_add {
+  width: 32%;
+}
 .reserves_btn_add_block {
   margin-top: 50px;
 }
