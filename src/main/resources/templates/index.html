@@ -16,19 +16,19 @@
         <div class="container">
             <div class="header_block">
                 <div class="logo_wrapper">
-                    <div class="logo_img_wrapper">
+                    <div class="logo_img_wrapper" th:href="@{/}">
                         <img src="/images/logo.png" alt="" class="logo_img">
                     </div>
                     <p class="logo_text">HELMETSWAP</p>
                 </div>
                 <nav class="nav_menu_wrapper">
                     <ul class="nav_menu">
-                        <li class="nav_menu__item"><a href="#" class="nav_menu__item_link">Выполнить обмен</a></li>
+                        <li class="nav_menu__item"><a href="/" class="nav_menu__item_link">Выполнить обмен</a></li>
                         <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link">Резервы</a></li>
-                        <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="../static/images/ru.png" alt="" class="flag"></li>
+                        <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="/images/ru.png" alt="" class="flag"></li>
                         <li class="nav_menu__item">
                             <a href="/registration" class="btn_authorization btn_general">Авторизация</a>
-                            <a href="/registration" class="btn_authorization_mobile"><img src="../static/images/user.svg" alt=""></a>
+                            <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg" alt=""></a>
                         </li>
                     </ul>
                 </nav>
@@ -38,6 +38,6 @@
     <div class="main-wrapper">
 
     </div>
-<script src="static/js/index.js"></script>
+<script src="/js/index.js"></script>
 </body>
 </html>

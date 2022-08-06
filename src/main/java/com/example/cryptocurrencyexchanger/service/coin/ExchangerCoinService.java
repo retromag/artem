@@ -33,6 +33,12 @@ public class ExchangerCoinService implements CoinService {
     }
 
     @Override
+    public void deleteCoin(Long id) {
+        Coin coin = findCoinById(id);
+        coinRepository.delete(coin);
+    }
+
+    @Override
     public Set<Coin> getAllCoins() {
         return Sets.newHashSet(coinRepository.findAll());
     }

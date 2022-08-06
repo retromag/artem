@@ -13,5 +13,7 @@ public interface CoinService {
 
     Coin updateCoin(Coin coin);
 
+    void deleteCoin(Long id);
+
     Set<Coin> getAllCoins();
 }

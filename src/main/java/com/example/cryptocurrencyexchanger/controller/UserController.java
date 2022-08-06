@@ -200,7 +200,6 @@ public class UserController {
     @GetMapping("/reserves/update/{id}")
     public String updateCoinPage(@PathVariable("id") Long id, Model model) {
         Coin coin = coinService.findCoinById(id);
-        System.out.println(coin.toString());
 
         model.addAttribute("coin", coin);
 
@@ -211,6 +210,14 @@ public class UserController {
     @PostMapping("/reserves/update/coin")
     public String updateCoin(@Valid Coin coin) {
         coinService.updateCoin(coin);
+
+        return "redirect:/reserves";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/reserves/delete/{id}")
+    public String deleteCoin(@PathVariable("id") Long id) {
+        coinService.deleteCoin(id);
 
         return "redirect:/reserves";
     }
