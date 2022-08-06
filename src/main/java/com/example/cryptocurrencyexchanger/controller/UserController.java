@@ -222,6 +222,19 @@ public class UserController {
         return "redirect:/reserves";
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    @GetMapping("/account/history")
+    public String viewUserExchangesHistory(Model model) {
+        String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        return "account_history";
+    }
+
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    @GetMapping("/account/settings")
+    public String viewUserAccountSettings() {
+        return "account_settings";
+    }
 
     @GetMapping("/forgot/password")
     public String showForgetPasswordPage() {
