@@ -32,7 +32,7 @@
     <p class="auth_text">Регистрация</p>
     <div th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
         <p th:each="error : ${#fields.errors('email')}"
-           th:text="${error}">Validation error</p>
+           th:text="${error}" class="invalid_data">Validation error</p>
         <input type="email"
                id="email"
                class="email input_email input_general input_auth"
@@ -42,7 +42,7 @@
     </div>
     <div th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
         <p th:each="error : ${#fields.errors('password')}"
-           th:text="${error}">Validation error</p>
+           th:text="${error}" class="invalid_data">Validation error</p>
         <input type="password"
                id="password"
                class="input_password input_general input_auth"
@@ -52,7 +52,7 @@
     </div>
     <div th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
         <p th:each="error : ${#fields.errors('confirmPassword')}"
-           th:text="${error}">Validation error</p>
+           th:text="${error}" class="invalid_data">Validation error</p>
         <input id="confirmPassword"
                type="password"
                placeholder="Введите пароль повторно"
@@ -65,10 +65,10 @@
     </div>
     <p th:if="${#fields.hasGlobalErrors()}"
        th:each="error : ${#fields.errors('global')}"
-       th:text="${error}">Validation error</p>
+       th:text="${error}" class="invalid_data">Validation error</p>
     <div class="auth_btns_wrapper">
-        <button type="submit" class="btn_general">Регистрация</button>
-        <a th:href="@{/login}" class="btn_secondary">ВОЙТИ</a>
+        <button type="submit" class="btn_general btn_auth">Регистрация</button>
+        <a th:href="@{/login}" class="btn_secondary btn_auth">ВОЙТИ</a>
     </div>
 </form>
 </body>

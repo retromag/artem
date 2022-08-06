@@ -2,6 +2,18 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  background-image: url("../images/bc_main.jpg");
+  background-position: center center;
+  background-size: 100% 100%;
+}
+.main-wrapper {
+  //background-image: url("../images/bc_main_sec.png");
+  background-position: center right;
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  //margin-top: 200px;
+  height: 100vh;
+  //background-color: red;
 }
 header {
   background-color: #FFFFFF;
@@ -12,8 +24,18 @@ header {
 }
 
 .container {
-  width: 1320px;
+  max-width: 1320px;
   margin: 0 auto;
+
+  @include max-screen(lg) {
+    max-width: 992px;
+  }
+  @include max-screen(md) {
+    max-width: 768px;
+  }
+  @include max-screen(sm) {
+    max-width: 479px;
+  }
 }
 .header_block {
   display: flex;
@@ -43,6 +65,10 @@ header {
     font-weight: bold;
     font-size: 30px;
     margin-left: 15px;
+
+    @include max-screen(md) {
+      font-size: 25px;
+    }
   }
 
 }
@@ -56,10 +82,18 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 -20px;
+  padding: 0 -20px;
+
+  @include max-screen(md) {
+    padding: 0 -10px;
+  }
 
   &__item {
     margin: 0 20px;
+
+    @include max-screen(md) {
+      margin: 0 10px;
+    }
 
     &:hover {
       cursor: pointer;
@@ -117,6 +151,15 @@ header {
     &:hover {
       background: #4122FF;
       color: #fff;
+      cursor: pointer;
+    }
+  }
+  &_auth {
+    @include max-screen(xs) {
+      font-size: 10px;
+      padding: 0 20px;
+      height: 40px;
+      line-height: 40px;
     }
   }
 }

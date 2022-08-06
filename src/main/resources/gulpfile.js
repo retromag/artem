@@ -30,18 +30,18 @@ gulp.task('code', function() {
         .pipe(browserSync.reload({ stream: true }))
 });
 
-gulp.task('scripts', function() {
-    return gulp.src('static/js/*.js')
-        .pipe(browserSync.reload({ stream: true }))
-});
+// gulp.task('scripts', function() {
+//     return gulp.src('static/js/*.js')
+//         .pipe(browserSync.reload({ stream: true }))
+// });
 
 gulp.task('watch', function() {
     gulp.watch('static/styles/*.scss', gulp.parallel('sass'));
     gulp.watch('templates/*.html', gulp.parallel('code'));
-    gulp.watch('static/js/*.js', gulp.parallel('scripts'));
+    // gulp.watch('static/js/*.js', gulp.parallel('scripts'));
 });
 
-gulp.task('run', gulp.parallel('sass', 'scripts', 'browser-sync', 'watch'));
+gulp.task('run', gulp.parallel('sass', 'browser-sync', 'watch'));
 
 gulp.task('clear', function () {
     return cache.clearAll();
@@ -56,9 +56,9 @@ gulp.task('prebuild', function() {
         .pipe(cssnano())
         .pipe(gulp.dest('dist/css'))
 
-    var buildJs = gulp.src('static/js/index.js')
-        .pipe(uglify())
-        .pipe(gulp.dest('dist/js'))
+    // var buildJs = gulp.src('static/js/index.js')
+    //     .pipe(uglify())
+    //     .pipe(gulp.dest('dist/js'))
 
     var buildImg = gulp.src('static/images/**/*')
         .pipe(gulp.dest('dist/img'));
