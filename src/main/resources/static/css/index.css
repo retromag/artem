@@ -140,6 +140,11 @@ header {
       -ms-flex-align: center;
           align-items: center;
 }
+@media only screen and (max-width: 991px) {
+  .logo_wrapper {
+    margin-left: 5px;
+  }
+}
 .logo_img {
   -o-object-fit: cover;
      object-fit: cover;
@@ -151,6 +156,18 @@ header {
   width: 50px;
   height: 50px;
 }
+@media only screen and (max-width: 991px) {
+  .logo_img_wrapper {
+    width: 35px;
+    height: 35px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .logo_img_wrapper {
+    width: 25px;
+    height: 25px;
+  }
+}
 .logo_text {
   font-weight: bold;
   font-size: 30px;
@@ -159,6 +176,17 @@ header {
 @media only screen and (max-width: 991px) {
   .logo_text {
     font-size: 25px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .logo_text {
+    font-size: 20px;
+    margin-left: 7px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .logo_text {
+    font-size: 16px;
   }
 }
 
@@ -204,6 +232,12 @@ header {
   border: 1px solid #CBCCCE;
   border-radius: 5px;
 }
+@media only screen and (max-width: 991px) {
+  .nav_menu__item_flag_wrapper {
+    width: 15px;
+    height: 15px;
+  }
+}
 .nav_menu__item_link {
   font-size: 16px;
   font-weight: 500;
@@ -211,6 +245,16 @@ header {
   -webkit-transition: 0.4s;
   -o-transition: 0.4s;
   transition: 0.4s;
+}
+@media only screen and (max-width: 767px) {
+  .nav_menu__item_link {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .nav_menu__item_link {
+    font-size: 10px;
+  }
 }
 .nav_menu__item_link:hover {
   color: #0E82EF;
@@ -236,6 +280,13 @@ header {
   -o-transition: all 0.2s;
   transition: all 0.2s;
   border: 0;
+}
+.btn_general:hover {
+  -webkit-box-shadow: 0 9px 20px rgba(142, 95, 227, 0.4);
+          box-shadow: 0 9px 20px rgba(142, 95, 227, 0.4);
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.05))), radial-gradient(71.55% 129.69% at 28.45% 74.22%, #8D54E0 0%, #8DC8FF 96.2%);
+  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), -o-radial-gradient(28.45% 74.22%, 71.55% 129.69%, #8D54E0 0%, #8DC8FF 96.2%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), radial-gradient(71.55% 129.69% at 28.45% 74.22%, #8D54E0 0%, #8DC8FF 96.2%);
 }
 .btn_secondary {
   padding: 10px 40px;
@@ -264,6 +315,27 @@ header {
     line-height: 40px;
   }
 }
+.btn_add_coin_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+@media only screen and (max-width: 767px) {
+  .btn_authorization {
+    display: none;
+  }
+}
+.btn_authorization_mobile {
+  display: none;
+}
+@media only screen and (max-width: 767px) {
+  .btn_authorization_mobile {
+    display: block;
+  }
+}
 
 .input_general {
   background: #FFFFFF;
@@ -274,6 +346,48 @@ header {
   height: 50px;
   width: 100%;
   padding: 10px;
+}
+
+.input_file_wrapper {
+  margin-bottom: 20px;
+}
+.input_file_wrapper .btn-tertiary {
+  color: #555;
+  padding: 0;
+  line-height: 40px;
+  width: 100%;
+  margin: auto;
+  display: block;
+  border: 1px solid #0E82EF;
+  border-radius: 15px;
+}
+.input_file_wrapper .btn-tertiary:hover, .input_file_wrapper .example-2 .btn-tertiary:focus {
+  color: #888;
+  border-color: #0E82EF;
+  border-radius: 15px;
+}
+.input_file_wrapper .input-file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.input_file_wrapper .input-file + .js-labelFile {
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 10px;
+  cursor: pointer;
+}
+.input_file_wrapper .input-file + .js-labelFile .icon:before {
+  content: "\f093";
+}
+.input_file_wrapper .input-file + .js-labelFile.has-file .icon:before {
+  content: "\f00c";
+  color: #5AAC7B;
 }
 
 /* Breakpoint sizes */
@@ -444,6 +558,9 @@ input:checked + .slider:before {
   border-radius: 20px;
   padding: 15px;
   margin-top: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .reserves__item_wrapper {
   width: 33%;
@@ -521,6 +638,28 @@ input:checked + .slider:before {
 .coin_name {
   margin-left: 8px;
   font-weight: 500;
+}
+.coin_edit_btn {
+  margin-left: 10px;
+}
+@media only screen and (max-width: 991px) {
+  .coin_edit_btn {
+    margin-left: 4px;
+  }
+}
+.coin_edit_btn svg {
+  width: 20px;
+  height: 20px;
+}
+@media only screen and (max-width: 991px) {
+  .coin_edit_btn svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+.coin_edit_btn svg path:hover {
+  fill: #0E82EF;
+  cursor: pointer;
 }
 
 /* Breakpoint sizes */

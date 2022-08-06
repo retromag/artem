@@ -9,6 +9,7 @@
     border-radius: 20px;
     padding: 15px;
     margin-top: 10px;
+    align-items: center;
 
     &_wrapper {
       width: 33%;
@@ -78,5 +79,29 @@
   &_name {
     margin-left: 8px;
     font-weight: 500;
+  }
+  &_edit {
+    &_btn {
+      margin-left: 10px;
+
+      @include max-screen(md) {
+        margin-left: 4px;
+      }
+
+      & svg {
+        width: 20px;
+        height: 20px;
+
+        @include max-screen(md) {
+          width: 15px;
+          height: 15px;
+        }
+
+        & path:hover {
+          fill: #0E82EF;
+          cursor: pointer;
+        }
+      }
+    }
   }
 }
