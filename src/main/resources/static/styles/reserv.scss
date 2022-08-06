@@ -1,3 +1,4 @@
+@import 'mixins';
 .reserves {
   &__item {
     display: flex;
@@ -12,6 +13,14 @@
     &_wrapper {
       width: 33%;
       padding: 0 15px;
+
+      @include max-screen(sm) {
+        width: 50%;
+      }
+
+      @include max-screen(xs) {
+        width: 95%;
+      }
     }
 
     &_img {
@@ -36,12 +45,32 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0 -15px;
+
+    @include max-screen(xs) {
+      justify-content: center;
+    }
   }
 
   &_btn_add {
     width: 32%;
+
+    @include max-screen(sm) {
+      width: 48%;
+    }
+
+    @include max-screen(xs) {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
     &_block {
       margin-top: 50px;
+
+      @include max-screen(xs) {
+        margin-top: 30px;
+        margin-right: auto;
+        margin-left: auto;
+      }
     }
   }
 }

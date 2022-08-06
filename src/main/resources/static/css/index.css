@@ -79,6 +79,16 @@ a {
 /* Create the mixin (usually in a separate .scss file) */
 body {
   font-family: "Roboto", sans-serif;
+  background-image: url("../images/bc_main.jpg");
+  background-position: center center;
+  background-size: 100% 100%;
+}
+
+.main-wrapper {
+  background-position: center right;
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 header {
@@ -90,8 +100,23 @@ header {
 }
 
 .container {
-  width: 1320px;
+  max-width: 1320px;
   margin: 0 auto;
+}
+@media only screen and (max-width: 1200px) {
+  .container {
+    max-width: 992px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .container {
+    max-width: 768px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .container {
+    max-width: 479px;
+  }
 }
 
 .header_block {
@@ -131,6 +156,11 @@ header {
   font-size: 30px;
   margin-left: 15px;
 }
+@media only screen and (max-width: 991px) {
+  .logo_text {
+    font-size: 25px;
+  }
+}
 
 .flag {
   -o-object-fit: cover;
@@ -150,10 +180,20 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0 -20px;
+  padding: 0 -20px;
+}
+@media only screen and (max-width: 991px) {
+  .nav_menu {
+    padding: 0 -10px;
+  }
 }
 .nav_menu__item {
   margin: 0 20px;
+}
+@media only screen and (max-width: 991px) {
+  .nav_menu__item {
+    margin: 0 10px;
+  }
 }
 .nav_menu__item:hover {
   cursor: pointer;
@@ -214,6 +254,15 @@ header {
 .btn_secondary:hover {
   background: #4122FF;
   color: #fff;
+  cursor: pointer;
+}
+@media only screen and (max-width: 479px) {
+  .btn_auth {
+    font-size: 10px;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+  }
 }
 
 .input_general {
@@ -227,18 +276,37 @@ header {
   padding: 10px;
 }
 
+/* Breakpoint sizes */
+/**/
+/* Create the mixin (usually in a separate .scss file) */
 .auth_text {
   color: #11181F;
   font-size: 20px;
   text-align: center;
   margin-bottom: 30px;
 }
+@media only screen and (max-width: 767px) {
+  .auth_text {
+    margin-bottom: 15px;
+  }
+}
 .auth_form_container {
   width: 550px;
-  margin: 0 auto;
+  margin: 30px auto;
   border: 1px solid #CBCCCE;
   border-radius: 5px;
   padding: 30px;
+  background-color: #ffffff;
+}
+@media only screen and (max-width: 767px) {
+  .auth_form_container {
+    width: 470px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .auth_form_container {
+    width: 350px;
+  }
 }
 .auth_btns_wrapper {
   display: -webkit-box;
@@ -251,6 +319,11 @@ header {
 
 .input_auth {
   margin-bottom: 20px;
+}
+@media only screen and (max-width: 767px) {
+  .input_auth {
+    margin-bottom: 10px;
+  }
 }
 
 /* The switch - the box around the slider */
@@ -321,8 +394,18 @@ input:checked + .slider:before {
 .checkbox_wrapper {
   margin-bottom: 30px;
 }
+@media only screen and (max-width: 767px) {
+  .checkbox_wrapper {
+    margin-bottom: 15px;
+  }
+}
 .checkbox_wrapper div {
   margin-bottom: 10px;
+}
+@media only screen and (max-width: 767px) {
+  .checkbox_wrapper div {
+    margin-bottom: 2px;
+  }
 }
 .checkbox_label {
   margin-left: 10px;
@@ -336,7 +419,17 @@ input:checked + .slider:before {
   text-decoration: underline;
   margin-bottom: 30px;
 }
+.forgot_passw_text:hover {
+  cursor: pointer;
+}
 
+.invalid_data {
+  color: red;
+}
+
+/* Breakpoint sizes */
+/**/
+/* Create the mixin (usually in a separate .scss file) */
 .reserves__item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -355,6 +448,16 @@ input:checked + .slider:before {
 .reserves__item_wrapper {
   width: 33%;
   padding: 0 15px;
+}
+@media only screen and (max-width: 767px) {
+  .reserves__item_wrapper {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .reserves__item_wrapper {
+    width: 95%;
+  }
 }
 .reserves__item_img {
   width: 100%;
@@ -383,11 +486,36 @@ input:checked + .slider:before {
       flex-wrap: wrap;
   margin: 0 -15px;
 }
+@media only screen and (max-width: 479px) {
+  .reserves__block {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
 .reserves_btn_add {
   width: 32%;
 }
+@media only screen and (max-width: 767px) {
+  .reserves_btn_add {
+    width: 48%;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .reserves_btn_add {
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
 .reserves_btn_add_block {
   margin-top: 50px;
+}
+@media only screen and (max-width: 479px) {
+  .reserves_btn_add_block {
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 
 .coin_name {

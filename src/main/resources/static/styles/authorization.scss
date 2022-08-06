@@ -1,16 +1,30 @@
+@import 'mixins';
+
 .auth {
   &_text {
     color: #11181F;
     font-size: 20px;
     text-align: center;
     margin-bottom: 30px;
+
+    @include max-screen(sm) {
+      margin-bottom: 15px;
+    }
   }
   &_form_container {
     width: 550px;
-    margin: 0 auto;
+    margin: 30px auto;
     border: 1px solid #CBCCCE;
     border-radius: 5px;
     padding: 30px;
+    background-color: #ffffff;
+
+    @include max-screen(sm) {
+      width: 470px;
+    }
+    @include max-screen(xs) {
+      width: 350px;
+    }
   }
   &_btns_wrapper {
     display: flex;
@@ -20,6 +34,10 @@
 .input {
   &_auth {
     margin-bottom: 20px;
+
+    @include max-screen(sm) {
+      margin-bottom: 10px;
+    }
   }
 }
 
@@ -86,8 +104,16 @@ input:checked + .slider:before {
 .checkbox {
   &_wrapper {
     margin-bottom: 30px;
+
+    @include max-screen(sm) {
+      margin-bottom: 15px;
+    }
     & div {
       margin-bottom: 10px;
+
+      @include max-screen(sm) {
+        margin-bottom: 2px;
+      }
     }
   }
   &_label {
@@ -101,4 +127,12 @@ input:checked + .slider:before {
   display: block;
   text-decoration: underline;
   margin-bottom: 30px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.invalid_data {
+  color: red;
 }

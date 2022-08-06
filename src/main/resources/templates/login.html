@@ -30,7 +30,7 @@
     <form th:action="@{/login}" method="post" class="login auth_form_container">
         <p class="auth_text">Вход на сайт</p>
         <div th:if="${param.error}">
-            <div>
+            <div class="invalid_data">
                 Invalid username or password.
             </div>
         </div>
@@ -55,8 +55,8 @@
         <a  th:href="@{/forgot/password}" class="forgot_passw_text">Забыли пароль?</a><br>
 
         <div class="auth_btns_wrapper">
-            <button  type="submit" class="btn_general">ВОЙТИ</button>
-            <a th:href="@{/registration}" class="btn_secondary">Регистрация</a>
+            <button  type="submit" class="btn_general btn_auth">ВОЙТИ</button>
+            <a th:href="@{/registration}" class="btn_secondary btn_auth">Регистрация</a>
         </div>
     </form>
 
