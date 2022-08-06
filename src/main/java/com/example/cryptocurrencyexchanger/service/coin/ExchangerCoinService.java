@@ -2,19 +2,25 @@ package com.example.cryptocurrencyexchanger.service.coin;
 
 import com.example.cryptocurrencyexchanger.entity.coin.Coin;
 import com.example.cryptocurrencyexchanger.repo.CoinRepository;
+import com.google.common.collect.Sets;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class ExchangerCoinService implements CoinService {
 
-    CoinRepository coinRepository;
+    private final CoinRepository coinRepository;
+
+    @Override
+    public Coin findCoinById(Long id) {
+        return coinRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid coin Id:" + id));
+    }
 
     @Override
     public Coin addNewCoin(Coin coin) {
@@ -27,7 +33,7 @@ public class ExchangerCoinService implements CoinService {
     }
 
     @Override
-    public List<Coin> getAllCoins() {
-        return coinRepository.findAll();
+    public Set<Coin> getAllCoins() {
+        return Sets.newHashSet(coinRepository.findAll());
     }
 }
