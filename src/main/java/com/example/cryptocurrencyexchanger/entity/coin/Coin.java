@@ -7,10 +7,11 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-@Table(name = "reserve")
+@Table(name = "coin")
 public class Coin {
     @Id
     @Column(name = "id")
@@ -23,5 +24,5 @@ public class Coin {
 
     private String image;
 
-    private int amount;
+    private String amount;
 }

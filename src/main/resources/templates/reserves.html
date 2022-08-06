@@ -1,5 +1,7 @@
 <!doctype html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -15,7 +17,7 @@
         <div class="header_block">
             <div class="logo_wrapper">
                 <div class="logo_img_wrapper">
-                    <img src="../static/images/logo.png" alt="" class="logo_img">
+                    <img src="/images/logo.png" alt="" class="logo_img">
                 </div>
                 <p class="logo_text">HELMETSWAP</p>
             </div>
@@ -23,8 +25,10 @@
                 <ul class="nav_menu">
                     <li class="nav_menu__item"><a href="#" class="nav_menu__item_link">Выполнить обмен</a></li>
                     <li class="nav_menu__item"><a href="#" class="nav_menu__item_link">Резервы</a></li>
-                    <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="/images/ru.png" alt="" class="flag"></li>
-                    <li class="nav_menu__item"><a href="/registration" class="btn_authorization btn_general">Авторизация</a></li>
+                    <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="/images/ru.png" alt=""
+                                                                                class="flag"></li>
+                    <li class="nav_menu__item"><a href="/registration"
+                                                  class="btn_authorization btn_general">Авторизация</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,24 +38,29 @@
     <div class="container">
         <div class="reserves__wrapper">
             <div class="reserves__block">
-
-                <div class="reserves__item_wrapper">
-                    <div class="reserves__item">
-                        <div class="reserves__item_left_col">
-                            <div class="reserves__item_img_wrapper">
-                                <img src="" alt="" class="reserves__item_img_wrapper">
+                <tr th:each="coin : ${coins}">
+                    <td>
+                        <div class="reserves__item_wrapper">
+                            <div class="reserves__item">
+                                <div class="reserves__item_left_col">
+                                    <div class="reserves__item_img_wrapper">
+                                        <img src="" alt="" class="reserves__item_img_wrapper">
+                                    </div>
+                                    <p class="coin_name" th:text="${coin.name}">Bitcoin</p>
+                                </div>
+                                <div class="reserves__item_right_col">
+                                    <p class="coin_amount" th:text="${coin.amount}">44 BTC</p>
+                                </div>
                             </div>
-                            <p class="coin_name">Bitcoin</p>
                         </div>
-                        <div class="reserves__item_right_col">
-                            <p class="coin_amount">44 BTC</p>
-                        </div>
-                    </div>
-                </div>
+                    </td>
+                </tr>
 
             </div>
-            <div class="reserves_btn_add_block">
-                <button class="reserves_btn_add btn_general">Добавить</button>
+            <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                <div class="reserves_btn_add_block">
+                    <a href="/reserves/add" class="reserves_btn_add btn_general">Добавить</a>
+                </div>
             </div>
         </div>
     </div>

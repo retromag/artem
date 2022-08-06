@@ -18,6 +18,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.mail.MailAuthenticationException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -182,6 +183,20 @@ public class UserController {
         model.addAttribute("coins", coinList);
 
         return "reserves";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/reserves/add")
+    public String addNewCoinPage() {
+        return "add_coin";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @PostMapping("/reserves/add")
+    public String addNewCoin(Coin coin) {
+        coinService.addNewCoin(coin);
+
+        return "redirect:/reserves";
     }
 
 

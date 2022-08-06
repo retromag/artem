@@ -17,6 +17,16 @@ public class ExchangerCoinService implements CoinService {
     CoinRepository coinRepository;
 
     @Override
+    public Coin addNewCoin(Coin coin) {
+        return coinRepository.save(coin);
+    }
+
+    @Override
+    public Coin updateCoin(Coin coin) {
+        return coinRepository.save(coin);
+    }
+
+    @Override
     public List<Coin> getAllCoins() {
         return coinRepository.findAll();
     }
