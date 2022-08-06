@@ -558,6 +558,9 @@ input:checked + .slider:before {
   border-radius: 20px;
   padding: 15px;
   margin-top: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .reserves__item_wrapper {
   width: 33%;
@@ -635,6 +638,28 @@ input:checked + .slider:before {
 .coin_name {
   margin-left: 8px;
   font-weight: 500;
+}
+.coin_edit_btn {
+  margin-left: 10px;
+}
+@media only screen and (max-width: 991px) {
+  .coin_edit_btn {
+    margin-left: 4px;
+  }
+}
+.coin_edit_btn svg {
+  width: 20px;
+  height: 20px;
+}
+@media only screen and (max-width: 991px) {
+  .coin_edit_btn svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+.coin_edit_btn svg path:hover {
+  fill: #0E82EF;
+  cursor: pointer;
 }
 
 /* Breakpoint sizes */
