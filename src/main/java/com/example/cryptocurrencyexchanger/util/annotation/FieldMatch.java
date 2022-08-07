@@ -1,4 +1,6 @@
-package com.example.cryptocurrencyexchanger.util;
+package com.example.cryptocurrencyexchanger.util.annotation;
+
+import com.example.cryptocurrencyexchanger.util.FieldMatchValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

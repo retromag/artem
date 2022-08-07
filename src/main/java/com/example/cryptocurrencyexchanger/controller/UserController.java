@@ -5,12 +5,14 @@ import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
 import com.example.cryptocurrencyexchanger.entity.user.UserModel;
 import com.example.cryptocurrencyexchanger.entity.user.VerificationToken;
 import com.example.cryptocurrencyexchanger.event.OnRegistrationCompleteEvent;
+import com.example.cryptocurrencyexchanger.exception.ValidPasswordException;
 import com.example.cryptocurrencyexchanger.service.coin.CoinService;
 import com.example.cryptocurrencyexchanger.service.security.SecurityService;
 import com.example.cryptocurrencyexchanger.service.token.TokenService;
 import com.example.cryptocurrencyexchanger.service.user.UserService;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.ApplicationEventPublisher;
@@ -226,27 +228,22 @@ public class UserController {
         return "account_settings";
     }
 
+    @SneakyThrows
     @PostMapping("/user/update/password")
     public String changeUserPassword(@RequestParam("confirmPassword") String password,
                                      @RequestParam("oldpassword") String oldPassword) {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
 
         if (!userService.checkIfValidOldPassword(user, oldPassword)) {
-//            throw new ValidPasswordException("Old password is invalid");
+            throw new ValidPasswordException("Old password is invalid");
         }
         userService.changeUserPassword(user, password);
         return "redirect:/login";
     }
 
-
     @GetMapping("/forgot/password")
     public String showForgetPasswordPage() {
         return "forgot_password";
-    }
-
-    @GetMapping("/update/password")
-    public String redirectToUpdatePasswordPage() {
-        return "updatePassword";
     }
 
     private SimpleMailMessage constructResetTokenEmail(String contextPath, Locale locale, String token, ExchangerUser user) {

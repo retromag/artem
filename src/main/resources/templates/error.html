@@ -48,35 +48,19 @@
         </div>
     </div>
 </header>
-<form class="registration auth_form_container" th:action="@{/user/update/password}" th:object="${user}" method="post">
-    <div>
-        <input type="password"
-               name="oldpassword"
-               placeholder="Текущий пароль"
-        ><br>
+<article>
+    <header>
+        <h1 id="fittext1" th:utext="${error}">
+            <i class="fa fa-exclamation-triangle fa-fw"></i>
+        </h1>
+    </header>
+
+    <div class="col-sm-12 d-flex justify-content-center">
+                        <span><a class="btn custom-smile-btn-back mr-1 ml-1" onclick="history.go(-1)">
+                            <span class="text">Back</span></a></span>
     </div>
-    <div th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-        <p th:each="error : ${#fields.errors('password')}"
-           th:text="${error}" class="invalid_data">Validation error</p>
-        <input type="password"
-               id="password"
-               placeholder="Новый пароль"
-               th:field="*{password}"
-        ><br>
-    </div>
-    <div th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
-        <p th:each="error : ${#fields.errors('confirmPassword')}"
-           th:text="${error}" class="invalid_data">Validation error</p>
-        <input id="confirmPassword"
-               name="confirmPassword"
-               type="password"
-               placeholder="Новый пароль повторно"
-               th:field="*{confirmPassword}"/>
-    </div>
-    <div>
-        <button type="submit">Сохранить</button>
-    </div>
-</form>
-<script src="/js/index.js"></script>
+
+</article>
+<script src="../static/js/index.js"></script>
 </body>
 </html>

@@ -1,12 +1,10 @@
 package com.example.cryptocurrencyexchanger.entity.user;
 
-import com.example.cryptocurrencyexchanger.util.FieldMatch;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.example.cryptocurrencyexchanger.util.annotation.FieldMatch;
+import lombok.*;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 @Data
@@ -17,10 +15,13 @@ import javax.validation.constraints.NotEmpty;
         @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
         @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")})
 public class UserModel {
-    @NotEmpty
+
+    @NonNull
+    @NotBlank(message = "New password is mandatory")
     private String password;
 
     @NotEmpty
+    @NotBlank(message = "Confirm password is mandatory")
     private String confirmPassword;
 
     @Email

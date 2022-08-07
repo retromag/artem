@@ -1,5 +1,6 @@
 package com.example.cryptocurrencyexchanger.util;
 
+import com.example.cryptocurrencyexchanger.util.annotation.FieldMatch;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.validation.ConstraintValidator;
