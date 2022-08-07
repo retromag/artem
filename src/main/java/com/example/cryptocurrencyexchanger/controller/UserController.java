@@ -247,6 +247,11 @@ public class UserController {
         return "forgot_password";
     }
 
+    @GetMapping("/rules")
+    public String showRules() {
+        return "rules";
+    }
+
     private SimpleMailMessage constructResetTokenEmail(String contextPath, Locale locale, String token, ExchangerUser user) {
         final String url = contextPath + "/user/reset/password?token=" + token;
         final String message = messages.getMessage("message.resetPassword",

@@ -34,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/forgot/password",
                         "/reset/password",
                         "/reserves",
+                        "/rules",
                         "/api/**",
                         "/js/**",
                         "/css/**",
