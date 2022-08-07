@@ -80,6 +80,7 @@ header {
     font-weight: bold;
     font-size: 30px;
     margin-left: 15px;
+    color: #000000;
 
     @include max-screen(md) {
       font-size: 25px;
@@ -221,7 +222,69 @@ header {
       }
     }
   }
+  &_cabinet {
+    &_wrapper {
+      display: flex;
+      align-items: center;
+    }
+    &_user {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, #8D54E0 0%, #8DC8FF 96.2%);
+      box-shadow: 0 9px 20px rgb(142 95 227 / 40%);
+      border-radius: 40px;
+      transition: all .2s;
+      border: 0;
+      margin-right: 5px;
 
+      @include max-screen(sm) {
+        width: 30px;
+        height: 30px;
+      }
+
+      & img {
+        width: 20px;
+        height: 20px;
+
+        @include max-screen(sm) {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+    &_text {
+      color: #000000;
+      margin-right: 5px;
+
+      @include max-screen(sm) {
+        display: none;
+      }
+    }
+
+  }
+  &_logout {
+
+    @include max-screen(sm) {
+      margin-right: 5px;
+    }
+
+    & svg {
+      width: 20px;
+      height: 20px;
+
+      @include max-screen(sm) {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+}
+.btns_auth_wrapper {
+  display: flex;
+  align-items: center;
 }
 .input {
   &_general {
