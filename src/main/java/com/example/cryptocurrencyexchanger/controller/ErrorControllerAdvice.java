@@ -1,6 +1,5 @@
 package com.example.cryptocurrencyexchanger.controller;
 
-import com.example.cryptocurrencyexchanger.exception.NewPasswordCantBeTheSamAsOldException;
 import com.example.cryptocurrencyexchanger.exception.ValidPasswordException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,14 +25,6 @@ public class ErrorControllerAdvice extends SimpleUrlAuthenticationFailureHandler
     public String oldPasswordInvalidError(final ValidPasswordException throwable, final Model model) {
         log.trace("Exception during execution of application", throwable);
         model.addAttribute("error", "Your old password is invalid");
-        return "error";
-    }
-
-    @ExceptionHandler(NewPasswordCantBeTheSamAsOldException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String newPasswordSameAsOld(final NewPasswordCantBeTheSamAsOldException throwable, final Model model) {
-        log.trace("Exception during execution of application", throwable);
-        model.addAttribute("error", "New password can't be the same as the old");
         return "error";
     }
 }

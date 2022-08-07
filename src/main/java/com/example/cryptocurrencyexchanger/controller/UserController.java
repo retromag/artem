@@ -231,12 +231,13 @@ public class UserController {
     @SneakyThrows
     @PostMapping("/user/update/password")
     public String changeUserPassword(@RequestParam("confirmPassword") String password,
-                                     @RequestParam("oldpassword") String oldPassword) {
+                                     @RequestParam("oldPassword") String oldPassword) {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
 
         if (!userService.checkIfValidOldPassword(user, oldPassword)) {
             throw new ValidPasswordException("Old password is invalid");
         }
+
         userService.changeUserPassword(user, password);
         return "redirect:/login";
     }
