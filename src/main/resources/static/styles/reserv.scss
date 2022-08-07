@@ -74,6 +74,11 @@
       }
     }
   }
+
+  &_btns_edit_wrapper {
+    display: flex;
+    align-items: center;
+  }
 }
 .coin {
   &_name {
