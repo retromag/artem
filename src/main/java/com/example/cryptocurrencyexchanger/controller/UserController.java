@@ -161,18 +161,6 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @PostMapping("/user/update/password")
-    public String changeUserPassword(@RequestParam("password") String password,
-                                     @RequestParam("oldpassword") String oldPassword) {
-        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
-
-        if (!userService.checkIfValidOldPassword(user, oldPassword)) {
-//            throw new ValidPasswordException("Old password is invalid");
-        }
-        userService.changeUserPassword(user, password);
-        return "redirect:/login";
-    }
-
     @GetMapping("/reserves")
     public String showAllReserves(Model model) {
         Set<Coin> coinList = coinService.getAllCoins();
@@ -232,9 +220,24 @@ public class UserController {
 
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("/account/settings")
-    public String viewUserAccountSettings() {
+    public String viewUserAccountSettings(Model model) {
+        model.addAttribute("user", new UserModel());
+
         return "account_settings";
     }
+
+    @PostMapping("/user/update/password")
+    public String changeUserPassword(@RequestParam("confirmPassword") String password,
+                                     @RequestParam("oldpassword") String oldPassword) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+
+        if (!userService.checkIfValidOldPassword(user, oldPassword)) {
+//            throw new ValidPasswordException("Old password is invalid");
+        }
+        userService.changeUserPassword(user, password);
+        return "redirect:/login";
+    }
+
 
     @GetMapping("/forgot/password")
     public String showForgetPasswordPage() {
