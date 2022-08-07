@@ -42,4 +42,9 @@ public class ExchangerCoinService implements CoinService {
     public Set<Coin> getAllCoins() {
         return Sets.newHashSet(coinRepository.findAll());
     }
+
+    @Override
+    public Coin getCoinByCoinSymbol(String symbol) {
+        return coinRepository.getCoinBySymbol(symbol);
+    }
 }

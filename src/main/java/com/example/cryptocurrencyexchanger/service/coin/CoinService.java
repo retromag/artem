@@ -16,4 +16,6 @@ public interface CoinService {
     void deleteCoin(Long id);
 
     Set<Coin> getAllCoins();
+
+    Coin getCoinByCoinSymbol(String symbol);
 }
