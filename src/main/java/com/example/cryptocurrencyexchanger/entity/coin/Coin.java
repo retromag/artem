@@ -29,7 +29,9 @@ public class Coin {
     @Column(precision = 8, scale = 4)
     private BigDecimal margin;
 
-    private String amount;
+    private String symbol;
+
+    private BigDecimal amount;
 
     private String image;
 }
