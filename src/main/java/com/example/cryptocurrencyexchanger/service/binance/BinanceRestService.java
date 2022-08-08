@@ -29,8 +29,15 @@ public class BinanceRestService implements BinanceService {
         BigDecimal marginOfSecondCoin = getCoinMargin(secondSymbol);
         BigDecimal resultMargin = amountOfSecondCoin.multiply(marginOfSecondCoin).divide(new BigDecimal(100) , 5, RoundingMode.HALF_UP);
 
-
         return amountOfSecondCoin.subtract(resultMargin);
+    }
+
+    @Override
+    public BigDecimal getPairPrice(String firstSymbol, String secondSymbol) {
+        BigDecimal firstCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
+        BigDecimal secondCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
+
+        return firstCoinInUSDT.divide(secondCoinInUSDT, 5, RoundingMode.HALF_UP);
     }
 
     private BigDecimal getCoinMargin(String symbol) {

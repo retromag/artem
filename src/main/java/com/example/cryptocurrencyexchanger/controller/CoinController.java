@@ -48,4 +48,10 @@ public class CoinController {
                                                                  @RequestParam("secondSymbol") String secondSymbol) {
         return ResponseEntity.ok(binanceService.getResultPrice(BigDecimal.valueOf(amount), firstSymbol, secondSymbol));
     }
+
+    @GetMapping("/app/get/price")
+    public ResponseEntity<BigDecimal> getPriceOfCoinPair(@RequestParam("firstSymbol") String firstSymbol,
+                                                                 @RequestParam("secondSymbol") String secondSymbol) {
+        return ResponseEntity.ok(binanceService.getPairPrice(firstSymbol, secondSymbol));
+    }
 }
