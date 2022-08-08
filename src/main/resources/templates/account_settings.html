@@ -55,23 +55,33 @@
                placeholder="Текущий пароль"
         ><br>
     </div>
-    <div th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-        <p th:each="error : ${#fields.errors('password')}"
-           th:text="${error}" class="invalid_data">Validation error</p>
-        <input type="password"
-               id="password"
-               placeholder="Новый пароль"
-               th:field="*{password}"
-        ><br>
+<!--    <div th:classappend="${#fields.hasErrors('password')}? 'has-error':''">-->
+<!--        <p th:each="error : ${#fields.errors('password')}"-->
+<!--           th:text="${error}" class="invalid_data">Validation error</p>-->
+<!--        <input type="password"-->
+<!--               id="password"-->
+<!--               placeholder="Новый пароль"-->
+<!--               th:field="*{password}"-->
+<!--        ><br>-->
+<!--    </div>-->
+<!--    <div th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">-->
+<!--        <p th:each="error : ${#fields.errors('confirmPassword')}"-->
+<!--           th:text="${error}" class="invalid_data">Validation error</p>-->
+<!--        <input id="confirmPassword"-->
+<!--               name="confirmPassword"-->
+<!--               type="password"-->
+<!--               placeholder="Новый пароль повторно"-->
+<!--               th:field="*{confirmPassword}"/>-->
+<!--    </div>-->
+
+
+    <div>
+        <input type="password" th:field="*{password}" id="password" placeholder="Password">
+        <p class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
     </div>
-    <div th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
-        <p th:each="error : ${#fields.errors('confirmPassword')}"
-           th:text="${error}" class="invalid_data">Validation error</p>
-        <input id="confirmPassword"
-               name="confirmPassword"
-               type="password"
-               placeholder="Новый пароль повторно"
-               th:field="*{confirmPassword}"/>
+    <div class="form-group">
+        <input type="password" th:field="*{confirmPassword}" id="confirmPassword" placeholder="Confirm password">
+        <p class="text-danger" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></p>
     </div>
     <div>
         <button type="submit">Сохранить</button>
