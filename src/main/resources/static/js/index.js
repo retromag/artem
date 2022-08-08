@@ -63,42 +63,15 @@ removeItemFromDropdown(dropdownOptionBottom, coinNameHeaderTopTextContent);
 const coinNameHeaderBottomTextContent = coinNameHeaderBottom.textContent;
 removeItemFromDropdown(dropdownOptionTop, coinNameHeaderBottomTextContent);
 
-const searchQuery = [mainCoinAbbrTop.textContent, mainCoinAbbrBottom.textContent];
-fetch(`https://api.binance.com/api/v1/exchangeInfo`)
+// http://localhost:8080/api/app/get/price/?firstSymbol=SOL&secondSymbol=BTC
+
+fetch(`http://localhost:8080/api/app/get/price/?firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${mainCoinAbbrBottom.textContent}`)
     .then(response => {
         return response.json();
     }).then(data => {
-    let res = '';
-    data.symbols.forEach(el => {
-        if (el.symbol === searchQuery.join('') || el.symbol === searchQuery.reverse().join('')) {
-            res = el.symbol;
 
-            fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${res}`)
-                .then(response => {
-                    return response.json();
-                }).then(data => {
-                console.log('data btc', data);
-                let firstPart = searchQuery[0];
-                let secondPart = searchQuery[1];
-                if (searchQuery.join('') !== data.symbol) {
-                    firstPart = searchQuery[1];
-                    secondPart = searchQuery[0];
-                }
-                rateElement.textContent = `1${firstPart} - ${data.price}${secondPart} `
-            });
-
-        }
-        // else {
-        //     fetch(`https://api.binance.com/api/v3/ticker/price?symbols=[${currentCoinAbbr}USDT,USDT${mainCoinAbbrBottom.textContent}]`)
-        //         .then(response => {
-        //             return response.json();
-        //         }).then(data => {
-        //         console.log('data btc usdt', data);
-        //         // console.log('data btc', data.symbols);
-        //     });
-        // }
-    })
-})
+    rateElement.textContent = `1${mainCoinAbbrTop.textContent} - ${data}${mainCoinAbbrBottom.textContent} `
+});
 
 dropdownOptionTop.forEach((option) => {
     option.addEventListener('click', () => {
@@ -112,42 +85,13 @@ dropdownOptionTop.forEach((option) => {
 
         //calculating course
 
-        const searchQuery = [currentCoinAbbr, mainCoinAbbrBottom.textContent];
-        fetch(`https://api.binance.com/api/v1/exchangeInfo`)
+        fetch(`http://localhost:8080/api/app/get/price/?firstSymbol=${currentCoinAbbr}&secondSymbol=${mainCoinAbbrBottom.textContent}`)
             .then(response => {
                 return response.json();
             }).then(data => {
-            let res = '';
-            data.symbols.forEach(el => {
-                if (el.symbol === searchQuery.join('') || el.symbol === searchQuery.reverse().join('')) {
-                    res = el.symbol;
 
-                    fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${res}`)
-                        .then(response => {
-                            return response.json();
-                        }).then(data => {
-                        console.log('data btc', data);
-                        let firstPart = searchQuery[0];
-                        let secondPart = searchQuery[1];
-                        if (searchQuery.join('') !== data.symbol) {
-                            firstPart = searchQuery[1];
-                            secondPart = searchQuery[0];
-                        }
-                        rateElement.textContent = `1${firstPart} - ${data.price}${secondPart} `
-                    });
-
-                }
-                // else {
-                //     fetch(`https://api.binance.com/api/v3/ticker/price?symbols=[${currentCoinAbbr}USDT,USDT${mainCoinAbbrBottom.textContent}]`)
-                //         .then(response => {
-                //             return response.json();
-                //         }).then(data => {
-                //         console.log('data btc usdt', data);
-                //         // console.log('data btc', data.symbols);
-                //     });
-                // }
-            })
-            })
+            rateElement.textContent = `1${currentCoinAbbr} - ${data}${mainCoinAbbrBottom.textContent} `
+        });
     });
 })
 
@@ -168,42 +112,13 @@ dropdownOptionBottom.forEach((option) => {
 
         //calculating course
 
-        const searchQuery = [currentCoinAbbr, mainCoinAbbrTop.textContent];
-        fetch(`https://api.binance.com/api/v1/exchangeInfo`)
+        fetch(`http://localhost:8080/api/app/get/price/?firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${currentCoinAbbr}`)
             .then(response => {
                 return response.json();
             }).then(data => {
-            let res = '';
-            data.symbols.forEach(el => {
-                if (el.symbol === searchQuery.join('') || el.symbol === searchQuery.reverse().join('')) {
-                    res = el.symbol;
 
-                    fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${res}`)
-                        .then(response => {
-                            return response.json();
-                        }).then(data => {
-                        console.log('data btc', data);
-                        let firstPart = searchQuery[0];
-                        let secondPart = searchQuery[1];
-                        if (searchQuery.join('') !== data.symbol) {
-                            firstPart = searchQuery[1];
-                            secondPart = searchQuery[0];
-                        }
-                        rateElement.textContent = `1${firstPart} - ${data.price}${secondPart} `
-                    });
-
-                }
-                // else {
-                //     fetch(`https://api.binance.com/api/v3/ticker/price?symbols=[${currentCoinAbbr}USDT,USDT${mainCoinAbbrBottom.textContent}]`)
-                //         .then(response => {
-                //             return response.json();
-                //         }).then(data => {
-                //         console.log('data btc usdt', data);
-                //         // console.log('data btc', data.symbols);
-                //     });
-                // }
-            })
-        })
+            rateElement.textContent = `1${mainCoinAbbrTop.textContent} - ${data}${currentCoinAbbr} `
+        });
     });
 })
 
