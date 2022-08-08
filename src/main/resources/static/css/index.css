@@ -680,6 +680,10 @@ header {
   font-weight: 500;
 }
 
+.hidden {
+  display: none;
+}
+
 /* Breakpoint sizes */
 /**/
 /* Create the mixin (usually in a separate .scss file) */

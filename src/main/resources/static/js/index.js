@@ -17,30 +17,6 @@ const mainCoinImgTop = document.querySelector('.js-top-main-coin-image');
 const mainCoinAbbrTop = document.querySelector('.js-top-main-coin-abbr');
 
 
-
-dropdownOptionTop.forEach((option) => {
-    option.addEventListener('click', () => {
-        const coinName = option.querySelector('[data-coin-name]').textContent;
-        const coinAbbr = option.querySelector('[data-coin-abbr]').textContent;
-        const coinSrcImg = option.querySelector('[data-coin-img]').getAttribute('src');
-        mainCoinImgTop.setAttribute('src', `${coinSrcImg}`);
-
-        coinNameHeaderTop.textContent = coinName;
-        mainCoinAbbrTop.textContent = coinAbbr;
-
-        console.log('coinName',coinName);
-        console.log('coinAbbr',coinAbbr);
-        console.log('coinSrcImg',coinSrcImg);
-
-
-        dropdownTop.classList.remove('opened');
-    });
-})
-
-headerDropdownTop.addEventListener('click', () => {
-    dropdownTop.classList.toggle('opened');
-});
-
 const headerDropdownBottom = document.querySelector('.js-bottom-dropdown-header');
 const dropdownBottom = document.querySelector('.js-bottom-dropdown');
 const dropdownOptionBottom = document.querySelectorAll('.js-bottom-dropdown-option');
@@ -48,23 +24,58 @@ const coinNameHeaderBottom = document.querySelector('.js-bottom-dropdown-title')
 const mainCoinImgBottom = document.querySelector('.js-bottom-main-coin-image');
 const mainCoinAbbrBottom = document.querySelector('.js-bottom-main-coin-abbr');
 
+const removeItemFromDropdown = (dropdown, coinName) => {
+    dropdown.forEach((option) => {
+        option.classList.remove('hidden');
+        if(option.querySelector('[data-coin-name]').textContent === coinName) {
+            console.log('bottomOption', option.querySelector('[data-coin-name]').textContent);
+            option.classList.add('hidden');
+        }
+    })
+}
+
+const setCoinInHeader = (option, imgHeader, coinNameHeader, coinAbbrHeader) => {
+    const coinName = option.querySelector('[data-coin-name]').textContent;
+    const coinAbbr = option.querySelector('[data-coin-abbr]').textContent;
+    const coinSrcImg = option.querySelector('[data-coin-img]').getAttribute('src');
+
+    imgHeader.setAttribute('src', `${coinSrcImg}`);
+    coinNameHeader.textContent = coinName;
+    coinAbbrHeader.textContent = coinAbbr;
+
+    return coinAbbr;
+}
+
+const coinNameHeaderTopTextContent = coinNameHeaderTop.textContent;
+removeItemFromDropdown(dropdownOptionBottom, coinNameHeaderTopTextContent);
+const coinNameHeaderBottomTextContent = coinNameHeaderBottom.textContent;
+removeItemFromDropdown(dropdownOptionTop, coinNameHeaderBottomTextContent);
+
+dropdownOptionTop.forEach((option) => {
+    option.addEventListener('click', () => {
+        //find and set coin from option to header
+        const coinAbbr = setCoinInHeader(option, mainCoinImgTop, coinNameHeaderTop, mainCoinAbbrTop);
+
+        //removing item from other dropdown
+        dropdownTop.classList.remove('opened');
+        const coinNameHeaderTopTextContent = coinNameHeaderTop.textContent;
+        removeItemFromDropdown(dropdownOptionBottom, coinNameHeaderTopTextContent);
+    });
+})
+
+headerDropdownTop.addEventListener('click', () => {
+    dropdownTop.classList.toggle('opened');
+});
 
 dropdownOptionBottom.forEach((option) => {
     option.addEventListener('click', () => {
-        const coinName = option.querySelector('[data-coin-name]').textContent;
-        const coinAbbr = option.querySelector('[data-coin-abbr]').textContent;
-        const coinSrcImg = option.querySelector('[data-coin-img]').getAttribute('src');
-        mainCoinImgBottom.setAttribute('src', `${coinSrcImg}`);
+        //find and set coin from option to header
+        const coinAbbr = setCoinInHeader(option, mainCoinImgBottom, coinNameHeaderBottom, mainCoinAbbrBottom);
 
-        coinNameHeaderBottom.textContent = coinName;
-        mainCoinAbbrBottom.textContent = coinAbbr;
-
-        // console.log('coinName',coinName);
-        // console.log('coinAbbr',coinAbbr);
-        // console.log('coinSrcImg',coinSrcImg);
-
-
+        //removing item from dropdown
         dropdownBottom.classList.remove('opened');
+        const coinNameHeaderBottomTextContent = coinNameHeaderBottom.textContent;
+        removeItemFromDropdown(dropdownOptionTop, coinNameHeaderBottomTextContent);
     });
 })
 
