@@ -30,9 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers().hasAnyRole("USER", "ADMIN")
                 .antMatchers("/",
                         "/registration/confirm/**",
-                        "/user/reset/password/*",
+                        "/user/reset/password/**",
                         "/forgot/password",
                         "/reset/password",
+                        "/update/password",
                         "/reserves",
                         "/rules",
                         "/api/**",

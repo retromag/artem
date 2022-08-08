@@ -253,7 +253,12 @@ public class UserController {
     }
 
     @GetMapping("/rules")
-    public String showRules() {
+    public String showRulesPage() {
         return "rules";
+    }
+
+    @GetMapping("/update/password")
+    public String showUpdatePasswordPage() {
+        return "update_password";
     }
 }
