@@ -2,11 +2,14 @@ package com.example.cryptocurrencyexchanger.entity.user;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -41,6 +44,11 @@ public class ExchangerUser {
 
     @Column(name = "all_privileges")
     private boolean allPrivileges;
+
+    @EqualsAndHashCode.Exclude
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<ExchangeNote> exchangeNotes = new HashSet<>();
 
     @EqualsAndHashCode.Exclude
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

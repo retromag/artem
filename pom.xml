@@ -78,6 +78,11 @@
             <artifactId>guava</artifactId>
             <version>31.1-jre</version>
         </dependency>
+        <dependency>
+            <groupId>com.webcerebrium</groupId>
+            <artifactId>binance-api</artifactId>
+            <version>1.0.9</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -10,6 +10,7 @@ import com.example.cryptocurrencyexchanger.service.coin.CoinService;
 import com.example.cryptocurrencyexchanger.service.security.SecurityService;
 import com.example.cryptocurrencyexchanger.service.token.TokenService;
 import com.example.cryptocurrencyexchanger.service.user.UserService;
+import com.example.cryptocurrencyexchanger.util.mail.ConstructEmail;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
@@ -49,6 +50,8 @@ public class UserController {
     SecurityService securityService;
     ApplicationEventPublisher eventPublisher;
 
+    ConstructEmail constructEmail;
+
     @GetMapping("/login")
     public ModelAndView login(@RequestParam("error") final Optional<String> error, ModelMap model) {
         error.ifPresent(e -> model.addAttribute("error", e));
@@ -64,7 +67,7 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public String registerUserAccount(@ModelAttribute("user") @Valid UserModel userModel, BindingResult result,
+    public String registerUserAccount(@Valid @ModelAttribute ("user") UserModel userModel, BindingResult result,
                                       HttpServletRequest request, Model model) {
         ExchangerUser existing = userService.findByEmail(userModel.getEmail());
         if (existing != null) {
@@ -131,7 +134,7 @@ public class UserController {
         tokenService.createPasswordResetTokenForUser(user, token);
         try {
             final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-            final SimpleMailMessage email = constructResetTokenEmail(appUrl, request.getLocale(), token, user);
+            final SimpleMailMessage email = constructEmail.constructResetTokenEmail(appUrl, request.getLocale(), token, user);
             mailSender.send(email);
         } catch (final MailAuthenticationException e) {
             log.trace("MailAuthenticationException", e);
@@ -156,7 +159,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/user/save/password")
+    @PostMapping("/user/reset/password")
     public String savePassword(@RequestParam("password") final String password, @RequestParam("token") String token) {
         Optional<ExchangerUser> user = tokenService.getUserByPasswordResetToken(token);
         user.ifPresent(appUser -> userService.changeUserPassword(appUser, password));
@@ -231,7 +234,8 @@ public class UserController {
     @SneakyThrows
     @PostMapping("/user/update/password")
     public String changeUserPassword(@RequestParam("confirmPassword") String password,
-                                     @RequestParam("oldPassword") String oldPassword) {
+                                     @RequestParam("oldPassword") String oldPassword,
+                                     @Valid @ModelAttribute ("user") UserModel userModel) {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
 
         if (!userService.checkIfValidOldPassword(user, oldPassword)) {
@@ -239,6 +243,7 @@ public class UserController {
         }
 
         userService.changeUserPassword(user, password);
+
         return "redirect:/login";
     }
 
@@ -247,19 +252,13 @@ public class UserController {
         return "forgot_password";
     }
 
-    private SimpleMailMessage constructResetTokenEmail(String contextPath, Locale locale, String token, ExchangerUser user) {
-        final String url = contextPath + "/user/reset/password?token=" + token;
-        final String message = messages.getMessage("message.resetPassword",
-                null, locale);
-        return constructEmail(message + " \r\n" + url, user);
+    @GetMapping("/rules")
+    public String showRulesPage() {
+        return "rules";
     }
 
-    private SimpleMailMessage constructEmail(String body, ExchangerUser user) {
-        SimpleMailMessage email = new SimpleMailMessage();
-        email.setFrom("noreply@HELMETSWAP.com");
-        email.setSubject("Reset Password");
-        email.setText(body);
-        email.setTo(user.getEmail());
-        return email;
+    @GetMapping("/update/password")
+    public String showUpdatePasswordPage() {
+        return "update_password";
     }
 }
