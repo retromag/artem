@@ -286,6 +286,60 @@ header {
   display: -ms-flexbox;
   display: flex;
   margin-top: 50px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.form_right_col {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid #D9DADB;
+  -webkit-box-shadow: inset -10px 10px 24px rgba(255, 255, 255, 0.56);
+          box-shadow: inset -10px 10px 24px rgba(255, 255, 255, 0.56);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+  border-radius: 35px;
+  padding: 30px;
+  width: 67%;
+  margin-top: 28px;
+}
+
+.props_inputs_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.props_input {
+  width: 100%;
+}
+.props_input_wrapper {
+  width: 32%;
+}
+.props_input_label {
+  font-size: 16px;
+  color: #11181F;
+  margin-bottom: 5px;
+  display: block;
+}
+.props_title {
+  font-size: 26px;
+  line-height: 130%;
+  margin-bottom: 20px;
+}
+.props_btn_start_exchange_wrapper {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.props_text_agree {
+  width: 40%;
+  margin-left: 10px;
+  font-size: 14px;
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 
 .dropdown_wrapper {

@@ -183,6 +183,54 @@ header {
   &_exchange {
     display: flex;
     margin-top: 50px;
+    justify-content: space-between;
+  }
+
+  &_right_col {
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid #D9DADB;
+    box-shadow: inset -10px 10px 24px rgb(255 255 255 / 56%);
+    backdrop-filter: blur(15px);
+    border-radius: 35px;
+    padding: 30px;
+    width: 67%;
+    margin-top: 28px;
+  }
+}
+.props {
+  &_inputs_wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  &_input {
+    width: 100%;
+
+    &_wrapper {
+      width: 32%;
+    }
+    &_label {
+      font-size: 16px;
+      color: #11181F;
+      margin-bottom: 5px;
+      display: block;
+    }
+  }
+  &_title {
+    font-size: 26px;
+    line-height: 130%;
+    margin-bottom: 20px;
+  }
+  &_btn_start_exchange {
+    &_wrapper {
+      margin-top: 30px;
+      display: flex;
+    }
+  }
+  &_text_agree {
+    width: 40%;
+    margin-left: 10px;
+    font-size: 14px;
+    align-self: center;
   }
 }
 .dropdown {
