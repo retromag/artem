@@ -336,6 +336,9 @@ header {
     padding: 15px;
     position: relative;
   }
+  &_arrow_img {
+    transform: rotate(180deg);
+  }
 }
 .coin_abbr {
   position: absolute;

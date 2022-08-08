@@ -439,6 +439,11 @@ header {
   padding: 15px;
   position: relative;
 }
+.dropdown_arrow_img {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
 
 .coin_abbr {
   position: absolute;

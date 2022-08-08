@@ -1,14 +1,3 @@
-fetch('http://localhost:8080/api/coin/BTC/margin')
-    .then(response => {
-        // response.json();
-        return response.json();
-        // console.log('response.json();', response.json());
-        // console.log('--------');
-        // console.log('response.json();', response.margin);
-    }).then(data => {
-    console.log('data', data);
-});
-// console.log('result exch', )
 const dropdownTop = document.querySelector('.js-top-dropdown');
 const headerDropdownTop = document.querySelector('.js-top-dropdown-header');
 const dropdownOptionTop = document.querySelectorAll('.js-top-dropdown-option');
@@ -31,83 +20,18 @@ const bottomInput = document.querySelector('.js-bottom-input');
 
 topInput.addEventListener('input', () => {
     const topInputValue = topInput.value;
-    console.log('topInput.value();', topInputValue);
 
-    const searchQuery = [mainCoinAbbrTop.textContent, mainCoinAbbrBottom.textContent];
-    let rateValue = 0;
-    let marginValue = 0;
-    fetch(`https://api.binance.com/api/v1/exchangeInfo`)
-        .then(response => {
-            return response.json();
-        }).then(data => {
-        let res = '';
-        data.symbols.forEach(el => {
-            if (el.symbol === searchQuery.join('') || el.symbol === searchQuery.reverse().join('')) {
-                res = el.symbol;
+    if (topInputValue !== '') {
+        fetch(`http://localhost:8080/api/app/get/?amount=${topInputValue}&firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${mainCoinAbbrBottom.textContent}`)
+            .then(response => {
+                return response.json();
+            }).then(data => {
 
-                fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${res}`)
-                    .then(response => {
-                        return response.json();
-                    }).then(data => {
-                    console.log('data btc', data);
-                    let firstPart = searchQuery[0];
-                    let secondPart = searchQuery[1];
-                    if (searchQuery.join('') !== data.symbol) {
-                        firstPart = searchQuery[1];
-                        secondPart = searchQuery[0];
-                    }
-
-                    rateValue = data.price;
-                    console.log('ratevalue add',rateValue);
-                    rateElement.textContent = `1${firstPart} - ${data.price}${secondPart} `
-                }).then(() => {
-                    fetch(`http://localhost:8080/api/coin/${mainCoinAbbrBottom.textContent}/margin`)
-                        .then(response => {
-                            // response.json();
-                            return response.json();
-                            // console.log('response.json();', response.json());
-                            // console.log('--------');
-                            // console.log('response.json();', response.margin);
-                        }).then(data => {
-                        marginValue = data;
-                        console.log('data', data);
-                        console.log('topInputValue', topInputValue);
-                        console.log('rateValue', rateValue);
-                        console.log('marginValue', marginValue);
-                        bottomInput.value = topInputValue * rateValue * marginValue;
-                    });
-                })
-
-            }
-            // else {
-            //     fetch(`https://api.binance.com/api/v3/ticker/price?symbols=[${currentCoinAbbr}USDT,USDT${mainCoinAbbrBottom.textContent}]`)
-            //         .then(response => {
-            //             return response.json();
-            //         }).then(data => {
-            //         console.log('data btc usdt', data);
-            //         // console.log('data btc', data.symbols);
-            //     });
-            // }
-        })
-    })
-
-    // fetch(`http://localhost:8080/api/coin/${mainCoinAbbrBottom.textContent}/margin`)
-    //     .then(response => {
-    //         // response.json();
-    //         return response.json();
-    //         // console.log('response.json();', response.json());
-    //         // console.log('--------');
-    //         // console.log('response.json();', response.margin);
-    //     }).then(data => {
-    //     marginValue = data;
-    //     console.log('data', data);
-    //     console.log('topInputValue', topInputValue);
-    //     console.log('rateValue', rateValue);
-    //     console.log('marginValue', marginValue);
-    //     bottomInput.value = topInputValue * rateValue * marginValue;
-    // });
-
-
+            bottomInput.value = data;
+        });
+    } else {
+        bottomInput.value = '';
+    }
 })
 
 const removeItemFromDropdown = (dropdown, coinName) => {
@@ -121,6 +45,8 @@ const removeItemFromDropdown = (dropdown, coinName) => {
 }
 
 const setCoinInHeader = (option, imgHeader, coinNameHeader, coinAbbrHeader) => {
+    topInput.value = '';
+    bottomInput.value = '';
     const coinName = option.querySelector('[data-coin-name]').textContent;
     const coinAbbr = option.querySelector('[data-coin-abbr]').textContent;
     const coinSrcImg = option.querySelector('[data-coin-img]').getAttribute('src');
@@ -226,6 +152,7 @@ dropdownOptionTop.forEach((option) => {
 })
 
 headerDropdownTop.addEventListener('click', () => {
+    dropdownBottom.classList.remove('opened');
     dropdownTop.classList.toggle('opened');
 });
 
@@ -281,6 +208,7 @@ dropdownOptionBottom.forEach((option) => {
 })
 
 headerDropdownBottom.addEventListener('click', () => {
+    dropdownTop.classList.remove('opened');
     dropdownBottom.classList.toggle('opened');
 });
 
