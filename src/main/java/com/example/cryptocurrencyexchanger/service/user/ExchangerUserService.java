@@ -70,6 +70,11 @@ public class ExchangerUserService implements UserService {
         return PasswordEncoder.passwordEncoder().matches(oldPassword, user.getPassword());
     }
 
+    @Override
+    public void makeAnExchange() {
+
+    }
+
     private ExchangerUser createUser(final UserModel userModel) {
         ExchangerUser user = new ExchangerUser();
         user.setEmail(userModel.getEmail());

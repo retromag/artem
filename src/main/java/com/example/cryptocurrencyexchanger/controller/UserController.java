@@ -1,6 +1,7 @@
 package com.example.cryptocurrencyexchanger.controller;
 
 import com.example.cryptocurrencyexchanger.entity.coin.Coin;
+import com.example.cryptocurrencyexchanger.entity.user.ExchangeNote;
 import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
 import com.example.cryptocurrencyexchanger.entity.user.UserModel;
 import com.example.cryptocurrencyexchanger.entity.user.VerificationToken;
@@ -51,6 +52,15 @@ public class UserController {
     ApplicationEventPublisher eventPublisher;
 
     ConstructEmail constructEmail;
+
+    @GetMapping("/")
+    public String mainPage(Model model) {
+        ExchangeNote note = new ExchangeNote();
+
+        model.addAttribute("note", note);
+
+        return "redirect:/";
+    }
 
     @GetMapping("/login")
     public ModelAndView login(@RequestParam("error") final Optional<String> error, ModelMap model) {

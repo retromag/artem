@@ -14,4 +14,6 @@ public interface UserService extends UserDetailsService {
     void changeUserPassword(final ExchangerUser user, final String password);
 
     boolean checkIfValidOldPassword(ExchangerUser user, String oldPassword);
+
+    void makeAnExchange();
 }
