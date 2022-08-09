@@ -18,6 +18,12 @@ const rateElement = document.querySelector('.js-rate');
 const topInput = document.querySelector('.js-top-input');
 const bottomInput = document.querySelector('.js-bottom-input');
 
+/////
+const testInputTop = document.querySelector('.test_input-top');
+const testInputBottom = document.querySelector('.test_input-bottom');
+/////
+testInputTop.value = mainCoinAbbrTop.textContent;
+testInputBottom.value = mainCoinAbbrBottom.textContent;
 const removeItemFromDropdown = (dropdown, coinName) => {
     console.log('coinName', coinName);
     dropdown.forEach((option) => {
@@ -28,7 +34,7 @@ const removeItemFromDropdown = (dropdown, coinName) => {
     })
 }
 
-const setCoinInHeader = (option, imgHeader, coinNameHeader, coinAbbrHeader) => {
+const setCoinInHeader = (option, imgHeader, coinNameHeader, coinAbbrHeader, testInput) => {
     topInput.value = '';
     bottomInput.value = '';
     const coinName = option.querySelector('[data-coin-name]').textContent;
@@ -38,6 +44,8 @@ const setCoinInHeader = (option, imgHeader, coinNameHeader, coinAbbrHeader) => {
     imgHeader.setAttribute('src', `${coinSrcImg}`);
     coinNameHeader.textContent = coinName;
     coinAbbrHeader.textContent = coinAbbr;
+
+    // testInput.value = coinAbbr;
 
     return coinAbbr;
 }
@@ -63,6 +71,7 @@ topInput.addEventListener('input', () => {
             .then(response => {
                 return response.json();
             }).then(data => {
+                console.log('data', data)
             bottomInput.value = data;
         });
     } else {
@@ -74,8 +83,8 @@ topInput.addEventListener('input', () => {
 dropdownOptionTop.forEach((option) => {
     option.addEventListener('click', () => {
         //find and set coin from option to header
-        const currentCoinAbbr = setCoinInHeader(option, mainCoinImgTop, coinNameHeaderTop, mainCoinAbbrTop);
-
+        const currentCoinAbbr = setCoinInHeader(option, mainCoinImgTop, coinNameHeaderTop, mainCoinAbbrTop, testInputBottom);
+        testInputTop.value = currentCoinAbbr;
         //removing item from other dropdown
         dropdownTop.classList.remove('opened');
         const coinNameHeaderTopTextContent = coinNameHeaderTop.textContent;
@@ -94,8 +103,8 @@ headerDropdownTop.addEventListener('click', () => {
 dropdownOptionBottom.forEach((option) => {
     option.addEventListener('click', () => {
         //find and set coin from option to header
-        const currentCoinAbbr = setCoinInHeader(option, mainCoinImgBottom, coinNameHeaderBottom, mainCoinAbbrBottom);
-
+        const currentCoinAbbr = setCoinInHeader(option, mainCoinImgBottom, coinNameHeaderBottom, mainCoinAbbrBottom, testInputTop);
+        testInputBottom.value = currentCoinAbbr;
         //removing item from dropdown
         dropdownBottom.classList.remove('opened');
         const coinNameHeaderBottomTextContent = coinNameHeaderBottom.textContent;
