@@ -55,8 +55,8 @@
                                     <p class="coin_name" th:text="${coin.name}">Bitcoin</p>
                                 </div>
                                 <div class="reserves__item_right_col">
-                                    <p class="coin_amount" th:text="${coin.amount}">44</p>
-                                    <p class="coin_amount" th:text="${coin.symbol}">BTC</p>
+                                    <span class="coin_amount" th:text="${coin.amount}">44</span>
+                                    <span class="coin_amount" th:text="${coin.symbol}">BTC</span>
                                 </div>
                                 <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')" class="reserves_btns_edit_wrapper">
                                     <span>+</span><span class="coin_amount" th:text="${coin.margin}"></span><span>%</span>
