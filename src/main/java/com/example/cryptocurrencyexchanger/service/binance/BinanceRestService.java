@@ -22,18 +22,23 @@ public class BinanceRestService implements BinanceService {
     @Override
     public BigDecimal getResultPriceFirstInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
         if (firstSymbol.equals("USDT")) {
+            BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
+            BigDecimal amountOfTakenCoin = amount.divide(takenCoinInUSDT, 5, RoundingMode.HALF_UP);
+            BigDecimal marginOfTakenCoin = getCoinMargin(secondSymbol);
+            BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100) , 5, RoundingMode.HALF_UP);
 
+            return amountOfTakenCoin.subtract(resultMargin);
+        } else {
+            BigDecimal givenCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
+            BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
+
+            BigDecimal priceWithAmount = givenCoinInUSDT.multiply(amount);
+            BigDecimal amountOfTakenCoin = priceWithAmount.divide(takenCoinInUSDT, 5, RoundingMode.HALF_UP);
+            BigDecimal marginOfTakenCoin = getCoinMargin(secondSymbol);
+            BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100) , 5, RoundingMode.HALF_UP);
+
+            return amountOfTakenCoin.subtract(resultMargin);
         }
-
-        BigDecimal givenCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
-        BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
-
-        BigDecimal priceWithAmount = givenCoinInUSDT.multiply(amount);
-        BigDecimal amountOfTakenCoin = priceWithAmount.divide(takenCoinInUSDT, 5, RoundingMode.HALF_UP);
-        BigDecimal marginOfTakenCoin = getCoinMargin(secondSymbol);
-        BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100) , 5, RoundingMode.HALF_UP);
-
-        return amountOfTakenCoin.subtract(resultMargin);
     }
 
     // TODO: fix logic of calculating magrin if user enter how much he want receive

@@ -58,10 +58,11 @@ topInput.addEventListener('input', () => {
     const topInputValue = topInput.value;
 
     if (topInputValue !== '') {
-        fetch(`http://localhost:8080/api/app/get/?amount=${topInputValue}&firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${mainCoinAbbrBottom.textContent}`)
+        fetch(`http://localhost:8080/api/app/get/taken/?amount=${topInputValue}&firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${mainCoinAbbrBottom.textContent}`)
             .then(response => {
                 return response.json();
             }).then(data => {
+            console.log('data', data)
             bottomInput.value = data;
         });
     } else {
