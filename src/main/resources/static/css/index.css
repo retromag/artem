@@ -86,10 +86,9 @@ body {
 
 .main-wrapper {
   background-image: url("../images/bc_main_sec.png");
-  background-position: center right;
-  background-size: 50% 100%;
+  background-position: top right;
+  background-size: 800px;
   background-repeat: no-repeat;
-  height: 100vh;
 }
 
 header {
@@ -840,6 +839,185 @@ header {
   .rules_list {
     font-size: 12px;
   }
+}
+
+footer {
+  background: #F5F6F6;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.footer_top_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.footer_bottom_row {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 60%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.footer_bottom_rules {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #A7AAAC;
+  border-bottom: 1px solid #A7AAAC;
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.footer_bottom_rules:hover {
+  color: #525252;
+}
+.footer_logo_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.footer_col_item a {
+  display: block;
+  color: #11181F;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+@media only screen and (max-width: 767px) {
+  .footer_col_item a {
+    font-size: 8px;
+  }
+}
+.footer_col_item a:hover {
+  color: #0E82EF;
+}
+
+.copyright {
+  font-size: 16px;
+  color: #11181F;
+}
+
+.shortcut_img_arrow_wrapper {
+  width: 15px;
+  height: 10px;
+}
+.shortcut_img_arrow_wrapper svg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.shortcut_img_coin {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.shortcut_img_coin_wrapper {
+  width: 65px;
+  height: 65px;
+}
+.shortcut_imgs-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.shortcut_items_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.shortcut_item {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  -webkit-box-shadow: inset -10px 10px 24px rgba(255, 255, 255, 0.56);
+          box-shadow: inset -10px 10px 24px rgba(255, 255, 255, 0.56);
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+  border-radius: 15px;
+  padding: 15px 10px;
+  text-align: center;
+}
+.shortcut_item_1 {
+  background: -o-radial-gradient(28.45% 74.22%, 71.55% 129.69%, rgba(141, 84, 224, 0.5) 0%, rgba(141, 200, 255, 0.5) 96.2%);
+  background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, rgba(141, 84, 224, 0.5) 0%, rgba(141, 200, 255, 0.5) 96.2%);
+}
+.shortcut_item_2 {
+  background: -o-radial-gradient(28.45% 74.22%, 71.55% 129.69%, rgba(43, 72, 153, 0.5) 0%, rgba(255, 95, 0, 0.5) 96.2%);
+  background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, rgba(43, 72, 153, 0.5) 0%, rgba(255, 95, 0, 0.5) 96.2%);
+}
+.shortcut_item_3 {
+  background: -o-radial-gradient(28.45% 74.22%, 71.55% 129.69%, rgba(255, 139, 102, 0.4) 0%, rgba(237, 70, 200, 0.4) 100%);
+  background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, rgba(255, 139, 102, 0.4) 0%, rgba(237, 70, 200, 0.4) 100%);
+}
+.shortcut_item_4 {
+  background: -o-radial-gradient(28.45% 74.22%, 71.55% 129.69%, rgba(84, 224, 216, 0.5) 0%, rgba(141, 173, 255, 0.5) 96.2%);
+  background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, rgba(84, 224, 216, 0.5) 0%, rgba(141, 173, 255, 0.5) 96.2%);
+}
+.shortcut_item_5 {
+  background: -o-radial-gradient(28.45% 74.22%, 71.55% 129.69%, rgba(255, 208, 87, 0.5) 0%, rgba(255, 196, 141, 0.5) 96.2%);
+  background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, rgba(255, 208, 87, 0.5) 0%, rgba(255, 196, 141, 0.5) 96.2%);
+}
+.shortcut_item_wrapper {
+  width: 17%;
+}
+.shortcut_money_text {
+  font-size: 18px;
+  color: #11181F;
+  font-weight: bold;
+}
+.shortcut_money_text_on {
+  font-size: 18px;
+  color: #11181F;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.shortcut_title_money_wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.shortcut_btn {
+  width: 100%;
+  border: none;
+  background: #fff;
+  text-decoration: none;
+  display: block;
+  font-weight: 600;
+  color: #11181F;
+  margin-top: 10px;
+  font-size: 18px;
+  line-height: 50px;
+  border-radius: 25px;
+}
+.shortcut_btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
 }
 
 /* Breakpoint sizes */
