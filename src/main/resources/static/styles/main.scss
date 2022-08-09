@@ -624,3 +624,30 @@ header {
     font-size: 25px;
   }
 }
+.error {
+  &_wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 200px;
+  }
+  &_img {
+    &_wrapper {
+      width: 100px;
+      height: 100px;
+       & svg {
+         display: block;
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         fill: red;
+       }
+    }
+  }
+  &_text {
+    font-size: 25px;
+    color: red;
+    font-weight: bold;
+  }
+}
