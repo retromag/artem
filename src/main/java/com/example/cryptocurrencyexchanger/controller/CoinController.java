@@ -42,11 +42,18 @@ public class CoinController {
         }
     }
 
-    @GetMapping("/app/get")
-    public ResponseEntity<BigDecimal> getCalculatedAmountOfCoins(@RequestParam("amount") Long amount,
+    @GetMapping("/app/get/taken")
+    public ResponseEntity<BigDecimal> getCalculatedAmountOfTakenCoins(@RequestParam("amount") Long amount,
                                                                  @RequestParam("firstSymbol") String firstSymbol,
                                                                  @RequestParam("secondSymbol") String secondSymbol) {
-        return ResponseEntity.ok(binanceService.getResultPrice(BigDecimal.valueOf(amount), firstSymbol, secondSymbol));
+        return ResponseEntity.ok(binanceService.getResultPriceFirstInput(BigDecimal.valueOf(amount), firstSymbol, secondSymbol));
+    }
+
+    @GetMapping("/app/get/given")
+    public ResponseEntity<BigDecimal> getCalculatedAmountOfGivenCoins(@RequestParam("amount") Long amount,
+                                                                 @RequestParam("firstSymbol") String firstSymbol,
+                                                                 @RequestParam("secondSymbol") String secondSymbol) {
+        return ResponseEntity.ok(binanceService.getResultPriceFirstInput(BigDecimal.valueOf(amount), firstSymbol, secondSymbol));
     }
 
     @GetMapping("/app/get/price")
