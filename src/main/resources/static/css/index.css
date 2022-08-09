@@ -743,6 +743,26 @@ header {
   display: none;
 }
 
+.approved_acc_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 100px;
+}
+.approved_acc_title {
+  width: 50%;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 25px;
+}
+
 /* Breakpoint sizes */
 /**/
 /* Create the mixin (usually in a separate .scss file) */
@@ -919,6 +939,11 @@ input:checked + .slider:before {
   width: 33%;
   padding: 0 15px;
 }
+@media only screen and (max-width: 991px) {
+  .reserves__item_wrapper {
+    font-size: 12px;
+  }
+}
 @media only screen and (max-width: 767px) {
   .reserves__item_wrapper {
     width: 50%;
@@ -939,6 +964,12 @@ input:checked + .slider:before {
 .reserves__item_img_wrapper {
   width: 24px;
   height: 24px;
+}
+@media only screen and (max-width: 991px) {
+  .reserves__item_img_wrapper {
+    width: 18px;
+    height: 18px;
+  }
 }
 .reserves__item_left_col {
   display: -webkit-box;
@@ -1014,8 +1045,8 @@ input:checked + .slider:before {
 }
 @media only screen and (max-width: 991px) {
   .coin_edit_btn svg {
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
   }
 }
 .coin_edit_btn svg path:hover {

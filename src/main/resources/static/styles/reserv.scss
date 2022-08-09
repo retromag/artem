@@ -15,6 +15,10 @@
       width: 33%;
       padding: 0 15px;
 
+      @include max-screen(md) {
+        font-size: 12px;
+      }
+
       @include max-screen(sm) {
         width: 50%;
       }
@@ -33,6 +37,11 @@
       &_wrapper {
         width: 24px;
         height: 24px;
+
+        @include max-screen(md) {
+          width: 18px;
+          height: 18px;
+        }
       }
     }
 
@@ -84,6 +93,10 @@
   &_name {
     margin-left: 8px;
     font-weight: 500;
+
+    //@include max-screen(md) {
+    //  font-size: 12px;
+    //}
   }
   &_edit {
     &_btn {
@@ -98,8 +111,8 @@
         height: 20px;
 
         @include max-screen(md) {
-          width: 15px;
-          height: 15px;
+          width: 12px;
+          height: 12px;
         }
 
         & path:hover {

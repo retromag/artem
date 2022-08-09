@@ -610,3 +610,17 @@ header {
 .hidden {
   display: none;
 }
+.approved_acc {
+  &_wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+  }
+  &_title {
+    width: 50%;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 25px;
+  }
+}

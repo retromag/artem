@@ -18,27 +18,10 @@ const rateElement = document.querySelector('.js-rate');
 const topInput = document.querySelector('.js-top-input');
 const bottomInput = document.querySelector('.js-bottom-input');
 
-topInput.addEventListener('input', () => {
-    const topInputValue = topInput.value;
-
-    if (topInputValue !== '') {
-        fetch(`http://localhost:8080/api/app/get/?amount=${topInputValue}&firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${mainCoinAbbrBottom.textContent}`)
-            .then(response => {
-                return response.json();
-            }).then(data => {
-
-            bottomInput.value = data;
-        });
-    } else {
-        bottomInput.value = '';
-    }
-})
-
 const removeItemFromDropdown = (dropdown, coinName) => {
     dropdown.forEach((option) => {
         option.classList.remove('hidden');
         if(option.querySelector('[data-coin-name]').textContent === coinName) {
-            console.log('bottomOption', option.querySelector('[data-coin-name]').textContent);
             option.classList.add('hidden');
         }
     })
@@ -57,21 +40,35 @@ const setCoinInHeader = (option, imgHeader, coinNameHeader, coinAbbrHeader) => {
 
     return coinAbbr;
 }
-
 const coinNameHeaderTopTextContent = coinNameHeaderTop.textContent;
 removeItemFromDropdown(dropdownOptionBottom, coinNameHeaderTopTextContent);
 const coinNameHeaderBottomTextContent = coinNameHeaderBottom.textContent;
 removeItemFromDropdown(dropdownOptionTop, coinNameHeaderBottomTextContent);
+const getCourse = (firstSymbol, secondSymbol) => {
+    fetch(`http://localhost:8080/api/app/get/price/?firstSymbol=${firstSymbol}&secondSymbol=${secondSymbol}`)
+        .then(response => {
+            return response.json();
+        }).then(data => {
+        rateElement.textContent = `1 ${firstSymbol} - ${data} ${secondSymbol}`;
+    });
+}
+getCourse(mainCoinAbbrTop.textContent, mainCoinAbbrBottom.textContent);
 
-// http://localhost:8080/api/app/get/price/?firstSymbol=SOL&secondSymbol=BTC
+topInput.addEventListener('input', () => {
+    const topInputValue = topInput.value;
 
-fetch(`http://localhost:8080/api/app/get/price/?firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${mainCoinAbbrBottom.textContent}`)
-    .then(response => {
-        return response.json();
-    }).then(data => {
+    if (topInputValue !== '') {
+        fetch(`http://localhost:8080/api/app/get/?amount=${topInputValue}&firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${mainCoinAbbrBottom.textContent}`)
+            .then(response => {
+                return response.json();
+            }).then(data => {
+            bottomInput.value = data;
+        });
+    } else {
+        bottomInput.value = '';
+    }
+})
 
-    rateElement.textContent = `1${mainCoinAbbrTop.textContent} - ${data}${mainCoinAbbrBottom.textContent} `
-});
 
 dropdownOptionTop.forEach((option) => {
     option.addEventListener('click', () => {
@@ -84,14 +81,7 @@ dropdownOptionTop.forEach((option) => {
         removeItemFromDropdown(dropdownOptionBottom, coinNameHeaderTopTextContent);
 
         //calculating course
-
-        fetch(`http://localhost:8080/api/app/get/price/?firstSymbol=${currentCoinAbbr}&secondSymbol=${mainCoinAbbrBottom.textContent}`)
-            .then(response => {
-                return response.json();
-            }).then(data => {
-
-            rateElement.textContent = `1${currentCoinAbbr} - ${data}${mainCoinAbbrBottom.textContent} `
-        });
+        getCourse(currentCoinAbbr, mainCoinAbbrBottom.textContent);
     });
 })
 
@@ -111,14 +101,7 @@ dropdownOptionBottom.forEach((option) => {
         removeItemFromDropdown(dropdownOptionTop, coinNameHeaderBottomTextContent);
 
         //calculating course
-
-        fetch(`http://localhost:8080/api/app/get/price/?firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${currentCoinAbbr}`)
-            .then(response => {
-                return response.json();
-            }).then(data => {
-
-            rateElement.textContent = `1${mainCoinAbbrTop.textContent} - ${data}${currentCoinAbbr} `
-        });
+        getCourse(mainCoinAbbrTop.textContent, currentCoinAbbr);
     });
 })
 
@@ -129,7 +112,6 @@ headerDropdownBottom.addEventListener('click', () => {
 
 
 (function() {
-
     'use strict';
 
     $('.input-file').each(function() {
