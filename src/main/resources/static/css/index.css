@@ -842,6 +842,73 @@ header {
   }
 }
 
+footer {
+  background: #F5F6F6;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.footer_top_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.footer_bottom_row {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 60%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.footer_bottom_rules {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #A7AAAC;
+  border-bottom: 1px solid #A7AAAC;
+  -webkit-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.footer_bottom_rules:hover {
+  color: #525252;
+}
+.footer_logo_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.footer_col_item a {
+  display: block;
+  color: #11181F;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+@media only screen and (max-width: 767px) {
+  .footer_col_item a {
+    font-size: 8px;
+  }
+}
+.footer_col_item a:hover {
+  color: #0E82EF;
+}
+
+.copyright {
+  font-size: 16px;
+  color: #11181F;
+}
+
 /* Breakpoint sizes */
 /**/
 /* Create the mixin (usually in a separate .scss file) */
