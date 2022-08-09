@@ -106,17 +106,17 @@ header {
 }
 @media only screen and (max-width: 1200px) {
   .container {
-    max-width: 992px;
+    width: 970px;
   }
 }
 @media only screen and (max-width: 991px) {
   .container {
-    max-width: 768px;
+    width: 770px;
   }
 }
 @media only screen and (max-width: 767px) {
   .container {
-    max-width: 479px;
+    width: 460px;
   }
 }
 
@@ -795,6 +795,51 @@ header {
   font-size: 25px;
   color: red;
   font-weight: bold;
+}
+
+.general_notification {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 25px;
+  font-weight: 500;
+}
+@media only screen and (max-width: 991px) {
+  .general_notification {
+    font-size: 18px;
+  }
+}
+
+.rules_title {
+  font-size: 42px;
+  line-height: 130%;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+@media only screen and (max-width: 767px) {
+  .rules_title {
+    font-size: 30px;
+  }
+}
+.rules_subtitle {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+@media only screen and (max-width: 767px) {
+  .rules_subtitle {
+    font-size: 12px;
+  }
+}
+.rules_list {
+  font-size: 16px;
+  padding-left: 50px;
+  margin-bottom: 20px;
+  list-style-type: decimal;
+}
+@media only screen and (max-width: 767px) {
+  .rules_list {
+    font-size: 12px;
+  }
 }
 
 /* Breakpoint sizes */
