@@ -19,6 +19,7 @@ const topInput = document.querySelector('.js-top-input');
 const bottomInput = document.querySelector('.js-bottom-input');
 
 const removeItemFromDropdown = (dropdown, coinName) => {
+    console.log('coinName', coinName);
     dropdown.forEach((option) => {
         option.classList.remove('hidden');
         if(option.querySelector('[data-coin-name]').textContent === coinName) {
@@ -110,6 +111,43 @@ headerDropdownBottom.addEventListener('click', () => {
     dropdownBottom.classList.toggle('opened');
 });
 
+const buttonsExchangeShortcut = document.querySelectorAll('.js-shortcut-btn-exchange');
+
+buttonsExchangeShortcut.forEach((button) => {
+
+    button.addEventListener('click', (event) => {
+        // event.preventDefault();
+        const coinAbbrFrom = button.getAttribute('data-shortcut-from');
+        const coinAbbrTo = button.getAttribute('data-shortcut-to');
+
+        const currentItem = button.closest('.js-shortcut_item');
+
+        const coinImgSrcFrom = currentItem.querySelector('.js-coin-from').getAttribute('src');
+        const coinImgSrcTo = currentItem.querySelector('.js-coin-to').getAttribute('src');
+        const coinNameFrom = currentItem.querySelector('.js-money-from').textContent;
+        const coinNameTo = currentItem.querySelector('.js-money-to').textContent;
+
+        //set for fropdown header value
+
+        console.log('coinNameFrom', coinNameFrom);
+        console.log('coinNameTo', coinNameTo);
+
+        coinNameHeaderTop.textContent = coinNameFrom;
+        coinNameHeaderBottom.textContent = coinNameTo;
+
+        mainCoinImgTop.src = coinImgSrcFrom;
+        mainCoinImgBottom.src = coinImgSrcTo;
+
+        mainCoinAbbrTop.textContent = coinAbbrFrom;
+        mainCoinAbbrBottom.textContent = coinAbbrTo;
+
+        //removing from dropdowns selected options
+        removeItemFromDropdown(dropdownOptionTop, coinNameTo);
+        removeItemFromDropdown(dropdownOptionBottom, coinNameFrom);
+        //get course
+        getCourse(coinAbbrFrom, coinAbbrTo);
+    })
+});
 
 (function() {
     'use strict';
