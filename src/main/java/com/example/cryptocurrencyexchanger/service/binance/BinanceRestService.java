@@ -23,9 +23,9 @@ public class BinanceRestService implements BinanceService {
     public BigDecimal getResultPriceFirstInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
         if (firstSymbol.equals("USDT")) {
             BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
-            BigDecimal amountOfTakenCoin = amount.divide(takenCoinInUSDT, 5, RoundingMode.HALF_UP);
+            BigDecimal amountOfTakenCoin = amount.divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
             BigDecimal marginOfTakenCoin = getCoinMargin(secondSymbol);
-            BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100) , 5, RoundingMode.HALF_UP);
+            BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100) , 7, RoundingMode.HALF_UP);
 
             return amountOfTakenCoin.subtract(resultMargin);
         } else {
@@ -33,9 +33,9 @@ public class BinanceRestService implements BinanceService {
             BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
 
             BigDecimal priceWithAmount = givenCoinInUSDT.multiply(amount);
-            BigDecimal amountOfTakenCoin = priceWithAmount.divide(takenCoinInUSDT, 5, RoundingMode.HALF_UP);
+            BigDecimal amountOfTakenCoin = priceWithAmount.divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
             BigDecimal marginOfTakenCoin = getCoinMargin(secondSymbol);
-            BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100) , 5, RoundingMode.HALF_UP);
+            BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100) , 7, RoundingMode.HALF_UP);
 
             return amountOfTakenCoin.subtract(resultMargin);
         }
