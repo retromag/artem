@@ -62,9 +62,17 @@
     </div>
     <div>
         <input th:value="${coin.amount}"
-               type="number"
+               type="number" step="any"
                name="amount"
-               placeholder="1"
+               placeholder="Количество монет"
+               class="input_general input_auth"
+        />
+    </div>
+    <div>
+        <input th:value="${coin.minAmount}"
+               type="number" step="any"
+               name="minAmount"
+               placeholder="Минимальное количество монет для торговли"
                class="input_general input_auth"
         />
     </div>
@@ -88,7 +96,7 @@
         <input th:value="${coin.margin}"
                type="number" step="any"
                name="margin"
-               placeholder="0.1"
+               placeholder="Наценка на монету в процентах"
                class="input_general input_auth"
         />
     </div>

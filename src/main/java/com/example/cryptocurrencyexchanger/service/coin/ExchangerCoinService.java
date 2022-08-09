@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Service
@@ -46,5 +47,15 @@ public class ExchangerCoinService implements CoinService {
     @Override
     public Coin getCoinByCoinSymbol(String symbol) {
         return coinRepository.getCoinBySymbol(symbol);
+    }
+
+    @Override
+    public BigDecimal getMinAllowedAmount(String symbol) {
+        return coinRepository.getCoinBySymbol(symbol).getMinAmount();
+    }
+
+    @Override
+    public BigDecimal getMaxAllowedAmount(String symbol) {
+        return coinRepository.getCoinBySymbol(symbol).getAmount();
     }
 }

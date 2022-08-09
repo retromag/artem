@@ -2,7 +2,7 @@ package com.example.cryptocurrencyexchanger.service.coin;
 
 import com.example.cryptocurrencyexchanger.entity.coin.Coin;
 
-import java.util.List;
+import java.math.BigDecimal;
 import java.util.Set;
 
 public interface CoinService {
@@ -18,4 +18,8 @@ public interface CoinService {
     Set<Coin> getAllCoins();
 
     Coin getCoinByCoinSymbol(String symbol);
+
+    BigDecimal getMinAllowedAmount(String symbol);
+
+    BigDecimal getMaxAllowedAmount(String symbol);
 }

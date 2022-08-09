@@ -21,6 +21,10 @@ public class BinanceRestService implements BinanceService {
 
     @Override
     public BigDecimal getResultPriceFirstInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
+        if (firstSymbol.equals("USDT")) {
+
+        }
+
         BigDecimal givenCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
         BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
 

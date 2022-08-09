@@ -42,6 +42,26 @@ public class CoinController {
         }
     }
 
+    @GetMapping("/coin/min/amount")
+    public ResponseEntity<BigDecimal> getMinAllowedCoinAmount(@RequestParam("symbol") String symbol) {
+        BigDecimal minAmount = coinService.getMinAllowedAmount(symbol);
+        if (minAmount == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(minAmount);
+        }
+    }
+
+    @GetMapping("/coin/max/amount")
+    public ResponseEntity<BigDecimal> getMaxAllowedCoinAmount(@RequestParam("symbol") String symbol) {
+        BigDecimal minAmount = coinService.getMaxAllowedAmount(symbol);
+        if (minAmount == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(minAmount);
+        }
+    }
+
     @GetMapping("/app/get/taken")
     public ResponseEntity<BigDecimal> getCalculatedAmountOfTakenCoins(@RequestParam("amount") Long amount,
                                                                  @RequestParam("firstSymbol") String firstSymbol,

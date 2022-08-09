@@ -26,12 +26,16 @@ public class Coin {
     @NonNull
     private String wallet;
 
-    @Column(precision = 8, scale = 4)
+    @Column(precision = 8, scale = 2)
     private BigDecimal margin;
 
     private String symbol;
 
+    @Column(precision = 8, scale = 4)
     private BigDecimal amount;
+
+    @Column(precision = 8, scale = 4)
+    private BigDecimal minAmount;
 
     private String image;
 }
