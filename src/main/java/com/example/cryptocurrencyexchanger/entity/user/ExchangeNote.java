@@ -20,8 +20,8 @@ public class ExchangeNote {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     private ExchangerUser user;
 
@@ -32,6 +32,8 @@ public class ExchangeNote {
     private BigDecimal givenAmount;
 
     private BigDecimal takenAmount;
+
+    private String wallet;
 
     @CreationTimestamp
     private Timestamp createdTime;

@@ -55,11 +55,14 @@ public class UserController {
 
     @GetMapping("/")
     public String mainPage(Model model) {
-        ExchangeNote note = new ExchangeNote();
+        String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        if (currentUser != null) {
+            ExchangeNote note = new ExchangeNote();
+            note.setUser(userService.findByEmail(currentUser));
+            model.addAttribute("note", note);
+        }
 
-        model.addAttribute("note", note);
-
-        return "redirect:/";
+        return "index";
     }
 
     @GetMapping("/login")
@@ -77,7 +80,7 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public String registerUserAccount(@Valid @ModelAttribute ("user") UserModel userModel, BindingResult result,
+    public String registerUserAccount(@Valid @ModelAttribute("user") UserModel userModel, BindingResult result,
                                       HttpServletRequest request, Model model) {
         ExchangerUser existing = userService.findByEmail(userModel.getEmail());
         if (existing != null) {
@@ -245,7 +248,7 @@ public class UserController {
     @PostMapping("/user/update/password")
     public String changeUserPassword(@RequestParam("confirmPassword") String password,
                                      @RequestParam("oldPassword") String oldPassword,
-                                     @Valid @ModelAttribute ("user") UserModel userModel) {
+                                     @Valid @ModelAttribute("user") UserModel userModel) {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
 
         if (!userService.checkIfValidOldPassword(user, oldPassword)) {
@@ -255,6 +258,18 @@ public class UserController {
         userService.changeUserPassword(user, password);
 
         return "redirect:/login";
+    }
+
+    @PostMapping("/make/exchange")
+    public String completeOrder(@Valid @ModelAttribute("note") ExchangeNote note) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            note.setUser(user);
+        }
+
+        userService.makeAnExchange(note);
+
+        return "index";
     }
 
     @GetMapping("/forgot/password")

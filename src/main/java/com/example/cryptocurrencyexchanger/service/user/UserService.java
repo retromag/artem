@@ -1,5 +1,6 @@
 package com.example.cryptocurrencyexchanger.service.user;
 
+import com.example.cryptocurrencyexchanger.entity.user.ExchangeNote;
 import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
 import com.example.cryptocurrencyexchanger.entity.user.UserModel;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,5 +16,5 @@ public interface UserService extends UserDetailsService {
 
     boolean checkIfValidOldPassword(ExchangerUser user, String oldPassword);
 
-    void makeAnExchange();
+    void makeAnExchange(ExchangeNote note);
 }

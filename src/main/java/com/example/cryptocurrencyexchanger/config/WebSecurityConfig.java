@@ -36,6 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/update/password",
                         "/reserves",
                         "/rules",
+                        "/make/exchange",
                         "/api/**",
                         "/js/**",
                         "/css/**",
