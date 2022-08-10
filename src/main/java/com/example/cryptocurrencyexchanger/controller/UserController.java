@@ -275,7 +275,7 @@ public class UserController {
 
         exchangeService.makeAnExchange(order);
 
-        return "index";
+        return "orderPage";
     }
 
     @PostMapping("/exchange/pay")
