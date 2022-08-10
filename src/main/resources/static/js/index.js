@@ -1,31 +1,36 @@
+//top dropdown elements
 const dropdownTop = document.querySelector('.js-top-dropdown');
 const headerDropdownTop = document.querySelector('.js-top-dropdown-header');
 const dropdownOptionTop = document.querySelectorAll('.js-top-dropdown-option');
 const coinNameHeaderTop = document.querySelector('.js-top-dropdown-title');
 const mainCoinImgTop = document.querySelector('.js-top-main-coin-image');
 const mainCoinAbbrTop = document.querySelector('.js-top-main-coin-abbr');
+const topInput = document.querySelector('.js-top-input');
+// elements for min and max amounts of coins for top dropdown
+const minCoinAmount = document.querySelector('.js-min-coins-amount');
+const maxCoinAmount = document.querySelector('.js-max-coins-amount');
 
-
+//bottom dropdown elements
 const headerDropdownBottom = document.querySelector('.js-bottom-dropdown-header');
 const dropdownBottom = document.querySelector('.js-bottom-dropdown');
 const dropdownOptionBottom = document.querySelectorAll('.js-bottom-dropdown-option');
 const coinNameHeaderBottom = document.querySelector('.js-bottom-dropdown-title');
 const mainCoinImgBottom = document.querySelector('.js-bottom-main-coin-image');
 const mainCoinAbbrBottom = document.querySelector('.js-bottom-main-coin-abbr');
+const bottomInput = document.querySelector('.js-bottom-input');
 
+//rate element in bottom dropdown
 const rateElement = document.querySelector('.js-rate');
 
-const topInput = document.querySelector('.js-top-input');
-const bottomInput = document.querySelector('.js-bottom-input');
+//buttons exchange in shortcuts
+const buttonsExchangeShortcut = document.querySelectorAll('.js-shortcut-btn-exchange');
 
 /////
 const testInputTop = document.querySelector('.test_input-top');
 const testInputBottom = document.querySelector('.test_input-bottom');
 /////
-testInputTop.value = mainCoinAbbrTop.textContent;
-testInputBottom.value = mainCoinAbbrBottom.textContent;
+
 const removeItemFromDropdown = (dropdown, coinName) => {
-    console.log('coinName', coinName);
     dropdown.forEach((option) => {
         option.classList.remove('hidden');
         if(option.querySelector('[data-coin-name]').textContent === coinName) {
@@ -47,48 +52,58 @@ const setCoinInHeader = (option, imgHeader, coinNameHeader, coinAbbrHeader, test
 
     return coinAbbr;
 }
-const coinNameHeaderTopTextContent = coinNameHeaderTop.textContent;
-removeItemFromDropdown(dropdownOptionBottom, coinNameHeaderTopTextContent);
-const coinNameHeaderBottomTextContent = coinNameHeaderBottom.textContent;
-removeItemFromDropdown(dropdownOptionTop, coinNameHeaderBottomTextContent);
-const getCourse = (firstSymbol, secondSymbol) => {
-    fetch(`http://localhost:8080/api/app/get/price/?firstSymbol=${firstSymbol}&secondSymbol=${secondSymbol}`)
-        .then(response => {
-            return response.json();
-        }).then(data => {
-        rateElement.textContent = `1 ${firstSymbol} - ${data} ${secondSymbol}`;
-    });
+
+//get course and set in rate element
+const getCourse = async (firstSymbol, secondSymbol) => {
+    const response = await fetch(`http://localhost:8080/api/app/get/price/?firstSymbol=${firstSymbol}&secondSymbol=${secondSymbol}`);
+    const data = await response.json();
+    rateElement.textContent = `1 ${firstSymbol} - ${data} ${secondSymbol}`;
 }
+//get min and max amount of coins and set them to appropriate element
+const getMinAndMaxAmountOfCoins = async (coinAbbr) => {
+    const responseMinAmount = await fetch(`http://localhost:8080/api/coin/min/amount/?symbol=${coinAbbr}`);
+    const dataMinAmount = await responseMinAmount.json();
+    minCoinAmount.textContent = `${dataMinAmount} ${coinAbbr}`;
+
+    const responseMaxAmount = await fetch(`http://localhost:8080/api/coin/max/amount/?symbol=${coinAbbr}`);
+    const dataMaxAmount = await responseMaxAmount.json();
+    minCoinAmount.textContent = `${dataMaxAmount} ${coinAbbr}`;
+}
+
+testInputTop.value = mainCoinAbbrTop.textContent;
+testInputBottom.value = mainCoinAbbrBottom.textContent;
+
+removeItemFromDropdown(dropdownOptionBottom, coinNameHeaderTop.textContent);
+removeItemFromDropdown(dropdownOptionTop, coinNameHeaderBottom.textContent);
+
 getCourse(mainCoinAbbrTop.textContent, mainCoinAbbrBottom.textContent);
+getMinAndMaxAmountOfCoins(mainCoinAbbrTop.textContent);
 
-topInput.addEventListener('input', () => {
-    const topInputValue = topInput.value;
-
-    if (topInputValue !== '') {
-        fetch(`http://localhost:8080/api/app/get/taken/?amount=${topInputValue}&firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${mainCoinAbbrBottom.textContent}`)
-            .then(response => {
-                return response.json();
-            }).then(data => {
-            bottomInput.value = data;
-        });
+topInput.addEventListener('input', async () => {
+    if (topInput.value !== '') {
+        const response = await fetch(`http://localhost:8080/api/app/get/taken/?amount=${topInput.value}&firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${mainCoinAbbrBottom.textContent}`);
+        const data = await response.json();
+        bottomInput.value = data;
     } else {
         bottomInput.value = '';
     }
 })
-
 
 dropdownOptionTop.forEach((option) => {
     option.addEventListener('click', () => {
         //find and set coin from option to header
         const currentCoinAbbr = setCoinInHeader(option, mainCoinImgTop, coinNameHeaderTop, mainCoinAbbrTop, testInputBottom);
         testInputTop.value = currentCoinAbbr;
+
         //removing item from other dropdown
         dropdownTop.classList.remove('opened');
-        const coinNameHeaderTopTextContent = coinNameHeaderTop.textContent;
-        removeItemFromDropdown(dropdownOptionBottom, coinNameHeaderTopTextContent);
+        removeItemFromDropdown(dropdownOptionBottom, coinNameHeaderTop.textContent);
 
         //calculating course
         getCourse(currentCoinAbbr, mainCoinAbbrBottom.textContent);
+
+        //get and set min and max coins value
+        getMinAndMaxAmountOfCoins(currentCoinAbbr);
     });
 })
 
@@ -102,13 +117,16 @@ dropdownOptionBottom.forEach((option) => {
         //find and set coin from option to header
         const currentCoinAbbr = setCoinInHeader(option, mainCoinImgBottom, coinNameHeaderBottom, mainCoinAbbrBottom, testInputTop);
         testInputBottom.value = currentCoinAbbr;
+
         //removing item from dropdown
         dropdownBottom.classList.remove('opened');
-        const coinNameHeaderBottomTextContent = coinNameHeaderBottom.textContent;
-        removeItemFromDropdown(dropdownOptionTop, coinNameHeaderBottomTextContent);
+        removeItemFromDropdown(dropdownOptionTop, coinNameHeaderBottom.textContent);
 
         //calculating course
         getCourse(mainCoinAbbrTop.textContent, currentCoinAbbr);
+
+        //get and set min and max coins value
+        getMinAndMaxAmountOfCoins(currentCoinAbbr);
     });
 })
 
@@ -116,8 +134,6 @@ headerDropdownBottom.addEventListener('click', () => {
     dropdownTop.classList.remove('opened');
     dropdownBottom.classList.toggle('opened');
 });
-
-const buttonsExchangeShortcut = document.querySelectorAll('.js-shortcut-btn-exchange');
 
 buttonsExchangeShortcut.forEach((button) => {
 
@@ -133,10 +149,10 @@ buttonsExchangeShortcut.forEach((button) => {
         const coinNameFrom = currentItem.querySelector('.js-money-from').textContent;
         const coinNameTo = currentItem.querySelector('.js-money-to').textContent;
 
-        //set for fropdown header value
+        //set for dropdown header value
 
-        console.log('coinNameFrom', coinNameFrom);
-        console.log('coinNameTo', coinNameTo);
+        testInputTop.value = coinAbbrFrom;
+        testInputBottom.value = coinAbbrTo;
 
         coinNameHeaderTop.textContent = coinNameFrom;
         coinNameHeaderBottom.textContent = coinNameTo;
@@ -150,8 +166,12 @@ buttonsExchangeShortcut.forEach((button) => {
         //removing from dropdowns selected options
         removeItemFromDropdown(dropdownOptionTop, coinNameTo);
         removeItemFromDropdown(dropdownOptionBottom, coinNameFrom);
+
         //get course
         getCourse(coinAbbrFrom, coinAbbrTo);
+
+        //get and set min and max coins value
+        getMinAndMaxAmountOfCoins(coinAbbrFrom);
     })
 });
 
