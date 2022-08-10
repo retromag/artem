@@ -277,9 +277,10 @@ public class UserController {
         order.setUniqCode(code);
         exchangeService.makeAnExchange(order);
 
-//        model.addAttribute("order", );
+        model.addAttribute("order", exchangeService.findOrderByCode(code));
+        model.addAttribute("ownerWallet", coinService.getCoinByCoinSymbol(order.getGivenCoin()).getWallet());
 
-        return "redirect:/order";
+        return "orderPage";
     }
 
     @PostMapping("/exchange/pay")
@@ -326,11 +327,6 @@ public class UserController {
     @GetMapping("/aml")
     public String showAMLPage() {
         return "aml";
-    }
-
-    @GetMapping("/order")
-    public String showOrderPage() {
-        return "orderPage";
     }
 
     @GetMapping("/update/password")

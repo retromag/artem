@@ -48,7 +48,7 @@ public class ExchangeServiceImpl implements ExchangeService {
 
     @Override
     public ExchangeOrder findOrderByCode(String code) {
-        return null;
+        return exchangeRepository.findByUniqCode(code);
     }
 
     @Override

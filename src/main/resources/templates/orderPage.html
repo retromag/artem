@@ -54,12 +54,12 @@
 <div class="order_page_wrapper">
     <div class="container">
         <div class="order_page_wrapper">
-            <div class="order_page_header">
-                <h3 class="order_page_title">Заявка #<span>16601466482062</span> создана!</h3>
-                <p class="order_page_subtitle">Следуйте инструкции! Ожидаем перевод денежных средств.</p>
-                <p class="order_page_time">Осталось: <span class="order_page_time_left">time</span></p>
-            </div>
-            <form action="" class="form_exchange">
+            <form action="" class="form_exchange" th:object="${order}" th:action="@{/order}" method="post">
+                <div class="order_page_header">
+                    <h3 class="order_page_title">Заявка #<span th:text="${order.id}">16601466482062</span> создана!</h3>
+                    <p class="order_page_subtitle">Следуйте инструкции! Ожидаем перевод денежных средств.</p>
+                    <p class="order_page_time">Осталось: <span class="order_page_time_left">time</span></p>
+                </div>
                 <div class="form_left_col">
                     <p class="text_give">Отдаю</p>
                     <div class="dropdown_top dropdown_general">
@@ -71,11 +71,13 @@
                                              class="dropdown_img_coin">
                                     </div>
                                     <p class="dropdown_title">Bitcoin</p>
-                                    <input type="text" readonly class="order_hidden_input_abbr js-top_order_hidden_input_abbr" value="BTC">
+                                    <input type="text" readonly th:text="${order.givenCoin}"
+                                           class="order_hidden_input_abbr js-top_order_hidden_input_abbr" value="BTC">
                                 </div>
                             </div>
                             <div class="dropdown_input_wrapper">
-                                <input type="text" class="dropdown_input" placeholder="Сумма" readonly value="29">
+                                <input type="text" class="dropdown_input" placeholder="Сумма" readonly value="29"
+                                       th:value="${order.givenAmount}">
                                 <div class="coin_abbr">BTC</div>
                             </div>
                         </div>
@@ -90,16 +92,20 @@
                                              class="dropdown_img_coin">
                                     </div>
                                     <p class="dropdown_title">Solana</p>
-                                    <input type="text" readonly class="order_hidden_input_abbr js-bottom_order_hidden_input_abbr" value="SOL">
+                                    <input type="text" readonly th:text="${order.takenCoin}"
+                                           class="order_hidden_input_abbr js-bottom_order_hidden_input_abbr"
+                                           value="SOL">
                                 </div>
 
                             </div>
                             <div class="dropdown_input_wrapper">
-                                <input type="text" class="dropdown_input" placeholder="Сумма" readonly value="900">
+                                <input type="text" class="dropdown_input" placeholder="Сумма" readonly value="900"
+                                       th:value="${order.takenAmount}">
                                 <div class="coin_abbr">SOL</div>
                             </div>
                             <div class="dropdown_footer">
                                 <p class="dropdown_footer_left_col"><span class="dropdown_text">На счет </span><span
+                                        th:text="${order.wallet}"></span><span
                                         class="dropdown_text_account"></span></p>
                             </div>
 
@@ -112,9 +118,13 @@
                         <div class="order_top_row">
                             <div class="order_wallet_sum_wrapper">
                                 <div class="input_wallet_wrapper input_order_wrapper">
-                                    <input type="text" readonly class="input_wallet input_order js-input-wallet" value="0x3c54aA116dc8fc9005783D672300ADed7cAD6573">
+                                    <input type="text" readonly class="input_wallet input_order js-input-wallet" th:value="${ownerWallet}"
+                                           value="0x3c54aA116dc8fc9005783D672300ADed7cAD6573">
                                     <div class="copy_icon_wrapper js-copy-wallet">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 224C0 188.7 28.65 160 64 160H128V288C128 341 170.1 384 224 384H352V448C352 483.3 323.3 512 288 512H64C28.65 512 0 483.3 0 448V224zM224 352C188.7 352 160 323.3 160 288V64C160 28.65 188.7 0 224 0H448C483.3 0 512 28.65 512 64V288C512 323.3 483.3 352 448 352H224z"/></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                            <path d="M0 224C0 188.7 28.65 160 64 160H128V288C128 341 170.1 384 224 384H352V448C352 483.3 323.3 512 288 512H64C28.65 512 0 483.3 0 448V224zM224 352C188.7 352 160 323.3 160 288V64C160 28.65 188.7 0 224 0H448C483.3 0 512 28.65 512 64V288C512 323.3 483.3 352 448 352H224z"/>
+                                        </svg>
                                     </div>
                                     <p class="order_input_title">Кошелек</p>
                                     <div class="order_coin_img_right_col_wrapper">
@@ -122,9 +132,13 @@
                                     </div>
                                 </div>
                                 <div class="input_sum_wrapper input_order_wrapper">
-                                    <input type="text" readonly class="input_sum input_order js-input-sum" value="7 ETH">
+                                    <input type="text" readonly class="input_sum input_order js-input-sum" th:value="${order.givenAmount}"
+                                           value="7 ETH">
                                     <div class="copy_icon_wrapper js-copy-sum">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 224C0 188.7 28.65 160 64 160H128V288C128 341 170.1 384 224 384H352V448C352 483.3 323.3 512 288 512H64C28.65 512 0 483.3 0 448V224zM224 352C188.7 352 160 323.3 160 288V64C160 28.65 188.7 0 224 0H448C483.3 0 512 28.65 512 64V288C512 323.3 483.3 352 448 352H224z"/></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                            <path d="M0 224C0 188.7 28.65 160 64 160H128V288C128 341 170.1 384 224 384H352V448C352 483.3 323.3 512 288 512H64C28.65 512 0 483.3 0 448V224zM224 352C188.7 352 160 323.3 160 288V64C160 28.65 188.7 0 224 0H448C483.3 0 512 28.65 512 64V288C512 323.3 483.3 352 448 352H224z"/>
+                                        </svg>
                                     </div>
                                     <p class="order_input_title">На сумму</p>
                                     <div class="order_coin_img_right_col_wrapper">
@@ -138,7 +152,7 @@
                         </div>
                         <p class="order_title">2. Обязательно, нажмите кнопку "я оплатил"</p>
                         <div class="order_bottom_row">
-                            <button  type="submit" class="btn_general">Я ОПЛАТИЛ</button>
+                            <button type="submit" class="btn_general">Я ОПЛАТИЛ</button>
                             <a class="btn_secondary">ОТМЕНИТЬ ЗАЯВКУ</a>
                         </div>
                     </div>
