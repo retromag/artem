@@ -1041,8 +1041,17 @@ footer {
           box-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
 }
 
+.hidden_input-top {
+  display: none;
+}
+
+.hidden_input-bottom {
+  display: none;
+}
+
 .order_page_wrapper {
   margin-top: 40px;
+  margin-bottom: 50px;
 }
 .order_page_title {
   font-size: 26px;
@@ -1129,6 +1138,10 @@ footer {
   position: absolute;
   top: 12px;
   left: 10px;
+}
+
+.order_hidden_input_abbr {
+  display: none;
 }
 
 /* Breakpoint sizes */
