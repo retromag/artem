@@ -80,14 +80,32 @@ getCourse(mainCoinAbbrTop.textContent, mainCoinAbbrBottom.textContent);
 getMinAndMaxAmountOfCoins(mainCoinAbbrTop.textContent);
 
 topInput.addEventListener('input', async () => {
+    // topInput.value = '';
     if (topInput.value !== '') {
-        const response = await fetch(`http://localhost:8080/api/app/get/taken/?amount=${topInput.value}&firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${mainCoinAbbrBottom.textContent}`);
+        const response = await fetch(`http://localhost:8080/api/app/get/taken/?amount=${+topInput.value}&firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${mainCoinAbbrBottom.textContent}`);
         const data = await response.json();
+        console.log('data from topInput', topInput.value);
+        console.log('data top', data);
         bottomInput.value = data;
     } else {
         bottomInput.value = '';
     }
+});
+
+bottomInput.addEventListener('input', async () => {
+    // bottomInput.value = '';
+    // topInput.value = '';
+    if (bottomInput.value !== '') {
+        const response = await fetch(`http://localhost:8080/api/app/get/given/?amount=${+bottomInput.value}&firstSymbol=${mainCoinAbbrBottom.textContent}&secondSymbol=${mainCoinAbbrTop.textContent}`);
+        const data = await response.json();
+        console.log('data from bottomInput', bottomInput.value);
+        console.log('data bottom', data);
+        topInput.value = data;
+    } else {
+        topInput.value = '';
+    }
 })
+
 
 dropdownOptionTop.forEach((option) => {
     option.addEventListener('click', () => {
