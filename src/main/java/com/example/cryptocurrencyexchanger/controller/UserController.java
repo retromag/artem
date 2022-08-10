@@ -1,13 +1,14 @@
 package com.example.cryptocurrencyexchanger.controller;
 
 import com.example.cryptocurrencyexchanger.entity.coin.Coin;
-import com.example.cryptocurrencyexchanger.entity.user.ExchangeNote;
+import com.example.cryptocurrencyexchanger.entity.exchange.ExchangeOrder;
 import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
 import com.example.cryptocurrencyexchanger.entity.user.UserModel;
 import com.example.cryptocurrencyexchanger.entity.user.VerificationToken;
 import com.example.cryptocurrencyexchanger.event.OnRegistrationCompleteEvent;
 import com.example.cryptocurrencyexchanger.exception.ValidPasswordException;
 import com.example.cryptocurrencyexchanger.service.coin.CoinService;
+import com.example.cryptocurrencyexchanger.service.exchange.ExchangeService;
 import com.example.cryptocurrencyexchanger.service.security.SecurityService;
 import com.example.cryptocurrencyexchanger.service.token.TokenService;
 import com.example.cryptocurrencyexchanger.service.user.UserService;
@@ -46,6 +47,7 @@ public class UserController {
     UserService userService;
     TokenService tokenService;
     CoinService coinService;
+    ExchangeService exchangeService;
     MessageSource messages;
     JavaMailSender mailSender;
     SecurityService securityService;
@@ -57,7 +59,7 @@ public class UserController {
     public String mainPage(Model model) {
         String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
         if (currentUser != null) {
-            ExchangeNote note = new ExchangeNote();
+            ExchangeOrder note = new ExchangeOrder();
             note.setUser(userService.findByEmail(currentUser));
             model.addAttribute("note", note);
         }
@@ -232,6 +234,10 @@ public class UserController {
     @GetMapping("/account/history")
     public String viewUserExchangesHistory(Model model) {
         String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        ExchangerUser user = userService.findByEmail(currentUser);
+        List<ExchangeOrder> orders = exchangeService.getAllExchangeOrders(user);
+
+        model.addAttribute("orders", orders);
 
         return "account_history";
     }
@@ -261,13 +267,13 @@ public class UserController {
     }
 
     @PostMapping("/make/exchange")
-    public String completeOrder(@Valid @ModelAttribute("note") ExchangeNote note) {
+    public String completeOrder(@Valid @ModelAttribute("note") ExchangeOrder note) {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             note.setUser(user);
         }
 
-        userService.makeAnExchange(note);
+        exchangeService.makeAnExchange(note);
 
         return "index";
     }

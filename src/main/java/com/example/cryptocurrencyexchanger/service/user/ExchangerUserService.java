@@ -1,11 +1,9 @@
 package com.example.cryptocurrencyexchanger.service.user;
 
 import com.example.cryptocurrencyexchanger.config.PasswordEncoder;
-import com.example.cryptocurrencyexchanger.entity.user.ExchangeNote;
 import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
 import com.example.cryptocurrencyexchanger.entity.user.UserModel;
 import com.example.cryptocurrencyexchanger.entity.user.UserRole;
-import com.example.cryptocurrencyexchanger.repo.ExchangeRepository;
 import com.example.cryptocurrencyexchanger.repo.UserRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -26,7 +24,6 @@ import java.util.stream.Collectors;
 public class ExchangerUserService implements UserService {
 
     UserRepository userRepository;
-    ExchangeRepository exchangeRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -71,11 +68,6 @@ public class ExchangerUserService implements UserService {
     @Override
     public boolean checkIfValidOldPassword(final ExchangerUser user, final String oldPassword) {
         return PasswordEncoder.passwordEncoder().matches(oldPassword, user.getPassword());
-    }
-
-    @Override
-    public void makeAnExchange(ExchangeNote note) {
-        exchangeRepository.save(note);
     }
 
     private ExchangerUser createUser(final UserModel userModel) {

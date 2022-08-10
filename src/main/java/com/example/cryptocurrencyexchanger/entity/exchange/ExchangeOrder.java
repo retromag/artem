@@ -1,5 +1,6 @@
-package com.example.cryptocurrencyexchanger.entity.user;
+package com.example.cryptocurrencyexchanger.entity.exchange;
 
+import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -14,7 +15,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Table(name = "exchanger_note")
-public class ExchangeNote {
+public class ExchangeOrder {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,6 +35,8 @@ public class ExchangeNote {
     private BigDecimal takenAmount;
 
     private String wallet;
+
+    private String status;
 
     @CreationTimestamp
     private Timestamp createdTime;

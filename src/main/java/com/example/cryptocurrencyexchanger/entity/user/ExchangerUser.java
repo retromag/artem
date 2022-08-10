@@ -1,5 +1,6 @@
 package com.example.cryptocurrencyexchanger.entity.user;
 
+import com.example.cryptocurrencyexchanger.entity.exchange.ExchangeOrder;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
@@ -48,7 +49,7 @@ public class ExchangerUser {
     @EqualsAndHashCode.Exclude
     @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<ExchangeNote> exchangeNotes = new HashSet<>();
+    private Set<ExchangeOrder> exchangeOrders = new HashSet<>();
 
     @EqualsAndHashCode.Exclude
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
