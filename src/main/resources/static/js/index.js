@@ -22,6 +22,10 @@ const bottomInput = document.querySelector('.js-bottom-input');
 const testInputTop = document.querySelector('.test_input-top');
 const testInputBottom = document.querySelector('.test_input-bottom');
 /////
+
+const minCoinAmount = document.querySelector('.js-min-coins-amount');
+const maxCoinAmount = document.querySelector('.js-max-coins-amount');
+
 testInputTop.value = mainCoinAbbrTop.textContent;
 testInputBottom.value = mainCoinAbbrBottom.textContent;
 const removeItemFromDropdown = (dropdown, coinName) => {
@@ -59,7 +63,25 @@ const getCourse = (firstSymbol, secondSymbol) => {
         rateElement.textContent = `1 ${firstSymbol} - ${data} ${secondSymbol}`;
     });
 }
+const getMinAndMaxAmountOfCoins = (coinAbbr) => {
+    fetch(`http://localhost:8080/api/coin/min/amount/?symbol=${coinAbbr}`)
+        .then(response => {
+            return response.json();
+        }).then(data => {
+        minCoinAmount.textContent = `${data} ${coinAbbr}`;
+    });
+
+    fetch(`http://localhost:8080/api/coin/max/amount/?symbol=${coinAbbr}`)
+        .then(response => {
+            return response.json();
+        }).then(data => {
+        maxCoinAmount.textContent = `${data} ${coinAbbr}`;
+    });
+}
 getCourse(mainCoinAbbrTop.textContent, mainCoinAbbrBottom.textContent);
+getMinAndMaxAmountOfCoins(mainCoinAbbrTop.textContent);
+
+
 
 topInput.addEventListener('input', () => {
     const topInputValue = topInput.value;
@@ -89,6 +111,9 @@ dropdownOptionTop.forEach((option) => {
 
         //calculating course
         getCourse(currentCoinAbbr, mainCoinAbbrBottom.textContent);
+
+        //get and set min and max coins value
+        getMinAndMaxAmountOfCoins(currentCoinAbbr);
     });
 })
 
@@ -109,6 +134,9 @@ dropdownOptionBottom.forEach((option) => {
 
         //calculating course
         getCourse(mainCoinAbbrTop.textContent, currentCoinAbbr);
+
+        //get and set min and max coins value
+        getMinAndMaxAmountOfCoins(currentCoinAbbr);
     });
 })
 
@@ -138,6 +166,9 @@ buttonsExchangeShortcut.forEach((button) => {
         console.log('coinNameFrom', coinNameFrom);
         console.log('coinNameTo', coinNameTo);
 
+        testInputTop.value = coinAbbrFrom;
+        testInputBottom.value = coinAbbrTo;
+
         coinNameHeaderTop.textContent = coinNameFrom;
         coinNameHeaderBottom.textContent = coinNameTo;
 
@@ -152,6 +183,9 @@ buttonsExchangeShortcut.forEach((button) => {
         removeItemFromDropdown(dropdownOptionBottom, coinNameFrom);
         //get course
         getCourse(coinAbbrFrom, coinAbbrTo);
+
+        //get and set min and max coins value
+        getMinAndMaxAmountOfCoins(coinAbbrFrom);
     })
 });
 
