@@ -267,15 +267,19 @@ public class UserController {
     }
 
     @PostMapping("/exchange/create")
-    public String completeOrder(@Valid @ModelAttribute("note") ExchangeOrder order) {
+    public String completeOrder(@Valid @ModelAttribute("note") ExchangeOrder order, Model model) {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             order.setUser(user);
         }
 
+        String code = UUID.randomUUID().toString();
+        order.setUniqCode(code);
         exchangeService.makeAnExchange(order);
 
-        return "orderPage";
+//        model.addAttribute("order", );
+
+        return "redirect:/order";
     }
 
     @PostMapping("/exchange/pay")
@@ -322,6 +326,11 @@ public class UserController {
     @GetMapping("/aml")
     public String showAMLPage() {
         return "aml";
+    }
+
+    @GetMapping("/order")
+    public String showOrderPage() {
+        return "orderPage";
     }
 
     @GetMapping("/update/password")

@@ -47,6 +47,11 @@ public class ExchangeServiceImpl implements ExchangeService {
     }
 
     @Override
+    public ExchangeOrder findOrderByCode(String code) {
+        return null;
+    }
+
+    @Override
     public List<ExchangeOrder> getAllExchangeOrders(ExchangerUser user) {
         if (user.isAllPrivileges()) {
             return exchangeRepository.findAll();

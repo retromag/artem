@@ -16,6 +16,8 @@ public interface ExchangeService {
 
     void deleteExchange(ExchangeOrder order);
 
+    ExchangeOrder findOrderByCode(String code);
+
     List<ExchangeOrder> getAllExchangeOrders(ExchangerUser user);
 
     List<ExchangeOrder> getAllExchangeOrdersByStatus(String status);

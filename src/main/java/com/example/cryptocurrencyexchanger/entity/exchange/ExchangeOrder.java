@@ -42,4 +42,6 @@ public class ExchangeOrder {
 
     @CreationTimestamp
     private Timestamp createdTime;
+
+    private String uniqCode;
 }
