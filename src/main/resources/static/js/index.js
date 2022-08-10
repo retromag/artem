@@ -26,8 +26,8 @@ const rateElement = document.querySelector('.js-rate');
 const buttonsExchangeShortcut = document.querySelectorAll('.js-shortcut-btn-exchange');
 
 /////
-const testInputTop = document.querySelector('.test_input-top');
-const testInputBottom = document.querySelector('.test_input-bottom');
+const testInputTop = document.querySelector('.js-hidden_input-top');
+const testInputBottom = document.querySelector('.js-hidden_input-bottom');
 /////
 
 const removeItemFromDropdown = (dropdown, coinName) => {
