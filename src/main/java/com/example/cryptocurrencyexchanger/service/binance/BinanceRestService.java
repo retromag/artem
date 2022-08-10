@@ -43,10 +43,11 @@ public class BinanceRestService implements BinanceService {
 
     @Override
     public BigDecimal getPairPrice(String firstSymbol, String secondSymbol) {
-        if (secondSymbol.equals("USDT")) {
+        if (firstSymbol.equals("USDT")) {
+            BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
+            return new BigDecimal(1).divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
+        } else if (secondSymbol.equals("USDT")) {
             return getCoinPriceInUSDT(firstSymbol);
-        } else if (firstSymbol.equals("USDT")) {
-            return null;
         } else {
             BigDecimal firstCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
             BigDecimal secondCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
