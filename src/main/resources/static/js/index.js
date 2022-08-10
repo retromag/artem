@@ -67,7 +67,7 @@ const getMinAndMaxAmountOfCoins = async (coinAbbr) => {
 
     const responseMaxAmount = await fetch(`http://localhost:8080/api/coin/max/amount/?symbol=${coinAbbr}`);
     const dataMaxAmount = await responseMaxAmount.json();
-    minCoinAmount.textContent = `${dataMaxAmount} ${coinAbbr}`;
+    maxCoinAmount.textContent = `${dataMaxAmount} ${coinAbbr}`;
 }
 
 testInputTop.value = mainCoinAbbrTop.textContent;
@@ -87,20 +87,25 @@ topInput.addEventListener('input', async () => {
         console.log('data from topInput', topInput.value);
         console.log('data top', data);
         bottomInput.value = data;
+        if (topInput.value === '') {
+            bottomInput.value = '';
+        }
     } else {
+        console.log('bootom input val = 0', topInput.value);
         bottomInput.value = '';
     }
 });
 
 bottomInput.addEventListener('input', async () => {
-    // bottomInput.value = '';
-    // topInput.value = '';
     if (bottomInput.value !== '') {
         const response = await fetch(`http://localhost:8080/api/app/get/given/?amount=${+bottomInput.value}&firstSymbol=${mainCoinAbbrBottom.textContent}&secondSymbol=${mainCoinAbbrTop.textContent}`);
         const data = await response.json();
         console.log('data from bottomInput', bottomInput.value);
         console.log('data bottom', data);
         topInput.value = data;
+        if (bottomInput.value === '') {
+            topInput.value = '';
+        }
     } else {
         topInput.value = '';
     }
