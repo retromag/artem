@@ -77,14 +77,14 @@ public class BinanceRestService implements BinanceService {
         BigDecimal amountOfTakenCoin = calculateResultAmountTakenCoins(amount, firstSymbol, secondSymbol);
         BigDecimal resultMargin = calculateResultMargin(amountOfTakenCoin, secondSymbol);
 
-        return amountOfTakenCoin.add(resultMargin);
+        return amountOfTakenCoin.subtract(resultMargin);
     }
 
     private BigDecimal getPriceSecondInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
         BigDecimal amountOfTakenCoin = calculateResultAmountTakenCoins(amount, firstSymbol, secondSymbol);
         BigDecimal resultMargin = calculateResultMargin(amountOfTakenCoin, secondSymbol);
 
-        return amountOfTakenCoin.subtract(resultMargin);
+        return amountOfTakenCoin.add(resultMargin);
     }
 
     private BigDecimal calculateResultAmountTakenCoins(BigDecimal amount, String firstSymbol, String secondSymbol) {
