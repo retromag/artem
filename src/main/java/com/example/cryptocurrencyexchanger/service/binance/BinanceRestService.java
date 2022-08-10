@@ -22,7 +22,7 @@ public class BinanceRestService implements BinanceService {
     @Override
     public BigDecimal getResultPriceFirstInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
         if (firstSymbol.equals("USDT")) {
-            return getResultPriceIfInputUSDT(amount, secondSymbol);
+            return getResultPriceIfFirstInputUSDT(amount, secondSymbol);
         } else if (secondSymbol.equals("USDT")) {
             return getResultPriceIfSecondInputUSDT(amount, firstSymbol);
         } else {
@@ -33,7 +33,7 @@ public class BinanceRestService implements BinanceService {
     @Override
     public BigDecimal getResultPriceSecondInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
         if (firstSymbol.equals("USDT")) {
-            return getResultPriceIfInputUSDT(amount, secondSymbol);
+            return getResultPriceIfFirstInputUSDT(amount, secondSymbol);
         } else if (secondSymbol.equals("USDT")) {
             return getResultPriceIfSecondInputUSDT(amount, firstSymbol);
         } else {
@@ -43,13 +43,19 @@ public class BinanceRestService implements BinanceService {
 
     @Override
     public BigDecimal getPairPrice(String firstSymbol, String secondSymbol) {
-        BigDecimal firstCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
-        BigDecimal secondCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
+        if (secondSymbol.equals("USDT")) {
+            return getCoinPriceInUSDT(firstSymbol);
+        } else if (firstSymbol.equals("USDT")) {
+            return null;
+        } else {
+            BigDecimal firstCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
+            BigDecimal secondCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
 
-        return firstCoinInUSDT.divide(secondCoinInUSDT, 5, RoundingMode.HALF_UP);
+            return firstCoinInUSDT.divide(secondCoinInUSDT, 5, RoundingMode.HALF_UP);
+        }
     }
 
-    private BigDecimal getResultPriceIfInputUSDT(BigDecimal amount, String symbol) {
+    private BigDecimal getResultPriceIfFirstInputUSDT(BigDecimal amount, String symbol) {
         BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(symbol);
         BigDecimal amountOfTakenCoin = amount.divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
         BigDecimal marginOfTakenCoin = getCoinMargin(symbol);
