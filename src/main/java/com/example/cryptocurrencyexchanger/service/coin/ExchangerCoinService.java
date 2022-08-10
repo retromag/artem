@@ -58,4 +58,9 @@ public class ExchangerCoinService implements CoinService {
     public BigDecimal getMaxAllowedAmount(String symbol) {
         return coinRepository.getCoinBySymbol(symbol).getAmount();
     }
+
+    @Override
+    public String getCoinWallet(String symbol) {
+        return coinRepository.getCoinBySymbol(symbol).getWallet();
+    }
 }

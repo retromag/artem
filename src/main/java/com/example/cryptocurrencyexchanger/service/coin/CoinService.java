@@ -22,4 +22,6 @@ public interface CoinService {
     BigDecimal getMinAllowedAmount(String symbol);
 
     BigDecimal getMaxAllowedAmount(String symbol);
+
+    String getCoinWallet(String symbol);
 }

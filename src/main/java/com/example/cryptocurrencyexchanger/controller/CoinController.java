@@ -62,6 +62,16 @@ public class CoinController {
         }
     }
 
+    @GetMapping("/coin/wallet")
+    public ResponseEntity<String> getCoinWallet(@RequestParam("symbol") String symbol) {
+        String wallet = coinService.getCoinWallet(symbol);
+        if (wallet == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(wallet);
+        }
+    }
+
     @GetMapping("/app/get/taken")
     public ResponseEntity<BigDecimal> getCalculatedAmountOfTakenCoins(@RequestParam("amount") Long amount,
                                                                  @RequestParam("firstSymbol") String firstSymbol,
