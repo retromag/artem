@@ -67,7 +67,7 @@ const getMinAndMaxAmountOfCoins = async (coinAbbr) => {
 
     const responseMaxAmount = await fetch(`http://localhost:8080/api/coin/max/amount/?symbol=${coinAbbr}`);
     const dataMaxAmount = await responseMaxAmount.json();
-    minCoinAmount.textContent = `${dataMaxAmount} ${coinAbbr}`;
+    maxCoinAmount.textContent = `${dataMaxAmount} ${coinAbbr}`;
 }
 
 testInputTop.value = mainCoinAbbrTop.textContent;
