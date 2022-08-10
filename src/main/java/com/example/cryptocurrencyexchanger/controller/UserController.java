@@ -319,6 +319,11 @@ public class UserController {
         return "rules";
     }
 
+    @GetMapping("/aml")
+    public String showAMLPage() {
+        return "aml";
+    }
+
     @GetMapping("/update/password")
     public String showUpdatePasswordPage() {
         return "update_password";
