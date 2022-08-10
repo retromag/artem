@@ -67,6 +67,7 @@
         <th>Taken coin</th>
         <th>Taken amount</th>
         <th>Wallet</th>
+        <th>User email</th>
     </tr>
     </thead>
     <tbody>
@@ -79,6 +80,7 @@
         <td th:text="${order.takenCoin}"></td>
         <td th:text="${order.takenAmount}"></td>
         <td th:text="${order.wallet}"></td>
+        <td th:text="${order.user.email}"></td>
     </tr>
     </tbody>
 </table>

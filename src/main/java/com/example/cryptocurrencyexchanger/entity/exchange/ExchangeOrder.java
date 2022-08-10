@@ -26,6 +26,8 @@ public class ExchangeOrder {
     @ToString.Exclude
     private ExchangerUser user;
 
+    private String email;
+
     private String givenCoin;
 
     private String takenCoin;

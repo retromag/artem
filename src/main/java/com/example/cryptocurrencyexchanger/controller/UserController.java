@@ -266,16 +266,47 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @PostMapping("/make/exchange")
-    public String completeOrder(@Valid @ModelAttribute("note") ExchangeOrder note) {
+    @PostMapping("/exchange/create")
+    public String completeOrder(@Valid @ModelAttribute("note") ExchangeOrder order) {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
-            note.setUser(user);
+            order.setUser(user);
         }
 
-        exchangeService.makeAnExchange(note);
+        exchangeService.makeAnExchange(order);
 
         return "index";
+    }
+
+    @PostMapping("/exchange/pay")
+    public String payOrder(@Valid @ModelAttribute("note") ExchangeOrder order) {
+        exchangeService.payForExchange(order);
+
+        return "index";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @PostMapping("/exchange/confirm")
+    public String confirmOrder(@Valid @ModelAttribute("note") ExchangeOrder order, HttpServletRequest request) {
+        exchangeService.completeExchange(order);
+
+        return getPreviousPageByRequest(request).orElse("/");
+    }
+
+    @Secured("ROLE_ADMIN")
+    @PostMapping("/exchange/cancel")
+    public String cancelOrder(@Valid @ModelAttribute("note") ExchangeOrder order, HttpServletRequest request) {
+        exchangeService.cancelExchange(order);
+
+        return getPreviousPageByRequest(request).orElse("/");
+    }
+
+    @Secured("ROLE_ADMIN")
+    @PostMapping("/exchange/delete")
+    public String deleteOrder(@Valid @ModelAttribute("note") ExchangeOrder order, HttpServletRequest request) {
+        exchangeService.deleteExchange(order);
+
+        return getPreviousPageByRequest(request).orElse("/");
     }
 
     @GetMapping("/forgot/password")
@@ -291,5 +322,9 @@ public class UserController {
     @GetMapping("/update/password")
     public String showUpdatePasswordPage() {
         return "update_password";
+    }
+
+    private Optional<String> getPreviousPageByRequest(HttpServletRequest request) {
+        return Optional.ofNullable(request.getHeader("Referer")).map(requestUrl -> "redirect:" + requestUrl);
     }
 }

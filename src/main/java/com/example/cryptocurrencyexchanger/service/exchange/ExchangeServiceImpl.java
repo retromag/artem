@@ -18,27 +18,32 @@ public class ExchangeServiceImpl implements ExchangeService {
     ExchangeRepository exchangeRepository;
 
     @Override
-    public void makeAnExchange(ExchangeOrder note) {
-        note.setStatus("Preliminary application");
-        exchangeRepository.save(note);
+    public void makeAnExchange(ExchangeOrder order) {
+        order.setStatus("Preliminary application");
+        exchangeRepository.save(order);
     }
 
     @Override
-    public void payForExchange(ExchangeOrder note) {
-        note.setStatus("Wait confirmation");
-        exchangeRepository.save(note);
+    public void payForExchange(ExchangeOrder order) {
+        order.setStatus("Wait confirmation");
+        exchangeRepository.save(order);
     }
 
     @Override
-    public void completeExchange(ExchangeOrder note) {
-        note.setStatus("Complete");
-        exchangeRepository.save(note);
+    public void completeExchange(ExchangeOrder order) {
+        order.setStatus("Complete");
+        exchangeRepository.save(order);
     }
 
     @Override
-    public void cancelExchange(ExchangeOrder note) {
-        note.setStatus("Order deleted");
-        exchangeRepository.save(note);
+    public void cancelExchange(ExchangeOrder order) {
+        order.setStatus("Order deleted");
+        exchangeRepository.save(order);
+    }
+
+    @Override
+    public void deleteExchange(ExchangeOrder order) {
+        exchangeRepository.delete(order);
     }
 
     @Override
