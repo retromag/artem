@@ -1140,6 +1140,10 @@ footer {
   left: 10px;
 }
 
+.order_hidden_input_abbr {
+  display: none;
+}
+
 /* Breakpoint sizes */
 /**/
 /* Create the mixin (usually in a separate .scss file) */
