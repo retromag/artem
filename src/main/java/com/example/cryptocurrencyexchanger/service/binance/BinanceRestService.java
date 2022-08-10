@@ -22,33 +22,56 @@ public class BinanceRestService implements BinanceService {
     @Override
     public BigDecimal getResultPriceFirstInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
         if (firstSymbol.equals("USDT")) {
-            BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
-            BigDecimal amountOfTakenCoin = amount.divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
-            BigDecimal marginOfTakenCoin = getCoinMargin(secondSymbol);
-            BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100) , 7, RoundingMode.HALF_UP);
-
-            return amountOfTakenCoin.subtract(resultMargin);
+            return getResultPriceIfInputUSDT(amount, secondSymbol);
+        } else if (secondSymbol.equals("USDT")) {
+            return getResultPriceIfSecondInputUSDT(amount, firstSymbol);
         } else {
-            BigDecimal givenCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
-            BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
-
-            BigDecimal priceWithAmount = givenCoinInUSDT.multiply(amount);
-            BigDecimal amountOfTakenCoin = priceWithAmount.divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
-            BigDecimal marginOfTakenCoin = getCoinMargin(secondSymbol);
-            BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100) , 7, RoundingMode.HALF_UP);
-
-            return amountOfTakenCoin.subtract(resultMargin);
+            return getResultPrice(amount, firstSymbol, secondSymbol);
         }
+
     }
+
+    private BigDecimal getResultPriceIfInputUSDT(BigDecimal amount, String symbol) {
+        BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(symbol);
+        BigDecimal amountOfTakenCoin = amount.divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
+        BigDecimal marginOfTakenCoin = getCoinMargin(symbol);
+        BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100), 7, RoundingMode.HALF_UP);
+
+        return amountOfTakenCoin.subtract(resultMargin);
+    }
+
+    private BigDecimal getResultPriceIfSecondInputUSDT(BigDecimal amount, String symbol) {
+        BigDecimal coinPriceInUSDT = getCoinPriceInUSDT(symbol);
+        BigDecimal amountOfTakenCoin = amount.multiply(coinPriceInUSDT);
+        BigDecimal marginOfTakenCoin = getCoinMargin(symbol);
+        BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100), 7, RoundingMode.HALF_UP);
+
+        return amountOfTakenCoin.subtract(resultMargin);
+    }
+
+    private BigDecimal getResultPrice(BigDecimal amount, String firstSymbol, String secondSymbol) {
+        BigDecimal givenCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
+        BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
+
+        BigDecimal priceWithAmount = givenCoinInUSDT.multiply(amount);
+        BigDecimal amountOfTakenCoin = priceWithAmount.divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
+        BigDecimal marginOfTakenCoin = getCoinMargin(secondSymbol);
+        BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100), 7, RoundingMode.HALF_UP);
+
+        return amountOfTakenCoin.subtract(resultMargin);
+    }
+
 
     // TODO: fix logic of calculating magrin if user enter how much he want receive
     @Override
     public BigDecimal getResultPriceSecondInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
+
+
         BigDecimal priceBetweenPair = getPairPrice(firstSymbol, secondSymbol);
 
         BigDecimal resultWithoutMargin = amount.divide(priceBetweenPair, 5, RoundingMode.HALF_UP);
         BigDecimal marginOfTakenCoin = getCoinMargin(secondSymbol);
-        BigDecimal resultMargin = resultWithoutMargin.multiply(marginOfTakenCoin).divide(new BigDecimal(100) , 5, RoundingMode.HALF_UP);
+        BigDecimal resultMargin = resultWithoutMargin.multiply(marginOfTakenCoin).divide(new BigDecimal(100), 5, RoundingMode.HALF_UP);
 
         return resultWithoutMargin.add(resultMargin);
     }
@@ -67,6 +90,6 @@ public class BinanceRestService implements BinanceService {
 
     @SneakyThrows
     private BigDecimal getCoinPriceInUSDT(String symbol) {
-        return binanceApi.pricesMap().get(symbol+"USDT");
+        return binanceApi.pricesMap().get(symbol + "USDT");
     }
 }
