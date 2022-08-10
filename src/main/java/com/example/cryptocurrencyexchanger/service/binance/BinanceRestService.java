@@ -26,9 +26,27 @@ public class BinanceRestService implements BinanceService {
         } else if (secondSymbol.equals("USDT")) {
             return getResultPriceIfSecondInputUSDT(amount, firstSymbol);
         } else {
-            return getResultPrice(amount, firstSymbol, secondSymbol);
+            return getPriceFirstInput(amount, firstSymbol, secondSymbol);
         }
+    }
 
+    @Override
+    public BigDecimal getResultPriceSecondInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
+        if (firstSymbol.equals("USDT")) {
+            return getResultPriceIfInputUSDT(amount, secondSymbol);
+        } else if (secondSymbol.equals("USDT")) {
+            return getResultPriceIfSecondInputUSDT(amount, firstSymbol);
+        } else {
+            return getPriceSecondInput(amount, firstSymbol, secondSymbol);
+        }
+    }
+
+    @Override
+    public BigDecimal getPairPrice(String firstSymbol, String secondSymbol) {
+        BigDecimal firstCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
+        BigDecimal secondCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
+
+        return firstCoinInUSDT.divide(secondCoinInUSDT, 5, RoundingMode.HALF_UP);
     }
 
     private BigDecimal getResultPriceIfInputUSDT(BigDecimal amount, String symbol) {
@@ -49,39 +67,32 @@ public class BinanceRestService implements BinanceService {
         return amountOfTakenCoin.subtract(resultMargin);
     }
 
-    private BigDecimal getResultPrice(BigDecimal amount, String firstSymbol, String secondSymbol) {
-        BigDecimal givenCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
-        BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
+    private BigDecimal getPriceFirstInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
+        BigDecimal amountOfTakenCoin = calculateResultAmountTakenCoins(amount, firstSymbol, secondSymbol);
+        BigDecimal resultMargin = calculateResultMargin(amountOfTakenCoin, secondSymbol);
 
-        BigDecimal priceWithAmount = givenCoinInUSDT.multiply(amount);
-        BigDecimal amountOfTakenCoin = priceWithAmount.divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
-        BigDecimal marginOfTakenCoin = getCoinMargin(secondSymbol);
-        BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100), 7, RoundingMode.HALF_UP);
+        return amountOfTakenCoin.add(resultMargin);
+    }
+
+    private BigDecimal getPriceSecondInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
+        BigDecimal amountOfTakenCoin = calculateResultAmountTakenCoins(amount, firstSymbol, secondSymbol);
+        BigDecimal resultMargin = calculateResultMargin(amountOfTakenCoin, secondSymbol);
 
         return amountOfTakenCoin.subtract(resultMargin);
     }
 
+    private BigDecimal calculateResultAmountTakenCoins(BigDecimal amount, String firstSymbol, String secondSymbol) {
+        BigDecimal givenCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
+        BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
 
-    // TODO: fix logic of calculating magrin if user enter how much he want receive
-    @Override
-    public BigDecimal getResultPriceSecondInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
+        BigDecimal priceWithAmount = givenCoinInUSDT.multiply(amount);
 
-
-        BigDecimal priceBetweenPair = getPairPrice(firstSymbol, secondSymbol);
-
-        BigDecimal resultWithoutMargin = amount.divide(priceBetweenPair, 5, RoundingMode.HALF_UP);
-        BigDecimal marginOfTakenCoin = getCoinMargin(secondSymbol);
-        BigDecimal resultMargin = resultWithoutMargin.multiply(marginOfTakenCoin).divide(new BigDecimal(100), 5, RoundingMode.HALF_UP);
-
-        return resultWithoutMargin.add(resultMargin);
+        return priceWithAmount.divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
     }
 
-    @Override
-    public BigDecimal getPairPrice(String firstSymbol, String secondSymbol) {
-        BigDecimal firstCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
-        BigDecimal secondCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
-
-        return firstCoinInUSDT.divide(secondCoinInUSDT, 5, RoundingMode.HALF_UP);
+    private BigDecimal calculateResultMargin(BigDecimal amountOfTakenCoin, String secondSymbol) {
+        BigDecimal marginOfTakenCoin = getCoinMargin(secondSymbol);
+        return amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100), 7, RoundingMode.HALF_UP);
     }
 
     private BigDecimal getCoinMargin(String symbol) {
