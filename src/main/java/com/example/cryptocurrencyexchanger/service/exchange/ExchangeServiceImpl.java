@@ -47,6 +47,11 @@ public class ExchangeServiceImpl implements ExchangeService {
     }
 
     @Override
+    public ExchangeOrder findOrderById(Long id) {
+        return exchangeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid exchange Id:" + id));
+    }
+
+    @Override
     public ExchangeOrder findOrderByCode(String code) {
         return exchangeRepository.findByUniqCode(code);
     }

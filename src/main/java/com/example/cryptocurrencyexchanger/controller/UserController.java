@@ -309,25 +309,25 @@ public class UserController {
     }
 
     @Secured("ROLE_ADMIN")
-    @PostMapping("/exchange/confirm")
-    public String confirmOrder(@Valid @ModelAttribute("note") ExchangeOrder order, HttpServletRequest request) {
-        exchangeService.completeExchange(order);
+    @PostMapping("/order/confirm/{id}")
+    public String confirmOrder(@PathVariable("id") Long id, HttpServletRequest request) {
+        exchangeService.completeExchange(exchangeService.findOrderById(id));
 
         return getPreviousPageByRequest(request).orElse("/");
     }
 
     @Secured("ROLE_ADMIN")
-    @PostMapping("/exchange/cancel")
-    public String cancelOrder(@Valid @ModelAttribute("note") ExchangeOrder order, HttpServletRequest request) {
-        exchangeService.cancelExchange(order);
+    @PostMapping("/order/cancel/{id}")
+    public String cancelOrder(@PathVariable("id") Long id, HttpServletRequest request) {
+        exchangeService.cancelExchange(exchangeService.findOrderById(id));
 
         return getPreviousPageByRequest(request).orElse("/");
     }
 
     @Secured("ROLE_ADMIN")
-    @PostMapping("/exchange/delete")
-    public String deleteOrder(@Valid @ModelAttribute("note") ExchangeOrder order, HttpServletRequest request) {
-        exchangeService.deleteExchange(order);
+    @PostMapping("/order/delete/{id}")
+    public String deleteOrder(@PathVariable("id") Long id, HttpServletRequest request) {
+        exchangeService.deleteExchange(exchangeService.findOrderById(id));
 
         return getPreviousPageByRequest(request).orElse("/");
     }
