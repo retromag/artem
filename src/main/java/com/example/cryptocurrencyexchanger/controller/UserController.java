@@ -2,6 +2,7 @@ package com.example.cryptocurrencyexchanger.controller;
 
 import com.example.cryptocurrencyexchanger.entity.coin.Coin;
 import com.example.cryptocurrencyexchanger.entity.exchange.ExchangeOrder;
+import com.example.cryptocurrencyexchanger.entity.review.Review;
 import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
 import com.example.cryptocurrencyexchanger.entity.user.UserModel;
 import com.example.cryptocurrencyexchanger.entity.user.VerificationToken;
@@ -10,6 +11,7 @@ import com.example.cryptocurrencyexchanger.exception.ValidPasswordException;
 import com.example.cryptocurrencyexchanger.service.amazon.AmazonService;
 import com.example.cryptocurrencyexchanger.service.coin.CoinService;
 import com.example.cryptocurrencyexchanger.service.exchange.ExchangeService;
+import com.example.cryptocurrencyexchanger.service.review.ReviewService;
 import com.example.cryptocurrencyexchanger.service.security.SecurityService;
 import com.example.cryptocurrencyexchanger.service.token.TokenService;
 import com.example.cryptocurrencyexchanger.service.user.UserService;
@@ -51,6 +53,7 @@ public class UserController {
     CoinService coinService;
     ExchangeService exchangeService;
     AmazonService amazonService;
+    ReviewService reviewService;
     MessageSource messages;
     JavaMailSender mailSender;
     SecurityService securityService;
@@ -66,6 +69,9 @@ public class UserController {
             note.setUser(userService.findByEmail(currentUser));
             model.addAttribute("note", note);
         }
+
+        List<Review> titleReviews = reviewService.getReviewsForTitlePage();
+        model.addAttribute("reviews", titleReviews);
 
         return "index";
     }
@@ -266,6 +272,15 @@ public class UserController {
         model.addAttribute("user", new UserModel());
 
         return "account_settings";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/account/lock/{email}")
+    public String blockUserAccount(@PathVariable("email") String email, HttpServletRequest request) {
+        ExchangerUser user = userService.findByEmail(email);
+        userService.lockUser(user);
+
+        return getPreviousPageByRequest(request).orElse("/");
     }
 
     @SneakyThrows

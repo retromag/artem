@@ -39,9 +39,11 @@ public class ExchangerUserService implements UserService {
                 user.isEnabled(),
                 true,
                 true,
-                true,
+                user.isNonLocked(),
                 mapRolesToAuthorities(user.getRoles()));
     }
+
+
     @Override
     public ExchangerUser findByEmail(final String email) {
         return userRepository.findByEmail(email);
@@ -70,12 +72,19 @@ public class ExchangerUserService implements UserService {
         return PasswordEncoder.passwordEncoder().matches(oldPassword, user.getPassword());
     }
 
+    @Override
+    public void lockUser(ExchangerUser user) {
+        user.setNonLocked(false);
+        userRepository.save(user);
+    }
+
     private ExchangerUser createUser(final UserModel userModel) {
         ExchangerUser user = new ExchangerUser();
         user.setEmail(userModel.getEmail());
         user.setPassword(PasswordEncoder.passwordEncoder().encode(userModel.getPassword()));
         user.setRoles(Collections.singletonList(new UserRole("ROLE_USER")));
         user.setAllPrivileges(false);
+        user.setNonLocked(true);
 
         return user;
     }

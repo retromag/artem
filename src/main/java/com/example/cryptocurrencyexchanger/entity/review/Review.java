@@ -21,4 +21,6 @@ public class Review {
     private String username;
 
     private String massage;
+
+    private int rate;
 }

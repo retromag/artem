@@ -7,6 +7,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.HashSet;
@@ -36,12 +37,18 @@ public class ExchangerUser {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "walletAmount")
+    private BigDecimal walletAmount;
+
     @CreationTimestamp
     @Column(name = "create_time")
     private Timestamp registrationDate;
 
     @Column(name = "enabled")
     private boolean enabled;
+
+    @Column(name = "nonLocked")
+    private boolean nonLocked;
 
     @Column(name = "all_privileges")
     private boolean allPrivileges;
