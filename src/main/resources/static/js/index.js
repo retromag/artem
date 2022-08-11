@@ -21,6 +21,7 @@ const bottomInput = document.querySelector('.js-bottom-input');
 
 //rate element in bottom dropdown
 const rateElement = document.querySelector('.js-rate');
+const hiddenInputRateElement = document.querySelector('.js-hidden-input-rate');
 
 //buttons exchange in shortcuts
 const buttonsExchangeShortcut = document.querySelectorAll('.js-shortcut-btn-exchange');
@@ -58,6 +59,7 @@ const getCourse = async (firstSymbol, secondSymbol) => {
     const response = await fetch(`http://localhost:8080/api/app/get/price/?firstSymbol=${firstSymbol}&secondSymbol=${secondSymbol}`);
     const data = await response.json();
     rateElement.textContent = `1 ${firstSymbol} - ${data} ${secondSymbol}`;
+    hiddenInputRateElement.value = `1 ${firstSymbol} - ${data} ${secondSymbol}`;
 }
 //get min and max amount of coins and set them to appropriate element
 const getMinAndMaxAmountOfCoins = async (coinAbbr) => {
