@@ -37,7 +37,7 @@ public class ExchangeServiceImpl implements ExchangeService {
 
     @Override
     public void cancelExchange(ExchangeOrder order) {
-        order.setStatus("Order deleted");
+        order.setStatus("Order canceled");
         exchangeRepository.save(order);
     }
 
@@ -54,9 +54,9 @@ public class ExchangeServiceImpl implements ExchangeService {
     @Override
     public List<ExchangeOrder> getAllExchangeOrders(ExchangerUser user) {
         if (user.isAllPrivileges()) {
-            return exchangeRepository.findAll();
+            return exchangeRepository.findByOrderByCreatedTimeDesc();
         } else {
-            return exchangeRepository.getAllByUser(user);
+            return exchangeRepository.getAllByUserOrderByCreatedTimeDesc(user);
         }
     }
 

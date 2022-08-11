@@ -75,7 +75,7 @@
                             <p class="history_item_subtitle" th:text="${order.status}">( Предварительная заявка )</p>
                             <div class="history_item_text_wrapper">
                                 <p class="history_item_text history_item_text__time" th:text="${order.createdTime}">10.08.2022 в 19:37:54</p>
-                                <p class="history_item_text">1 ETH - 0.07659598 BTC</p>
+                                <p class="history_item_text" th:text="${order.currentCourse}">1 ETH - 0.07659598 BTC</p>
                             </div>
                         </div>
                         <div class="history_item_right_col">

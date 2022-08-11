@@ -40,6 +40,8 @@ public class ExchangeOrder {
 
     private String status;
 
+    private String currentCourse;
+
     @CreationTimestamp
     private Timestamp createdTime;
 

@@ -11,7 +11,9 @@ import java.util.List;
 public interface ExchangeRepository extends JpaRepository<ExchangeOrder, Long> {
     List<ExchangeOrder> getAllByStatus(String status);
 
-    List<ExchangeOrder> getAllByUser(ExchangerUser user);
+    List<ExchangeOrder> findByOrderByCreatedTimeDesc();
+
+    List<ExchangeOrder> getAllByUserOrderByCreatedTimeDesc(ExchangerUser user);
 
     ExchangeOrder findByUniqCode(String code);
 }

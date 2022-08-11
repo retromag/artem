@@ -38,6 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/rules",
                         "/aml",
                         "/exchange/create",
+                        "/exchange/pay",
                         "/api/**",
                         "/js/**",
                         "/css/**",
