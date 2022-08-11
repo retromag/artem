@@ -658,6 +658,9 @@ header {
     height: 15px;
   }
 }
+.btn_save {
+  width: 100%;
+}
 
 .btns_auth_wrapper {
   display: -webkit-box;
@@ -1142,6 +1145,49 @@ footer {
 
 .order_hidden_input_abbr {
   display: none;
+}
+
+.settings_left_col {
+  padding: 30px;
+  background: #FFFFFF;
+  border: 1px solid #B3DAFF;
+  -webkit-box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
+          box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
+  border-radius: 15px;
+}
+.settings_left_col_wrapper {
+  width: 48%;
+}
+.settings_right_col {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #D9DADB;
+  -webkit-box-shadow: inset -10px 10px 24px rgba(255, 255, 255, 0.56);
+          box-shadow: inset -10px 10px 24px rgba(255, 255, 255, 0.56);
+  border-radius: 35px;
+  padding: 30px;
+  font-size: 16px;
+  line-height: 22.4px;
+}
+.settings_right_col_wrapper {
+  width: 48%;
+}
+.settings_subtitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  text-align: left;
+}
+.settings_block_wrapper {
+  margin-top: 50px;
+}
+
+.settings_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 /* Breakpoint sizes */

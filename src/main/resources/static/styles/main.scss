@@ -528,6 +528,9 @@ header {
       }
     }
   }
+  &_save {
+    width: 100%;
+  }
 }
 .btns_auth_wrapper {
   display: flex;
@@ -977,4 +980,43 @@ footer {
 }
 .order_hidden_input_abbr {
   display: none;
+}
+.settings {
+  &_left_col {
+    padding: 30px;
+    background: #FFFFFF;
+    border: 1px solid #B3DAFF;
+    box-shadow: 0 7px 25px rgb(30 120 255 / 25%);
+    border-radius: 15px;
+    //min-height: 100%;
+
+    &_wrapper {
+      width: 48%;
+    }
+  }
+  &_right_col {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #D9DADB;
+    box-shadow: inset -10px 10px 24px rgb(255 255 255 / 56%);
+    border-radius: 35px;
+    padding: 30px;
+    font-size: 16px;
+    line-height: 22.4px;
+    &_wrapper {
+      width: 48%;
+    }
+  }
+  &_subtitle {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  &_block_wrapper {
+    margin-top: 50px;
+  }
+}
+.settings_wrapper {
+  display: flex;
+  justify-content: space-between;
 }
