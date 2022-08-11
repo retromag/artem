@@ -12,99 +12,101 @@
 
 </head>
 <body>
-<header>
-    <div class="container">
-        <div class="header_block">
-            <div class="logo_wrapper">
-                <div class="logo_img_wrapper">
+<div class="content">
+    <header>
+        <div class="container">
+            <div class="header_block">
+                <div class="logo_wrapper">
+                    <div class="logo_img_wrapper">
+                        <a href="/">
+                            <img src="/images/logo.png" alt="" class="logo_img">
+                        </a>
+                    </div>
                     <a href="/">
-                        <img src="/images/logo.png" alt="" class="logo_img">
+                        <p class="logo_text">HELMETSWAP</p>
                     </a>
                 </div>
-                <a href="/">
-                    <p class="logo_text">HELMETSWAP</p>
-                </a>
+                <nav class="nav_menu_wrapper">
+                    <ul class="nav_menu">
+                        <li class="nav_menu__item"><a href="#" class="nav_menu__item_link">Выполнить обмен</a></li>
+                        <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link">Резервы</a></li>
+                        <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="/images/ru.png" alt=""
+                                                                                    class="flag"></li>
+                        <li class="nav_menu__item">
+                            <a href="/registration" class="btn_authorization btn_general">Авторизация</a>
+                            <a href="/registration" class="btn_authorization_mobile"><img src="../static/images/user.svg" alt=""></a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <nav class="nav_menu_wrapper">
-                <ul class="nav_menu">
-                    <li class="nav_menu__item"><a href="#" class="nav_menu__item_link">Выполнить обмен</a></li>
-                    <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link">Резервы</a></li>
-                    <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="/images/ru.png" alt=""
-                                                                                class="flag"></li>
-                    <li class="nav_menu__item">
-                        <a href="/registration" class="btn_authorization btn_general">Авторизация</a>
-                        <a href="/registration" class="btn_authorization_mobile"><img src="../static/images/user.svg" alt=""></a>
-                    </li>
-                </ul>
-            </nav>
         </div>
-    </div>
-</header>
-<form th:action="@{/reserves/add}" method="post" class="auth_form_container" enctype="multipart/form-data">
-    <p class="auth_text">Добавить новую крипту</p>
+    </header>
+    <form th:action="@{/reserves/add}" method="post" class="auth_form_container" enctype="multipart/form-data">
+        <p class="auth_text">Добавить новую крипту</p>
 
-    <div>
-        <input type="text"
-               name="name"
-               placeholder="Bitcoin"
-               class="input_general input_auth"
-        />
-    </div>
-    <div>
-        <input type="number"
-               name="amount"
-               placeholder="Количество монет"
-               class="input_general input_auth"
-        />
-    </div>
-    <div>
-        <input type="number" step="any"
-               name="minAmount"
-               placeholder="Минимальное количество монет для торговли"
-               class="input_general input_auth"
-        />
-    </div>
-    <div>
-        <input type="text"
-               name="symbol"
-               placeholder="BTC"
-               class="input_general input_auth"
-        />
-    </div>
-    <div>
-        <input type="text"
-               name="wallet"
-               placeholder="bc1q5pyzwtk52c5sh4xhqw04w0cju6up5h6tf5dn3l"
-               class="input_general input_auth"
-        />
-    </div>
-    <div>
-        <input type="number" step="any"
-               name="margin"
-               placeholder="Наценка на монету в процентах"
-               class="input_general input_auth"
-        />
-    </div>
+        <div>
+            <input type="text"
+                   name="name"
+                   placeholder="Bitcoin"
+                   class="input_general input_auth"
+            />
+        </div>
+        <div>
+            <input type="number"
+                   name="amount"
+                   placeholder="Количество монет"
+                   class="input_general input_auth"
+            />
+        </div>
+        <div>
+            <input type="number" step="any"
+                   name="minAmount"
+                   placeholder="Минимальное количество монет для торговли"
+                   class="input_general input_auth"
+            />
+        </div>
+        <div>
+            <input type="text"
+                   name="symbol"
+                   placeholder="BTC"
+                   class="input_general input_auth"
+            />
+        </div>
+        <div>
+            <input type="text"
+                   name="wallet"
+                   placeholder="bc1q5pyzwtk52c5sh4xhqw04w0cju6up5h6tf5dn3l"
+                   class="input_general input_auth"
+            />
+        </div>
+        <div>
+            <input type="number" step="any"
+                   name="margin"
+                   placeholder="Наценка на монету в процентах"
+                   class="input_general input_auth"
+            />
+        </div>
 
-    <div class="input_file_wrapper">
-        <input type="file" multiple accept="image/*,image/jpeg" name="image" id="image" class="input-file">
-        <label for="image" class="btn btn-tertiary js-labelFile">
-            <i class="icon fa fa-check"></i>
-            <span class="js-fileName">Загрузить изображение</span>
-        </label>
-    </div>
-    <div class="input_file_wrapper">
-        <input type="file" multiple accept="image/*,image/jpeg" name="qrcode" id="qrcode" class="input-file">
-        <label for="qrcode" class="btn btn-tertiary js-labelFile">
-            <i class="icon fa fa-check"></i>
-            <span class="js-fileName">Загрузить qrcode</span>
-        </label>
-    </div>
+        <div class="input_file_wrapper">
+            <input type="file" multiple accept="image/*,image/jpeg" name="image" id="image" class="input-file">
+            <label for="image" class="btn btn-tertiary js-labelFile">
+                <i class="icon fa fa-check"></i>
+                <span class="js-fileName">Загрузить изображение</span>
+            </label>
+        </div>
+        <div class="input_file_wrapper">
+            <input type="file" multiple accept="image/*,image/jpeg" name="qrcode" id="qrcode" class="input-file">
+            <label for="qrcode" class="btn btn-tertiary js-labelFile">
+                <i class="icon fa fa-check"></i>
+                <span class="js-fileName">Загрузить qrcode</span>
+            </label>
+        </div>
 
-    <div class="btn_add_coin_wrapper">
-        <button type="submit" class="btn_general btn_add_coin">Добавить монету</button>
-    </div>
-</form>
+        <div class="btn_add_coin_wrapper">
+            <button type="submit" class="btn_general btn_add_coin">Добавить монету</button>
+        </div>
+    </form>
+</div>
 <footer>
     <div class="container">
         <div class="footer_wrapper">
@@ -136,6 +138,6 @@
         </div>
     </div>
 </footer>
-<script src="/js/index.js"></script>
+<script src="/js/add_coin.js"></script>
 </body>
 </html>

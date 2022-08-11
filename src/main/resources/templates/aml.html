@@ -7,55 +7,57 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Document</title>
 
 </head>
 <body>
-<header>
-    <div class="container">
-        <div class="header_block">
-            <div class="logo_wrapper">
-                <div class="logo_img_wrapper">
+<div class="content">
+    <header>
+        <div class="container">
+            <div class="header_block">
+                <div class="logo_wrapper">
+                    <div class="logo_img_wrapper">
+                        <a href="/">
+                            <img src="/images/logo.png" alt="" class="logo_img">
+                        </a>
+                    </div>
                     <a href="/">
-                        <img src="/images/logo.png" alt="" class="logo_img">
+                        <p class="logo_text">HELMETSWAP</p>
                     </a>
                 </div>
-                <a href="/">
-                    <p class="logo_text">HELMETSWAP</p>
-                </a>
+                <nav class="nav_menu_wrapper">
+                    <ul class="nav_menu">
+                        <li class="nav_menu__item"><a href="#" class="nav_menu__item_link">Выполнить обмен</a></li>
+                        <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link">Резервы</a></li>
+                        <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="/images/ru.png" alt=""
+                                                                                    class="flag"></li>
+                        <li sec:authorize="!isAuthenticated()">
+                            <div class="nav_menu__item">
+                                <a href="/registration" class="btn_authorization btn_general">Авторизация</a>
+                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg" alt=""></a>
+                            </div>
+                        </li>
+                        <li sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')" class="btns_auth_wrapper">
+                            <div><a href="/account/history" class="btn_cabinet_wrapper"><span class="btn_cabinet_user"><img
+                                    src="/images/user-1.svg" alt=""></span><span
+                                    class="btn_cabinet_text">Личный кабинет</span></a></div>
+                            <div><a href="/logout" class="btn_logout">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                    <path d="M160 416H96c-17.67 0-32-14.33-32-32V128c0-17.67 14.33-32 32-32h64c17.67 0 32-14.33 32-32S177.7 32 160 32H96C42.98 32 0 74.98 0 128v256c0 53.02 42.98 96 96 96h64c17.67 0 32-14.33 32-32S177.7 416 160 416zM502.6 233.4l-128-128c-12.51-12.51-32.76-12.49-45.25 0c-12.5 12.5-12.5 32.75 0 45.25L402.8 224H192C174.3 224 160 238.3 160 256s14.31 32 32 32h210.8l-73.38 73.38c-12.5 12.5-12.5 32.75 0 45.25s32.75 12.5 45.25 0l128-128C515.1 266.1 515.1 245.9 502.6 233.4z"/>
+                                </svg>
+                            </a></div>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <nav class="nav_menu_wrapper">
-                <ul class="nav_menu">
-                    <li class="nav_menu__item"><a href="#" class="nav_menu__item_link">Выполнить обмен</a></li>
-                    <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link">Резервы</a></li>
-                    <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="/images/ru.png" alt=""
-                                                                                class="flag"></li>
-                    <li sec:authorize="!isAuthenticated()">
-                        <div class="nav_menu__item">
-                            <a href="/registration" class="btn_authorization btn_general">Авторизация</a>
-                            <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg" alt=""></a>
-                        </div>
-                    </li>
-                    <li sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')" class="btns_auth_wrapper">
-                        <div><a href="/account/history" class="btn_cabinet_wrapper"><span class="btn_cabinet_user"><img
-                                src="/images/user-1.svg" alt=""></span><span
-                                class="btn_cabinet_text">Личный кабинет</span></a></div>
-                        <div><a href="/logout" class="btn_logout">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                                <path d="M160 416H96c-17.67 0-32-14.33-32-32V128c0-17.67 14.33-32 32-32h64c17.67 0 32-14.33 32-32S177.7 32 160 32H96C42.98 32 0 74.98 0 128v256c0 53.02 42.98 96 96 96h64c17.67 0 32-14.33 32-32S177.7 416 160 416zM502.6 233.4l-128-128c-12.51-12.51-32.76-12.49-45.25 0c-12.5 12.5-12.5 32.75 0 45.25L402.8 224H192C174.3 224 160 238.3 160 256s14.31 32 32 32h210.8l-73.38 73.38c-12.5 12.5-12.5 32.75 0 45.25s32.75 12.5 45.25 0l128-128C515.1 266.1 515.1 245.9 502.6 233.4z"/>
-                            </svg>
-                        </a></div>
-                    </li>
-                </ul>
-            </nav>
         </div>
+    </header>
+    <div class="container">
     </div>
-</header>
-<div class="container">
 </div>
 <footer>
     <div class="container">
@@ -88,6 +90,5 @@
         </div>
     </div>
 </footer>
-<script src="/js/index.js"></script>
 </body>
 </html>
