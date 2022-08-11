@@ -50,6 +50,15 @@
 </header>
 <div class="settings_block_wrapper">
     <div class="container">
+        <div class="account_header">
+            <h4 class="account_title">Личный кабинет</h4>
+            <div class="account_header_btns_wrapper">
+                <ul class="account_header_btns">
+                    <li class="account_header_btn"><a  th:href="@{/account/history}">История</a></li>
+                    <li class="account_header_btn"><a  th:href="@{/account/settings}">Настройки</a></li>
+                </ul>
+            </div>
+        </div>
         <form class="settings_wrapper" th:action="@{/user/update/password}" th:object="${user}" method="post">
 
             <div class="settings_left_col_wrapper">

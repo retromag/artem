@@ -1188,6 +1188,148 @@ footer {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-top: 30px;
+}
+
+.account_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 50px;
+}
+.account_header_btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.account_header_btn a {
+  font-size: 18px;
+  line-height: 43px;
+  color: #585D62;
+  border-radius: 30px;
+  -webkit-transition: background 0.25s;
+  -o-transition: background 0.25s;
+  transition: background 0.25s;
+  display: inline-block;
+  padding: 0 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.account_header_btn a:hover {
+  cursor: pointer;
+  background: #8D54E0;
+  color: #fff;
+}
+.account_title {
+  font-size: 42px;
+  line-height: 35px;
+}
+
+.history_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.history_item_wrapper {
+  padding: 25px;
+  background: #FFFFFF;
+  border: 1px solid #B3DAFF;
+  -webkit-box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
+          box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.history_item_text_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.history_item_right_col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 35%;
+}
+.history_item_imgs_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.history_item_img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.history_item_img_wrapper {
+  width: 54px;
+  height: 54px;
+  display: block;
+}
+.history_item_img_wrapper__arrow {
+  width: 24px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.history_item_img_wrapper__arrow svg {
+  fill: #0d6efd;
+}
+.history_item_title {
+  color: #8D54E0;
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+.history_item_subtitle {
+  color: #11181F;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.history_item_text {
+  color: #11181F;
+  font-size: 14px;
+}
+.history_item_text__time {
+  margin-right: 15px;
+}
+.history_item_amount {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: bold;
+}
+.history_item_result {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: bold;
+}
+.history_item_wallet {
+  color: #A7AAAC;
+  word-break: break-all;
+  font-size: 12px;
+  line-height: 18px;
 }
 
 /* Breakpoint sizes */
