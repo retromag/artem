@@ -203,8 +203,8 @@ public class UserController {
     @PostMapping("/reserves/add")
     public String addNewCoin(Coin coin, @RequestParam(value = "image", required = false) MultipartFile image,
                              @RequestParam(value = "qrcode", required = false) MultipartFile qrcode) {
-        coinService.addNewCoin(coin);
 
+        coinService.addNewCoin(coin);
         if (!image.isEmpty()) {
             amazonService.uploadImage(image, coin.getSymbol());
         }
@@ -227,8 +227,15 @@ public class UserController {
 
     @Secured("ROLE_ADMIN")
     @PostMapping("/reserves/update/coin")
-    public String updateCoin(@Valid Coin coin) {
+    public String updateCoin(@Valid Coin coin, @RequestParam(value = "image", required = false) MultipartFile image,
+                             @RequestParam(value = "qrcode", required = false) MultipartFile qrcode) {
         coinService.updateCoin(coin);
+        if (!image.isEmpty()) {
+            amazonService.uploadImage(image, coin.getSymbol());
+        }
+        if (!qrcode.isEmpty()) {
+            amazonService.uploadQRCode(qrcode, coin.getSymbol());
+        }
 
         return "redirect:/reserves";
     }
