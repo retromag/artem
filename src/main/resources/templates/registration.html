@@ -11,70 +11,72 @@
 
 </head>
 <body>
-<header>
-    <div class="container">
-        <div class="header_block">
-            <div class="logo_wrapper">
-                <div class="logo_img_wrapper">
+<div class="content">
+    <header>
+        <div class="container">
+            <div class="header_block">
+                <div class="logo_wrapper">
+                    <div class="logo_img_wrapper">
+                        <a href="/">
+                            <img src="/images/logo.png" alt="" class="logo_img">
+                        </a>
+                    </div>
                     <a href="/">
-                        <img src="/images/logo.png" alt="" class="logo_img">
+                        <p class="logo_text">HELMETSWAP</p>
                     </a>
                 </div>
-                <a href="/">
-                    <p class="logo_text">HELMETSWAP</p>
-                </a>
+                <nav class="nav_menu_wrapper">
+                    <ul class="nav_menu">
+                        <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="/images/ru.png" alt="" class="flag"></li>
+                    </ul>
+                </nav>
             </div>
-            <nav class="nav_menu_wrapper">
-                <ul class="nav_menu">
-                    <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="/images/ru.png" alt="" class="flag"></li>
-                </ul>
-            </nav>
         </div>
-    </div>
-</header>
-<form class="registration auth_form_container" th:action="@{/registration}" th:object="${user}" method="post">
-    <p class="auth_text">Регистрация</p>
-    <div th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
-        <p th:each="error : ${#fields.errors('email')}"
-           th:text="${error}" class="invalid_data">Validation error</p>
-        <input type="email"
-               id="email"
-               class="email input_email input_general input_auth"
-               placeholder="Ваш E-mail"
-               th:field="*{email}"
-        ><br>
-    </div>
-    <div th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
-        <p th:each="error : ${#fields.errors('password')}"
-           th:text="${error}" class="invalid_data">Validation error</p>
-        <input type="password"
-               id="password"
-               class="input_password input_general input_auth"
-               placeholder="Введите пароль"
-               th:field="*{password}"
-        ><br>
-    </div>
-    <div th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
-        <p th:each="error : ${#fields.errors('confirmPassword')}"
-           th:text="${error}" class="invalid_data">Validation error</p>
-        <input id="confirmPassword"
-               type="password"
-               placeholder="Введите пароль повторно"
-               class="password input_password input_general input_auth"
-               th:field="*{confirmPassword}"/>
-    </div>
+    </header>
+    <form class="registration auth_form_container" th:action="@{/registration}" th:object="${user}" method="post">
+        <p class="auth_text">Регистрация</p>
+        <div th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+            <p th:each="error : ${#fields.errors('email')}"
+               th:text="${error}" class="invalid_data">Validation error</p>
+            <input type="email"
+                   id="email"
+                   class="email input_email input_general input_auth"
+                   placeholder="Ваш E-mail"
+                   th:field="*{email}"
+            ><br>
+        </div>
+        <div th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+            <p th:each="error : ${#fields.errors('password')}"
+               th:text="${error}" class="invalid_data">Validation error</p>
+            <input type="password"
+                   id="password"
+                   class="input_password input_general input_auth"
+                   placeholder="Введите пароль"
+                   th:field="*{password}"
+            ><br>
+        </div>
+        <div th:classappend="${#fields.hasErrors('confirmPassword')}? 'has-error':''">
+            <p th:each="error : ${#fields.errors('confirmPassword')}"
+               th:text="${error}" class="invalid_data">Validation error</p>
+            <input id="confirmPassword"
+                   type="password"
+                   placeholder="Введите пароль повторно"
+                   class="password input_password input_general input_auth"
+                   th:field="*{confirmPassword}"/>
+        </div>
         <div class="checkbox_wrapper">
-        <div><label class="switch"><input type="checkbox" id="approve"><span class="slider round"></span></label><label for="approve" class="checkbox_label">Нажимаю кнопку зарегистрироваться, соглашаюсь с правилами обмена</label></div>
-        <div><label class="switch"><input type="checkbox" id="notification"><span class="slider round"></span></label><label  class="checkbox_label" for="notification">Получать уведомления об акциях и скидках</label></div>
-    </div>
-    <p th:if="${#fields.hasGlobalErrors()}"
-       th:each="error : ${#fields.errors('global')}"
-       th:text="${error}" class="invalid_data">Validation error</p>
-    <div class="auth_btns_wrapper">
-        <button type="submit" class="btn_general btn_auth">Регистрация</button>
-        <a th:href="@{/login}" class="btn_secondary btn_auth">ВОЙТИ</a>
-    </div>
-</form>
+            <div><label class="switch"><input type="checkbox" id="approve"><span class="slider round"></span></label><label for="approve" class="checkbox_label">Нажимаю кнопку зарегистрироваться, соглашаюсь с правилами обмена</label></div>
+            <div><label class="switch"><input type="checkbox" id="notification"><span class="slider round"></span></label><label  class="checkbox_label" for="notification">Получать уведомления об акциях и скидках</label></div>
+        </div>
+        <p th:if="${#fields.hasGlobalErrors()}"
+           th:each="error : ${#fields.errors('global')}"
+           th:text="${error}" class="invalid_data">Validation error</p>
+        <div class="auth_btns_wrapper">
+            <button type="submit" class="btn_general btn_auth">Регистрация</button>
+            <a th:href="@{/login}" class="btn_secondary btn_auth">ВОЙТИ</a>
+        </div>
+    </form>
+</div>
 <footer>
     <div class="container">
         <div class="footer_wrapper">

@@ -680,7 +680,7 @@ header {
 }
 .general_notification {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 100px;
   font-size: 25px;
   font-weight: 500;
 
@@ -1020,6 +1020,7 @@ footer {
   }
   &_block_wrapper {
     margin-top: 50px;
+    margin-bottom: 50px;
   }
 }
 .settings_wrapper {
