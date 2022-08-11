@@ -40,7 +40,7 @@
         </div>
     </div>
 </header>
-<form th:action="@{/reserves/add}" method="post" class="auth_form_container">
+<form th:action="@{/reserves/add}" method="post" class="auth_form_container" enctype="multipart/form-data">
     <p class="auth_text">Добавить новую крипту</p>
 
     <div>
@@ -87,10 +87,17 @@
     </div>
 
     <div class="input_file_wrapper">
-        <input type="file" multiple accept="image/*,image/jpeg" name="file" id="file" class="input-file">
-        <label for="file" class="btn btn-tertiary js-labelFile">
+        <input type="file" multiple accept="image/*,image/jpeg" name="image" id="image" class="input-file">
+        <label for="image" class="btn btn-tertiary js-labelFile">
             <i class="icon fa fa-check"></i>
-            <span class="js-fileName">Загрузить файл</span>
+            <span class="js-fileName">Загрузить изображение</span>
+        </label>
+    </div>
+    <div class="input_file_wrapper">
+        <input type="file" multiple accept="image/*,image/jpeg" name="qrcode" id="qrcode" class="input-file">
+        <label for="qrcode" class="btn btn-tertiary js-labelFile">
+            <i class="icon fa fa-check"></i>
+            <span class="js-fileName">Загрузить qrcode</span>
         </label>
     </div>
 

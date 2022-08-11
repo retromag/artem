@@ -129,7 +129,7 @@
                                         </div>
                                         <p class="order_input_title">Кошелек</p>
                                         <div class="order_coin_img_right_col_wrapper">
-                                            <img src="../static/images/bitcoin.png" alt="" class="order_coin_img_right_col">
+                                            <img src="" alt="" class="order_coin_img_right_col" th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${order.givenCoin}}">
                                         </div>
                                     </div>
                                     <div class="input_sum_wrapper input_order_wrapper">
@@ -143,12 +143,14 @@
                                         </div>
                                         <p class="order_input_title">На сумму</p>
                                         <div class="order_coin_img_right_col_wrapper">
-                                            <img src="../static/images/bitcoin.png" alt="" class="order_coin_img_right_col">
+                                            <img src="" alt="" class="order_coin_img_right_col" th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${order.givenCoin}}">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="qr_code_wrapper">
-                                    <div class="qr_code"></div>
+                                    <div class="qr_code">
+                                        <img th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/qrcode/'+${order.givenCoin}}">
+                                    </div>
                                 </div>
                             </div>
                             <p class="order_title">2. Обязательно, нажмите кнопку "я оплатил"</p>

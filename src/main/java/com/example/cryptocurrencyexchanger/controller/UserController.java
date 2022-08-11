@@ -7,6 +7,7 @@ import com.example.cryptocurrencyexchanger.entity.user.UserModel;
 import com.example.cryptocurrencyexchanger.entity.user.VerificationToken;
 import com.example.cryptocurrencyexchanger.event.OnRegistrationCompleteEvent;
 import com.example.cryptocurrencyexchanger.exception.ValidPasswordException;
+import com.example.cryptocurrencyexchanger.service.amazon.AmazonService;
 import com.example.cryptocurrencyexchanger.service.coin.CoinService;
 import com.example.cryptocurrencyexchanger.service.exchange.ExchangeService;
 import com.example.cryptocurrencyexchanger.service.security.SecurityService;
@@ -31,6 +32,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -48,6 +50,7 @@ public class UserController {
     TokenService tokenService;
     CoinService coinService;
     ExchangeService exchangeService;
+    AmazonService amazonService;
     MessageSource messages;
     JavaMailSender mailSender;
     SecurityService securityService;
@@ -198,8 +201,16 @@ public class UserController {
 
     @Secured("ROLE_ADMIN")
     @PostMapping("/reserves/add")
-    public String addNewCoin(Coin coin) {
+    public String addNewCoin(Coin coin, @RequestParam(value = "image", required = false) MultipartFile image,
+                             @RequestParam(value = "qrcode", required = false) MultipartFile qrcode) {
         coinService.addNewCoin(coin);
+
+        if (!image.isEmpty()) {
+            amazonService.uploadImage(image, coin.getSymbol());
+        }
+        if (!qrcode.isEmpty()) {
+            amazonService.uploadQRCode(qrcode, coin.getSymbol());
+        }
 
         return "redirect:/reserves";
     }
