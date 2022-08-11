@@ -6,7 +6,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Document</title>
@@ -65,20 +65,21 @@
                 </ul>
             </div>
         </div>
+        <tr th:each="order : ${orders}">
         <div class="history_items_wrapper">
             <div class="history_items">
                 <div class="history_item_wrapper">
                     <div class="history_item">
                         <div class="history_item_left_col">
-                            <div class="history_item_title">Заявка #<span>16601494675699</span></div>
-                            <p class="history_item_subtitle">( Предварительная заявка )</p>
+                            <div class="history_item_title">Заявка #<span th:text="${order.id}">16601494675699</span></div>
+                            <p class="history_item_subtitle" th:text="${order.status}">( Предварительная заявка )</p>
                             <div class="history_item_text_wrapper">
-                                <p class="history_item_text history_item_text__time">10.08.2022 в 19:37:54</p>
+                                <p class="history_item_text history_item_text__time" th:text="${order.createdTime}">10.08.2022 в 19:37:54</p>
                                 <p class="history_item_text">1 ETH - 0.07659598 BTC</p>
                             </div>
                         </div>
                         <div class="history_item_right_col">
-                            <p class="history_item_amount">7 ETH</p>
+                            <p class="history_item_amount" th:text="${order.givenAmount}">7 <span th:text="${order.givenCoin}"></span>ETH</p>
                             <div class="history_item_imgs_wrapper">
                                 <div class="history_item_img_wrapper">
                                     <img src="../static/images/bitcoin.png" alt="" class="history_item_img">
@@ -94,74 +95,8 @@
                                 </div>
                             </div>
                             <div class="history_item_result_wallet_wrapper">
-                                <p class="history_item_result">0.52035479 BTC</p>
-                                <p class="history_item_wallet">1BoatSLRHtKNngkdXEeobR76b53LETtpyT</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="history_item_wrapper">
-                    <div class="history_item">
-                        <div class="history_item_left_col">
-                            <div class="history_item_title">Заявка #<span>16601494675699</span></div>
-                            <p class="history_item_subtitle">( Предварительная заявка )</p>
-                            <div class="history_item_text_wrapper">
-                                <p class="history_item_text history_item_text__time">10.08.2022 в 19:37:54</p>
-                                <p class="history_item_text">1 ETH - 0.07659598 BTC</p>
-                            </div>
-                        </div>
-                        <div class="history_item_right_col">
-                            <p class="history_item_amount">7 ETH</p>
-                            <div class="history_item_imgs_wrapper">
-                                <div class="history_item_img_wrapper">
-                                    <img src="../static/images/bitcoin.png" alt="" class="history_item_img">
-                                </div>
-                                <div class="history_item_img_wrapper__arrow">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                        <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                                        <path d="M438.6 278.6l-160 160C272.4 444.9 264.2 448 256 448s-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L338.8 288H32C14.33 288 .0016 273.7 .0016 256S14.33 224 32 224h306.8l-105.4-105.4c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160C451.1 245.9 451.1 266.1 438.6 278.6z"/>
-                                    </svg>
-                                </div>
-                                <div class="history_item_img_wrapper">
-                                    <img src="../static/images/bitcoin.png" alt="" class="history_item_img">
-                                </div>
-                            </div>
-                            <div class="history_item_result_wallet_wrapper">
-                                <p class="history_item_result">0.52035479 BTC</p>
-                                <p class="history_item_wallet">1BoatSLRHtKNngkdXEeobR76b53LETtpyT</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="history_item_wrapper">
-                    <div class="history_item">
-                        <div class="history_item_left_col">
-                            <div class="history_item_title">Заявка #<span>16601494675699</span></div>
-                            <p class="history_item_subtitle">( Предварительная заявка )</p>
-                            <div class="history_item_text_wrapper">
-                                <p class="history_item_text history_item_text__time">10.08.2022 в 19:37:54</p>
-                                <p class="history_item_text">1 ETH - 0.07659598 BTC</p>
-                            </div>
-                        </div>
-                        <div class="history_item_right_col">
-                            <p class="history_item_amount">7 ETH</p>
-                            <div class="history_item_imgs_wrapper">
-                                <div class="history_item_img_wrapper">
-                                    <img src="../static/images/bitcoin.png" alt="" class="history_item_img">
-                                </div>
-                                <div class="history_item_img_wrapper__arrow">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                        <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                                        <path d="M438.6 278.6l-160 160C272.4 444.9 264.2 448 256 448s-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L338.8 288H32C14.33 288 .0016 273.7 .0016 256S14.33 224 32 224h306.8l-105.4-105.4c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160C451.1 245.9 451.1 266.1 438.6 278.6z"/>
-                                    </svg>
-                                </div>
-                                <div class="history_item_img_wrapper">
-                                    <img src="../static/images/bitcoin.png" alt="" class="history_item_img">
-                                </div>
-                            </div>
-                            <div class="history_item_result_wallet_wrapper">
-                                <p class="history_item_result">0.52035479 BTC</p>
-                                <p class="history_item_wallet">1BoatSLRHtKNngkdXEeobR76b53LETtpyT</p>
+                                <p class="history_item_result" th:text="${order.takenAmount}">0.52035479<span th:text="${order.takenCoin}"></span> BTC</p>
+                                <p class="history_item_wallet" th:text="${order.wallet}">1BoatSLRHtKNngkdXEeobR76b53LETtpyT</p>
                             </div>
                         </div>
                     </div>
@@ -170,34 +105,6 @@
         </div>
     </div>
 </div>
-<!--<table>-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>Id</th>-->
-<!--        <th>Status</th>-->
-<!--        <th>Time</th>-->
-<!--        <th>Given coin</th>-->
-<!--        <th>Given amount</th>-->
-<!--        <th>Taken coin</th>-->
-<!--        <th>Taken amount</th>-->
-<!--        <th>Wallet</th>-->
-<!--        <th>User email</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr th:each="order : ${orders}">-->
-<!--        <td th:text="${order.id}"></td>-->
-<!--        <td th:text="${order.status}"></td>-->
-<!--        <td th:text="${order.createdTime}"></td>-->
-<!--        <td th:text="${order.givenCoin}"></td>-->
-<!--        <td th:text="${order.givenAmount}"></td>-->
-<!--        <td th:text="${order.takenCoin}"></td>-->
-<!--        <td th:text="${order.takenAmount}"></td>-->
-<!--        <td th:text="${order.wallet}"></td>-->
-<!--        <td th:text="${order.user.email}"></td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
 <script src="/js/index.js"></script>
 </body>
 </html>
