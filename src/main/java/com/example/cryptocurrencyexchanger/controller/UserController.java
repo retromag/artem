@@ -329,6 +329,11 @@ public class UserController {
         return "aml";
     }
 
+    @GetMapping("/privacy-policy")
+    public String showPrivacyPolicyPage() {
+        return "privacy_policy";
+    }
+
     @GetMapping("/update/password")
     public String showUpdatePasswordPage() {
         return "update_password";
