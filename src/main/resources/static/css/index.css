@@ -1367,6 +1367,104 @@ footer {
   margin-bottom: 50px;
 }
 
+.checkPage_title {
+  font-size: 22px;
+  line-height: 130%;
+  font-weight: bold;
+}
+
+.checkPage_btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 120px;
+}
+
+.checkPage_text {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #11181F;
+}
+.checkPage_text a {
+  text-decoration: none;
+  color: #8D54E0;
+  font-weight: bold;
+  -webkit-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+}
+.checkPage_text a:hover {
+  color: #409cf3;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+.support_page {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.support_title {
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 130%;
+}
+.support_subtitle {
+  font-size: 18px;
+  color: #585D62;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+.support_item {
+  width: 32%;
+  padding: 20px;
+  border-radius: 30px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #FFFFFF;
+  border: 1px solid #B3DAFF;
+  -webkit-box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
+          box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
+  min-height: 100%;
+  text-align: center;
+  color: #11181F;
+  font-size: 16px;
+}
+.support_item_title {
+  font-size: 18px;
+  text-align: center;
+  font-weight: 500;
+}
+.support_item a {
+  font-size: 26px;
+  line-height: 45px;
+  color: #11181F;
+  font-weight: 500;
+}
+.support_item a:hover {
+  color: #5d62db;
+}
+.support_items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.rules_text {
+  color: #585D62;
+  text-decoration: underline;
+}
+
 /* Breakpoint sizes */
 /**/
 /* Create the mixin (usually in a separate .scss file) */
