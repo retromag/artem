@@ -294,8 +294,8 @@ header {
   border: 1px solid #D9DADB;
   -webkit-box-shadow: inset -10px 10px 24px rgba(255, 255, 255, 0.56);
           box-shadow: inset -10px 10px 24px rgba(255, 255, 255, 0.56);
-  -webkit-backdrop-filter: blur(15px);
-          backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(-3px);
+          backdrop-filter: blur(-3px);
   border-radius: 35px;
   padding: 30px;
   width: 67%;
@@ -869,6 +869,10 @@ footer {
   background: #F5F6F6;
   padding-top: 50px;
   padding-bottom: 30px;
+}
+
+.content {
+  min-height: calc(100vh - 180px);
 }
 
 .footer_top_row {
