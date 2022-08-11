@@ -1061,7 +1061,7 @@ footer {
     display: flex;
     justify-content: space-between;
     &_wrapper {
-      padding: 25px;
+      padding: 20px 15px;
       background: #FFFFFF;
       border: 1px solid #B3DAFF;
       box-shadow: 0 7px 25px rgb(30 120 255 / 25%);
@@ -1081,7 +1081,7 @@ footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 35%;
+      width: 45%;
     }
     &_imgs_wrapper {
       display: flex;
@@ -1142,7 +1142,36 @@ footer {
       font-size: 12px;
       line-height: 18px;
     }
+    &_btns_wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 30px;
+    }
+    &_btn_wrapper {
+      width: 15px;
+      //height: 15px;
+      margin-left: 5px;
+      margin-right: 5px;
+
+      &:hover {
+        cursor: pointer;
+      }
+      &_cancel {
+        fill: red;
+      }
+      &_remove {
+        fill: #0d6efd;
+      }
+      &_check {
+        fill: green;
+      }
+    }
   }
-
-
+  &_items_wrapper {
+    margin-top: 50px;
+  }
+  &_wrapper {
+    margin-bottom: 50px;
+  }
 }
