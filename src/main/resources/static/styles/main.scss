@@ -1284,22 +1284,29 @@ footer {
       margin-left: 5px;
       margin-right: 5px;
 
-      position: absolute;
+      position: relative;
+      z-index: 100;
+      background-color: transparent;
+      border: none;
 
-      top:50%;
-      left:50%;
-      transform:translate(-50%, -50%);
+
+
+      //position: absolute;
+
+      //top:50%;
+      //left:50%;
+      //transform:translate(-50%, -50%);
 
       &:hover {
         cursor: pointer;
       }
-      &_cancel {
+      &_cancel svg {
         fill: red;
       }
-      &_remove {
+      &_remove svg {
         fill: #0d6efd;
       }
-      &_check {
+      &_check svg {
         fill: green;
       }
     }
@@ -1313,15 +1320,26 @@ footer {
   &_btn {
     &_wrapper {
       position: relative;
-
+      //z-index: 50;
       margin: 0 5px;
+
+      & svg {
+        width: 20px;
+
+        position: absolute;
+
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        z-index: 10;
+      }
 
       & input {
         width: 20px;
         height: 20px;
 
-        background-color: transparent;
-        border: none;
+        //background-color: transparent;
+        //border: none;
       }
     }
   }
