@@ -1161,6 +1161,12 @@ footer {
       margin-left: 5px;
       margin-right: 5px;
 
+      position: absolute;
+
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+
       &:hover {
         cursor: pointer;
       }
@@ -1180,6 +1186,21 @@ footer {
   }
   &_wrapper {
     margin-bottom: 50px;
+  }
+  &_btn {
+    &_wrapper {
+      position: relative;
+
+      margin: 0 5px;
+
+      & input {
+        width: 20px;
+        height: 20px;
+
+        background-color: transparent;
+        border: none;
+      }
+    }
   }
 }
 .checkPage_title {

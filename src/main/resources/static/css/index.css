@@ -1354,6 +1354,12 @@ footer {
   width: 15px;
   margin-left: 5px;
   margin-right: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 .history_item_btn_wrapper:hover {
   cursor: pointer;
@@ -1372,6 +1378,16 @@ footer {
 }
 .history_wrapper {
   margin-bottom: 50px;
+}
+.history_btn_wrapper {
+  position: relative;
+  margin: 0 5px;
+}
+.history_btn_wrapper input {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
 }
 
 .checkPage_title {
