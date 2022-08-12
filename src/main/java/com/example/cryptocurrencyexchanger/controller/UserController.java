@@ -1,5 +1,6 @@
 package com.example.cryptocurrencyexchanger.controller;
 
+import com.amazonaws.services.dynamodbv2.xspec.M;
 import com.example.cryptocurrencyexchanger.entity.coin.Coin;
 import com.example.cryptocurrencyexchanger.entity.exchange.ExchangeOrder;
 import com.example.cryptocurrencyexchanger.entity.review.Review;
@@ -154,6 +155,10 @@ public class UserController {
 
         userService.activateUser(user);
 
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
+
         return "accApproved";
     }
 
@@ -184,8 +189,14 @@ public class UserController {
     }
 
     @GetMapping("/user/reset/password")
-    public String showChangePasswordPage(@RequestParam("token") String token, RedirectAttributes redirectAttributes) {
+    public String showChangePasswordPage(@RequestParam("token") String token, RedirectAttributes redirectAttributes, Model model) {
         String result = securityService.validatePasswordResetToken(token);
+
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
+
         if (result != null) {
             return "redirect:/login";
         } else {
@@ -205,6 +216,11 @@ public class UserController {
     public String showAllReserves(Model model) {
         Set<Coin> coinList = coinService.getAllCoins();
 
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
+
         model.addAttribute("coins", coinList);
 
         return "reserves";
@@ -212,7 +228,12 @@ public class UserController {
 
     @Secured("ROLE_ADMIN")
     @GetMapping("/reserves/add")
-    public String addNewCoinPage() {
+    public String addNewCoinPage(Model model) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
+
         return "add_coin";
     }
 
@@ -236,6 +257,11 @@ public class UserController {
     @GetMapping("/reserves/update/{id}")
     public String updateCoinPage(@PathVariable("id") Long id, Model model) {
         Coin coin = coinService.findCoinById(id);
+
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
 
         model.addAttribute("coin", coin);
 
@@ -271,6 +297,9 @@ public class UserController {
         String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
         ExchangerUser user = userService.findByEmail(currentUser);
         List<ExchangeOrder> orders = exchangeService.getAllExchangeOrders(user);
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
 
         model.addAttribute("orders", orders);
 
@@ -281,17 +310,12 @@ public class UserController {
     @GetMapping("/account/settings")
     public String viewUserAccountSettings(Model model) {
         model.addAttribute("user", new UserModel());
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
 
         return "account_settings";
-    }
-
-    @Secured("ROLE_ADMIN")
-    @GetMapping("/account/lock/{email}")
-    public String blockUserAccount(@PathVariable("email") String email, HttpServletRequest request) {
-        ExchangerUser user = userService.findByEmail(email);
-        userService.lockUser(user);
-
-        return getPreviousPageByRequest(request).orElse("/");
     }
 
     @SneakyThrows
@@ -377,6 +401,11 @@ public class UserController {
             model.addAttribute("pageNumbers", pageNumbers);
         }
 
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
+
         model.addAttribute("review", new Review());
         model.addAttribute("reviews", reviewPage);
 
@@ -394,6 +423,10 @@ public class UserController {
     @GetMapping("/account/users")
     public String showUsersPage(Model model) {
         List<ExchangerUser> users = userService.getAllUsers();
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
 
         model.addAttribute("users", users);
 
@@ -419,32 +452,62 @@ public class UserController {
     }
 
     @GetMapping("/forgot/password")
-    public String showForgetPasswordPage() {
+    public String showForgetPasswordPage(Model model) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
+
         return "forgot_password";
     }
 
     @GetMapping("/rules")
-    public String showRulesPage() {
+    public String showRulesPage(Model model) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
+
         return "rules";
     }
 
     @GetMapping("/aml")
-    public String showAMLPage() {
+    public String showAMLPage(Model model) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
+
         return "aml";
     }
 
     @GetMapping("/privacy-policy")
-    public String showPrivacyPolicyPage() {
+    public String showPrivacyPolicyPage(Model model) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
+
         return "privacy_policy";
     }
 
     @GetMapping("/contacts")
-    public String showContactsPage() {
+    public String showContactsPage(Model model) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
+
         return "supportPage";
     }
 
     @GetMapping("/update/password")
-    public String showUpdatePasswordPage() {
+    public String showUpdatePasswordPage(Model model) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
+
         return "update_password";
     }
 
