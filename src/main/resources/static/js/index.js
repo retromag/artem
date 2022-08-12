@@ -151,7 +151,7 @@ dropdownOptionBottom.forEach((option) => {
         getCourse(mainCoinAbbrTop.textContent, currentCoinAbbr);
 
         //get and set min and max coins value
-        getMinAndMaxAmountOfCoins(currentCoinAbbr);
+        getMinAndMaxAmountOfCoins(mainCoinAbbrTop.textContent);
     });
 })
 
