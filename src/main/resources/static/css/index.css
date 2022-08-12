@@ -854,6 +854,11 @@ header {
   margin-bottom: 30px;
   font-size: 25px;
 }
+@media only screen and (max-width: 767px) {
+  .approved_acc_title {
+    width: 80%;
+  }
+}
 
 .error_wrapper {
   display: -webkit-box;
@@ -947,6 +952,11 @@ footer {
 
 .content {
   min-height: calc(100vh - 180px);
+}
+@media only screen and (max-width: 767px) {
+  .content {
+    min-height: calc(100vh - 147px);
+  }
 }
 
 .footer_top_row {
@@ -1281,6 +1291,12 @@ footer {
 .settings_left_col_wrapper {
   width: 48%;
 }
+@media only screen and (max-width: 767px) {
+  .settings_left_col_wrapper {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
 .settings_right_col {
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid #D9DADB;
@@ -1293,6 +1309,11 @@ footer {
 }
 .settings_right_col_wrapper {
   width: 48%;
+}
+@media only screen and (max-width: 767px) {
+  .settings_right_col_wrapper {
+    width: 100%;
+  }
 }
 .settings_subtitle {
   font-size: 20px;
@@ -1314,6 +1335,16 @@ footer {
           justify-content: space-between;
   margin-top: 30px;
 }
+@media only screen and (max-width: 767px) {
+  .settings_wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
 
 .account_header {
   display: -webkit-box;
@@ -1323,6 +1354,8 @@ footer {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-top: 50px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .account_header_btns {
   display: -webkit-box;
@@ -1331,6 +1364,11 @@ footer {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+@media only screen and (max-width: 767px) {
+  .account_header_btns_wrapper {
+    width: 100%;
+  }
 }
 .account_header_btn a {
   font-size: 18px;
@@ -1353,6 +1391,12 @@ footer {
 .account_title {
   font-size: 42px;
   line-height: 35px;
+}
+@media only screen and (max-width: 767px) {
+  .account_title {
+    width: 100%;
+    font-size: 30px;
+  }
 }
 
 .history_item {
@@ -1623,12 +1667,14 @@ footer {
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 50px;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 @media only screen and (max-width: 767px) {
   .reviews_block {
     margin-bottom: 20px;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 }
 .reviews_left_col {
