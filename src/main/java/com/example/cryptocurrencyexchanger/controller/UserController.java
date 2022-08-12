@@ -400,6 +400,11 @@ public class UserController {
         return "privacy_policy";
     }
 
+    @GetMapping("/contacts")
+    public String showContactsPage() {
+        return "supportPage";
+    }
+
     @GetMapping("/update/password")
     public String showUpdatePasswordPage() {
         return "update_password";
