@@ -101,7 +101,7 @@ header {
 }
 
 .container {
-  max-width: 1320px;
+  max-width: 1180px;
   margin: 0 auto;
 }
 @media only screen and (max-width: 1200px) {
@@ -111,7 +111,7 @@ header {
 }
 @media only screen and (max-width: 991px) {
   .container {
-    width: 770px;
+    width: 760px;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -263,13 +263,24 @@ header {
 }
 
 .main_block {
-  margin-top: 100px;
+  margin-top: 50px;
+}
+@media only screen and (max-width: 991px) {
+  .main_block {
+    margin-top: 30px;
+  }
 }
 .main_title {
   font-size: 42px;
   font-weight: 500;
   line-height: 130%;
   margin-bottom: 20px;
+}
+@media only screen and (max-width: 991px) {
+  .main_title {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
 }
 
 .subtitle {
@@ -281,6 +292,11 @@ header {
 .form_left_col {
   width: 30%;
 }
+@media only screen and (max-width: 767px) {
+  .form_left_col {
+    width: 100%;
+  }
+}
 .form_exchange {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -289,6 +305,18 @@ header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+@media only screen and (max-width: 991px) {
+  .form_exchange {
+    margin-top: 30px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .form_exchange {
+    margin-top: 15px;
+  }
 }
 .form_right_col {
   background: rgba(255, 255, 255, 0.65);
@@ -302,6 +330,12 @@ header {
   width: 67%;
   margin-top: 28px;
 }
+@media only screen and (max-width: 767px) {
+  .form_right_col {
+    width: 100%;
+    padding: 15px;
+  }
+}
 
 .props_inputs_wrapper {
   display: -webkit-box;
@@ -310,12 +344,19 @@ header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .props_input {
   width: 100%;
 }
 .props_input_wrapper {
   width: 32%;
+}
+@media only screen and (max-width: 991px) {
+  .props_input_wrapper {
+    width: 100%;
+  }
 }
 .props_input_label {
   font-size: 16px;
@@ -328,11 +369,27 @@ header {
   line-height: 130%;
   margin-bottom: 20px;
 }
+@media only screen and (max-width: 991px) {
+  .props_title {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+}
 .props_btn_start_exchange_wrapper {
   margin-top: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+@media only screen and (max-width: 767px) {
+  .props_btn_start_exchange_wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 .props_text_agree {
   width: 40%;
@@ -340,6 +397,12 @@ header {
   font-size: 14px;
   -ms-flex-item-align: center;
       align-self: center;
+}
+@media only screen and (max-width: 767px) {
+  .props_text_agree {
+    width: 100%;
+    margin-top: 10px;
+  }
 }
 
 .dropdown_wrapper {
@@ -495,6 +558,11 @@ header {
   border-radius: 15px;
   padding: 15px;
   position: relative;
+}
+@media only screen and (max-width: 767px) {
+  .dropdown_general {
+    padding: 8px;
+  }
 }
 .dropdown_arrow_img {
   -webkit-transform: rotate(180deg);
@@ -871,6 +939,11 @@ footer {
   padding-top: 50px;
   padding-bottom: 30px;
 }
+@media only screen and (max-width: 767px) {
+  footer {
+    padding: 20px 0;
+  }
+}
 
 .content {
   min-height: calc(100vh - 180px);
@@ -885,6 +958,11 @@ footer {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+@media only screen and (max-width: 991px) {
+  .footer_top_row {
+    width: 90%;
+  }
+}
 .footer_bottom_row {
   margin-top: 30px;
   display: -webkit-box;
@@ -894,6 +972,18 @@ footer {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+@media only screen and (max-width: 1200px) {
+  .footer_bottom_row {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .footer_bottom_row {
+    width: 100%;
+  }
 }
 .footer_bottom_rules {
   font-size: 14px;
@@ -981,6 +1071,21 @@ footer {
           justify-content: space-between;
   margin-top: 50px;
   margin-bottom: 50px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+@media only screen and (max-width: 991px) {
+  .shortcut_items_wrapper {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .shortcut_items_wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
 }
 .shortcut_item {
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -1014,6 +1119,19 @@ footer {
 }
 .shortcut_item_wrapper {
   width: 17%;
+}
+@media only screen and (max-width: 991px) {
+  .shortcut_item_wrapper {
+    width: 30%;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .shortcut_item_wrapper {
+    width: 45%;
+  }
 }
 .shortcut_money_text {
   font-size: 18px;
@@ -1494,14 +1612,32 @@ footer {
   line-height: 130%;
   font-weight: bold;
 }
+@media only screen and (max-width: 767px) {
+  .reviews_title {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+}
 .reviews_block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 50px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+@media only screen and (max-width: 767px) {
+  .reviews_block {
+    margin-bottom: 20px;
+  }
 }
 .reviews_left_col {
   width: 60%;
+}
+@media only screen and (max-width: 991px) {
+  .reviews_left_col {
+    width: 100%;
+  }
 }
 .reviews_right_col {
   display: -webkit-box;
@@ -1514,6 +1650,11 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   width: 50%;
+}
+@media only screen and (max-width: 991px) {
+  .reviews_right_col {
+    width: 100%;
+  }
 }
 .reviews_page_wrapper {
   margin-top: 50px;
@@ -1745,6 +1886,19 @@ footer {
           box-shadow: 0 9px 20px rgba(142, 95, 227, 0.4);
   border: 0;
   color: #fff;
+}
+
+.hidden-input-rate {
+  display: none;
+}
+
+.hidden_break {
+  display: none;
+}
+@media only screen and (max-width: 767px) {
+  .hidden_break {
+    display: block;
+  }
 }
 
 /* Breakpoint sizes */
