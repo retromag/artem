@@ -14,8 +14,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -73,6 +75,18 @@ public class ExchangerUserService implements UserService {
     }
 
     @Override
+    public List<ExchangerUser> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public void changeUserWalletAmount(ExchangerUser user, BigDecimal amount) {
+        user.setWalletAmount(amount);
+
+        userRepository.save(user);
+    }
+
+    @Override
     public void lockUser(ExchangerUser user) {
         user.setNonLocked(false);
         userRepository.save(user);
@@ -85,6 +99,7 @@ public class ExchangerUserService implements UserService {
         user.setRoles(Collections.singletonList(new UserRole("ROLE_USER")));
         user.setAllPrivileges(false);
         user.setNonLocked(true);
+        user.setWalletAmount(new BigDecimal(0));
 
         return user;
     }

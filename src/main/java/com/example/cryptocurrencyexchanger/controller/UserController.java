@@ -42,6 +42,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -72,8 +73,12 @@ public class UserController {
         String currentUser = SecurityContextHolder.getContext().getAuthentication().getName();
         if (currentUser != null) {
             ExchangeOrder note = new ExchangeOrder();
-            note.setUser(userService.findByEmail(currentUser));
+            ExchangerUser user = userService.findByEmail(currentUser);
+            note.setUser(user);
             model.addAttribute("note", note);
+            if (user != null) {
+                model.addAttribute("walletAmount", user.getWalletAmount());
+            }
         }
 
         List<Review> titleReviews = reviewService.getReviewsForTitlePage();
@@ -381,6 +386,34 @@ public class UserController {
     @PostMapping("/review/new")
     public String createNewReview(@Valid @ModelAttribute("review") Review review, HttpServletRequest request) {
         reviewService.saveNewReview(review);
+
+        return getPreviousPageByRequest(request).orElse("/");
+    }
+
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/account/users")
+    public String showUsersPage(Model model) {
+        List<ExchangerUser> users = userService.getAllUsers();
+
+        model.addAttribute("users", users);
+
+        return "userPage";
+    }
+
+    @Secured("ROLE_ADMIN")
+    @PostMapping("/user/update/wallet")
+    public String setUserWalletAmount(@RequestParam("walletAmount") String amount, HttpServletRequest request) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        userService.changeUserWalletAmount(user, new BigDecimal(amount));
+
+        return getPreviousPageByRequest(request).orElse("/");
+    }
+
+    @Secured("ROLE_ADMIN")
+    @PostMapping("/user/lock")
+    public String lockUser(HttpServletRequest request) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        userService.lockUser(user);
 
         return getPreviousPageByRequest(request).orElse("/");
     }

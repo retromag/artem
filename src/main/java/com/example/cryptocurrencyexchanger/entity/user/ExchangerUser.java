@@ -50,6 +50,8 @@ public class ExchangerUser {
     @Column(name = "nonLocked")
     private boolean nonLocked;
 
+    private boolean emailSubscribed;
+
     @Column(name = "all_privileges")
     private boolean allPrivileges;
 
