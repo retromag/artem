@@ -1239,7 +1239,7 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 48%;
+  width: 55%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -1562,7 +1562,7 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 50%;
+  width: 55%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
