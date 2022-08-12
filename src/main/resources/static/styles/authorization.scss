@@ -118,6 +118,9 @@ input:checked + .slider:before {
   }
   &_label {
     margin-left: 10px;
+    @include max-screen(xs) {
+      line-height: 25px;
+    }
     &:hover {
       cursor: pointer;
     }

@@ -128,6 +128,11 @@ header {
     width: 460px;
   }
 }
+@media only screen and (max-width: 479px) {
+  .container {
+    width: 300px;
+  }
+}
 
 .header_block {
   display: -webkit-box;
@@ -982,6 +987,13 @@ footer {
     width: 90%;
   }
 }
+@media only screen and (max-width: 479px) {
+  .footer_top_row {
+    width: 100%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
 .footer_bottom_row {
   margin-top: 30px;
   display: -webkit-box;
@@ -1004,6 +1016,14 @@ footer {
     width: 100%;
   }
 }
+@media only screen and (max-width: 479px) {
+  .footer_bottom_row {
+    margin-top: 10px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
 .footer_bottom_rules {
   font-size: 14px;
   line-height: 20px;
@@ -1017,6 +1037,11 @@ footer {
 .footer_bottom_rules:hover {
   color: #525252;
 }
+@media only screen and (max-width: 479px) {
+  .footer_bottom_rules {
+    font-size: 11px;
+  }
+}
 .footer_logo_wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1024,6 +1049,15 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+@media only screen and (max-width: 479px) {
+  .footer_logo_wrapper {
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 10px;
+  }
 }
 .footer_col_item a {
   display: block;
@@ -1044,6 +1078,11 @@ footer {
 .copyright {
   font-size: 16px;
   color: #11181F;
+}
+@media only screen and (max-width: 479px) {
+  .copyright {
+    font-size: 10px;
+  }
 }
 
 .shortcut_img_arrow_wrapper {
@@ -1297,6 +1336,11 @@ footer {
           box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
   border-radius: 15px;
 }
+@media only screen and (max-width: 479px) {
+  .settings_left_col {
+    padding: 15px;
+  }
+}
 .settings_left_col_wrapper {
   width: 48%;
 }
@@ -1315,6 +1359,11 @@ footer {
   padding: 30px;
   font-size: 16px;
   line-height: 22.4px;
+}
+@media only screen and (max-width: 479px) {
+  .settings_right_col {
+    padding: 15px;
+  }
 }
 .settings_right_col_wrapper {
   width: 48%;
@@ -1354,6 +1403,11 @@ footer {
         flex-wrap: wrap;
   }
 }
+@media only screen and (max-width: 479px) {
+  .settings_wrapper {
+    margin-top: 10px;
+  }
+}
 
 .account_header {
   display: -webkit-box;
@@ -1373,6 +1427,8 @@ footer {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 @media only screen and (max-width: 767px) {
   .account_header_btns_wrapper {
@@ -1405,6 +1461,7 @@ footer {
   .account_title {
     width: 100%;
     font-size: 30px;
+    text-align: center;
   }
 }
 
@@ -2159,6 +2216,11 @@ input:checked + .slider:before {
 }
 .checkbox_label {
   margin-left: 10px;
+}
+@media only screen and (max-width: 479px) {
+  .checkbox_label {
+    line-height: 25px;
+  }
 }
 .checkbox_label:hover {
   cursor: pointer;

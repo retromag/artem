@@ -45,6 +45,9 @@ header {
   @include max-screen(sm) {
     width: 460px;
   }
+  @include max-screen(xs) {
+    width: 300px;
+  }
 }
 .header_block {
   display: flex;
@@ -803,6 +806,10 @@ footer {
     @include max-screen(md) {
       width: 90%;
     }
+    @include max-screen(xs) {
+      width: 100%;
+      flex-wrap: wrap;
+    }
   }
   &_bottom {
     &_row {
@@ -819,8 +826,9 @@ footer {
       @include max-screen(md) {
         width: 100%;
       }
-      @include max-screen(sm) {
-
+      @include max-screen(xs) {
+        margin-top: 10px;
+        justify-content: center;
       }
     }
     &_rules {
@@ -833,12 +841,21 @@ footer {
       &:hover {
         color: #525252;
       }
+      @include max-screen(xs) {
+        font-size: 11px;
+      }
     }
   }
   &_logo {
     &_wrapper {
       display: flex;
       align-items: center;
+
+      @include max-screen(xs) {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
     }
   }
   &_col {
@@ -862,6 +879,10 @@ footer {
 .copyright {
   font-size: 16px;
   color: #11181F;
+
+  @include max-screen(xs) {
+    font-size: 10px;
+  }
 }
 
 .shortcut {
@@ -1100,6 +1121,9 @@ footer {
     box-shadow: 0 7px 25px rgb(30 120 255 / 25%);
     border-radius: 15px;
     //min-height: 100%;
+    @include max-screen(xs) {
+      padding: 15px;
+    }
 
     &_wrapper {
       width: 48%;
@@ -1107,6 +1131,7 @@ footer {
         width: 100%;
         margin-bottom: 10px;
       }
+
     }
   }
   &_right_col {
@@ -1117,6 +1142,10 @@ footer {
     padding: 30px;
     font-size: 16px;
     line-height: 22.4px;
+
+    @include max-screen(xs) {
+      padding: 15px;
+    }
     &_wrapper {
       width: 48%;
       @include max-screen(sm) {
@@ -1144,6 +1173,9 @@ footer {
     flex-direction: column;
     flex-wrap: wrap;
   }
+  @include max-screen(xs) {
+    margin-top: 10px;
+  }
 }
 .account {
   &_header {
@@ -1154,6 +1186,7 @@ footer {
     &_btns {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       &_wrapper {
         @include max-screen(sm) {
           width: 100%;
@@ -1188,6 +1221,7 @@ footer {
     @include max-screen(sm) {
       width: 100%;
       font-size: 30px;
+      text-align: center;
     }
   }
 }
