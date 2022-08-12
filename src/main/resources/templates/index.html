@@ -6,6 +6,7 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" type="text/css" href="/css/index.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <title>Document</title>
 
 </head>
@@ -69,7 +70,8 @@
                                              class="dropdown_img_coin js-top-main-coin-image">
                                     </div>
                                     <p class="dropdown_title js-top-dropdown-title">Bitcoin</p>
-                                    <input type="text" class="js-hidden_input-top hidden_input-top" th:field="*{givenCoin}">
+                                    <input type="text" class="js-hidden_input-top hidden_input-top"
+                                           th:field="*{givenCoin}">
                                 </div>
 
                                 <div class="dropdown_header_right_col">
@@ -88,7 +90,8 @@
                                 <p class="dropdown_footer_left_col"><span class="dropdown_text">Мин: </span><span
                                         class="dropdown_text_amount js-min-coins-amount"></span></p>
                                 <p class="dropdown_footer_right_col"><span
-                                        class="dropdown_text">Макс. сумма: </span><span class="dropdown_text_amount js-max-coins-amount"></span>
+                                        class="dropdown_text">Макс. сумма: </span><span
+                                        class="dropdown_text_amount js-max-coins-amount"></span>
                                 </p>
                             </div>
 
@@ -214,7 +217,8 @@
                                              class="dropdown_img_coin js-bottom-main-coin-image">
                                     </div>
                                     <p class="dropdown_title js-bottom-dropdown-title">Solana</p>
-                                    <input type="text" class="js-hidden_input-bottom hidden_input-bottom" th:field="*{takenCoin}">
+                                    <input type="text" class="js-hidden_input-bottom hidden_input-bottom"
+                                           th:field="*{takenCoin}">
                                 </div>
 
                                 <div class="dropdown_header_right_col">
@@ -232,7 +236,8 @@
                             <div class="dropdown_footer">
                                 <p class="dropdown_footer_left_col"><span class="dropdown_text">Курс </span><span
                                         class="dropdown_text_amount js-rate"></span></p>
-                                <input type="text" class="hidden-input-rate js-hidden-input-rate" th:field="*{currentCourse}">
+                                <input type="text" class="hidden-input-rate js-hidden-input-rate"
+                                       th:field="*{currentCourse}">
                             </div>
 
                         </div>
@@ -369,7 +374,8 @@
                     </div>
                     <div class="props_btn_start_exchange_wrapper">
                         <button type="submit" class="btn_general props_btn_start_exchange">начать обмен</button>
-                        <p class="props_text_agree">Нажимая кнопку "Начать обмен", вы соглашаетесь с <a class="rules_text">правилами обмена</a>,
+                        <p class="props_text_agree">Нажимая кнопку "Начать обмен", вы соглашаетесь с <a
+                                class="rules_text">правилами обмена</a>,
                             <a class="rules_text">AML</a></p>
                     </div>
                 </div>
@@ -521,110 +527,23 @@
             <div class="reviews_left_col">
                 <h4 class="reviews_title">Лучше всего за нас скажут отзывы наших клиентов</h4>
                 <div class="reviews_items_wrapper">
-                    <div class="review_item">
-                        <p class="review_item_title">Здорово, самый лучший обменник , спасибо вам !</p>
-                        <div class="review_item_name_rate">
-                            <p class="review_item_name">Алексей</p>
-                            <div class="review_item_rate">
-                                <div class="rating-area">
-
-                                    <input type="radio" name="rating" value="5">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="4">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="3">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="2">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="1">
-                                    <label></label>
+                    <tr th:each="review : ${reviews}">
+                        <div class="review_item">
+                            <p class="review_item_title" th:text="${review.massage}">Здорово, самый лучший обменник ,
+                                спасибо вам !</p>
+                            <div class="review_item_name_rate">
+                                <p class="review_item_name" th:text="${review.username}">Алексей</p>
+                                <div class="review_item_rate">
+                                    <i th:each="i : ${#numbers.sequence(1, review.rate)}"
+                                       class="fa-solid fa-star"></i>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="review_item">
-                        <p class="review_item_title">Здорово, самый лучший обменник , спасибо вам !</p>
-                        <div class="review_item_name_rate">
-                            <p class="review_item_name">Алексей</p>
-                            <div class="review_item_rate">
-                                <div class="rating-area">
-
-                                    <input type="radio" name="rating" value="5">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="4">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="3">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="2">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="1">
-                                    <label></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="review_item">
-                        <p class="review_item_title">Здорово, самый лучший обменник , спасибо вам !</p>
-                        <div class="review_item_name_rate">
-                            <p class="review_item_name">Алексей</p>
-                            <div class="review_item_rate">
-                                <div class="rating-area">
-
-                                    <input type="radio" name="rating" value="5">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="4">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="3">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="2">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="1">
-                                    <label></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="review_item">
-                        <p class="review_item_title">Здорово, самый лучший обменник , спасибо вам !</p>
-                        <div class="review_item_name_rate">
-                            <p class="review_item_name">Алексей</p>
-                            <div class="review_item_rate">
-                                <div class="rating-area">
-
-                                    <input type="radio" name="rating" value="5">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="4">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="3">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="2">
-                                    <label></label>
-
-                                    <input type="radio" name="rating" value="1">
-                                    <label></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </tr>
                 </div>
             </div>
             <div class="reviews_right_col">
-                <a href="#" class="btn_general">ПОСМОТРЕТЬ ВСЕ ОТЗЫВЫ</a>
+                <a href="/review/all" class="btn_general">ПОСМОТРЕТЬ ВСЕ ОТЗЫВЫ</a>
             </div>
         </div>
     </div>

@@ -23,6 +23,8 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.mail.MailAuthenticationException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -58,8 +60,10 @@ public class UserController {
     JavaMailSender mailSender;
     SecurityService securityService;
     ApplicationEventPublisher eventPublisher;
-
     ConstructEmail constructEmail;
+
+    private static final int FIRST_PAGE = 1;
+    private static final int DEFAULT_PAGE_SIZE = 5;
 
     @GetMapping("/")
     public String mainPage(Model model) {
@@ -343,6 +347,26 @@ public class UserController {
     @PostMapping("/order/delete/{id}")
     public String deleteOrder(@PathVariable("id") Long id, HttpServletRequest request) {
         exchangeService.deleteExchange(exchangeService.findOrderById(id));
+
+        return getPreviousPageByRequest(request).orElse("/");
+    }
+
+    @GetMapping("/review/all")
+    public String showAllReviews(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
+        int currentPage = page.orElse(FIRST_PAGE);
+        int pageSize = size.orElse(DEFAULT_PAGE_SIZE);
+
+        Page<Review> reviewPage = reviewService.getAllReviews(PageRequest.of(currentPage - 1, pageSize));
+
+
+        model.addAttribute("review", new Review());
+
+        return "reviewsPage";
+    }
+
+    @PostMapping("/review/new")
+    public String createNewReview(@Valid @ModelAttribute("review") Review review, HttpServletRequest request) {
+        reviewService.saveNewReview(review);
 
         return getPreviousPageByRequest(request).orElse("/");
     }
