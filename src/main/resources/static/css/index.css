@@ -1640,6 +1640,38 @@ footer {
           justify-content: space-between;
   margin-top: 120px;
 }
+@media only screen and (max-width: 1200px) {
+  .checkPage_btns {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .checkPage_btns {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .checkPage_btns {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .checkPage_btns {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .checkPage_btns a {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+  }
+}
 
 .checkPage_text {
   margin-top: 20px;

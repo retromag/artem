@@ -1394,6 +1394,28 @@ footer {
   width: 55%;
   justify-content: space-between;
   margin-top: 120px;
+
+  @include max-screen(lg) {
+    width: 70%;
+  }
+  @include max-screen(md) {
+    width: 90%;
+  }
+  @include max-screen(sm) {
+    width: 100%;
+    margin-top: 10px;
+  }
+  @include max-screen(xs) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  & a {
+    @include max-screen(xs) {
+      width: 100%;
+      margin-top: 10px;
+      text-align: center;
+    }
+  }
 }
 .checkPage_text {
   margin-top: 20px;
