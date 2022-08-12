@@ -1434,7 +1434,7 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 45%;
+  width: 60%;
 }
 .history_item_imgs_wrapper {
   display: -webkit-box;
