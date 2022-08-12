@@ -25,7 +25,13 @@ header {
   top: 0;
   z-index: 1000;
 }
-
+.header_wallet svg{
+  width: 15px;
+  height: 15px;
+}
+.header_wallet {
+  margin-top: 4px;
+}
 .container {
   max-width: 1180px;
   margin: 0 auto;
@@ -1726,4 +1732,40 @@ footer {
   @include max-screen(sm) {
     display: block;
   }
+}
+
+.user {
+  &_item {
+    padding: 20px 15px;
+    background: #FFFFFF;
+    border: 1px solid #B3DAFF;
+    box-shadow: 0 7px 25px rgb(30 120 255 / 25%);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    &_img_wrapper {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+.block_user {
+  fill: red;
+}
+.input_approve {
+  fill: green;
+}
+.input_edit_wallet {
+  width: 50%;
+  height: 40px;
+  margin: 0 10px;
+}
+.input_wallet_wrapper {
+  display: flex;
+  align-items: center;
+}
+.users_items_wrapper {
+  margin-top: 30px;
 }

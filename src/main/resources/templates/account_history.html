@@ -43,8 +43,13 @@
                         <li sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')" class="btns_auth_wrapper">
                             <div><a href="/account/history" class="btn_cabinet_wrapper"><span
                                     class="btn_cabinet_user"><img
-                                    src="/images/user-1.svg" alt=""></span><span
-                                    class="btn_cabinet_text">Личный кабинет</span></a></div>
+                                    src="/images/user-1.svg" alt=""></span><div class="btn_cabinet_text">
+                                <p>Личный кабинет</p>
+                                <div class="header_wallet">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M448 32C465.7 32 480 46.33 480 64C480 81.67 465.7 96 448 96H80C71.16 96 64 103.2 64 112C64 120.8 71.16 128 80 128H448C483.3 128 512 156.7 512 192V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H448zM416 336C433.7 336 448 321.7 448 304C448 286.3 433.7 272 416 272C398.3 272 384 286.3 384 304C384 321.7 398.3 336 416 336z"/></svg>
+                                    <span>0.06</span>
+                                </div>
+                            </div></a></div>
                             <div><a href="/logout" class="btn_logout">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                     <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -65,6 +70,7 @@
                     <ul class="account_header_btns">
                         <li class="account_header_btn"><a th:href="@{/account/history}">История</a></li>
                         <li class="account_header_btn"><a th:href="@{/account/settings}">Настройки</a></li>
+                        <li class="account_header_btn"><a th:href="@{/account/settings}">Пользователи</a></li>
                     </ul>
                 </div>
             </div>
