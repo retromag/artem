@@ -1584,6 +1584,22 @@ footer {
         align-items: end;
       }
     }
+    &_rate {
+      display: flex;
+      //width: 100px;
+      //justify-content: space-between;
+
+      & i {
+        width: 15px;
+        height: 15px;
+        margin-left: 3px;
+        margin-right: 3px;
+
+        & svg path{
+          fill: #e89e32;
+        }
+      }
+    }
   }
 }
 
