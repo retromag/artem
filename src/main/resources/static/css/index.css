@@ -2112,7 +2112,7 @@ footer {
 }
 @media only screen and (max-width: 479px) {
   .auth_form_container {
-    width: 350px;
+    width: 290px;
   }
 }
 .auth_btns_wrapper {
