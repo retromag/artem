@@ -1516,23 +1516,21 @@ footer {
   width: 15px;
   margin-left: 5px;
   margin-right: 5px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  position: relative;
+  z-index: 100;
+  background-color: transparent;
+  border: none;
 }
 .history_item_btn_wrapper:hover {
   cursor: pointer;
 }
-.history_item_btn_wrapper_cancel {
+.history_item_btn_wrapper_cancel svg {
   fill: red;
 }
-.history_item_btn_wrapper_remove {
+.history_item_btn_wrapper_remove svg {
   fill: #0d6efd;
 }
-.history_item_btn_wrapper_check {
+.history_item_btn_wrapper_check svg {
   fill: green;
 }
 .history_items_wrapper {
@@ -1545,11 +1543,19 @@ footer {
   position: relative;
   margin: 0 5px;
 }
+.history_btn_wrapper svg {
+  width: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 10;
+}
 .history_btn_wrapper input {
   width: 20px;
   height: 20px;
-  background-color: transparent;
-  border: none;
 }
 
 .checkPage_title {
