@@ -1058,9 +1058,18 @@ footer {
   &_top_row {
     display: flex;
     justify-content: space-between;
+
+    @include max-screen(xs) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
   &_wallet_sum_wrapper {
     width: 70%;
+
+    @include max-screen(xs) {
+      width: 100%;
+    }
   }
   &_input_title {
     position: absolute;
@@ -1073,6 +1082,24 @@ footer {
     display: flex;
     width: 55%;
     justify-content: space-between;
+
+    @include max-screen(lg) {
+      width: 70%;
+    }
+    @include max-screen(md) {
+      width: 90%;
+    }
+    @include max-screen(xs) {
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    & .btn_general, .btn_secondary {
+      @include max-screen(xs) {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
   }
 }
 .copy_icon_wrapper {
@@ -1082,6 +1109,10 @@ footer {
   position: absolute;
   top: 12px;
   right: 12px;
+
+  @include max-screen(lg) {
+    width: 15px;
+  }
 
   &:hover {
     cursor: pointer;
@@ -1095,6 +1126,15 @@ footer {
   background-color: white;
   width: 185px;
   height: 185px;
+
+  @include max-screen(lg) {
+    width: 120px;
+    height: 120px;
+  }
+  @include max-screen(md) {
+    width: 90px;
+    height: 90px;
+  }
 
   &_wrapper {
     width: 25%;

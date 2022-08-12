@@ -1273,8 +1273,22 @@ footer {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+@media only screen and (max-width: 479px) {
+  .order_top_row {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
 .order_wallet_sum_wrapper {
   width: 70%;
+}
+@media only screen and (max-width: 479px) {
+  .order_wallet_sum_wrapper {
+    width: 100%;
+  }
 }
 .order_input_title {
   position: absolute;
@@ -1292,6 +1306,29 @@ footer {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+@media only screen and (max-width: 1200px) {
+  .order_bottom_row {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .order_bottom_row {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .order_bottom_row {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .order_bottom_row .btn_general, .order_bottom_row .btn_secondary {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
 
 .copy_icon_wrapper {
   width: 24px;
@@ -1299,6 +1336,11 @@ footer {
   position: absolute;
   top: 12px;
   right: 12px;
+}
+@media only screen and (max-width: 1200px) {
+  .copy_icon_wrapper {
+    width: 15px;
+  }
 }
 .copy_icon_wrapper:hover {
   cursor: pointer;
@@ -1311,6 +1353,18 @@ footer {
   background-color: white;
   width: 185px;
   height: 185px;
+}
+@media only screen and (max-width: 1200px) {
+  .qr_code {
+    width: 120px;
+    height: 120px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .qr_code {
+    width: 90px;
+    height: 90px;
+  }
 }
 .qr_code_wrapper {
   width: 25%;
