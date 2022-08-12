@@ -1302,7 +1302,7 @@ footer {
       border: 1px solid #D9DADB;
       box-shadow: inset -10px 10px 24px rgb(255 255 255 / 56%);
       border-radius: 15px;
-      width: 45%;
+      width: 48%;
 
       .rating-area:not(:checked) > input {
         display: none;
@@ -1395,6 +1395,7 @@ footer {
   border: 1px solid #0E82EF;
   box-shadow: inset 0 3px 0 rgb(0 0 0 / 3%);
   border-radius: 15px!important;
+  resize: none;
 }
 .review {
   &_item {
@@ -1465,3 +1466,60 @@ footer {
 //.rate-area > label:active {
 //  position: relative;
 //}
+.pagination {
+  display: flex;
+  &_wrapper {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+  }
+  //justify-content: space-between;
+   &_item {
+     display: block;
+     margin: 5px;
+     text-align: center;
+     vertical-align: middle;
+
+     width: 46px;
+     height: 46px;
+     line-height: 40px;
+
+     border-radius: 50%!important;
+     padding: 0;
+     border: 2px solid #4122FF;
+     font-weight: 700;
+     color: #4122FF;
+
+     &:hover {
+       background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, #8D54E0 0%, #8DC8FF 96.2%);
+       box-shadow: 0 9px 20px rgb(142 95 227 / 40%);
+       border: 0;
+       color: #fff;
+       cursor: pointer;
+
+       & .pagination_item__arrow {
+         fill: white;
+       }
+     }
+
+     &__arrow {
+       width: 12px;
+       fill: #1e2125;
+       text-align: center;
+       display: flex;
+
+       &_wrapper{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+       }
+     }
+   }
+}
+
+.active_page {
+  background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, #8D54E0 0%, #8DC8FF 96.2%);
+  box-shadow: 0 9px 20px rgb(142 95 227 / 40%);
+  border: 0;
+  color: #fff;
+}
