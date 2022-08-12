@@ -100,6 +100,15 @@ header {
   z-index: 1000;
 }
 
+.header_wallet svg {
+  width: 15px;
+  height: 15px;
+}
+
+.header_wallet {
+  margin-top: 4px;
+}
+
 .container {
   max-width: 1180px;
   margin: 0 auto;
@@ -1965,6 +1974,56 @@ footer {
   .hidden_break {
     display: block;
   }
+}
+
+.user_item {
+  padding: 20px 15px;
+  background: #FFFFFF;
+  border: 1px solid #B3DAFF;
+  -webkit-box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
+          box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 15px;
+}
+.user_item_img_wrapper {
+  width: 30px;
+  height: 30px;
+}
+
+.block_user {
+  fill: red;
+}
+
+.input_approve {
+  fill: green;
+}
+
+.input_edit_wallet {
+  width: 50%;
+  height: 40px;
+  margin: 0 10px;
+}
+
+.input_wallet_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.users_items_wrapper {
+  margin-top: 30px;
 }
 
 /* Breakpoint sizes */
