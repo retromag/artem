@@ -27,14 +27,14 @@ header {
 }
 
 .container {
-  max-width: 1320px;
+  max-width: 1180px;
   margin: 0 auto;
 
   @include max-screen(lg) {
     width: 970px;
   }
   @include max-screen(md) {
-    width: 770px;
+    width: 760px;
   }
   @include max-screen(sm) {
     width: 460px;
@@ -158,13 +158,22 @@ header {
 }
 .main {
   &_block {
-    margin-top: 100px;
+    margin-top: 50px;
+
+    @include max-screen(md) {
+      margin-top: 30px;
+    }
   }
   &_title {
     font-size: 42px;
     font-weight: 500;
     line-height: 130%;
     margin-bottom: 20px;
+
+    @include max-screen(md) {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
   }
 }
 .subtitle {
@@ -181,12 +190,23 @@ header {
     //border-radius: 15px;
     //padding: 15px;
     width: 30%;
+    @include max-screen(sm) {
+      width: 100%;
+    }
   }
 
   &_exchange {
     display: flex;
     margin-top: 50px;
     justify-content: space-between;
+    flex-wrap: wrap;
+
+    @include max-screen(md) {
+      margin-top: 30px;
+    }
+    @include max-screen(sm) {
+      margin-top: 15px;
+    }
   }
 
   &_right_col {
@@ -198,18 +218,28 @@ header {
     padding: 30px;
     width: 67%;
     margin-top: 28px;
+
+    @include max-screen(sm) {
+      width: 100%;
+      padding: 15px;
+    }
   }
 }
 .props {
   &_inputs_wrapper {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
   &_input {
     width: 100%;
 
     &_wrapper {
       width: 32%;
+
+      @include max-screen(md) {
+        width: 100%;
+      }
     }
     &_label {
       font-size: 16px;
@@ -222,11 +252,21 @@ header {
     font-size: 26px;
     line-height: 130%;
     margin-bottom: 20px;
+
+    @include max-screen(md) {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
   }
   &_btn_start_exchange {
     &_wrapper {
       margin-top: 30px;
       display: flex;
+      flex-wrap: wrap;
+
+      @include max-screen(sm) {
+        flex-direction: column;
+      }
     }
   }
   &_text_agree {
@@ -234,6 +274,11 @@ header {
     margin-left: 10px;
     font-size: 14px;
     align-self: center;
+
+    @include max-screen(sm) {
+      width: 100%;
+      margin-top: 10px;
+    }
   }
 }
 .dropdown {
@@ -389,6 +434,10 @@ header {
     border-radius: 15px;
     padding: 15px;
     position: relative;
+
+    @include max-screen(sm) {
+      padding: 8px;
+    }
   }
   &_arrow_img {
     transform: rotate(180deg);
@@ -649,6 +698,10 @@ header {
     text-align: center;
     margin-bottom: 30px;
     font-size: 25px;
+    @include max-screen(sm) {
+      width: 80%;
+    }
+
   }
 }
 .error {
@@ -724,15 +777,26 @@ footer {
   background: #F5F6F6;
   padding-top: 50px;
   padding-bottom: 30px;
+
+  @include max-screen(sm) {
+    padding: 20px 0;
+  }
 }
 .content {
   min-height: calc(100vh - 180px);
+  @include max-screen(sm) {
+    min-height: calc(100vh - 147px);
+  }
+
 }
 .footer {
   &_top_row {
     display: flex;
     width: 50%;
     justify-content: space-between;
+    @include max-screen(md) {
+      width: 90%;
+    }
   }
   &_bottom {
     &_row {
@@ -740,6 +804,18 @@ footer {
       display: flex;
       width: 60%;
       justify-content: space-between;
+      flex-wrap: wrap;
+
+      @include max-screen(lg) {
+        width: 80%;
+      }
+
+      @include max-screen(md) {
+        width: 100%;
+      }
+      @include max-screen(sm) {
+
+      }
     }
     &_rules {
       font-size: 14px;
@@ -784,8 +860,6 @@ footer {
 
 .shortcut {
   &_img {
-
-
     &_arrow_wrapper {
       width: 15px;
       height: 10px;
@@ -814,12 +888,27 @@ footer {
     align-items: center;
     padding-left: 20px;
     padding-right: 20px;
+
+    @include max-screen(md) {
+      //padding-left: 10px;
+      //padding-right: 10px;
+
+    }
   }
   &_items_wrapper {
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
     margin-bottom: 50px;
+    flex-wrap: wrap;
+    @include max-screen(md) {
+      justify-content: center;
+    }
+    @include max-screen(sm) {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
   }
   &_item {
     border: 1px solid rgba(255, 255, 255, 0.4);
@@ -846,6 +935,16 @@ footer {
     }
     &_wrapper {
       width: 17%;
+
+      @include max-screen(md) {
+        width: 30%;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      @include max-screen(sm) {
+        width: 45%;
+      }
     }
   }
   &_money {
@@ -998,6 +1097,10 @@ footer {
 
     &_wrapper {
       width: 48%;
+      @include max-screen(sm) {
+        width: 100%;
+        margin-bottom: 10px;
+      }
     }
   }
   &_right_col {
@@ -1010,6 +1113,9 @@ footer {
     line-height: 22.4px;
     &_wrapper {
       width: 48%;
+      @include max-screen(sm) {
+        width: 100%;
+      }
     }
   }
   &_subtitle {
@@ -1027,15 +1133,27 @@ footer {
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
+
+  @include max-screen(sm) {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 }
 .account {
   &_header {
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
+    flex-wrap: wrap;
     &_btns {
       display: flex;
       justify-content: space-between;
+      &_wrapper {
+        @include max-screen(sm) {
+          width: 100%;
+        }
+      }
+
     }
     &_btn {
       a {
@@ -1060,6 +1178,11 @@ footer {
   &_title {
     font-size: 42px;
     line-height: 35px;
+
+    @include max-screen(sm) {
+      width: 100%;
+      font-size: 30px;
+    }
   }
 }
 
@@ -1292,19 +1415,36 @@ footer {
     font-size: 26px;
     line-height: 130%;
     font-weight: bold;
+
+    @include max-screen(sm) {
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
   }
   &_block {
     display: flex;
     margin-bottom: 50px;
+    flex-wrap: nowrap;
+
+    @include max-screen(sm) {
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
   }
   &_left_col {
     width: 60%;
+    @include max-screen(md) {
+      width: 100%;
+    }
   }
   &_right_col {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50%;
+    @include max-screen(md) {
+      width: 100%;
+    }
   }
   &_page {
     &_wrapper {
@@ -1543,4 +1683,13 @@ footer {
   box-shadow: 0 9px 20px rgb(142 95 227 / 40%);
   border: 0;
   color: #fff;
+}
+.hidden-input-rate {
+  display: none;
+}
+.hidden_break {
+  display: none;
+  @include max-screen(sm) {
+    display: block;
+  }
 }
