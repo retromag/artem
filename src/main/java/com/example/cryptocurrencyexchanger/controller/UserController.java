@@ -43,6 +43,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Log4j2
 @Controller
@@ -357,9 +359,16 @@ public class UserController {
         int pageSize = size.orElse(DEFAULT_PAGE_SIZE);
 
         Page<Review> reviewPage = reviewService.getAllReviews(PageRequest.of(currentPage - 1, pageSize));
-
+        int totalPages = reviewPage.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
 
         model.addAttribute("review", new Review());
+        model.addAttribute("reviews", reviewPage);
 
         return "reviewsPage";
     }
