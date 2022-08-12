@@ -71,7 +71,7 @@ public class BinanceRestService implements BinanceService {
         BigDecimal marginOfTakenCoin = getCoinMargin(symbol);
         BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100), 7, RoundingMode.HALF_UP);
 
-        return amountOfTakenCoin.subtract(resultMargin);
+        return amountOfTakenCoin.add(resultMargin);
     }
 
     private BigDecimal getPriceFirstInput(BigDecimal amount, String firstSymbol, String secondSymbol) {

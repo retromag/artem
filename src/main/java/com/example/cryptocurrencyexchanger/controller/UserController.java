@@ -318,15 +318,21 @@ public class UserController {
 
         model.addAttribute("order", exchangeService.findOrderByCode(code));
         model.addAttribute("ownerWallet", coinService.getCoinByCoinSymbol(order.getGivenCoin()).getWallet());
+        model.addAttribute("givenCoin", coinService.getCoinByCoinSymbol(order.getGivenCoin()).getName());
+        model.addAttribute("takenCoin", coinService.getCoinByCoinSymbol(order.getTakenCoin()).getName());
 
         return "orderPage";
     }
 
     @PostMapping("/exchange/pay")
-    public String payOrder(@Valid @ModelAttribute("note") ExchangeOrder order) {
+    public String payOrder(@Valid @ModelAttribute("order") ExchangeOrder order, Model model) {
         exchangeService.payForExchange(order);
 
-        return "index";
+        model.addAttribute("order", exchangeService.findOrderById(order.getId()));
+        model.addAttribute("givenCoin", coinService.getCoinByCoinSymbol(order.getGivenCoin()).getName());
+        model.addAttribute("takenCoin", coinService.getCoinByCoinSymbol(order.getTakenCoin()).getName());
+
+        return "checkPage";
     }
 
     @Secured("ROLE_ADMIN")
@@ -345,7 +351,6 @@ public class UserController {
         return getPreviousPageByRequest(request).orElse("/");
     }
 
-    @Secured("ROLE_ADMIN")
     @PostMapping("/order/delete/{id}")
     public String deleteOrder(@PathVariable("id") Long id, HttpServletRequest request) {
         exchangeService.deleteExchange(exchangeService.findOrderById(id));

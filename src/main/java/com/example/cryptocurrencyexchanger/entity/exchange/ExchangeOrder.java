@@ -32,8 +32,10 @@ public class ExchangeOrder {
 
     private String takenCoin;
 
+    @Column(precision = 8, scale = 4)
     private BigDecimal givenAmount;
 
+    @Column(precision = 8, scale = 5)
     private BigDecimal takenAmount;
 
     private String wallet;

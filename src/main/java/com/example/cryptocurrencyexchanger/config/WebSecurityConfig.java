@@ -41,6 +41,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/review/all",
                         "/exchange/pay",
                         "/review/new",
+                        "/contacts",
+                        "/order/delete/*",
                         "/api/**",
                         "/js/**",
                         "/css/**",

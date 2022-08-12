@@ -33,11 +33,13 @@
                         <li sec:authorize="!isAuthenticated()">
                             <div class="nav_menu__item">
                                 <a href="/registration" class="btn_authorization btn_general">Авторизация</a>
-                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg" alt=""></a>
+                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg"
+                                                                                              alt=""></a>
                             </div>
                         </li>
                         <li sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')" class="btns_auth_wrapper">
-                            <div><a href="/account/history" class="btn_cabinet_wrapper"><span class="btn_cabinet_user"><img
+                            <div><a href="/account/history" class="btn_cabinet_wrapper"><span
+                                    class="btn_cabinet_user"><img
                                     src="/images/user-1.svg" alt=""></span><span
                                     class="btn_cabinet_text">Личный кабинет</span></a></div>
                             <div><a href="/logout" class="btn_logout">
@@ -57,7 +59,8 @@
             <div class="order_page_wrapper">
                 <form action="" th:object="${order}" th:action="@{/exchange/pay}" method="post">
                     <div class="order_page_header">
-                        <h3 class="order_page_title">Заявка #<span th:text="${order.id}">16601466482062</span> создана!</h3>
+                        <h3 class="order_page_title">Заявка #<span th:text="${order.id}">16601466482062</span> создана!
+                        </h3>
                         <p class="order_page_subtitle">Следуйте инструкции! Ожидаем перевод денежных средств.</p>
                         <p class="order_page_time">Осталось: <span class="order_page_time_left">time</span></p>
                     </div>
@@ -69,18 +72,20 @@
                                     <div class="dropdown_header">
                                         <div class="dropdown_header_left_col">
                                             <div class="dropdown_img_coin_wrapper">
-                                                <img src="../static/images/bitcoin.png" alt=""
-                                                     class="dropdown_img_coin">
+                                                <img alt=""
+                                                     class="dropdown_img_coin"
+                                                     th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${givenCoin}}">
                                             </div>
-                                            <p class="dropdown_title">Bitcoin</p>
-                                            <input type="text" readonly th:text="${order.givenCoin}"
-                                                   class="order_hidden_input_abbr js-top_order_hidden_input_abbr" value="BTC">
+                                            <p class="dropdown_title" th:text="${givenCoin}">Bitcoin</p>
+                                            <input type="text" readonly th:value="${order.givenCoin}"
+                                                   class="order_hidden_input_abbr js-top_order_hidden_input_abbr">
                                         </div>
                                     </div>
                                     <div class="dropdown_input_wrapper">
-                                        <input type="text" class="dropdown_input" placeholder="Сумма" readonly value="29"
+                                        <input type="text" class="dropdown_input" placeholder="Сумма" readonly
+                                               value="29"
                                                th:value="${order.givenAmount}">
-                                        <div class="coin_abbr">BTC</div>
+                                        <div class="coin_abbr" th:text="${order.givenCoin}">BTC</div>
                                     </div>
                                 </div>
                             </div>
@@ -90,23 +95,25 @@
                                     <div class="dropdown_header ">
                                         <div class="dropdown_header_left_col">
                                             <div class="dropdown_img_coin_wrapper">
-                                                <img src="/images/solana.png" alt=""
-                                                     class="dropdown_img_coin">
+                                                <img alt=""
+                                                     class="dropdown_img_coin"
+                                                     th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${takenCoin}}">
                                             </div>
-                                            <p class="dropdown_title">Solana</p>
-                                            <input type="text" readonly th:text="${order.takenCoin}"
-                                                   class="order_hidden_input_abbr js-bottom_order_hidden_input_abbr"
-                                                   value="SOL">
+                                            <p class="dropdown_title" th:text="${takenCoin}">Solana</p>
+                                            <input type="text" readonly th:value="${order.takenCoin}"
+                                                   class="order_hidden_input_abbr js-bottom_order_hidden_input_abbr">
                                         </div>
 
                                     </div>
                                     <div class="dropdown_input_wrapper">
-                                        <input type="text" class="dropdown_input" placeholder="Сумма" readonly value="900"
+                                        <input type="text" class="dropdown_input" placeholder="Сумма" readonly
+                                               value="900"
                                                th:value="${order.takenAmount}">
-                                        <div class="coin_abbr">SOL</div>
+                                        <div class="coin_abbr" th:text="${order.takenCoin}">SOL</div>
                                     </div>
                                     <div class="dropdown_footer">
-                                        <p class="dropdown_footer_left_col"><span class="dropdown_text">На счет </span><span
+                                        <p class="dropdown_footer_left_col"><span
+                                                class="dropdown_text">На счет </span><span
                                                 th:text="${order.wallet}"></span><span
                                                 class="dropdown_text_account"></span></p>
                                     </div>
@@ -116,11 +123,13 @@
                         </div>
                         <div class="form_right_col">
                             <div>
-                                <p class="order_title">1. Войдите в свою программу-клиент и сделайте перевод по реквизитам</p>
+                                <p class="order_title">1. Войдите в свою программу-клиент и сделайте перевод по
+                                    реквизитам</p>
                                 <div class="order_top_row">
                                     <div class="order_wallet_sum_wrapper">
                                         <div class="input_wallet_wrapper input_order_wrapper">
-                                            <input type="text" readonly class="input_wallet input_order js-input-wallet" th:value="${ownerWallet}"
+                                            <input type="text" readonly class="input_wallet input_order js-input-wallet"
+                                                   th:value="${ownerWallet}"
                                                    value="0x3c54aA116dc8fc9005783D672300ADed7cAD6573">
                                             <div class="copy_icon_wrapper js-copy-wallet">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -130,11 +139,13 @@
                                             </div>
                                             <p class="order_input_title">Кошелек</p>
                                             <div class="order_coin_img_right_col_wrapper">
-                                                <img src="" alt="" class="order_coin_img_right_col" th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${order.givenCoin}}">
+                                                <img src="" alt="" class="order_coin_img_right_col"
+                                                     th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${order.givenCoin}}">
                                             </div>
                                         </div>
                                         <div class="input_sum_wrapper input_order_wrapper">
-                                            <input type="text" readonly class="input_sum input_order js-input-sum" th:value="${order.givenAmount}"
+                                            <input type="text" readonly class="input_sum input_order js-input-sum"
+                                                   th:value="${order.givenAmount}"
                                                    value="7 ETH">
                                             <div class="copy_icon_wrapper js-copy-sum">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -144,7 +155,8 @@
                                             </div>
                                             <p class="order_input_title">На сумму</p>
                                             <div class="order_coin_img_right_col_wrapper">
-                                                <img src="" alt="" class="order_coin_img_right_col" th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${order.givenCoin}}">
+                                                <img src="" alt="" class="order_coin_img_right_col"
+                                                     th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${order.givenCoin}}">
                                             </div>
                                         </div>
                                     </div>
@@ -157,7 +169,7 @@
                                 <p class="order_title">2. Обязательно, нажмите кнопку "я оплатил"</p>
                                 <div class="order_bottom_row">
                                     <button type="submit" class="btn_general">Я ОПЛАТИЛ</button>
-                                    <a class="btn_secondary">ОТМЕНИТЬ ЗАЯВКУ</a>
+                                    <a class="btn_secondary" href="/">ОТМЕНИТЬ ЗАЯВКУ</a>
                                 </div>
                             </div>
                         </div>
