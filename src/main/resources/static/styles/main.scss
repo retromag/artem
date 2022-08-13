@@ -1916,11 +1916,49 @@ footer {
     &_img_wrapper {
       width: 30px;
       height: 30px;
+
+      position: relative;
+
+      & input {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        z-index: 2;
+        background-color: transparent;
+        border: none;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      & button {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        z-index: 2;
+        background-color: transparent;
+        border: none;
+      }
+
+      & svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+    }
+    &_email_wallet_wrapper {
+      display: flex;
+      align-items: center;
     }
   }
 }
 .block_user {
   fill: red;
+}
+.unlock_user {
+  fill: #1e2125;
 }
 .input_approve {
   fill: green;
@@ -1933,6 +1971,7 @@ footer {
 .input_wallet_wrapper {
   display: flex;
   align-items: center;
+  margin-left: 200px;
 }
 .users_items_wrapper {
   margin-top: 30px;
