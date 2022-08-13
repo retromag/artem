@@ -2244,10 +2244,48 @@ footer {
 .user_item_img_wrapper {
   width: 30px;
   height: 30px;
+  position: relative;
+}
+.user_item_img_wrapper input {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+  border: none;
+}
+.user_item_img_wrapper input:hover {
+  cursor: pointer;
+}
+.user_item_img_wrapper button {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+  border: none;
+}
+.user_item_img_wrapper svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.user_item_email_wallet_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .block_user {
   fill: red;
+}
+
+.unlock_user {
+  fill: #1e2125;
 }
 
 .input_approve {
@@ -2267,6 +2305,7 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-left: 200px;
 }
 
 .users_items_wrapper {
