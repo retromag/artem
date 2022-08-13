@@ -2241,10 +2241,25 @@ footer {
           align-items: center;
   margin-bottom: 15px;
 }
+@media only screen and (max-width: 479px) {
+  .user_item {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
 .user_item_img_wrapper {
   width: 30px;
   height: 30px;
   position: relative;
+}
+@media only screen and (max-width: 767px) {
+  .user_item_img_wrapper {
+    width: 15px;
+    height: 15px;
+  }
 }
 .user_item_img_wrapper input {
   width: 30px;
@@ -2253,6 +2268,12 @@ footer {
   z-index: 2;
   background-color: transparent;
   border: none;
+}
+@media only screen and (max-width: 767px) {
+  .user_item_img_wrapper input {
+    width: 15px;
+    height: 15px;
+  }
 }
 .user_item_img_wrapper input:hover {
   cursor: pointer;
@@ -2264,6 +2285,12 @@ footer {
   z-index: 2;
   background-color: transparent;
   border: none;
+}
+@media only screen and (max-width: 767px) {
+  .user_item_img_wrapper button {
+    width: 15px;
+    height: 15px;
+  }
 }
 .user_item_img_wrapper svg {
   position: absolute;
@@ -2279,6 +2306,11 @@ footer {
       -ms-flex-align: center;
           align-items: center;
 }
+@media only screen and (max-width: 479px) {
+  .user_item_email_wallet_wrapper {
+    margin-bottom: 10px;
+  }
+}
 
 .block_user {
   fill: red;
@@ -2286,6 +2318,11 @@ footer {
 
 .unlock_user {
   fill: #1e2125;
+}
+@media only screen and (max-width: 767px) {
+  .unlock_user {
+    margin-left: 10px;
+  }
 }
 
 .input_approve {
@@ -2297,6 +2334,11 @@ footer {
   height: 40px;
   margin: 0 10px;
 }
+@media only screen and (max-width: 767px) {
+  .input_edit_wallet {
+    height: 25px;
+  }
+}
 
 .input_wallet_wrapper {
   display: -webkit-box;
@@ -2306,6 +2348,11 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   margin-left: 200px;
+}
+@media only screen and (max-width: 767px) {
+  .input_wallet_wrapper {
+    margin-left: 30px;
+  }
 }
 
 .users_items_wrapper {
