@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-@Table(name = "exchanger_note")
+@Table(name = "exchanger_order")
 public class ExchangeOrder {
     @Id
     @Column(name = "id")
@@ -32,10 +32,10 @@ public class ExchangeOrder {
 
     private String takenCoin;
 
-    @Column(precision = 8, scale = 4)
+    @Column(precision = 15, scale = 7)
     private BigDecimal givenAmount;
 
-    @Column(precision = 8, scale = 5)
+    @Column(precision = 15, scale = 7)
     private BigDecimal takenAmount;
 
     private String wallet;
