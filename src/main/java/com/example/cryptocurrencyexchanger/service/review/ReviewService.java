@@ -10,7 +10,7 @@ public interface ReviewService {
 
     Review saveNewReview(Review review);
 
-    void deleteReview(Review review);
+    void deleteReviewById(Long id);
 
     Page<Review> getAllReviews(Pageable pageable);
 

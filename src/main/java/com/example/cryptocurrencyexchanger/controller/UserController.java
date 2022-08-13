@@ -426,6 +426,15 @@ public class UserController {
     }
 
     @Secured("ROLE_ADMIN")
+    @PostMapping("/review/delete/{id}")
+    public String deleteReview(@PathVariable("id") Long id, HttpServletRequest request) {
+        reviewService.deleteReviewById(id);
+
+        return getPreviousPageByRequest(request).orElse("/");
+    }
+
+
+    @Secured("ROLE_ADMIN")
     @GetMapping("/account/users")
     public String showUsersPage(Model model) {
         List<ExchangerUser> users = userService.getAllUsers();

@@ -24,7 +24,9 @@ public class ExchangerReviewService implements ReviewService {
     }
 
     @Override
-    public void deleteReview(Review review) {
+    public void deleteReviewById(Long id) {
+        Review review = reviewRepository.findById(id).get();
+
         reviewRepository.delete(review);
     }
 
