@@ -23,4 +23,6 @@ public interface UserService extends UserDetailsService {
     void changeUserWalletAmount(ExchangerUser user, BigDecimal amount);
 
     void lockUser(ExchangerUser user);
+
+    void unLockUser(ExchangerUser user);
 }

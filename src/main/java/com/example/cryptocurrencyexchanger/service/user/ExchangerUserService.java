@@ -92,6 +92,12 @@ public class ExchangerUserService implements UserService {
         userRepository.save(user);
     }
 
+    @Override
+    public void unLockUser(ExchangerUser user) {
+        user.setNonLocked(true);
+        userRepository.save(user);
+    }
+
     private ExchangerUser createUser(final UserModel userModel) {
         ExchangerUser user = new ExchangerUser();
         user.setEmail(userModel.getEmail());

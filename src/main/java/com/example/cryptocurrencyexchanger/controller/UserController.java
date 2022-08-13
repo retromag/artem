@@ -435,8 +435,9 @@ public class UserController {
 
     @Secured("ROLE_ADMIN")
     @PostMapping("/user/update/wallet")
-    public String setUserWalletAmount(@RequestParam("walletAmount") String amount, HttpServletRequest request) {
-        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+    public String setUserWalletAmount(@RequestParam("walletAmount") String amount,
+                                      @RequestParam("email") String email, HttpServletRequest request) {
+        ExchangerUser user = userService.findByEmail(email);
         userService.changeUserWalletAmount(user, new BigDecimal(amount));
 
         return getPreviousPageByRequest(request).orElse("/");
@@ -444,9 +445,18 @@ public class UserController {
 
     @Secured("ROLE_ADMIN")
     @PostMapping("/user/lock")
-    public String lockUser(HttpServletRequest request) {
-        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+    public String lockUser(@RequestParam("email")String email, HttpServletRequest request) {
+        ExchangerUser user = userService.findByEmail(email);
         userService.lockUser(user);
+
+        return getPreviousPageByRequest(request).orElse("/");
+    }
+
+    @Secured("ROLE_ADMIN")
+    @PostMapping("/user/unlock")
+    public String unLockUser(@RequestParam("email")String email, HttpServletRequest request) {
+        ExchangerUser user = userService.findByEmail(email);
+        userService.unLockUser(user);
 
         return getPreviousPageByRequest(request).orElse("/");
     }
