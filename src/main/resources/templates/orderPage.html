@@ -73,6 +73,7 @@
                     <div class="order_page_header">
                         <h3 class="order_page_title">Заявка #<span th:text="${order.id}">16601466482062</span> создана!
                         </h3>
+                        <input hidden name="uniqcode" th:value="${order.uniqCode}">
                         <p class="order_page_subtitle">Следуйте инструкции! Ожидаем перевод денежных средств.</p>
                         <p class="order_page_time">Осталось: <span class="order_page_time_left" id="js-time"></span></p>
                     </div>

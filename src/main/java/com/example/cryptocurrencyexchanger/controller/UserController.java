@@ -155,9 +155,7 @@ public class UserController {
 
         userService.activateUser(user);
 
-        if (user != null) {
-            model.addAttribute("walletAmount", user.getWalletAmount());
-        }
+        model.addAttribute("walletAmount", user.getWalletAmount());
 
         return "accApproved";
     }
@@ -349,17 +347,25 @@ public class UserController {
         model.addAttribute("ownerWallet", coinService.getCoinByCoinSymbol(order.getGivenCoin()).getWallet());
         model.addAttribute("givenCoin", coinService.getCoinByCoinSymbol(order.getGivenCoin()).getName());
         model.addAttribute("takenCoin", coinService.getCoinByCoinSymbol(order.getTakenCoin()).getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
 
         return "orderPage";
     }
 
     @PostMapping("/exchange/pay")
-    public String payOrder(@Valid @ModelAttribute("order") ExchangeOrder order, Model model) {
+    public String payOrder(@RequestParam("uniqcode") String code, Model model) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        ExchangeOrder order = exchangeService.findOrderByCode(code);
         exchangeService.payForExchange(order);
 
-        model.addAttribute("order", exchangeService.findOrderById(order.getId()));
+        model.addAttribute("order", order);
         model.addAttribute("givenCoin", coinService.getCoinByCoinSymbol(order.getGivenCoin()).getName());
         model.addAttribute("takenCoin", coinService.getCoinByCoinSymbol(order.getTakenCoin()).getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+        }
 
         return "checkPage";
     }
@@ -445,7 +451,7 @@ public class UserController {
 
     @Secured("ROLE_ADMIN")
     @PostMapping("/user/lock")
-    public String lockUser(@RequestParam("email")String email, HttpServletRequest request) {
+    public String lockUser(@RequestParam("email") String email, HttpServletRequest request) {
         ExchangerUser user = userService.findByEmail(email);
         userService.lockUser(user);
 
@@ -454,7 +460,7 @@ public class UserController {
 
     @Secured("ROLE_ADMIN")
     @PostMapping("/user/unlock")
-    public String unLockUser(@RequestParam("email")String email, HttpServletRequest request) {
+    public String unLockUser(@RequestParam("email") String email, HttpServletRequest request) {
         ExchangerUser user = userService.findByEmail(email);
         userService.unLockUser(user);
 
