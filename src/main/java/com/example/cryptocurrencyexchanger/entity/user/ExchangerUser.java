@@ -40,6 +40,9 @@ public class ExchangerUser {
     @Column(name = "walletAmount")
     private BigDecimal walletAmount;
 
+    @Column(name = "userMargin", precision = 8, scale = 2)
+    private BigDecimal userMargin;
+
     @CreationTimestamp
     @Column(name = "create_time")
     private Timestamp registrationDate;

@@ -1,6 +1,5 @@
 package com.example.cryptocurrencyexchanger.controller;
 
-import com.amazonaws.services.dynamodbv2.xspec.M;
 import com.example.cryptocurrencyexchanger.entity.coin.Coin;
 import com.example.cryptocurrencyexchanger.entity.exchange.ExchangeOrder;
 import com.example.cryptocurrencyexchanger.entity.review.Review;
@@ -79,6 +78,7 @@ public class UserController {
             model.addAttribute("note", note);
             if (user != null) {
                 model.addAttribute("walletAmount", user.getWalletAmount());
+                model.addAttribute("userMargin", user.getUserMargin());
             }
         }
 
@@ -156,6 +156,7 @@ public class UserController {
         userService.activateUser(user);
 
         model.addAttribute("walletAmount", user.getWalletAmount());
+        model.addAttribute("userMargin", user.getUserMargin());
 
         return "accApproved";
     }
@@ -193,6 +194,7 @@ public class UserController {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         if (result != null) {
@@ -217,6 +219,7 @@ public class UserController {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         model.addAttribute("coins", coinList);
@@ -230,6 +233,7 @@ public class UserController {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         return "add_coin";
@@ -259,6 +263,7 @@ public class UserController {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         model.addAttribute("coin", coin);
@@ -297,6 +302,7 @@ public class UserController {
         List<ExchangeOrder> orders = exchangeService.getAllExchangeOrders(user);
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         model.addAttribute("orders", orders);
@@ -311,6 +317,7 @@ public class UserController {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         return "account_settings";
@@ -349,6 +356,7 @@ public class UserController {
         model.addAttribute("takenCoin", coinService.getCoinByCoinSymbol(order.getTakenCoin()).getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         return "orderPage";
@@ -365,6 +373,7 @@ public class UserController {
         model.addAttribute("takenCoin", coinService.getCoinByCoinSymbol(order.getTakenCoin()).getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         return "checkPage";
@@ -410,6 +419,7 @@ public class UserController {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         model.addAttribute("review", new Review());
@@ -441,9 +451,11 @@ public class UserController {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         model.addAttribute("users", users);
+
 
         return "userPage";
     }
@@ -451,9 +463,15 @@ public class UserController {
     @Secured("ROLE_ADMIN")
     @PostMapping("/user/update/wallet")
     public String setUserWalletAmount(@RequestParam("walletAmount") String amount,
+                                      @RequestParam("userMargin") String margin,
                                       @RequestParam("email") String email, HttpServletRequest request) {
         ExchangerUser user = userService.findByEmail(email);
-        userService.changeUserWalletAmount(user, new BigDecimal(amount));
+        if (amount != null) {
+            userService.changeUserWalletAmount(user, new BigDecimal(amount));
+        }
+        if (margin != null) {
+            userService.changeUserMargin(user, new BigDecimal(margin));
+        }
 
         return getPreviousPageByRequest(request).orElse("/");
     }
@@ -481,6 +499,7 @@ public class UserController {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         return "forgot_password";
@@ -491,6 +510,7 @@ public class UserController {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         return "rules";
@@ -501,6 +521,7 @@ public class UserController {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         return "aml";
@@ -511,6 +532,7 @@ public class UserController {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         return "privacy_policy";
@@ -521,6 +543,7 @@ public class UserController {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         return "supportPage";
@@ -531,6 +554,7 @@ public class UserController {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
         }
 
         return "update_password";

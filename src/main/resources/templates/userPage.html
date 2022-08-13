@@ -93,8 +93,7 @@
                 <tr th:each="user : ${users}">
                     <div class="user_item">
                         <form th:action="@{/user/update/wallet}" method="post" class="user_item_email_wallet_wrapper">
-                            <input value="" type="hidden" name="email">
-                            <p class="user_item_title" th:text="${user.email}">email@email.com</p>
+                            <input class="user_item_title" th:value="${user.email}" name="email">
                             <div class="input_wallet_wrapper">
                                 <div class="wallet_img_wrapper user_item_img_wrapper">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -104,6 +103,8 @@
                                 </div>
                                 <input type="text" class="input_general input_edit_wallet"
                                        th:value="${user.walletAmount}" name="walletAmount">
+                                <input type="text" class="input_general input_edit_wallet"
+                                       th:value="${user.userMargin}" name="userMargin">
                                 <div class="input_approve user_item_img_wrapper">
                                     <input type="submit" value="">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">

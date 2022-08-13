@@ -87,6 +87,13 @@ public class ExchangerUserService implements UserService {
     }
 
     @Override
+    public void changeUserMargin(ExchangerUser user, BigDecimal precision) {
+        user.setUserMargin(precision);
+
+        userRepository.save(user);
+    }
+
+    @Override
     public void lockUser(ExchangerUser user) {
         user.setNonLocked(false);
         userRepository.save(user);
