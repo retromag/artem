@@ -11,6 +11,10 @@
     margin-top: 10px;
     align-items: center;
 
+    @include max-screen(sm) {
+      padding: 8px;
+    }
+
     &_wrapper {
       width: 33%;
       padding: 0 15px;
@@ -21,6 +25,7 @@
 
       @include max-screen(sm) {
         width: 50%;
+        font-size: 8px;
       }
 
       @include max-screen(xs) {

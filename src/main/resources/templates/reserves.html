@@ -88,7 +88,7 @@
                                     </div>
                                     <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')" class="reserves_btns_edit_wrapper">
                                         <span>+</span><span class="coin_amount"
-                                                            th:text="${coin.margin}"></span><span>%</span>
+                                                            th:text="${coin.margin}">0.000007</span><span>%</span>
                                         <a th:href="@{/reserves/update/{id}(id=${coin.id})}" type="button"
                                            class="coin_edit_btn">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

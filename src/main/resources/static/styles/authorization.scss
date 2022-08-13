@@ -23,7 +23,7 @@
       width: 470px;
     }
     @include max-screen(xs) {
-      width: 350px;
+      width: 290px;
     }
   }
   &_btns_wrapper {
@@ -118,6 +118,9 @@ input:checked + .slider:before {
   }
   &_label {
     margin-left: 10px;
+    @include max-screen(xs) {
+      line-height: 25px;
+    }
     &:hover {
       cursor: pointer;
     }
