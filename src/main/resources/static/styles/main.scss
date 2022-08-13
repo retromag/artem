@@ -1913,11 +1913,22 @@ footer {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
+
+    @include max-screen(xs) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     &_img_wrapper {
       width: 30px;
       height: 30px;
 
       position: relative;
+
+      @include max-screen(sm) {
+        width: 15px;
+        height: 15px;
+      }
 
       & input {
         width: 30px;
@@ -1926,6 +1937,11 @@ footer {
         z-index: 2;
         background-color: transparent;
         border: none;
+
+        @include max-screen(sm) {
+          width: 15px;
+          height: 15px;
+        }
 
         &:hover {
           cursor: pointer;
@@ -1939,6 +1955,11 @@ footer {
         z-index: 2;
         background-color: transparent;
         border: none;
+
+        @include max-screen(sm) {
+          width: 15px;
+          height: 15px;
+        }
       }
 
       & svg {
@@ -1951,6 +1972,11 @@ footer {
     &_email_wallet_wrapper {
       display: flex;
       align-items: center;
+
+      @include max-screen(xs) {
+        margin-bottom: 10px;
+      }
+
     }
   }
 }
@@ -1959,6 +1985,11 @@ footer {
 }
 .unlock_user {
   fill: #1e2125;
+
+  @include max-screen(sm) {
+    margin-left: 10px;
+
+  }
 }
 .input_approve {
   fill: green;
@@ -1967,11 +1998,19 @@ footer {
   width: 50%;
   height: 40px;
   margin: 0 10px;
+
+  @include max-screen(sm) {
+    height: 25px;
+  }
 }
 .input_wallet_wrapper {
   display: flex;
   align-items: center;
   margin-left: 200px;
+
+  @include max-screen(sm) {
+    margin-left: 30px;
+  }
 }
 .users_items_wrapper {
   margin-top: 30px;
