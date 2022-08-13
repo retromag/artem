@@ -130,114 +130,131 @@
 
                         </div>
                         <div class="dropdown_options_wrapper js-top-dropdown">
-                            <div class="dropdown_option_wrapper js-top-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="../static/images/bitcoin.png" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
+                            <tr th:each="coin : ${coins}">
+                                <div class="dropdown_option_wrapper js-top-dropdown-option">
+                                    <div class="dropdown_option">
+                                        <div class="dropdown_option_left_col">
+                                            <div class="dropdown_img_coin_wrapper">
+                                                <img alt="" class="dropdown_img_coin"
+                                                     data-coin-img="coin-img"
+                                                     th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${coin.symbol}}">
+                                            </div>
+                                            <p class="dropdown_coin_name" data-coin-name="coin-name"
+                                               th:text="${coin.name}">Bitcoin</p>
                                         </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Bitcoin</p>
+                                        <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr"
+                                           th:text="${coin.symbol}">BTC</p>
                                     </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">BTC</p>
                                 </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-top-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="../static/images/solana.png" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Solana</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">SOL</p>
-                                </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-top-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="../static/images/ethereum.PNG" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Ethereum</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">ETH</p>
-                                </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-top-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="../static/images/tron.PNG" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Tron</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">TRX</p>
-                                </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-top-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="../static/images/near.PNG" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Near protocol</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">NEAR</p>
-                                </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-top-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="./static/images/xmr.png" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Monero</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">XMR</p>
-                                </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-top-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="../static/images/polkadot.PNG" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Polkadot</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">DOT</p>
-                                </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-top-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="./static/images/usdtr.png" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">USDT TRC20</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">USDT</p>
-                                </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-top-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="./static/images/dash.png" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Dash</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">DASH</p>
-                                </div>
-                            </div>
+                            </tr>
+                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="../static/images/bitcoin.png" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Bitcoin</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">BTC</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="../static/images/solana.png" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Solana</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">SOL</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="../static/images/ethereum.PNG" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Ethereum</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">ETH</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="../static/images/tron.PNG" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Tron</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">TRX</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="../static/images/near.PNG" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Near protocol</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">NEAR</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="./static/images/xmr.png" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Monero</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">XMR</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="../static/images/polkadot.PNG" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Polkadot</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">DOT</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="./static/images/usdtr.png" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">USDT TRC20</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">USDT</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="./static/images/dash.png" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Dash</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">DASH</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
                         </div>
                     </div>
                     <p class="text_get">Получаю</p>
@@ -275,114 +292,119 @@
 
                         </div>
                         <div class="dropdown_options_wrapper js-bottom-dropdown">
-                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="/images/solana.png" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
+                            <tr th:each="coin : ${coins}">
+                                <div class="dropdown_option_wrapper js-bottom-dropdown-option">
+                                    <div class="dropdown_option">
+                                        <div class="dropdown_option_left_col">
+                                            <div class="dropdown_img_coin_wrapper">
+                                                <img alt="" class="dropdown_img_coin"
+                                                     data-coin-img="coin-img"
+                                                     th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${coin.symbol}}">
+                                            </div>
+                                            <p class="dropdown_coin_name" data-coin-name="coin-name"
+                                               th:text="${coin.name}">Solana</p>
                                         </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Solana</p>
+                                        <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr"
+                                           th:text="${coin.symbol}">SOL</p>
                                     </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">SOL</p>
                                 </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="/images/bitcoin.png" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Bitcoin</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">BTC</p>
-                                </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="../static/images/coin.png" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Ethereum</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">ETH</p>
-                                </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="../static/images/coin.png" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Tron</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">TRX</p>
-                                </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="../static/images/coin.png" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Near protocol</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">NEAR</p>
-                                </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="/images/xmr.png" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Monero</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">XMR</p>
-                                </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="../static/images/coin.png" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Polkadot</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">DOT</p>
-                                </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="/images/usdtr.png" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">USDT TRC20</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">USDT</p>
-                                </div>
-                            </div>
-                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">
-                                <div class="dropdown_option">
-                                    <div class="dropdown_option_left_col">
-                                        <div class="dropdown_img_coin_wrapper">
-                                            <img src="/images/dash.png" alt="" class="dropdown_img_coin"
-                                                 data-coin-img="coin-img">
-                                        </div>
-                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Dash</p>
-                                    </div>
-                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">DASH</p>
-                                </div>
-                            </div>
+                            </tr>
+                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="/images/bitcoin.png" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Bitcoin</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">BTC</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="../static/images/coin.png" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Ethereum</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">ETH</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="../static/images/coin.png" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Tron</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">TRX</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="../static/images/coin.png" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Near protocol</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">NEAR</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="/images/xmr.png" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Monero</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">XMR</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="../static/images/coin.png" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Polkadot</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">DOT</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="/images/usdtr.png" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">USDT TRC20</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">USDT</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
+                            <!--                                <div class="dropdown_option">-->
+                            <!--                                    <div class="dropdown_option_left_col">-->
+                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
+                            <!--                                            <img src="/images/dash.png" alt="" class="dropdown_img_coin"-->
+                            <!--                                                 data-coin-img="coin-img">-->
+                            <!--                                        </div>-->
+                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Dash</p>-->
+                            <!--                                    </div>-->
+                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">DASH</p>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
                         </div>
                     </div>
                 </div>
