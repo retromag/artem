@@ -1576,6 +1576,13 @@ footer {
       line-height: 130%;
       font-weight: 500;
       margin-bottom: 10px;
+
+      @include max-screen(sm) {
+        font-size: 30px;
+      }
+      @include max-screen(xs) {
+        font-size: 20px;
+      }
     }
     &_right_col {
       padding: 25px;
@@ -1584,6 +1591,14 @@ footer {
       box-shadow: inset -10px 10px 24px rgb(255 255 255 / 56%);
       border-radius: 15px;
       width: 48%;
+
+      @include max-screen(sm) {
+        width: 100%;
+        order: 0;
+      }
+      @include max-screen(xs) {
+        padding: 15px;
+      }
 
       .rating-area:not(:checked) > input {
         display: none;
@@ -1623,10 +1638,21 @@ footer {
     }
     &_left_col {
       width: 50%;
+
+      @include max-screen(sm) {
+        width: 100%;
+        order: 1;
+        margin-top: 20px;
+      }
     }
     &_row {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+
+      @include max-screen(sm) {
+        flex-direction: column;
+      }
     }
   }
 }
@@ -1641,6 +1667,10 @@ footer {
         font-size: 26px;
         line-height: 130%;
         font-weight: 500;
+
+        @include max-screen(sm) {
+          font-size: 20px;
+        }
       }
       &_input {
         &_wrapper {
@@ -1654,6 +1684,10 @@ footer {
           &_name {
             margin-top: 15px;
             margin-bottom: 30px;
+
+            @include max-screen(xs) {
+              margin-bottom: 10px;
+            }
           }
         }
       }
@@ -1769,6 +1803,10 @@ footer {
     margin-top: 50px;
     display: flex;
     justify-content: center;
+
+    @include max-screen(sm) {
+      margin-top: 15px;
+    }
   }
   //justify-content: space-between;
    &_item {

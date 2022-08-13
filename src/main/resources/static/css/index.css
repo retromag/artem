@@ -1870,6 +1870,16 @@ footer {
   font-weight: 500;
   margin-bottom: 10px;
 }
+@media only screen and (max-width: 767px) {
+  .reviews_page_title {
+    font-size: 30px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .reviews_page_title {
+    font-size: 20px;
+  }
+}
 .reviews_page_right_col {
   padding: 25px;
   background: rgba(255, 255, 255, 0.2);
@@ -1878,6 +1888,19 @@ footer {
           box-shadow: inset -10px 10px 24px rgba(255, 255, 255, 0.56);
   border-radius: 15px;
   width: 48%;
+}
+@media only screen and (max-width: 767px) {
+  .reviews_page_right_col {
+    width: 100%;
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .reviews_page_right_col {
+    padding: 15px;
+  }
 }
 .reviews_page_right_col .rating-area:not(:checked) > input {
   display: none;
@@ -1917,6 +1940,15 @@ footer {
 .reviews_page_left_col {
   width: 50%;
 }
+@media only screen and (max-width: 767px) {
+  .reviews_page_left_col {
+    width: 100%;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    margin-top: 20px;
+  }
+}
 .reviews_page_row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1924,6 +1956,16 @@ footer {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+@media only screen and (max-width: 767px) {
+  .reviews_page_row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .form_make_review .rating-area {
@@ -1935,6 +1977,11 @@ footer {
   line-height: 130%;
   font-weight: 500;
 }
+@media only screen and (max-width: 767px) {
+  .form_make_review_title {
+    font-size: 20px;
+  }
+}
 .form_make_review_input_wrapper label {
   color: #11181F;
   font-size: 16px;
@@ -1944,6 +1991,11 @@ footer {
 .form_make_review_input_wrapper_name {
   margin-top: 15px;
   margin-bottom: 30px;
+}
+@media only screen and (max-width: 479px) {
+  .form_make_review_input_wrapper_name {
+    margin-bottom: 10px;
+  }
 }
 
 .textarea_general {
@@ -2050,6 +2102,11 @@ footer {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+@media only screen and (max-width: 767px) {
+  .pagination_wrapper {
+    margin-top: 15px;
+  }
 }
 .pagination_item {
   display: block;
