@@ -1483,12 +1483,24 @@ footer {
     font-weight: 700;
     font-size: 42px;
     line-height: 130%;
+
+    @include max-screen(md) {
+      font-size: 36px;
+    }
+    @include max-screen(xs) {
+      font-size: 28px;
+    }
   }
   &_subtitle {
     font-size: 18px;
     color: #585D62;
     font-weight: 500;
     margin-bottom: 30px;
+
+    @include max-screen(xs) {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
   }
   &_item {
     width: 32%;
@@ -1504,6 +1516,15 @@ footer {
     color: #11181F;
     font-size: 16px;
 
+    @include max-screen(lg) {
+      font-size: 14px;
+    }
+    @include max-screen(md) {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+
     &_title {
       font-size: 18px;
       text-align: center;
@@ -1515,6 +1536,13 @@ footer {
       color: #11181F;
       font-weight: 500;
 
+      @include max-screen(lg) {
+        font-size: 20px;
+      }
+      @include max-screen(md) {
+        font-size: 16px;
+      }
+
       &:hover {
         color: #5d62db;
       }
@@ -1523,6 +1551,12 @@ footer {
   &_items {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+
+    @include max-screen(md) {
+      flex-direction: column;
+    }
+
   }
 }
 .rules_text {
