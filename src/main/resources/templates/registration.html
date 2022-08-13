@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
     <meta charset="UTF-8">
@@ -27,7 +27,50 @@
                 </div>
                 <nav class="nav_menu_wrapper">
                     <ul class="nav_menu">
-                        <li class="nav_menu__item nav_menu__item_flag_wrapper"><img src="/images/ru.png" alt="" class="flag"></li>
+                        <li class="nav_menu__item"><a href="/" class="nav_menu__item_link" th:text="#{header.authorize}">Выполнить обмен</a></li>
+                        <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link" th:text="#{header.reserves}">Резервы</a></li>
+
+                        <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'ru_RU'}">
+                            <a th:href="@{${#httpServletRequest.requestURI}(lang='en_GB')}">
+                                <i><img src="/images/en.png" alt="" class="flag"></i>
+                            </a>
+                        </li>
+                        <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'en_GB'}">
+                            <a th:href="@{${#httpServletRequest.requestURI}(lang='ru_RU')}">
+                                <i><img src="/images/ru.png" alt="" class="flag"></i>
+                            </a>
+                        </li>
+
+                        <li sec:authorize="!isAuthenticated()">
+                            <div class="nav_menu__item">
+                                <a href="/registration" class="btn_authorization btn_general" th:text="#{header.authorize}">Авторизация</a>
+                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg" alt=""></a>
+                            </div>
+                        </li>
+                        <li sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')" class="btns_auth_wrapper">
+                            <div>
+                                <a href="/account/history" class="btn_cabinet_wrapper">
+                                    <span class="btn_cabinet_user"><img src="/images/user-1.svg" alt=""></span>
+                                    <div class="btn_cabinet_text">
+                                        <p>Личный кабинет</p>
+                                        <div class="header_wallet">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                                <path d="M448 32C465.7 32 480 46.33 480 64C480 81.67 465.7 96 448 96H80C71.16 96 64 103.2 64 112C64 120.8 71.16 128 80 128H448C483.3 128 512 156.7 512 192V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H448zM416 336C433.7 336 448 321.7 448 304C448 286.3 433.7 272 416 272C398.3 272 384 286.3 384 304C384 321.7 398.3 336 416 336z"/>
+                                            </svg>
+                                            <span th:text="${walletAmount}"></span>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </div>
+                            <div><a href="/logout" class="btn_logout">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                    <path d="M160 416H96c-17.67 0-32-14.33-32-32V128c0-17.67 14.33-32 32-32h64c17.67 0 32-14.33 32-32S177.7 32 160 32H96C42.98 32 0 74.98 0 128v256c0 53.02 42.98 96 96 96h64c17.67 0 32-14.33 32-32S177.7 416 160 416zM502.6 233.4l-128-128c-12.51-12.51-32.76-12.49-45.25 0c-12.5 12.5-12.5 32.75 0 45.25L402.8 224H192C174.3 224 160 238.3 160 256s14.31 32 32 32h210.8l-73.38 73.38c-12.5 12.5-12.5 32.75 0 45.25s32.75 12.5 45.25 0l128-128C515.1 266.1 515.1 245.9 502.6 233.4z"/>
+                                </svg>
+                            </a></div>
+                        </li>
                     </ul>
                 </nav>
             </div>

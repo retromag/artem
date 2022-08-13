@@ -100,7 +100,16 @@
                             <div class="history_item">
                                 <div class="history_item_left_col">
                                     <div class="history_item_title">Заявка #<span
-                                            th:text="${order.id}">16601494675699</span></div>
+                                            th:text="${order.id}">16601494675699</span>
+                                        <span> Почта: </span><span th:text="${order.email}"></span>
+                                    </div>
+<!--                                    <th:block th:if="${order.user} != null">-->
+<!--                                        <p class="history_item_subtitle" th:text="${order.user.email}"></p>-->
+<!--                                    </th:block>-->
+<!--                                    <th:block th:unless="${order.user} == null">-->
+<!--                                        <p class="history_item_subtitle" th:text="${order.email}"></p>-->
+<!--                                    </th:block>-->
+                                    <p class="history_item_subtitle" th:text="${order.coupon}">Купон</p>
                                     <p class="history_item_subtitle" th:text="${order.status}">( Предварительная заявка
                                         )</p>
                                     <div class="history_item_text_wrapper">

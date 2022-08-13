@@ -44,6 +44,8 @@ public class ExchangeOrder {
 
     private String currentCourse;
 
+    private String coupon;
+
     @CreationTimestamp
     private Timestamp createdTime;
 

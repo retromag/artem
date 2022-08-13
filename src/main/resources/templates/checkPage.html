@@ -1,12 +1,13 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:th="http://www.thymeleaf.org" lang="">
-<meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" type="text/css" href="/css/index.css">
-<title>Document</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <title>Document</title>
 
 </head>
 <body>
@@ -26,8 +27,10 @@
                 </div>
                 <nav class="nav_menu_wrapper">
                     <ul class="nav_menu">
-                        <li class="nav_menu__item"><a href="/" class="nav_menu__item_link" th:text="#{header.authorize}">Выполнить обмен</a></li>
-                        <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link" th:text="#{header.reserves}">Резервы</a></li>
+                        <li class="nav_menu__item"><a href="/" class="nav_menu__item_link"
+                                                      th:text="#{header.authorize}">Выполнить обмен</a></li>
+                        <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link"
+                                                      th:text="#{header.reserves}">Резервы</a></li>
 
                         <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'ru_RU'}">
                             <a th:href="@{${#httpServletRequest.requestURI}(lang='en_GB')}">
@@ -42,8 +45,10 @@
 
                         <li sec:authorize="!isAuthenticated()">
                             <div class="nav_menu__item">
-                                <a href="/registration" class="btn_authorization btn_general" th:text="#{header.authorize}">Авторизация</a>
-                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg" alt=""></a>
+                                <a href="/registration" class="btn_authorization btn_general"
+                                   th:text="#{header.authorize}">Авторизация</a>
+                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg"
+                                                                                              alt=""></a>
                             </div>
                         </li>
                         <li sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')" class="btns_auth_wrapper">
@@ -120,7 +125,7 @@
                                                      class="dropdown_img_coin"
                                                      th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${order.takenCoin}}">
                                             </div>
-                                            <p class="dropdown_title"  th:text="${takenCoin}">Solana</p>
+                                            <p class="dropdown_title" th:text="${takenCoin}">Solana</p>
                                             <input type="text" readonly th:text="${order.takenCoin}"
                                                    class="order_hidden_input_abbr js-bottom_order_hidden_input_abbr"
                                                    value="SOL">
@@ -131,7 +136,7 @@
                                         <input type="text" class="dropdown_input" placeholder="Сумма" readonly
                                                value="900"
                                                th:value="${order.takenAmount}">
-                                        <div class="coin_abbr"  th:text="${givenCoin}">SOL</div>
+                                        <div class="coin_abbr" th:text="${givenCoin}">SOL</div>
                                     </div>
                                     <div class="dropdown_footer">
                                         <p class="dropdown_footer_left_col"><span
@@ -147,7 +152,9 @@
                             <p class="checkPage_title">Ожидание поступления средств</p>
                             <div class="checkPage_btns">
                                 <a class="btn_general" href="/">НОВЫЙ ОБМЕН</a>
-                                <a href="/login" class="btn_secondary">ЛИЧНЫЙ КАБИНЕТ</a>
+                                <th:block sec:authorize="isAuthenticated()">
+                                    <a href="/account/history" class="btn_secondary">ЛИЧНЫЙ КАБИНЕТ</a>
+                                </th:block>
                             </div>
                             <p class="checkPage_text"><a href="/contacts">Служба поддержки</a> поможет Вам, в случае
                                 проблемы либо возникновения вопросов.</p>

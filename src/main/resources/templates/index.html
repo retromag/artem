@@ -1,13 +1,14 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:th="http://www.thymeleaf.org" lang="">
-<meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="/css/index.css">
-<title>Document</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <title>Document</title>
 
 </head>
 <body>
@@ -27,8 +28,10 @@
             </div>
             <nav class="nav_menu_wrapper">
                 <ul class="nav_menu">
-                    <li class="nav_menu__item"><a href="/" class="nav_menu__item_link" th:text="#{header.authorize}">Выполнить обмен</a></li>
-                    <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link" th:text="#{header.reserves}">Резервы</a></li>
+                    <li class="nav_menu__item"><a href="/" class="nav_menu__item_link" th:text="#{header.authorize}">Выполнить
+                        обмен</a></li>
+                    <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link"
+                                                  th:text="#{header.reserves}">Резервы</a></li>
 
                     <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'ru_RU'}">
                         <a th:href="@{${#httpServletRequest.requestURI}(lang='en_GB')}">
@@ -392,7 +395,7 @@
                         <div class="props_input_wrapper">
                             <label class="props_input_label">Купон</label>
                             <input type="text" id="props_coupon" class="input_general props_input"
-                                   placeholder="Код купона(При наличии)">
+                                   placeholder="Код купона(При наличии)" th:field="*{coupon}">
                         </div>
                     </div>
                     <div class="props_btn_start_exchange_wrapper">
