@@ -2346,6 +2346,11 @@ input:checked + .slider:before {
       -ms-flex-align: center;
           align-items: center;
 }
+@media only screen and (max-width: 767px) {
+  .reserves__item {
+    padding: 8px;
+  }
+}
 .reserves__item_wrapper {
   width: 33%;
   padding: 0 15px;
@@ -2358,6 +2363,7 @@ input:checked + .slider:before {
 @media only screen and (max-width: 767px) {
   .reserves__item_wrapper {
     width: 50%;
+    font-size: 8px;
   }
 }
 @media only screen and (max-width: 479px) {
