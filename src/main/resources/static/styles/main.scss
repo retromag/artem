@@ -2036,3 +2036,18 @@ footer {
     cursor: auto;
   }
 }
+
+.aml {
+  &_text {
+    margin-bottom: 15px;
+  }
+  &_list {
+    &_title {
+      margin: 30px 0;
+    }
+    &_marked {
+      list-style-type: disc;
+      padding-left: 30px;
+    }
+  }
+}
