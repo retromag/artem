@@ -34,11 +34,11 @@
                                                   th:text="#{header.reserves}">Резервы</a></li>
 
                     <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'ru_RU'}">
-                        <a th:href="@{${#httpServletRequest.requestURI}(lang='en_GB')}">
+                        <a th:href="@{${#httpServletRequest.requestURI}(lang='en_US')}">
                             <i><img src="/images/en.png" alt="" class="flag"></i>
                         </a>
                     </li>
-                    <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'en_GB'}">
+                    <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'en_US'}">
                         <a th:href="@{${#httpServletRequest.requestURI}(lang='ru_RU')}">
                             <i><img src="/images/ru.png" alt="" class="flag"></i>
                         </a>
