@@ -2026,3 +2026,13 @@ footer {
 .users_items_wrapper {
   margin-top: 30px;
 }
+
+.js-btn-registration[disabled] {
+  filter: grayscale(50%);
+
+  &:hover {
+    background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, #8D54E0 0%, #8DC8FF 96.2%);
+    box-shadow: 0 9px 20px rgb(142 95 227 / 40%);
+    cursor: auto;
+  }
+}

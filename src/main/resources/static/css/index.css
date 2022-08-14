@@ -2383,6 +2383,18 @@ footer {
   margin-top: 30px;
 }
 
+.js-btn-registration[disabled] {
+  -webkit-filter: grayscale(50%);
+          filter: grayscale(50%);
+}
+.js-btn-registration[disabled]:hover {
+  background: -o-radial-gradient(28.45% 74.22%, 71.55% 129.69%, #8D54E0 0%, #8DC8FF 96.2%);
+  background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, #8D54E0 0%, #8DC8FF 96.2%);
+  -webkit-box-shadow: 0 9px 20px rgba(142, 95, 227, 0.4);
+          box-shadow: 0 9px 20px rgba(142, 95, 227, 0.4);
+  cursor: auto;
+}
+
 /* Breakpoint sizes */
 /**/
 /* Create the mixin (usually in a separate .scss file) */

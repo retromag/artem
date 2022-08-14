@@ -108,14 +108,14 @@
                    th:field="*{confirmPassword}"/>
         </div>
         <div class="checkbox_wrapper">
-            <div><label class="switch"><input type="checkbox" id="approve"><span class="slider round"></span></label><label for="approve" class="checkbox_label">Нажимаю кнопку зарегистрироваться, соглашаюсь с правилами обмена</label></div>
-            <div><label class="switch"><input type="checkbox" id="notification"><span class="slider round"></span></label><label  class="checkbox_label" for="notification">Получать уведомления об акциях и скидках</label></div>
+            <div><label class="switch"><input type="checkbox" id="approve" class="js-tumbler1 js-tumbler"><span class="slider round"></span></label><label for="approve" class="checkbox_label">Нажимаю кнопку зарегистрироваться, соглашаюсь с правилами обмена</label></div>
+            <div><label class="switch"><input type="checkbox" id="notification" class="js-tumbler2 js-tumbler"><span class="slider round"></span></label><label  class="checkbox_label" for="notification">Получать уведомления об акциях и скидках</label></div>
         </div>
         <p th:if="${#fields.hasGlobalErrors()}"
            th:each="error : ${#fields.errors('global')}"
            th:text="${error}" class="invalid_data">Validation error</p>
         <div class="auth_btns_wrapper">
-            <button type="submit" class="btn_general btn_auth">Регистрация</button>
+            <button type="submit" class="btn_general btn_auth js-btn-registration">Регистрация</button>
             <a th:href="@{/login}" class="btn_secondary btn_auth">ВОЙТИ</a>
         </div>
     </form>
@@ -154,5 +154,6 @@
         </div>
     </div>
 </footer>
+<script src="../static/js/checkButton.js"></script>
 </body>
 </html>
