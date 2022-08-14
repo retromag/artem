@@ -85,8 +85,12 @@ public class UserController {
         Set<Coin> coinList = coinService.getAllCoins();
         List<Review> titleReviews = reviewService.getReviewsForTitlePage();
 
-        model.addAttribute("coins", coinList);
-        model.addAttribute("reviews", titleReviews);
+        if (coinList != null) {
+            model.addAttribute("coins", coinList);
+        }
+        if (titleReviews != null) {
+            model.addAttribute("reviews", titleReviews);
+        }
 
         return "index";
     }
