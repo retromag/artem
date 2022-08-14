@@ -1,12 +1,14 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:th="http://www.thymeleaf.org" lang="">
-<meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" type="text/css" href="/css/index.css">
-<title>Document</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="shortcut icon" href="/images/logo.ico" type="image/x-icon">
+    <title th:text="#{title.supportPage}">Document</title>
 
 </head>
 <body>
@@ -26,8 +28,10 @@
                 </div>
                 <nav class="nav_menu_wrapper">
                     <ul class="nav_menu">
-                        <li class="nav_menu__item"><a href="/" class="nav_menu__item_link" th:text="#{header.authorize}">Выполнить обмен</a></li>
-                        <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link" th:text="#{header.reserves}">Резервы</a></li>
+                        <li class="nav_menu__item"><a href="/" class="nav_menu__item_link"
+                                                      th:text="#{header.authorize}">Выполнить обмен</a></li>
+                        <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link"
+                                                      th:text="#{header.reserves}">Резервы</a></li>
 
                         <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'ru_RU'}">
                             <a th:href="@{${#httpServletRequest.requestURI}(lang='en_GB')}">
@@ -42,8 +46,10 @@
 
                         <li sec:authorize="!isAuthenticated()">
                             <div class="nav_menu__item">
-                                <a href="/registration" class="btn_authorization btn_general" th:text="#{header.authorize}">Авторизация</a>
-                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg" alt=""></a>
+                                <a href="/registration" class="btn_authorization btn_general"
+                                   th:text="#{header.authorize}">Авторизация</a>
+                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg"
+                                                                                              alt=""></a>
                             </div>
                         </li>
                         <li sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')" class="btns_auth_wrapper">
@@ -80,7 +86,8 @@
             <div class="support_page">
                 <div class="support_header">
                     <h2 class="support_title">Контакты</h2>
-                    <p class="support_subtitle">Мы всегда на связи, готовы ответить на любые вопросы, касающиеся нашего сервиса, а также оказать поддержку</p>
+                    <p class="support_subtitle">Мы всегда на связи, готовы ответить на любые вопросы, касающиеся нашего
+                        сервиса, а также оказать поддержку</p>
                 </div>
                 <div class="support_items">
                     <div class="support_item">

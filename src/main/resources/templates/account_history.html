@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" href="/css/index.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title>Document</title>
+    <link rel="shortcut icon" href="/images/logo.ico" type="image/x-icon">
+    <title th:text="#{title.account.history}">Document</title>
 
 </head>
 <body>
@@ -103,12 +104,6 @@
                                             th:text="${order.id}">16601494675699</span>
                                         <span> Почта: </span><span th:text="${order.email}"></span>
                                     </div>
-<!--                                    <th:block th:if="${order.user} != null">-->
-<!--                                        <p class="history_item_subtitle" th:text="${order.user.email}"></p>-->
-<!--                                    </th:block>-->
-<!--                                    <th:block th:unless="${order.user} == null">-->
-<!--                                        <p class="history_item_subtitle" th:text="${order.email}"></p>-->
-<!--                                    </th:block>-->
                                     <p class="history_item_subtitle" th:text="${order.coupon}">Купон</p>
                                     <p class="history_item_subtitle" th:text="${order.status}">( Предварительная заявка
                                         )</p>
