@@ -28,10 +28,10 @@
             </div>
             <nav class="nav_menu_wrapper">
                 <ul class="nav_menu">
-                    <li class="nav_menu__item"><a href="/" class="nav_menu__item_link" th:text="#{header.authorize}">Выполнить
+                    <li class="nav_menu__item"><a href="/" class="nav_menu__item_link" th:text="#{button.do.exchange}">Выполнить
                         обмен</a></li>
                     <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link"
-                                                  th:text="#{header.reserves}">Резервы</a></li>
+                                                  th:text="#{button.reserves}">Резервы</a></li>
 
                     <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'ru_RU'}">
                         <a th:href="@{${#httpServletRequest.requestURI}(lang='en_US')}">
@@ -46,7 +46,7 @@
 
                     <li sec:authorize="!isAuthenticated()">
                         <div class="nav_menu__item">
-                            <a href="/registration" class="btn_authorization btn_general" th:text="#{header.authorize}">Авторизация</a>
+                            <a href="/registration" class="btn_authorization btn_general" th:text="#{button.authorization}">Авторизация</a>
                             <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg" alt=""></a>
                         </div>
                     </li>
@@ -55,7 +55,7 @@
                             <a href="/account/history" class="btn_cabinet_wrapper">
                                 <span class="btn_cabinet_user"><img src="/images/user-1.svg" alt=""></span>
                                 <div class="btn_cabinet_text">
-                                    <p>Личный кабинет</p>
+                                    <p th:text="#{button.personal.account}">Личный кабинет</p>
                                     <div class="header_percent_wrapper">
                                         <div class="header_wallet">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -88,11 +88,11 @@
 <div class="main-wrapper">
     <div class="container">
         <div class="main_block">
-            <h1 class="main_title">Создание заявки на обмен</h1>
-            <p class="subtitle">Следуйте инструкции, чтобы начать обмен</p>
+            <h1 class="main_title" th:text="#{massage.request.exchange}">Создание заявки на обмен</h1>
+            <p class="subtitle" th:text="#{massage.instruction.exchange}">Следуйте инструкции, чтобы начать обмен</p>
             <form action="" class="form_exchange" th:action="@{/exchange/create}" th:object="${note}" method="post">
                 <div class="form_left_col">
-                    <p class="text_give">Отдаю</p>
+                    <p class="text_give" th:text="#{massage.give}">Отдаю</p>
                     <div class="dropdown_top dropdown_general">
                         <div class="dropdown_wrapper">
                             <div class="dropdown_header js-top-dropdown-header">
@@ -114,15 +114,15 @@
 
                             </div>
                             <div class="dropdown_input_wrapper">
-                                <input type="text" class="dropdown_input js-top-input" placeholder="Сумма"
+                                <input type="text" class="dropdown_input js-top-input" th:placeholder="#{index.amount}"
                                        th:field="*{givenAmount}">
                                 <div class="coin_abbr js-top-main-coin-abbr">BTC</div>
                             </div>
                             <div class="dropdown_footer">
-                                <p class="dropdown_footer_left_col"><span class="dropdown_text">Мин: </span><span
+                                <p class="dropdown_footer_left_col"><span class="dropdown_text" th:text="#{placeholder.min}">Мин: </span><span
                                         class="dropdown_text_amount js-min-coins-amount"></span></p>
                                 <p class="dropdown_footer_right_col"><span
-                                        class="dropdown_text">Макс. сумма: </span><span
+                                        class="dropdown_text" th:text="#{placeholder.max.sum}">Макс. сумма: </span><span
                                         class="dropdown_text_amount js-max-coins-amount"></span>
                                 </p>
                             </div>
@@ -146,117 +146,9 @@
                                     </div>
                                 </div>
                             </tr>
-                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="../static/images/bitcoin.png" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Bitcoin</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">BTC</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="../static/images/solana.png" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Solana</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">SOL</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="../static/images/ethereum.PNG" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Ethereum</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">ETH</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="../static/images/tron.PNG" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Tron</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">TRX</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="../static/images/near.PNG" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Near protocol</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">NEAR</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="./static/images/xmr.png" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Monero</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">XMR</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="../static/images/polkadot.PNG" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Polkadot</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">DOT</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="./static/images/usdtr.png" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">USDT TRC20</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">USDT</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-top-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="./static/images/dash.png" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Dash</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">DASH</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
                         </div>
                     </div>
-                    <p class="text_get">Получаю</p>
+                    <p class="text_get" th:text="#{massage.receive}">Получаю</p>
                     <div class="dropdown_bottom dropdown_general">
                         <div class="dropdown_wrapper">
                             <div class="dropdown_header js-bottom-dropdown-header">
@@ -278,7 +170,7 @@
 
                             </div>
                             <div class="dropdown_input_wrapper">
-                                <input type="text" class="dropdown_input js-bottom-input" placeholder="Сумма"
+                                <input type="text" class="dropdown_input js-bottom-input" th:placeholder="#{index.amount}"
                                        th:field="*{takenAmount}">
                                 <div class="coin_abbr js-bottom-main-coin-abbr">SOL</div>
                             </div>
@@ -308,129 +200,33 @@
                                     </div>
                                 </div>
                             </tr>
-                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="/images/bitcoin.png" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Bitcoin</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">BTC</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="../static/images/coin.png" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Ethereum</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">ETH</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="../static/images/coin.png" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Tron</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">TRX</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="../static/images/coin.png" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Near protocol</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">NEAR</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="/images/xmr.png" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Monero</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">XMR</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="../static/images/coin.png" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Polkadot</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">DOT</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="/images/usdtr.png" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">USDT TRC20</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">USDT</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="dropdown_option_wrapper js-bottom-dropdown-option">-->
-                            <!--                                <div class="dropdown_option">-->
-                            <!--                                    <div class="dropdown_option_left_col">-->
-                            <!--                                        <div class="dropdown_img_coin_wrapper">-->
-                            <!--                                            <img src="/images/dash.png" alt="" class="dropdown_img_coin"-->
-                            <!--                                                 data-coin-img="coin-img">-->
-                            <!--                                        </div>-->
-                            <!--                                        <p class="dropdown_coin_name" data-coin-name="coin-name">Dash</p>-->
-                            <!--                                    </div>-->
-                            <!--                                    <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr">DASH</p>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
                         </div>
                     </div>
                 </div>
                 <div class="form_right_col">
-                    <h4 class="props_title">Укажите ваши реквизиты</h4>
+                    <h4 class="props_title" th:text="#{massage.requisites}">Укажите ваши реквизиты</h4>
                     <div class="props_inputs_wrapper">
                         <div class="props_input_wrapper">
-                            <label class="props_input_label">Ваш E-mail ящик</label>
+                            <label class="props_input_label" th:text="#{massage.email.box}">Ваш E-mail ящик</label>
                             <input type="email" id="props_email" placeholder="Email" class="input_general props_input"
                                    th:field="*{email}">
                         </div>
                         <div class="props_input_wrapper">
-                            <label class="props_input_label">Кошелёк для получения</label>
+                            <label class="props_input_label" th:text="#{massage.wallet.receipt}">Кошелёк для получения</label>
                             <input type="text" id="props_wallet" class="input_general props_input"
                                    placeholder="0x8a7E45F7c6723f644EeA5E0Cc45B70F27D9b812e" th:field="*{wallet}">
                         </div>
                         <div class="props_input_wrapper">
-                            <label class="props_input_label">Купон</label>
+                            <label class="props_input_label" th:text="#{massage.coupon}">Купон</label>
                             <input type="text" id="props_coupon" class="input_general props_input"
-                                   placeholder="Код купона(При наличии)" th:field="*{coupon}">
+                                   th:placeholder="#{placeholder.coupon.kod}" th:field="*{coupon}">
                         </div>
                     </div>
                     <div class="props_btn_start_exchange_wrapper">
-                        <button type="submit" class="btn_general props_btn_start_exchange">начать обмен</button>
-                        <p class="props_text_agree">Нажимая кнопку "Начать обмен", вы соглашаетесь с <a
-                                class="rules_text" href="/rules">правилами обмена</a>,
-                            <a class="rules_text" href="/aml">AML</a></p>
+                        <button type="submit" class="btn_general props_btn_start_exchange" th:text="#{massage.start.exchange.low}">начать обмен</button>
+                        <p class="props_text_agree" th:text="#{massage.start.exchange}">Нажимая кнопку "Начать обмен", вы соглашаетесь с <a
+                                class="rules_text" href="/rules" th:text="#{massage.exchange.rules}">правилами обмена</a>,
+                            <a class="rules_text" href="/aml" th:text="#{massage.exchange.aml}">AML</a></p>
                     </div>
                 </div>
             </form>
@@ -453,12 +249,12 @@
                         </div>
                         <div class="shortcut_title_money_wrapper">
                             <p class="shortcut_money_text js-money-from">Bitcoin</p>
-                            <p class="shortcut_money_text_on">на</p>
+                            <p class="shortcut_money_text_on" >на</p>
                             <p class="shortcut_money_text js-money-to">Ethereum</p>
                         </div>
                         <div class="shortcut_btn_wrapper">
                             <button class="shortcut_btn js-shortcut-btn-exchange" data-shortcut-from="BTC"
-                                    data-shortcut-to="ETH">ОБМЕН
+                                    data-shortcut-to="ETH" th:text="#{button.exchange}">ОБМЕН
                             </button>
                         </div>
                     </div>
@@ -486,7 +282,7 @@
                         </div>
                         <div class="shortcut_btn_wrapper">
                             <button class="shortcut_btn js-shortcut-btn-exchange" data-shortcut-from="ETH"
-                                    data-shortcut-to="USDT">ОБМЕН
+                                    data-shortcut-to="USDT" th:text="#{button.exchange}">ОБМЕН
                             </button>
                         </div>
                     </div>
@@ -514,7 +310,7 @@
                         </div>
                         <div class="shortcut_btn_wrapper">
                             <button class="shortcut_btn js-shortcut-btn-exchange" data-shortcut-from="SOL"
-                                    data-shortcut-to="USDT">ОБМЕН
+                                    data-shortcut-to="USDT" th:text="#{button.exchange}">ОБМЕН
                             </button>
                         </div>
                     </div>
@@ -542,7 +338,7 @@
                         </div>
                         <div class="shortcut_btn_wrapper">
                             <button class="shortcut_btn js-shortcut-btn-exchange" data-shortcut-from="DOT"
-                                    data-shortcut-to="ETH">ОБМЕН
+                                    data-shortcut-to="ETH" th:text="#{button.exchange}">ОБМЕН
                             </button>
                         </div>
                     </div>
@@ -570,7 +366,7 @@
                         </div>
                         <div class="shortcut_btn_wrapper">
                             <button class="shortcut_btn js-shortcut-btn-exchange" data-shortcut-from="DOT"
-                                    data-shortcut-to="SOL">ОБМЕН
+                                    data-shortcut-to="SOL" th:text="#{button.exchange}">ОБМЕН
                             </button>
                         </div>
                     </div>
@@ -579,7 +375,7 @@
         </div>
         <div class="reviews_block">
             <div class="reviews_left_col">
-                <h4 class="reviews_title">Лучше всего за нас скажут отзывы наших клиентов</h4>
+                <h4 class="reviews_title" th:text="#{index.reviews.title}">Лучше всего за нас скажут отзывы наших клиентов</h4>
                 <div class="reviews_items_wrapper">
                     <tr th:each="review : ${reviews}">
                         <div class="review_item">
@@ -601,7 +397,7 @@
                 </div>
             </div>
             <div class="reviews_right_col">
-                <a href="/review/all" class="btn_general">ПОСМОТРЕТЬ ВСЕ ОТЗЫВЫ</a>
+                <a href="/review/all" class="btn_general" th:text="#{button.reviews}">ПОСМОТРЕТЬ ВСЕ ОТЗЫВЫ</a>
             </div>
         </div>
     </div>
@@ -621,21 +417,21 @@
                     </a>
                 </div>
                 <ul class="footer_col">
-                    <li class="footer_col_item"><a href="/">Начать обмен</a></li>
-                    <li class="footer_col_item"><a href="/reserves">Наши резервы</a></li>
+                    <li class="footer_col_item"><a href="/" th:text="#{button.start.exchange}">Начать обмен</a></li>
+                    <li class="footer_col_item"><a href="/reserves" th:text="#{button.our.reserves}">Наши резервы</a></li>
                 </ul>
                 <ul class="footer_col">
-                    <li class="footer_col_item"><a href="/rules">Правила</a></li>
-                    <li class="footer_col_item"><a href="/aml">AML</a></li>
+                    <li class="footer_col_item"><a href="/rules" th:text="#{button.rules}">Правила</a></li>
+                    <li class="footer_col_item"><a href="/aml" th:text="#{massage.exchange.aml}">AML</a></li>
                 </ul>
                 <ul class="footer_col">
-                    <li class="footer_col_item"><a href="/contacts">Контакты</a></li>
+                    <li class="footer_col_item"><a href="/contacts" th:text="#{button.contacts}">Контакты</a></li>
                 </ul>
             </div>
             <div class="footer_bottom_row">
                 <p class="copyright">Copyright © 2022 HelmetSwap</p><br class="hidden_break">
-                <a href="/privacy-policy" class="footer_bottom_rules">Политика конфиденциальности</a>
-                <a href="/rules" class="footer_bottom_rules">Пользовательское соглашение</a>
+                <a href="/privacy-policy" class="footer_bottom_rules" th:text="#{button.privacy.policy}">Политика конфиденциальности</a>
+                <a href="/rules" class="footer_bottom_rules" th:text="#{button.terms.of.service}">Пользовательское соглашение</a>
             </div>
         </div>
     </div>

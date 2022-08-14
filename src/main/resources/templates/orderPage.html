@@ -28,17 +28,17 @@
                 </div>
                 <nav class="nav_menu_wrapper">
                     <ul class="nav_menu">
-                        <li class="nav_menu__item"><a href="/" class="nav_menu__item_link"
-                                                      th:text="#{header.authorize}">Выполнить обмен</a></li>
+                        <li class="nav_menu__item"><a href="/" class="nav_menu__item_link" th:text="#{button.do.exchange}">Выполнить
+                            обмен</a></li>
                         <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link"
-                                                      th:text="#{header.reserves}">Резервы</a></li>
+                                                      th:text="#{button.reserves}">Резервы</a></li>
 
                         <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'ru_RU'}">
-                            <a th:href="@{${#httpServletRequest.requestURI}(lang='en_GB')}">
+                            <a th:href="@{${#httpServletRequest.requestURI}(lang='en_US')}">
                                 <i><img src="/images/en.png" alt="" class="flag"></i>
                             </a>
                         </li>
-                        <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'en_GB'}">
+                        <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'en_US'}">
                             <a th:href="@{${#httpServletRequest.requestURI}(lang='ru_RU')}">
                                 <i><img src="/images/ru.png" alt="" class="flag"></i>
                             </a>
@@ -46,10 +46,8 @@
 
                         <li sec:authorize="!isAuthenticated()">
                             <div class="nav_menu__item">
-                                <a href="/registration" class="btn_authorization btn_general"
-                                   th:text="#{header.authorize}">Авторизация</a>
-                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg"
-                                                                                              alt=""></a>
+                                <a href="/registration" class="btn_authorization btn_general" th:text="#{button.authorization}">Авторизация</a>
+                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg" alt=""></a>
                             </div>
                         </li>
                         <li sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')" class="btns_auth_wrapper">
@@ -57,13 +55,19 @@
                                 <a href="/account/history" class="btn_cabinet_wrapper">
                                     <span class="btn_cabinet_user"><img src="/images/user-1.svg" alt=""></span>
                                     <div class="btn_cabinet_text">
-                                        <p>Личный кабинет</p>
-                                        <div class="header_wallet">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                                <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                                                <path d="M448 32C465.7 32 480 46.33 480 64C480 81.67 465.7 96 448 96H80C71.16 96 64 103.2 64 112C64 120.8 71.16 128 80 128H448C483.3 128 512 156.7 512 192V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H448zM416 336C433.7 336 448 321.7 448 304C448 286.3 433.7 272 416 272C398.3 272 384 286.3 384 304C384 321.7 398.3 336 416 336z"/>
-                                            </svg>
-                                            <span th:text="${walletAmount}"></span>
+                                        <p th:text="#{button.personal.account}">Личный кабинет</p>
+                                        <div class="header_percent_wrapper">
+                                            <div class="header_wallet">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                    <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                                    <path d="M448 32C465.7 32 480 46.33 480 64C480 81.67 465.7 96 448 96H80C71.16 96 64 103.2 64 112C64 120.8 71.16 128 80 128H448C483.3 128 512 156.7 512 192V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H448zM416 336C433.7 336 448 321.7 448 304C448 286.3 433.7 272 416 272C398.3 272 384 286.3 384 304C384 321.7 398.3 336 416 336z"/>
+                                                </svg>
+                                                <span><span th:text="${walletAmount}"></span><span></span></span>
+                                            </div>
+                                            <div class="header_wallet">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M374.6 73.39c-12.5-12.5-32.75-12.5-45.25 0l-320 320c-12.5 12.5-12.5 32.75 0 45.25C15.63 444.9 23.81 448 32 448s16.38-3.125 22.62-9.375l320-320C387.1 106.1 387.1 85.89 374.6 73.39zM64 192c35.3 0 64-28.72 64-64S99.3 64.01 64 64.01S0 92.73 0 128S28.7 192 64 192zM320 320c-35.3 0-64 28.72-64 64s28.7 64 64 64s64-28.72 64-64S355.3 320 320 320z"/></svg>
+                                                <span><span th:text="${userMargin}"></span><span></span></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </a>
@@ -86,15 +90,15 @@
             <div class="order_page_wrapper">
                 <form action="" th:object="${order}" th:action="@{/exchange/pay}" method="post">
                     <div class="order_page_header">
-                        <h3 class="order_page_title">Заявка #<span th:text="${order.id}">16601466482062</span> создана!
+                        <h3 class="order_page_title" th:text="#{massage.order}">Заявка #<span th:text="${order.id}">16601466482062</span >
                         </h3>
                         <input hidden name="uniqcode" th:value="${order.uniqCode}">
-                        <p class="order_page_subtitle">Следуйте инструкции! Ожидаем перевод денежных средств.</p>
-                        <p class="order_page_time">Осталось: <span class="order_page_time_left" id="js-time"></span></p>
+                        <p class="order_page_subtitle" th:text="#{massage.follow.instructions}">Следуйте инструкции! Ожидаем перевод денежных средств.</p>
+                        <p class="order_page_time" th:text="#{massage.time}">Осталось: <span class="order_page_time_left" id="js-time"></span></p>
                     </div>
                     <div class="form_exchange">
                         <div class="form_left_col">
-                            <p class="text_give">Отдаю</p>
+                            <p class="text_give" th:text="#{massage.give}">Отдаю</p>
                             <div class="dropdown_top dropdown_general">
                                 <div class="dropdown_wrapper">
                                     <div class="dropdown_header">
@@ -117,7 +121,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="text_get">Получаю</p>
+                            <p class="text_get" th:text="#{massage.take}">Получаю</p>
                             <div class="dropdown_bottom dropdown_general">
                                 <div class="dropdown_wrapper">
                                     <div class="dropdown_header ">
@@ -151,7 +155,7 @@
                         </div>
                         <div class="form_right_col">
                             <div>
-                                <p class="order_title">1. Войдите в свою программу-клиент и сделайте перевод по
+                                <p class="order_title" th:text="#{massage.programme.client}">1. Войдите в свою программу-клиент и сделайте перевод по
                                     реквизитам</p>
                                 <div class="order_top_row">
                                     <div class="order_wallet_sum_wrapper">
@@ -165,7 +169,7 @@
                                                     <path d="M0 224C0 188.7 28.65 160 64 160H128V288C128 341 170.1 384 224 384H352V448C352 483.3 323.3 512 288 512H64C28.65 512 0 483.3 0 448V224zM224 352C188.7 352 160 323.3 160 288V64C160 28.65 188.7 0 224 0H448C483.3 0 512 28.65 512 64V288C512 323.3 483.3 352 448 352H224z"/>
                                                 </svg>
                                             </div>
-                                            <p class="order_input_title">Кошелек</p>
+                                            <p class="order_input_title" th:text="#{massage.wallet}">Кошелек</p>
                                             <div class="order_coin_img_right_col_wrapper">
                                                 <img src="" alt="" class="order_coin_img_right_col"
                                                      th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${order.givenCoin}}">
@@ -181,7 +185,7 @@
                                                     <path d="M0 224C0 188.7 28.65 160 64 160H128V288C128 341 170.1 384 224 384H352V448C352 483.3 323.3 512 288 512H64C28.65 512 0 483.3 0 448V224zM224 352C188.7 352 160 323.3 160 288V64C160 28.65 188.7 0 224 0H448C483.3 0 512 28.65 512 64V288C512 323.3 483.3 352 448 352H224z"/>
                                                 </svg>
                                             </div>
-                                            <p class="order_input_title">На сумму</p>
+                                            <p class="order_input_title" th:text="#{massage.sum}">На сумму</p>
                                             <div class="order_coin_img_right_col_wrapper">
                                                 <img src="" alt="" class="order_coin_img_right_col"
                                                      th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${order.givenCoin}}">
@@ -194,10 +198,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p class="order_title">2. Обязательно, нажмите кнопку "я оплатил"</p>
+                                <p class="order_title" th:text="#{massage.payment}">2. Обязательно, нажмите кнопку "я оплатил"</p>
                                 <div class="order_bottom_row">
-                                    <button type="submit" class="btn_general">Я ОПЛАТИЛ</button>
-                                    <a class="btn_secondary" href="/">ОТМЕНИТЬ ЗАЯВКУ</a>
+                                    <button type="submit" class="btn_general" th:text="#{button.payment}">Я ОПЛАТИЛ</button>
+                                    <a class="btn_secondary" href="/" th:text="#{button.cancel.request}">ОТМЕНИТЬ ЗАЯВКУ</a>
                                 </div>
                             </div>
                         </div>
@@ -222,21 +226,21 @@
                     </a>
                 </div>
                 <ul class="footer_col">
-                    <li class="footer_col_item"><a href="/">Начать обмен</a></li>
-                    <li class="footer_col_item"><a href="/reserves">Наши резервы</a></li>
+                    <li class="footer_col_item"><a href="/" th:text="#{button.start.exchange}">Начать обмен</a></li>
+                    <li class="footer_col_item"><a href="/reserves" th:text="#{button.our.reserves}">Наши резервы</a></li>
                 </ul>
                 <ul class="footer_col">
-                    <li class="footer_col_item"><a href="/rules">Правила</a></li>
-                    <li class="footer_col_item"><a href="/aml">AML</a></li>
+                    <li class="footer_col_item"><a href="/rules" th:text="#{button.rules}">Правила</a></li>
+                    <li class="footer_col_item"><a href="/aml" th:text="#{massage.exchange.aml}">AML</a></li>
                 </ul>
                 <ul class="footer_col">
-                    <li class="footer_col_item"><a href="/contacts">Контакты</a></li>
+                    <li class="footer_col_item"><a href="/contacts" th:text="#{button.contacts}">Контакты</a></li>
                 </ul>
             </div>
             <div class="footer_bottom_row">
-                <p class="copyright">Copyright © 2022 HelmetSwap</p>
-                <a href="/privacy-policy" class="footer_bottom_rules">Политика конфиденциальности</a>
-                <a href="/rules" class="footer_bottom_rules">Пользовательское соглашение</a>
+                <p class="copyright">Copyright © 2022 HelmetSwap</p><br class="hidden_break">
+                <a href="/privacy-policy" class="footer_bottom_rules" th:text="#{button.privacy.policy}">Политика конфиденциальности</a>
+                <a href="/rules" class="footer_bottom_rules" th:text="#{button.terms.of.service}">Пользовательское соглашение</a>
             </div>
         </div>
     </div>
