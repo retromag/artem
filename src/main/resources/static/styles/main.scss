@@ -26,11 +26,19 @@ header {
   z-index: 1000;
 }
 .header_wallet svg{
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
 }
 .header_wallet {
   margin-top: 4px;
+  display: flex;
+  align-items: center;
+}
+.header_percent_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
 }
 .container {
   max-width: 1180px;
