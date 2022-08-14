@@ -2116,6 +2116,11 @@ footer {
 .review_item_rate i svg path {
   fill: #e89e32;
 }
+.review_item_rate_delete {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 
 .rating-area:not(:checked) > input {
   display: none;
