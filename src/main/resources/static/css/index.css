@@ -100,9 +100,10 @@ header {
   z-index: 1000;
 }
 
-.header_wallet svg {
-  width: 10px;
-  height: 10px;
+.header_wallet img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
 }
 
 .header_wallet {
@@ -113,6 +114,7 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-left: 3px;
 }
 
 .header_percent_wrapper {
@@ -125,7 +127,11 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 10px;
+  font-size: 14px;
+}
+
+.header_margin {
+  margin-left: 8px;
 }
 
 .container {
@@ -323,7 +329,7 @@ header {
 }
 
 .form_left_col {
-  width: 30%;
+  width: 32%;
 }
 @media only screen and (max-width: 767px) {
   .form_left_col {
@@ -719,6 +725,7 @@ header {
   transition: all 0.2s;
   border: 0;
   margin-right: 5px;
+  padding-left: 2px;
 }
 @media only screen and (max-width: 767px) {
   .btn_cabinet_user {
@@ -727,8 +734,8 @@ header {
   }
 }
 .btn_cabinet_user img {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 29px;
 }
 @media only screen and (max-width: 767px) {
   .btn_cabinet_user img {
@@ -739,6 +746,7 @@ header {
 .btn_cabinet_text {
   color: #000000;
   margin-right: 5px;
+  margin-left: 7px;
 }
 @media only screen and (max-width: 767px) {
   .btn_cabinet_text {
@@ -750,12 +758,13 @@ header {
     margin-right: 5px;
   }
 }
-.btn_logout svg {
+.btn_logout img {
   width: 20px;
   height: 20px;
+  margin-left: 10px;
 }
 @media only screen and (max-width: 767px) {
-  .btn_logout svg {
+  .btn_logout img {
     width: 15px;
     height: 15px;
   }
@@ -768,9 +777,6 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .input_general {
@@ -1195,7 +1201,7 @@ footer {
   background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, rgba(255, 208, 87, 0.5) 0%, rgba(255, 196, 141, 0.5) 96.2%);
 }
 .shortcut_item_wrapper {
-  width: 17%;
+  width: 19%;
 }
 @media only screen and (max-width: 991px) {
   .shortcut_item_wrapper {
@@ -2371,7 +2377,6 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-left: 200px;
 }
 @media only screen and (max-width: 767px) {
   .input_wallet_wrapper {
@@ -2404,6 +2409,10 @@ footer {
 .aml_list_marked {
   list-style-type: disc;
   padding-left: 30px;
+}
+
+.btn_cabinet_checkPage {
+  display: block;
 }
 
 /* Breakpoint sizes */
