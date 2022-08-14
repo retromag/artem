@@ -101,12 +101,31 @@ header {
 }
 
 .header_wallet svg {
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
 }
 
 .header_wallet {
   margin-top: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header_percent_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 10px;
 }
 
 .container {
@@ -2116,6 +2135,11 @@ footer {
 .review_item_rate i svg path {
   fill: #e89e32;
 }
+.review_item_rate_delete {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 
 .rating-area:not(:checked) > input {
   display: none;
@@ -2357,6 +2381,29 @@ footer {
 
 .users_items_wrapper {
   margin-top: 30px;
+}
+
+.js-btn-registration[disabled] {
+  -webkit-filter: grayscale(50%);
+          filter: grayscale(50%);
+}
+.js-btn-registration[disabled]:hover {
+  background: -o-radial-gradient(28.45% 74.22%, 71.55% 129.69%, #8D54E0 0%, #8DC8FF 96.2%);
+  background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, #8D54E0 0%, #8DC8FF 96.2%);
+  -webkit-box-shadow: 0 9px 20px rgba(142, 95, 227, 0.4);
+          box-shadow: 0 9px 20px rgba(142, 95, 227, 0.4);
+  cursor: auto;
+}
+
+.aml_text {
+  margin-bottom: 15px;
+}
+.aml_list_title {
+  margin: 30px 0;
+}
+.aml_list_marked {
+  list-style-type: disc;
+  padding-left: 30px;
 }
 
 /* Breakpoint sizes */

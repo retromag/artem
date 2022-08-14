@@ -26,11 +26,19 @@ header {
   z-index: 1000;
 }
 .header_wallet svg{
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
 }
 .header_wallet {
   margin-top: 4px;
+  display: flex;
+  align-items: center;
+}
+.header_percent_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
 }
 .container {
   max-width: 1180px;
@@ -1788,6 +1796,9 @@ footer {
         }
       }
     }
+    &_rate_delete {
+      display: flex;
+    }
   }
 }
 
@@ -2014,4 +2025,29 @@ footer {
 }
 .users_items_wrapper {
   margin-top: 30px;
+}
+
+.js-btn-registration[disabled] {
+  filter: grayscale(50%);
+
+  &:hover {
+    background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, #8D54E0 0%, #8DC8FF 96.2%);
+    box-shadow: 0 9px 20px rgb(142 95 227 / 40%);
+    cursor: auto;
+  }
+}
+
+.aml {
+  &_text {
+    margin-bottom: 15px;
+  }
+  &_list {
+    &_title {
+      margin: 30px 0;
+    }
+    &_marked {
+      list-style-type: disc;
+      padding-left: 30px;
+    }
+  }
 }
