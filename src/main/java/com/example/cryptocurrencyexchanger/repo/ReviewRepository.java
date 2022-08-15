@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ReviewRepository extends PagingAndSortingRepository<Review, Long> {
-    @Query(value = "SELECT * FROM exchanger_db.public.review order by random() LIMIT 4", nativeQuery = true)
+    @Query(value = "SELECT * FROM review order by random() LIMIT 4", nativeQuery = true)
     List<Review> getFourRandomReviews();
 }
