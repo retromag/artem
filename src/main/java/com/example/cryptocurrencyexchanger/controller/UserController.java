@@ -79,6 +79,7 @@ public class UserController {
             if (user != null) {
                 model.addAttribute("walletAmount", user.getWalletAmount());
                 model.addAttribute("userMargin", user.getUserMargin());
+                model.addAttribute("email", user.getEmail());
             }
         }
 

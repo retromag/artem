@@ -47,29 +47,25 @@
 
                     <li sec:authorize="!isAuthenticated()">
                         <div class="nav_menu__item">
-                            <a href="/registration" class="btn_authorization btn_general" th:text="#{button.authorization}">Авторизация</a>
+                            <a href="/registration" class="btn_authorization btn_general"
+                               th:text="#{button.authorization}">Авторизация</a>
                             <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg" alt=""></a>
                         </div>
                     </li>
                     <li sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')" class="btns_auth_wrapper">
                         <div>
                             <a href="/account/history" class="btn_cabinet_wrapper">
-                                <span class="btn_cabinet_user"><img src="../static/images/user-1.svg" alt=""></span>
+                                <span class="btn_cabinet_user"><img src="/images/user-1.svg" alt=""></span>
                                 <div class="btn_cabinet_text">
                                     <p th:text="#{button.personal.account}">Личный кабинет</p>
                                     <div class="header_percent_wrapper">
                                         <div class="header_wallet">
-<!--                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">-->
-<!--                                                &lt;!&ndash;! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. &ndash;&gt;-->
-<!--                                                <path d="M448 32C465.7 32 480 46.33 480 64C480 81.67 465.7 96 448 96H80C71.16 96 64 103.2 64 112C64 120.8 71.16 128 80 128H448C483.3 128 512 156.7 512 192V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H448zM416 336C433.7 336 448 321.7 448 304C448 286.3 433.7 272 416 272C398.3 272 384 286.3 384 304C384 321.7 398.3 336 416 336z"/>-->
-<!--                                            </svg>-->
-                                            <span><img src="../static/images/wallet.png" alt=""></span>
-                                            <span><span th:text="${walletAmount}"></span>0.6<span> $</span></span>
+                                            <span><img src="/images/wallet.png" alt=""></span>
+                                            <span><span th:text="${walletAmount}"></span><span> $</span></span>
                                         </div>
                                         <div class="header_wallet header_margin">
-                                            <span><img src="../static/images/percent.png" alt=""></span>
-<!--                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">&lt;!&ndash;! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. &ndash;&gt;<path d="M374.6 73.39c-12.5-12.5-32.75-12.5-45.25 0l-320 320c-12.5 12.5-12.5 32.75 0 45.25C15.63 444.9 23.81 448 32 448s16.38-3.125 22.62-9.375l320-320C387.1 106.1 387.1 85.89 374.6 73.39zM64 192c35.3 0 64-28.72 64-64S99.3 64.01 64 64.01S0 92.73 0 128S28.7 192 64 192zM320 320c-35.3 0-64 28.72-64 64s28.7 64 64 64s64-28.72 64-64S355.3 320 320 320z"/></svg>-->
-                                            <span><span th:text="${userMargin}">0.008</span><span> %</span></span>
+                                            <span><img src="/images/percent.png" alt=""></span>
+                                            <span><span th:text="${userMargin}"></span><span> %</span></span>
                                         </div>
                                     </div>
                                 </div>
@@ -77,11 +73,7 @@
 
                         </div>
                         <div><a href="/logout" class="btn_logout">
-                            <img src="../static/images/exit.png" alt="">
-<!--                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">-->
-<!--                                &lt;!&ndash;! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. &ndash;&gt;-->
-<!--                                <path d="M160 416H96c-17.67 0-32-14.33-32-32V128c0-17.67 14.33-32 32-32h64c17.67 0 32-14.33 32-32S177.7 32 160 32H96C42.98 32 0 74.98 0 128v256c0 53.02 42.98 96 96 96h64c17.67 0 32-14.33 32-32S177.7 416 160 416zM502.6 233.4l-128-128c-12.51-12.51-32.76-12.49-45.25 0c-12.5 12.5-12.5 32.75 0 45.25L402.8 224H192C174.3 224 160 238.3 160 256s14.31 32 32 32h210.8l-73.38 73.38c-12.5 12.5-12.5 32.75 0 45.25s32.75 12.5 45.25 0l128-128C515.1 266.1 515.1 245.9 502.6 233.4z"/>-->
-<!--                            </svg>-->
+                            <img src="/images/exit.png" alt="">
                         </a></div>
                     </li>
                 </ul>
@@ -102,7 +94,7 @@
                             <div class="dropdown_header js-top-dropdown-header">
                                 <div class="dropdown_header_left_col">
                                     <div class="dropdown_img_coin_wrapper">
-                                        <img src="../static/images/bitcoin.png" alt=""
+                                        <img src="/images/bitcoin.png" alt=""
                                              class="dropdown_img_coin js-top-main-coin-image">
                                     </div>
                                     <p class="dropdown_title js-top-dropdown-title">Bitcoin</p>
@@ -123,7 +115,8 @@
                                 <div class="coin_abbr js-top-main-coin-abbr">BTC</div>
                             </div>
                             <div class="dropdown_footer">
-                                <p class="dropdown_footer_left_col"><span class="dropdown_text" th:text="#{placeholder.min}">Мин: </span><span
+                                <p class="dropdown_footer_left_col"><span class="dropdown_text"
+                                                                          th:text="#{placeholder.min}">Мин: </span><span
                                         class="dropdown_text_amount js-min-coins-amount"></span></p>
                                 <p class="dropdown_footer_right_col"><span
                                         class="dropdown_text" th:text="#{placeholder.max.sum}">Макс. сумма: </span><span
@@ -174,12 +167,14 @@
 
                             </div>
                             <div class="dropdown_input_wrapper">
-                                <input type="text" class="dropdown_input js-bottom-input" th:placeholder="#{index.amount}"
+                                <input type="text" class="dropdown_input js-bottom-input"
+                                       th:placeholder="#{index.amount}"
                                        th:field="*{takenAmount}">
                                 <div class="coin_abbr js-bottom-main-coin-abbr">SOL</div>
                             </div>
                             <div class="dropdown_footer">
-                                <p class="dropdown_footer_left_col"><span class="dropdown_text" th:text="#{massage.course}">Курс </span><span
+                                <p class="dropdown_footer_left_col"><span class="dropdown_text"
+                                                                          th:text="#{massage.course}">Курс </span><span
                                         class="dropdown_text_amount js-rate"></span></p>
                                 <input type="text" class="hidden-input-rate js-hidden-input-rate"
                                        th:field="*{currentCourse}">
@@ -212,11 +207,13 @@
                     <div class="props_inputs_wrapper">
                         <div class="props_input_wrapper">
                             <label class="props_input_label" th:text="#{massage.email.box}">Ваш E-mail ящик</label>
-                            <input type="email" id="props_email" placeholder="Email" class="input_general props_input"
+                            <input type="email" id="props_email" th:placeholder="${email}"
+                                   class="input_general props_input"
                                    th:field="*{email}">
                         </div>
                         <div class="props_input_wrapper">
-                            <label class="props_input_label" th:text="#{massage.wallet.receipt}">Кошелёк для получения</label>
+                            <label class="props_input_label" th:text="#{massage.wallet.receipt}">Кошелёк для
+                                получения</label>
                             <input type="text" id="props_wallet" class="input_general props_input"
                                    placeholder="0x8a7E45F7c6723f644EeA5E0Cc45B70F27D9b812e" th:field="*{wallet}">
                         </div>
@@ -227,9 +224,12 @@
                         </div>
                     </div>
                     <div class="props_btn_start_exchange_wrapper">
-                        <button type="submit" class="btn_general props_btn_start_exchange" th:text="#{massage.start.exchange.low}">начать обмен</button>
+                        <button type="submit" class="btn_general props_btn_start_exchange"
+                                th:text="#{massage.start.exchange.low}">начать обмен
+                        </button>
                         <p class="props_text_agree"><span th:text="#{massage.start.exchange}">Нажимая кнопку "Начать обмен", вы соглашаетесь с</span><a
-                                class="rules_text" href="/rules" th:text="#{massage.exchange.rules}">правилами обмена</a>,
+                                class="rules_text" href="/rules" th:text="#{massage.exchange.rules}">правилами
+                            обмена</a>,
                             <a class="rules_text" href="/aml" th:text="#{massage.exchange.aml}">AML</a></p>
                     </div>
                 </div>
@@ -248,12 +248,12 @@
                                 </svg>
                             </div>
                             <div class="shortcut_img_coin_wrapper">
-                                <img src="/images/solana.png" alt="" class="shortcut_img_coin js-coin-to">
+                                <img src="/images/ethereum.png" alt="" class="shortcut_img_coin js-coin-to">
                             </div>
                         </div>
                         <div class="shortcut_title_money_wrapper">
                             <p class="shortcut_money_text js-money-from">Bitcoin</p>
-                            <p class="shortcut_money_text_on" >на</p>
+                            <p class="shortcut_money_text_on">на</p>
                             <p class="shortcut_money_text js-money-to">Ethereum</p>
                         </div>
                         <div class="shortcut_btn_wrapper">
@@ -379,7 +379,8 @@
         </div>
         <div class="reviews_block">
             <div class="reviews_left_col">
-                <h4 class="reviews_title" th:text="#{index.reviews.title}">Лучше всего за нас скажут отзывы наших клиентов</h4>
+                <h4 class="reviews_title" th:text="#{index.reviews.title}">Лучше всего за нас скажут отзывы наших
+                    клиентов</h4>
                 <div class="reviews_items_wrapper">
                     <tr th:each="review : ${reviews}">
                         <div class="review_item">
@@ -404,6 +405,26 @@
                 <a href="/review/all" class="btn_general" th:text="#{button.reviews}">ПОСМОТРЕТЬ ВСЕ ОТЗЫВЫ</a>
             </div>
         </div>
+
+        <div class="support_header">
+            <h2 class="support_title" th:text="#{title.supportPage}">Контакты</h2>
+        </div>
+        <div class="reviews_block">
+            <div class="support_items">
+                <div class="support_item">
+                    <p class="support_item_title" th:text="#{massage.support}">Служба поддержки</p>
+                    <a href="mailto:support@coinblinker.com" class="support_item_text">helmetswap@gmail.com</a>
+                </div>
+                <div class="support_item">
+                    <p class="support_item_title" th:text="#{massage.security.service}">Служба безопасности</p>
+                    <a href="mailto:support@coinblinker.com" class="support_item_text">helmetswap@gmail.com</a>
+                </div>
+                <div class="support_item">
+                    <p class="support_item_title" th:text="#{massage.cooperation}">Сотрудничество</p>
+                    <a href="mailto:support@coinblinker.com" class="support_item_text">helmetswap@gmail.com</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <footer>
@@ -422,7 +443,8 @@
                 </div>
                 <ul class="footer_col">
                     <li class="footer_col_item"><a href="/" th:text="#{button.start.exchange}">Начать обмен</a></li>
-                    <li class="footer_col_item"><a href="/reserves" th:text="#{button.our.reserves}">Наши резервы</a></li>
+                    <li class="footer_col_item"><a href="/reserves" th:text="#{button.our.reserves}">Наши резервы</a>
+                    </li>
                 </ul>
                 <ul class="footer_col">
                     <li class="footer_col_item"><a href="/rules" th:text="#{button.rules}">Правила</a></li>
@@ -434,8 +456,10 @@
             </div>
             <div class="footer_bottom_row">
                 <p class="copyright">Copyright © 2022 HelmetSwap</p><br class="hidden_break">
-                <a href="/privacy-policy" class="footer_bottom_rules" th:text="#{button.privacy.policy}">Политика конфиденциальности</a>
-                <a href="/rules" class="footer_bottom_rules" th:text="#{button.terms.of.service}">Пользовательское соглашение</a>
+                <a href="/privacy-policy" class="footer_bottom_rules" th:text="#{button.privacy.policy}">Политика
+                    конфиденциальности</a>
+                <a href="/rules" class="footer_bottom_rules" th:text="#{button.terms.of.service}">Пользовательское
+                    соглашение</a>
             </div>
         </div>
     </div>
