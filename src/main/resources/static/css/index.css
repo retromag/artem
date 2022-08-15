@@ -79,7 +79,7 @@ a {
 /* Create the mixin (usually in a separate .scss file) */
 body {
   font-family: "Cera Pro";
-  background-image: url("../images/bc_main.jpg");
+  background-image: url("../images/bc_main1.jpg");
   background-position: center center;
   background-size: 100% 100%;
 }
@@ -306,6 +306,11 @@ header {
 @media only screen and (max-width: 991px) {
   .main_block {
     margin-top: 30px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .main_block {
+    margin-top: 80px;
   }
 }
 .main_title {
@@ -2435,23 +2440,113 @@ footer {
   }
 }
 
-input[type=password] {
-  font-family: "fontello";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
-  color: black;
-  font-size: 6px;
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-  /* Font smoothing. That was taken from TWBS */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
-  /* add spacing to better separate each image */
-  letter-spacing: 2px;
+.burger_icon_wrapper {
+  width: 20px;
+  height: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  .header_desktop {
+    display: none;
+  }
+}
+.header_mobile {
+  display: none;
+}
+@media only screen and (max-width: 767px) {
+  .header_mobile {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  .header_mobile_wrapper {
+    background-color: white;
+    padding: 10px 0;
+  }
+}
+.header_top_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+}
+
+.lang_cab_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.burger_menu {
+  background-color: white;
+  width: 300px;
+  padding: 20px;
+  height: 100vh;
+}
+.burger_menu_wrapper {
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  -o-transition: transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.overlay {
+  background: -o-radial-gradient(28.45% 74.22%, 71.55% 129.69%, rgba(141, 84, 224, 0.6) 0%, rgba(141, 200, 255, 0.6) 96.2%);
+  background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, rgba(141, 84, 224, 0.6) 0%, rgba(141, 200, 255, 0.6) 96.2%);
+  height: 100vh;
+}
+
+.activeBurger {
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.menu_list_top a {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 19.5px;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+  color: #11181F;
+}
+.menu_list_top a:hover {
+  color: #0E82EF;
+}
+.menu_list_middle {
+  margin-top: 20px;
+}
+.menu_list_middle a {
+  color: #11181F;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16.5px;
+  text-decoration: none;
+  display: block;
+  margin-top: 10px;
+}
+.menu_list_middle a:hover {
+  color: #0E82EF;
+}
+.menu_list_bottom {
+  margin-top: 20px;
+}
+.menu_list_bottom .copyright {
+  color: #A7AAAC;
 }
 
 /* Breakpoint sizes */
