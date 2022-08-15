@@ -154,7 +154,7 @@ header {
 }
 @media only screen and (max-width: 479px) {
   .container {
-    width: 300px;
+    width: 350px;
   }
 }
 
@@ -1820,7 +1820,6 @@ footer {
   border: 1px solid #B3DAFF;
   -webkit-box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
           box-shadow: 0 7px 25px rgba(30, 120, 255, 0.25);
-  min-height: 100%;
   text-align: center;
   color: #11181F;
   font-size: 16px;
@@ -1869,6 +1868,7 @@ footer {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  width: 100%;
 }
 @media only screen and (max-width: 991px) {
   .support_items {
@@ -2450,21 +2450,20 @@ footer {
     display: none;
   }
 }
-.header_mobile {
+.header_mobile_wrapper {
   display: none;
+  background-color: white;
+  padding: 10px 0;
 }
 @media only screen and (max-width: 767px) {
-  .header_mobile {
+  .header_mobile_wrapper {
     display: block;
+    padding: 20px 0;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-  }
-  .header_mobile_wrapper {
-    background-color: white;
-    padding: 10px 0;
   }
 }
 .header_top_row {
@@ -2488,31 +2487,37 @@ footer {
 
 .burger_menu {
   background-color: white;
-  width: 300px;
   padding: 20px;
-  height: 100vh;
+  position: fixed;
+  top: 70px;
+  z-index: 10000;
+  height: 100%;
+  -webkit-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+  max-width: 0;
+  opacity: 0;
 }
-.burger_menu_wrapper {
-  -webkit-transform: translateX(-100%);
-      -ms-transform: translateX(-100%);
-          transform: translateX(-100%);
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: -webkit-transform 0.3s;
-  -o-transition: transform 0.3s;
-  transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
-}
-
 .overlay {
   background: -o-radial-gradient(28.45% 74.22%, 71.55% 129.69%, rgba(141, 84, 224, 0.6) 0%, rgba(141, 200, 255, 0.6) 96.2%);
   background: radial-gradient(71.55% 129.69% at 28.45% 74.22%, rgba(141, 84, 224, 0.6) 0%, rgba(141, 200, 255, 0.6) 96.2%);
-  height: 100vh;
+  display: none;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .activeBurger {
-  -webkit-transform: translateX(0);
-      -ms-transform: translateX(0);
-          transform: translateX(0);
+  max-width: 300px;
+  opacity: 1;
+}
+
+.activeOverlay {
+  display: block;
 }
 
 .menu_list_top a {

@@ -61,28 +61,27 @@
             </div>
         </div>
     </div>
+<!--    <div class="burger_menu_wrapper js-burger-menu">-->
 
-        <div class="burger_menu_wrapper js-burger-menu">
-            <div class="overlay js-overlay">
-                <div class="burger_menu">
-                    <ul class="menu_list_top">
-                        <li><a href="/" th:text="#{button.start.exchange}">Начать обмен</a></li>
-                        <li><a href="/reserves" th:text="#{button.our.reserves}">Наши резервы</a></li>
-                    </ul>
-                    <ul class="menu_list_middle">
-                        <li><a href="/rules" th:text="#{button.rules}">Правила</a></li>
-                        <li><a href="/aml" th:text="#{massage.exchange.aml}">AML</a></li>
-                        <li><a href="/contacts" th:text="#{button.contacts}">Контакты</a></li>
-                    </ul>
-                    <ul class="menu_list_bottom">
+    <div class="overlay js-overlay"></div>
+    <div class="burger_menu js-burger-menu">
+
+            <ul class="menu_list_top">
+                <li><a href="/" th:text="#{button.start.exchange}">Начать обмен</a></li>
+                <li><a href="/reserves" th:text="#{button.our.reserves}">Наши резервы</a></li>
+            </ul>
+            <ul class="menu_list_middle">
+                <li><a href="/rules" th:text="#{button.rules}">Правила</a></li>
+                <li><a href="/aml" th:text="#{massage.exchange.aml}">AML</a></li>
+                <li><a href="/contacts" th:text="#{button.contacts}">Контакты</a></li>
+            </ul>
+            <ul class="menu_list_bottom">
                         <p class="copyright">Copyright © 2022 HelmetSwap</p>
                         <a href="/privacy-policy" class="footer_bottom_rules" th:text="#{button.privacy.policy}">Политика конфиденциальности</a>
                         <a href="/rules" class="footer_bottom_rules" th:text="#{button.terms.of.service}">Пользовательское соглашение</a>
                     </ul>
-                </div>
-            </div>
-
-        </div>
+<!--          </div>-->
+    </div>
 
 </div>
 <header>
@@ -535,7 +534,7 @@
         </div>
     </div>
 </footer>
-<script src="../static/js/index.js"></script>
-<script src="../static/js/burger.js"></script>
+<script src="/js/index.js"></script>
+<script src="/js/burger.js"></script>
 </body>
 </html>
