@@ -1,3 +1,5 @@
+const env = 'http://localhost:8080';
+// const env = 'https://helmetswap.herokuapp.com/';
 
 //top dropdown elements
 const dropdownTop = document.querySelector('.js-top-dropdown');
