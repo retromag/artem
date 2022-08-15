@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;1,400;1,700&display=swap");
 *,
 *::before,
 *::after {
@@ -79,7 +78,7 @@ a {
 /**/
 /* Create the mixin (usually in a separate .scss file) */
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Cera Pro";
   background-image: url("../images/bc_main.jpg");
   background-position: center center;
   background-size: 100% 100%;
@@ -968,7 +967,7 @@ header {
 }
 .rules_list {
   font-size: 16px;
-  padding-left: 50px;
+  padding-left: 30px;
   margin-bottom: 20px;
   list-style-type: decimal;
 }
@@ -1878,6 +1877,16 @@ footer {
 .rules_text {
   color: #585D62;
   text-decoration: underline;
+}
+
+.rules_container {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+@media only screen and (max-width: 991px) {
+  .rules_container {
+    margin-bottom: 50px;
+  }
 }
 
 .reviews_title {
