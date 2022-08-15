@@ -1,3 +1,4 @@
+
 //top dropdown elements
 const dropdownTop = document.querySelector('.js-top-dropdown');
 const headerDropdownTop = document.querySelector('.js-top-dropdown-header');
@@ -56,18 +57,18 @@ const setCoinInHeader = (option, imgHeader, coinNameHeader, coinAbbrHeader, test
 
 //get course and set in rate element
 const getCourse = async (firstSymbol, secondSymbol) => {
-    const response = await fetch(`http://localhost:8080/api/app/get/price/?firstSymbol=${firstSymbol}&secondSymbol=${secondSymbol}`);
+    const response = await fetch(`${env}/api/app/get/price/?firstSymbol=${firstSymbol}&secondSymbol=${secondSymbol}`);
     const data = await response.json();
     rateElement.textContent = `1 ${firstSymbol} - ${data} ${secondSymbol}`;
     hiddenInputRateElement.value = `1 ${firstSymbol} - ${data} ${secondSymbol}`;
 }
 //get min and max amount of coins and set them to appropriate element
 const getMinAndMaxAmountOfCoins = async (coinAbbr) => {
-    const responseMinAmount = await fetch(`http://localhost:8080/api/coin/min/amount/?symbol=${coinAbbr}`);
+    const responseMinAmount = await fetch(`${env}/api/coin/min/amount/?symbol=${coinAbbr}`);
     const dataMinAmount = await responseMinAmount.json();
     minCoinAmount.textContent = `${dataMinAmount} ${coinAbbr}`;
 
-    const responseMaxAmount = await fetch(`http://localhost:8080/api/coin/max/amount/?symbol=${coinAbbr}`);
+    const responseMaxAmount = await fetch(`${env}/api/coin/max/amount/?symbol=${coinAbbr}`);
     const dataMaxAmount = await responseMaxAmount.json();
     maxCoinAmount.textContent = `${dataMaxAmount} ${coinAbbr}`;
 }
@@ -84,7 +85,7 @@ getMinAndMaxAmountOfCoins(mainCoinAbbrTop.textContent);
 topInput.addEventListener('input', async () => {
     // topInput.value = '';
     if (topInput.value !== '') {
-        const response = await fetch(`http://localhost:8080/api/app/get/taken/?amount=${+topInput.value}&firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${mainCoinAbbrBottom.textContent}`);
+        const response = await fetch(`${env}/api/app/get/taken/?amount=${+topInput.value}&firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${mainCoinAbbrBottom.textContent}`);
         const data = await response.json();
         console.log('data from topInput', topInput.value);
         console.log('data top', data);
@@ -100,7 +101,7 @@ topInput.addEventListener('input', async () => {
 
 bottomInput.addEventListener('input', async () => {
     if (bottomInput.value !== '') {
-        const response = await fetch(`http://localhost:8080/api/app/get/given/?amount=${+bottomInput.value}&firstSymbol=${mainCoinAbbrBottom.textContent}&secondSymbol=${mainCoinAbbrTop.textContent}`);
+        const response = await fetch(`${env}/api/app/get/given/?amount=${+bottomInput.value}&firstSymbol=${mainCoinAbbrBottom.textContent}&secondSymbol=${mainCoinAbbrTop.textContent}`);
         const data = await response.json();
         console.log('data from bottomInput', bottomInput.value);
         console.log('data bottom', data);
