@@ -85,7 +85,7 @@ body {
 }
 
 .main-wrapper {
-  background-image: url("../images/bc_main_sec.png");
+  background-image: url("../images/bc_main_seс.png");
   background-position: top right;
   background-size: 800px;
   background-repeat: no-repeat;
@@ -1220,6 +1220,11 @@ footer {
     width: 45%;
   }
 }
+@media only screen and (max-width: 479px) {
+  .shortcut_item_wrapper {
+    width: 80%;
+  }
+}
 .shortcut_money_text {
   font-size: 18px;
   color: #11181F;
@@ -2008,12 +2013,21 @@ footer {
   margin-bottom: 50px;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
+  background-image: url("../images/reviews.png");
+  background-position: top right;
+  background-size: 560px;
+  background-repeat: no-repeat;
 }
 @media only screen and (max-width: 767px) {
   .reviews_block {
     margin-bottom: 20px;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .reviews_block {
+    background: none;
   }
 }
 .reviews_left_col {
@@ -2678,6 +2692,10 @@ footer {
   margin-left: 3px;
 }
 
+.wallet_text {
+  word-break: break-all;
+}
+
 /* Breakpoint sizes */
 /**/
 /* Create the mixin (usually in a separate .scss file) */
@@ -2726,6 +2744,13 @@ footer {
   .input_auth {
     margin-bottom: 10px;
   }
+}
+
+.registration_content {
+  background-image: url("../images/auth_bc.png");
+  background-position: bottom right;
+  background-size: 750px;
+  background-repeat: no-repeat;
 }
 
 /* The switch - the box around the slider */

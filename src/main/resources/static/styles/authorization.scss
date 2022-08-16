@@ -40,7 +40,12 @@
     }
   }
 }
-
+.registration_content {
+  background-image: url("../images/auth_bc.png");
+  background-position: bottom right;
+  background-size: 750px;
+  background-repeat: no-repeat;
+}
 /* The switch - the box around the slider */
 .switch {
   position: relative;
