@@ -200,5 +200,8 @@ buttonsExchangeShortcut.forEach((button) => {
 
         //get and set min and max coins value
         getMinAndMaxAmountOfCoins(coinAbbrFrom);
+
+        topInput.value = '';
+        bottomInput.value = '';
     })
 });
