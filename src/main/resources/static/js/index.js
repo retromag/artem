@@ -12,7 +12,7 @@ const topInput = document.querySelector('.js-top-input');
 // elements for min and max amounts of coins for top dropdown
 const minCoinAmount = document.querySelector('.js-min-coins-amount');
 const maxCoinAmount = document.querySelector('.js-max-coins-amount');
-
+//
 //bottom dropdown elements
 const headerDropdownBottom = document.querySelector('.js-bottom-dropdown-header');
 const dropdownBottom = document.querySelector('.js-bottom-dropdown');
