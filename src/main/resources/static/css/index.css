@@ -1531,6 +1531,11 @@ footer {
   margin-left: 5px;
   margin-right: 5px;
 }
+@media only screen and (max-width: 479px) {
+  .account_header_btn a {
+    padding: 0 5px;
+  }
+}
 .account_header_btn a:hover {
   cursor: pointer;
   background: #8D54E0;
@@ -1556,6 +1561,17 @@ footer {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+@media only screen and (max-width: 991px) {
+  .history_item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
 .history_item_wrapper {
   padding: 20px 15px;
   background: #FFFFFF;
@@ -1573,6 +1589,20 @@ footer {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+@media only screen and (max-width: 991px) {
+  .history_item_left_col {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
 .history_item_right_col {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1584,6 +1614,50 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   width: 60%;
+}
+@media only screen and (max-width: 991px) {
+  .history_item_right_col {
+    display: none;
+  }
+}
+.history_item_right_col_mobile {
+  display: none;
+}
+@media only screen and (max-width: 991px) {
+  .history_item_right_col_mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+}
+.history_item_right_col_mobile_coins {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 10px;
+}
+.history_item_right_col_mobile_coins .coin_img_wrapper {
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.history_item_right_col_mobile_coins .history_item_img_wrapper__arrow1 {
+  width: 20%;
 }
 .history_item_imgs_wrapper {
   display: -webkit-box;
@@ -1660,6 +1734,22 @@ footer {
           justify-content: space-between;
   margin-left: 30px;
 }
+@media only screen and (max-width: 991px) {
+  .history_item_btns_wrapper_desktop {
+    display: none;
+  }
+}
+.history_item_btns_wrapper_mobile {
+  display: none;
+}
+@media only screen and (max-width: 991px) {
+  .history_item_btns_wrapper_mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 10px;
+  }
+}
 .history_item_btn_wrapper {
   display: block;
   width: 15px;
@@ -1684,6 +1774,11 @@ footer {
 }
 .history_items_wrapper {
   margin-top: 50px;
+}
+@media only screen and (max-width: 479px) {
+  .history_items_wrapper {
+    margin-top: 20px;
+  }
 }
 .history_wrapper {
   margin-bottom: 50px;
@@ -2552,6 +2647,35 @@ footer {
 }
 .menu_list_bottom .copyright {
   color: #A7AAAC;
+}
+
+.mobile_lang_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mobile_balance_wrapper {
+  width: 100%;
+  margin: 10px 0;
+  display: none;
+}
+@media only screen and (max-width: 767px) {
+  .mobile_balance_wrapper {
+    display: block;
+  }
+}
+.mobile_balance_wrapper .btn_logout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.mobile_balance_wrapper .btn_logout span {
+  text-decoration: underline;
+  margin-left: 3px;
 }
 
 /* Breakpoint sizes */

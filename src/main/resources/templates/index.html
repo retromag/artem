@@ -31,7 +31,7 @@
                     </a>
                 </div>
                 <div class="lang_cab_wrapper">
-                    <ul>
+                    <ul class="mobile_lang_wrapper">
                         <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'ru_RU'}">
                             <a th:href="@{${#httpServletRequest.requestURI}(lang='en_US')}">
                                 <i><img src="/images/en.png" alt="" class="flag"></i>
