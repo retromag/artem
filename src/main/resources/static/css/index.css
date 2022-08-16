@@ -1720,6 +1720,7 @@ footer {
   font-size: 20px;
   line-height: 26px;
   font-weight: bold;
+  margin-left: 5px;
 }
 .history_item_wallet {
   color: #A7AAAC;
@@ -2751,6 +2752,11 @@ footer {
   background-position: bottom right;
   background-size: 750px;
   background-repeat: no-repeat;
+}
+@media only screen and (max-width: 991px) {
+  .registration_content {
+    background: none;
+  }
 }
 
 /* The switch - the box around the slider */

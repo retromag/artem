@@ -45,6 +45,10 @@
   background-position: bottom right;
   background-size: 750px;
   background-repeat: no-repeat;
+
+  @include max-screen(md) {
+    background: none;
+  }
 }
 /* The switch - the box around the slider */
 .switch {

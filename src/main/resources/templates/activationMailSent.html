@@ -13,8 +13,79 @@
 </head>
 <body>
 <div class="content">
+    <div class="header_mobile">
+        <div class="header_mobile_wrapper">
+            <div class="container">
+                <div class="header_top_row">
+                    <div class="burger_icon_wrapper js-burger-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+                    </div>
+                    <div class="logo_wrapper">
+                        <div class="logo_img_wrapper">
+                            <a href="/">
+                                <img src="/images/logo.png" alt="" class="logo_img">
+                            </a>
+                        </div>
+                        <a href="/">
+                            <p class="logo_text">HELMETSWAP</p>
+                        </a>
+                    </div>
+                    <div class="lang_cab_wrapper">
+                        <ul class="mobile_lang_wrapper">
+                            <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'ru_RU'}">
+                                <a th:href="@{${#httpServletRequest.requestURI}(lang='en_US')}">
+                                    <i><img src="/images/en.png" alt="" class="flag"></i>
+                                </a>
+                            </li>
+                            <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'en_US'}">
+                                <a th:href="@{${#httpServletRequest.requestURI}(lang='ru_RU')}">
+                                    <i><img src="/images/ru.png" alt="" class="flag"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div>
+                            <div sec:authorize="!isAuthenticated()">
+                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg" alt=""></a>
+                            </div>
+
+                            <div sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')" class="btns_auth_wrapper">
+                                <div>
+                                    <a href="/account/history" class="btn_cabinet_wrapper">
+                                        <span class="btn_cabinet_user"><img src="/images/user-1.svg" alt=""></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--    <div class="burger_menu_wrapper js-burger-menu">-->
+
+        <div class="overlay js-overlay"></div>
+        <div class="burger_menu js-burger-menu">
+
+            <ul class="menu_list_top">
+                <li><a href="/" th:text="#{button.start.exchange}">Начать обмен</a></li>
+                <li><a href="/reserves" th:text="#{button.our.reserves}">Наши резервы</a></li>
+            </ul>
+            <ul class="menu_list_middle">
+                <li><a href="/rules" th:text="#{button.rules}">Правила</a></li>
+                <li><a href="/aml" th:text="#{massage.exchange.aml}">AML</a></li>
+                <li><a href="/contacts" th:text="#{button.contacts}">Контакты</a></li>
+            </ul>
+            <ul class="menu_list_bottom">
+                <p class="copyright">Copyright © 2022 HelmetSwap</p>
+                <a href="/privacy-policy" class="footer_bottom_rules" th:text="#{button.privacy.policy}">Политика конфиденциальности</a>
+                <a href="/rules" class="footer_bottom_rules" th:text="#{button.terms.of.service}">Пользовательское соглашение</a>
+            </ul>
+            <!--          </div>-->
+        </div>
+
+    </div>
     <header>
-        <div class="container">
+        <div class="container header_desktop">
             <div class="header_block">
                 <div class="logo_wrapper">
                     <div class="logo_img_wrapper">
@@ -46,7 +117,8 @@
 
                         <li sec:authorize="!isAuthenticated()">
                             <div class="nav_menu__item">
-                                <a href="/registration" class="btn_authorization btn_general" th:text="#{button.authorization}">Авторизация</a>
+                                <a href="/registration" class="btn_authorization btn_general"
+                                   th:text="#{button.authorization}">Авторизация</a>
                                 <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg" alt=""></a>
                             </div>
                         </li>
@@ -118,5 +190,6 @@
         </div>
     </div>
 </footer>
+<script src="/js/burger.js"></script>
 </body>
 </html>
