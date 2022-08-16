@@ -601,6 +601,7 @@ header {
 
     @include max-screen(sm) {
       margin-right: 5px;
+      //display: none;
     }
 
     & img {
@@ -1272,6 +1273,10 @@ footer {
         margin-left: 5px;
         margin-right: 5px;
 
+        @include max-screen(xs) {
+          padding: 0 5px;
+        }
+
         &:hover {
           cursor: pointer;
           background: #8D54E0;
@@ -1296,6 +1301,11 @@ footer {
   &_item {
     display: flex;
     justify-content: space-between;
+
+    @include max-screen(md) {
+      flex-direction: column;
+      align-items: center;
+    }
     &_wrapper {
       padding: 20px 15px;
       background: #FFFFFF;
@@ -1312,12 +1322,56 @@ footer {
     }
     &_left_col {
       //width: 50%;
+
+      @include max-screen(md) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
     }
     &_right_col {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 60%;
+
+      @include max-screen(md) {
+        display: none;
+      }
+
+      &_mobile {
+        display: none;
+        @include max-screen(md) {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+        }
+
+        &_coins {
+
+          //display: none;
+
+          display: flex;
+          //align-items: center;
+          justify-content: space-around;
+          margin-top: 10px;
+
+          & .history_item_wallet {
+            //width: 55%;
+          }
+          & .coin_img_wrapper {
+            width: 40%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+          }
+
+          & .history_item_img_wrapper__arrow1 {
+            width: 20%;
+          }
+        }
+      }
+
     }
     &_imgs_wrapper {
       display: flex;
@@ -1383,6 +1437,21 @@ footer {
       align-items: center;
       justify-content: space-between;
       margin-left: 30px;
+
+
+      &_desktop {
+        @include max-screen(md) {
+          display: none;
+        }
+      }
+      &_mobile {
+        display: none;
+
+        @include max-screen(md) {
+          display: flex;
+          margin-top: 10px;
+        }
+      }
     }
     &_btn_wrapper {
       display: block;
@@ -1419,6 +1488,9 @@ footer {
   }
   &_items_wrapper {
     margin-top: 50px;
+    @include max-screen(xs) {
+      margin-top: 20px;
+    }
   }
   &_wrapper {
     margin-bottom: 50px;
@@ -2220,6 +2292,29 @@ footer {
       & .copyright {
         color: #A7AAAC;
       }
+    }
+  }
+}
+.mobile_lang_wrapper {
+  display: flex;
+  align-items: center;
+}
+.mobile_balance_wrapper {
+  width: 100%;
+  margin: 10px 0;
+
+  display: none;
+
+  @include max-screen(sm) {
+    display: block;
+  }
+
+  & .btn_logout {
+    display: flex;
+
+    & span {
+      text-decoration: underline;
+      margin-left: 3px;
     }
   }
 }
