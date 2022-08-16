@@ -113,6 +113,7 @@ public class ExchangerUserService implements UserService {
         user.setAllPrivileges(false);
         user.setNonLocked(true);
         user.setWalletAmount(new BigDecimal(0));
+        user.setUserMargin(new BigDecimal(0));
 
         return user;
     }

@@ -312,8 +312,9 @@ public class UserController {
             model.addAttribute("walletAmount", user.getWalletAmount());
             model.addAttribute("userMargin", user.getUserMargin());
         }
-
-        model.addAttribute("orders", orders);
+        if (orders != null) {
+            model.addAttribute("orders", orders);
+        }
 
         return "account_history";
     }
