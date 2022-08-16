@@ -2,13 +2,17 @@ package com.example.cryptocurrencyexchanger.service.exchange;
 
 import com.example.cryptocurrencyexchanger.entity.exchange.ExchangeOrder;
 import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
+import com.example.cryptocurrencyexchanger.entity.user.UserRole;
 import com.example.cryptocurrencyexchanger.repo.ExchangeRepository;
+import com.example.cryptocurrencyexchanger.repo.UserRoleRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -16,6 +20,7 @@ import java.util.List;
 public class ExchangeServiceImpl implements ExchangeService {
 
     ExchangeRepository exchangeRepository;
+    UserRoleRepository userRoleRepository;
 
     @Override
     public void makeAnExchange(ExchangeOrder order) {
@@ -58,7 +63,9 @@ public class ExchangeServiceImpl implements ExchangeService {
 
     @Override
     public List<ExchangeOrder> getAllExchangeOrders(ExchangerUser user) {
-        if (user.isAllPrivileges()) {
+        UserRole role = userRoleRepository.findByName("ROLE_ADMIN");
+
+        if (user.getRoles().contains(role)) {
             return exchangeRepository.findByOrderByCreatedTimeDesc();
         } else {
             return exchangeRepository.getAllByUserOrderByCreatedTimeDesc(user);

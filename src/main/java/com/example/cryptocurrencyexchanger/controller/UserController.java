@@ -360,8 +360,8 @@ public class UserController {
 
         model.addAttribute("order", exchangeService.findOrderByCode(code));
         model.addAttribute("ownerWallet", coinService.getCoinByCoinSymbol(order.getGivenCoin()).getWallet());
-        model.addAttribute("givenCoin", coinService.getCoinByCoinSymbol(order.getGivenCoin()).getName());
-        model.addAttribute("takenCoin", coinService.getCoinByCoinSymbol(order.getTakenCoin()).getName());
+        model.addAttribute("givenCoin", coinService.getCoinByCoinSymbol(order.getGivenCoin()).getSymbol());
+        model.addAttribute("takenCoin", coinService.getCoinByCoinSymbol(order.getTakenCoin()).getSymbol());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
             model.addAttribute("userMargin", user.getUserMargin());
@@ -377,8 +377,8 @@ public class UserController {
         exchangeService.payForExchange(order);
 
         model.addAttribute("order", order);
-        model.addAttribute("givenCoin", coinService.getCoinByCoinSymbol(order.getGivenCoin()).getName());
-        model.addAttribute("takenCoin", coinService.getCoinByCoinSymbol(order.getTakenCoin()).getName());
+        model.addAttribute("givenCoin", coinService.getCoinByCoinSymbol(order.getGivenCoin()).getSymbol());
+        model.addAttribute("takenCoin", coinService.getCoinByCoinSymbol(order.getTakenCoin()).getSymbol());
         if (user != null) {
             model.addAttribute("walletAmount", user.getWalletAmount());
             model.addAttribute("userMargin", user.getUserMargin());

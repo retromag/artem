@@ -29,7 +29,8 @@
                 </div>
                 <nav class="nav_menu_wrapper">
                     <ul class="nav_menu">
-                        <li class="nav_menu__item"><a href="/" class="nav_menu__item_link" th:text="#{button.do.exchange}">Выполнить
+                        <li class="nav_menu__item"><a href="/" class="nav_menu__item_link"
+                                                      th:text="#{button.do.exchange}">Выполнить
                             обмен</a></li>
                         <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link"
                                                       th:text="#{button.reserves}">Резервы</a></li>
@@ -47,8 +48,10 @@
 
                         <li sec:authorize="!isAuthenticated()">
                             <div class="nav_menu__item">
-                                <a href="/registration" class="btn_authorization btn_general" th:text="#{button.authorization}">Авторизация</a>
-                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg" alt=""></a>
+                                <a href="/registration" class="btn_authorization btn_general"
+                                   th:text="#{button.authorization}">Авторизация</a>
+                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg"
+                                                                                              alt=""></a>
                             </div>
                         </li>
                         <li sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')" class="btns_auth_wrapper">
@@ -85,11 +88,14 @@
             <div class="order_page_wrapper">
                 <form action="" th:object="${order}" th:action="@{/exchange/pay}" method="post">
                     <div class="order_page_header">
-                        <h3 class="order_page_title" th:text="#{massage.order}">Заявка #<span th:text="${order.id}">16601466482062</span >
+                        <h3 class="order_page_title"><span th:text="#{massage.order}">Заявка #</span><span
+                                th:text="${order.id}">16601466482062</span>
                         </h3>
                         <input hidden name="uniqcode" th:value="${order.uniqCode}">
-                        <p class="order_page_subtitle" th:text="#{massage.follow.instructions}">Следуйте инструкции! Ожидаем перевод денежных средств.</p>
-                        <p class="order_page_time" th:text="#{massage.time}">Осталось: <span class="order_page_time_left" id="js-time"></span></p>
+                        <p class="order_page_subtitle" th:text="#{massage.follow.instructions}">Следуйте инструкции!
+                            Ожидаем перевод денежных средств.</p>
+                        <p class="order_page_time"><span th:text="#{massage.time}"></span>Осталось: <span
+                                class="order_page_time_left" id="js-time"></span></p>
                     </div>
                     <div class="form_exchange">
                         <div class="form_left_col">
@@ -150,7 +156,8 @@
                         </div>
                         <div class="form_right_col">
                             <div>
-                                <p class="order_title" th:text="#{massage.programme.client}">1. Войдите в свою программу-клиент и сделайте перевод по
+                                <p class="order_title" th:text="#{massage.programme.client}">1. Войдите в свою
+                                    программу-клиент и сделайте перевод по
                                     реквизитам</p>
                                 <div class="order_top_row">
                                     <div class="order_wallet_sum_wrapper">
@@ -193,10 +200,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p class="order_title" th:text="#{massage.payment}">2. Обязательно, нажмите кнопку "я оплатил"</p>
+                                <p class="order_title" th:text="#{massage.payment}">2. Обязательно, нажмите кнопку "я
+                                    оплатил"</p>
                                 <div class="order_bottom_row">
-                                    <button type="submit" class="btn_general" th:text="#{button.payment}">Я ОПЛАТИЛ</button>
-                                    <a class="btn_secondary" href="/" th:text="#{button.cancel.request}">ОТМЕНИТЬ ЗАЯВКУ</a>
+                                    <button type="submit" class="btn_general" th:text="#{button.payment}">Я ОПЛАТИЛ
+                                    </button>
+                                    <a class="btn_secondary" href="/" th:text="#{button.cancel.request}">ОТМЕНИТЬ
+                                        ЗАЯВКУ</a>
                                 </div>
                             </div>
                         </div>
@@ -222,7 +232,8 @@
                 </div>
                 <ul class="footer_col">
                     <li class="footer_col_item"><a href="/" th:text="#{button.start.exchange}">Начать обмен</a></li>
-                    <li class="footer_col_item"><a href="/reserves" th:text="#{button.our.reserves}">Наши резервы</a></li>
+                    <li class="footer_col_item"><a href="/reserves" th:text="#{button.our.reserves}">Наши резервы</a>
+                    </li>
                 </ul>
                 <ul class="footer_col">
                     <li class="footer_col_item"><a href="/rules" th:text="#{button.rules}">Правила</a></li>
@@ -234,8 +245,10 @@
             </div>
             <div class="footer_bottom_row">
                 <p class="copyright">Copyright © 2022 HelmetSwap</p><br class="hidden_break">
-                <a href="/privacy-policy" class="footer_bottom_rules" th:text="#{button.privacy.policy}">Политика конфиденциальности</a>
-                <a href="/rules" class="footer_bottom_rules" th:text="#{button.terms.of.service}">Пользовательское соглашение</a>
+                <a href="/privacy-policy" class="footer_bottom_rules" th:text="#{button.privacy.policy}">Политика
+                    конфиденциальности</a>
+                <a href="/rules" class="footer_bottom_rules" th:text="#{button.terms.of.service}">Пользовательское
+                    соглашение</a>
             </div>
         </div>
     </div>
