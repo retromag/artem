@@ -31,7 +31,8 @@
                 </div>
                 <nav class="nav_menu_wrapper">
                     <ul class="nav_menu">
-                        <li class="nav_menu__item"><a href="/" class="nav_menu__item_link" th:text="#{button.do.exchange}">Выполнить
+                        <li class="nav_menu__item"><a href="/" class="nav_menu__item_link"
+                                                      th:text="#{button.do.exchange}">Выполнить
                             обмен</a></li>
                         <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link"
                                                       th:text="#{button.reserves}">Резервы</a></li>
@@ -49,8 +50,10 @@
 
                         <li sec:authorize="!isAuthenticated()">
                             <div class="nav_menu__item">
-                                <a href="/registration" class="btn_authorization btn_general" th:text="#{button.authorization}">Авторизация</a>
-                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg" alt=""></a>
+                                <a href="/registration" class="btn_authorization btn_general"
+                                   th:text="#{button.authorization}">Авторизация</a>
+                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg"
+                                                                                              alt=""></a>
                             </div>
                         </li>
                         <li sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')" class="btns_auth_wrapper">
@@ -103,24 +106,29 @@
                 </div>
                 <div class="account_header_btns_wrapper">
                     <ul class="account_header_btns">
-                        <li class="account_header_btn"><a th:href="@{/account/history}" th:text="#{button.history}">История</a></li>
-                        <li class="account_header_btn"><a th:href="@{/account/settings}" th:text="#{button.settings}">Настройки</a></li>
+                        <li class="account_header_btn"><a th:href="@{/account/history}" th:text="#{button.history}">История</a>
+                        </li>
+                        <li class="account_header_btn"><a th:href="@{/account/settings}" th:text="#{button.settings}">Настройки</a>
+                        </li>
                         <th:block sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                            <li class="account_header_btn"><a th:href="@{/account/users}" th:text="#{button.users}">Пользователи</a></li>
+                            <li class="account_header_btn"><a th:href="@{/account/users}" th:text="#{button.users}">Пользователи</a>
+                            </li>
                         </th:block>
                     </ul>
                 </div>
             </div>
 
-                <div class="history_items_wrapper">
-                    <div class="history_items">
-                        <tr th:each="order : ${orders}">
-                            <div class="history_item_wrapper">
+            <div class="history_items_wrapper">
+                <div class="history_items">
+                    <tr th:each="order : ${orders}">
+                        <div class="history_item_wrapper">
                             <div class="history_item">
                                 <div class="history_item_left_col">
-                                    <div class="history_item_title" th:text="#{massage.request}">Заявка #<span
+                                    <div class="history_item_title"><span
+                                            th:text="#{massage.request}">Заявка # </span><span
                                             th:text="${order.id}">16601494675699</span>
-                                        <span th:text="#{massage.email}"> Почта: </span><span th:text="${order.email}"></span>
+                                        <span> <span th:text="#{massage.email}"> Почта: </span>  </span><span
+                                                th:text="${order.email}"></span>
                                     </div>
                                     <p class="history_item_subtitle" th:text="${order.coupon}">Купон</p>
                                     <p class="history_item_subtitle" th:text="${order.status}">( Предварительная заявка
@@ -158,30 +166,34 @@
                                         <p class="history_item_wallet" th:text="${order.wallet}">
                                             1BoatSLRHtKNngkdXEeobR76b53LETtpyT</p>
                                     </div>
-                                    <div class="history_item_btns_wrapper history_item_btns_wrapper_desktop" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                                        <form th:action="@{/order/confirm/{id}(id=${order.id})}" method="post" class="history_btn_wrapper history_item_btn_wrapper_check">
+                                    <div class="history_item_btns_wrapper history_item_btns_wrapper_desktop"
+                                         sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                        <form th:action="@{/order/confirm/{id}(id=${order.id})}" method="post"
+                                              class="history_btn_wrapper history_item_btn_wrapper_check">
                                             <input class="history_item_btn_wrapper"
-                                               type="submit" value="">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                                    <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                                                    <path d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"/>
-                                                </svg>
+                                                   type="submit" value="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                                <path d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"/>
+                                            </svg>
                                         </form>
-                                        <form th:action="@{/order/cancel/{id}(id=${order.id})}" method="post" class="history_btn_wrapper history_item_btn_wrapper_cancel">
+                                        <form th:action="@{/order/cancel/{id}(id=${order.id})}" method="post"
+                                              class="history_btn_wrapper history_item_btn_wrapper_cancel">
                                             <input class="history_item_btn_wrapper"
-                                               type="submit" value="">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                                                    <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                                                    <path d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/>
-                                                </svg>
+                                                   type="submit" value="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                                <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                                <path d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/>
+                                            </svg>
                                         </form>
-                                        <form th:action="@{/order/delete/{id}(id=${order.id})}" method="post" class="history_btn_wrapper history_item_btn_wrapper_remove">
+                                        <form th:action="@{/order/delete/{id}(id=${order.id})}" method="post"
+                                              class="history_btn_wrapper history_item_btn_wrapper_remove">
                                             <input class="history_item_btn_wrapper"
-                                               type="submit" value="">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                                    <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                                                    <path d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"/>
-                                                </svg>
+                                                   type="submit" value="">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                                <path d="M135.2 17.69C140.6 6.848 151.7 0 163.8 0H284.2C296.3 0 307.4 6.848 312.8 17.69L320 32H416C433.7 32 448 46.33 448 64C448 81.67 433.7 96 416 96H32C14.33 96 0 81.67 0 64C0 46.33 14.33 32 32 32H128L135.2 17.69zM394.8 466.1C393.2 492.3 372.3 512 346.9 512H101.1C75.75 512 54.77 492.3 53.19 466.1L31.1 128H416L394.8 466.1z"/>
+                                            </svg>
                                         </form>
                                     </div>
                                 </div>
@@ -192,8 +204,9 @@
                                                 <img src="/images/bitcoin.png" alt="" class="history_item_img"
                                                      th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${order.givenCoin}}">
                                             </div>
-                                            <p class="history_item_amount"><span th:text="${order.givenAmount}">7</span> <span
-                                                    th:text="${order.givenCoin}"></span></p>
+                                            <p class="history_item_amount"><span th:text="${order.givenAmount}">7</span>
+                                                <span
+                                                        th:text="${order.givenCoin}"></span></p>
                                         </div>
                                         <div class="history_item_img_wrapper__arrow1">
                                             <div class="history_item_img_wrapper__arrow">
@@ -218,8 +231,10 @@
                                         </div>
 
                                     </div>
-                                    <div class="history_item_btns_wrapper history_item_btns_wrapper_mobile" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                                        <form th:action="@{/order/confirm/{id}(id=${order.id})}" method="post" class="history_btn_wrapper history_item_btn_wrapper_check">
+                                    <div class="history_item_btns_wrapper history_item_btns_wrapper_mobile"
+                                         sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                                        <form th:action="@{/order/confirm/{id}(id=${order.id})}" method="post"
+                                              class="history_btn_wrapper history_item_btn_wrapper_check">
                                             <input class="history_item_btn_wrapper"
                                                    type="submit" value="">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -227,7 +242,8 @@
                                                 <path d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"/>
                                             </svg>
                                         </form>
-                                        <form th:action="@{/order/cancel/{id}(id=${order.id})}" method="post" class="history_btn_wrapper history_item_btn_wrapper_cancel">
+                                        <form th:action="@{/order/cancel/{id}(id=${order.id})}" method="post"
+                                              class="history_btn_wrapper history_item_btn_wrapper_cancel">
                                             <input class="history_item_btn_wrapper"
                                                    type="submit" value="">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
@@ -235,7 +251,8 @@
                                                 <path d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/>
                                             </svg>
                                         </form>
-                                        <form th:action="@{/order/delete/{id}(id=${order.id})}" method="post" class="history_btn_wrapper history_item_btn_wrapper_remove">
+                                        <form th:action="@{/order/delete/{id}(id=${order.id})}" method="post"
+                                              class="history_btn_wrapper history_item_btn_wrapper_remove">
                                             <input class="history_item_btn_wrapper"
                                                    type="submit" value="">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -249,9 +266,9 @@
 
                             </div>
                         </div>
-                        </tr>
-                    </div>
+                    </tr>
                 </div>
+            </div>
 
         </div>
     </div>
@@ -272,7 +289,8 @@
                 </div>
                 <ul class="footer_col">
                     <li class="footer_col_item"><a href="/" th:text="#{button.start.exchange}">Начать обмен</a></li>
-                    <li class="footer_col_item"><a href="/reserves" th:text="#{button.our.reserves}">Наши резервы</a></li>
+                    <li class="footer_col_item"><a href="/reserves" th:text="#{button.our.reserves}">Наши резервы</a>
+                    </li>
                 </ul>
                 <ul class="footer_col">
                     <li class="footer_col_item"><a href="/rules" th:text="#{button.rules}">Правила</a></li>
@@ -284,8 +302,10 @@
             </div>
             <div class="footer_bottom_row">
                 <p class="copyright">Copyright © 2022 HelmetSwap</p><br class="hidden_break">
-                <a href="/privacy-policy" class="footer_bottom_rules" th:text="#{button.privacy.policy}">Политика конфиденциальности</a>
-                <a href="/rules" class="footer_bottom_rules" th:text="#{button.terms.of.service}">Пользовательское соглашение</a>
+                <a href="/privacy-policy" class="footer_bottom_rules" th:text="#{button.privacy.policy}">Политика
+                    конфиденциальности</a>
+                <a href="/rules" class="footer_bottom_rules" th:text="#{button.terms.of.service}">Пользовательское
+                    соглашение</a>
             </div>
         </div>
     </div>
