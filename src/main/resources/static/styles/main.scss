@@ -14,7 +14,7 @@ body {
   //font-family: 'CeraPRO-Regular';
 }
 .main-wrapper {
-  background-image: url("../images/bc_main_seс.png");
+  background-image: url("../images/bc_main_sec.png");
   background-position: top right;
   background-size: 800px;
   background-repeat: no-repeat;
@@ -821,7 +821,7 @@ footer {
 .content {
   min-height: calc(100vh - 180px);
   @include max-screen(sm) {
-    min-height: calc(100vh - 147px);
+    min-height: calc(100vh - 65px);
   }
 
 }
@@ -1054,6 +1054,10 @@ footer {
     &_wrapper {
       margin-top: 40px;
       margin-bottom: 50px;
+
+      @include max-screen(sm) {
+        margin-top: 100px;
+      }
     }
     &_title {
       font-size: 26px;
@@ -1232,6 +1236,10 @@ footer {
   &_block_wrapper {
     margin-top: 50px;
     margin-bottom: 50px;
+
+    @include max-screen(sm) {
+      margin-top: 100px;
+    }
   }
 }
 .settings_wrapper {
@@ -1498,6 +1506,10 @@ footer {
   }
   &_wrapper {
     margin-bottom: 50px;
+
+    @include max-screen(sm) {
+      margin-top: 100px;
+    }
   }
   &_btn {
     &_wrapper {
@@ -1579,6 +1591,10 @@ footer {
   &_page {
     margin-top: 30px;
     margin-bottom: 50px;
+
+    @include max-screen(sm) {
+      margin-top: 80px;
+    }
   }
   &_title {
     margin-bottom: 5px;
@@ -1669,8 +1685,8 @@ footer {
 .rules_container {
   margin-top: 50px;
   margin-bottom: 100px;
-  @include max-screen(md) {
-    margin-bottom: 50px;
+  @include max-screen(sm) {
+    margin-top: 80px;
   }
 }
 .reviews {
@@ -2134,6 +2150,10 @@ footer {
     margin-left: 30px;
   }
 }
+
+.input_wallet_wrapper1 {
+  margin-left: 0;
+}
 .users_items_wrapper {
   margin-top: 30px;
 }
@@ -2218,7 +2238,7 @@ footer {
 
     padding: 20px;
     position: fixed;
-    top: 70px;
+    top: 60px;
     z-index: 10000;
     height: 100%;
     //display: none;
