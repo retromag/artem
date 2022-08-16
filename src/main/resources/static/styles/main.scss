@@ -14,7 +14,7 @@ body {
   //font-family: 'CeraPRO-Regular';
 }
 .main-wrapper {
-  background-image: url("../images/bc_main_sec.png");
+  background-image: url("../images/bc_main_seс.png");
   background-position: top right;
   background-size: 800px;
   background-repeat: no-repeat;
@@ -999,6 +999,9 @@ footer {
       @include max-screen(sm) {
         width: 45%;
       }
+      @include max-screen(xs) {
+        width: 80%;
+      }
     }
   }
   &_money {
@@ -1425,6 +1428,7 @@ footer {
       font-size: 20px;
       line-height: 26px;
       font-weight: bold;
+      margin-left: 5px;
     }
     &_wallet {
       color: #A7AAAC;
@@ -1686,9 +1690,18 @@ footer {
     margin-bottom: 50px;
     flex-wrap: nowrap;
 
+    background-image: url("../images/reviews.png");
+    background-position: top right;
+    background-size: 560px;
+    background-repeat: no-repeat;
+
     @include max-screen(sm) {
       margin-bottom: 20px;
       flex-wrap: wrap;
+    }
+
+    @include max-screen(md) {
+      background: none;
     }
   }
   &_left_col {
@@ -2317,4 +2330,7 @@ footer {
       margin-left: 3px;
     }
   }
+}
+.wallet_text {
+  word-break: break-all;
 }
