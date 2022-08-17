@@ -85,7 +85,7 @@ body {
 }
 
 .main-wrapper {
-  background-image: url("../images/bc_main_seс.png");
+  background-image: url("../images/bc_main_sec.png");
   background-position: top right;
   background-size: 800px;
   background-repeat: no-repeat;
@@ -998,7 +998,7 @@ footer {
 }
 @media only screen and (max-width: 767px) {
   .content {
-    min-height: calc(100vh - 147px);
+    min-height: calc(100vh - 65px);
   }
 }
 
@@ -1271,6 +1271,11 @@ footer {
   margin-top: 40px;
   margin-bottom: 50px;
 }
+@media only screen and (max-width: 767px) {
+  .order_page_wrapper {
+    margin-top: 100px;
+  }
+}
 .order_page_title {
   font-size: 26px;
   line-height: 130%;
@@ -1470,6 +1475,11 @@ footer {
 .settings_block_wrapper {
   margin-top: 50px;
   margin-bottom: 50px;
+}
+@media only screen and (max-width: 767px) {
+  .settings_block_wrapper {
+    margin-top: 100px;
+  }
 }
 
 .settings_wrapper {
@@ -1789,6 +1799,11 @@ footer {
 .history_wrapper {
   margin-bottom: 50px;
 }
+@media only screen and (max-width: 767px) {
+  .history_wrapper {
+    margin-top: 100px;
+  }
+}
 .history_btn_wrapper {
   position: relative;
   margin: 0 5px;
@@ -1878,6 +1893,11 @@ footer {
 .support_page {
   margin-top: 30px;
   margin-bottom: 50px;
+}
+@media only screen and (max-width: 767px) {
+  .support_page {
+    margin-top: 80px;
+  }
 }
 .support_title {
   margin-bottom: 5px;
@@ -1989,9 +2009,9 @@ footer {
   margin-top: 50px;
   margin-bottom: 100px;
 }
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 767px) {
   .rules_container {
-    margin-bottom: 50px;
+    margin-top: 80px;
   }
 }
 
@@ -2508,6 +2528,10 @@ footer {
   }
 }
 
+.input_wallet_wrapper1 {
+  margin-left: 0;
+}
+
 .users_items_wrapper {
   margin-top: 30px;
 }
@@ -2599,7 +2623,7 @@ footer {
   background-color: white;
   padding: 20px;
   position: fixed;
-  top: 70px;
+  top: 60px;
   z-index: 10000;
   height: 100%;
   -webkit-transition: all 0.25s;
@@ -2722,6 +2746,7 @@ footer {
 @media only screen and (max-width: 767px) {
   .auth_form_container {
     width: 470px;
+    margin-top: 100px;
   }
 }
 @media only screen and (max-width: 479px) {
@@ -2744,18 +2769,6 @@ footer {
 @media only screen and (max-width: 767px) {
   .input_auth {
     margin-bottom: 10px;
-  }
-}
-
-.registration_content {
-  background-image: url("../images/auth_bc.png");
-  background-position: bottom right;
-  background-size: 750px;
-  background-repeat: no-repeat;
-}
-@media only screen and (max-width: 991px) {
-  .registration_content {
-    background: none;
   }
 }
 
@@ -2949,6 +2962,7 @@ input:checked + .slider:before {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    margin-top: 75px;
   }
 }
 .reserves_btn_add {
