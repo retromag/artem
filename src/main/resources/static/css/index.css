@@ -2862,18 +2862,6 @@ footer {
   }
 }
 
-.registration_content {
-  background-image: url("../images/auth_bc.png");
-  background-position: bottom right;
-  background-size: 750px;
-  background-repeat: no-repeat;
-}
-@media only screen and (max-width: 991px) {
-  .registration_content {
-    background: none;
-  }
-}
-
 /* The switch - the box around the slider */
 .switch {
   position: relative;
