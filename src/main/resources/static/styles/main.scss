@@ -2464,3 +2464,15 @@ footer {
     }
   }
 }
+
+.status_img_wrapper {
+  width: 20px;
+  height: 20px;
+
+  @include max-screen(md) {
+    display: flex;
+    align-self: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}

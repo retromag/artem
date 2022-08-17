@@ -2834,6 +2834,22 @@ footer {
   margin-bottom: 20px;
 }
 
+.status_img_wrapper {
+  width: 20px;
+  height: 20px;
+}
+@media only screen and (max-width: 991px) {
+  .status_img_wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-item-align: center;
+        align-self: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
 /* Breakpoint sizes */
 /**/
 /* Create the mixin (usually in a separate .scss file) */
