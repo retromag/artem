@@ -273,7 +273,7 @@
                                     <div class="history_item_btns_wrapper history_item_btns_wrapper_desktop"
                                          sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
                                         <form th:action="@{/order/confirm/{id}(id=${order.id})}" method="post"
-                                              class="history_btn_wrapper">
+                                              class="history_btn_wrapper history_item_btn_wrapper_check">
                                             <input class="history_item_btn_wrapper"
                                                    type="submit" value="">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
