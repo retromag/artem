@@ -391,7 +391,16 @@ public class UserController {
     @Secured("ROLE_ADMIN")
     @PostMapping("/order/confirm/{id}")
     public String confirmOrder(@PathVariable("id") Long id, HttpServletRequest request) {
+
         exchangeService.completeExchange(exchangeService.findOrderById(id));
+
+        return getPreviousPageByRequest(request).orElse("/");
+    }
+
+    @Secured("ROLE_ADMIN")
+    @PostMapping("/order/freeze/{id}")
+    public String freezeOrder(@PathVariable("id") Long id, HttpServletRequest request) {
+        exchangeService.freezeExchange(exchangeService.findOrderById(id));
 
         return getPreviousPageByRequest(request).orElse("/");
     }

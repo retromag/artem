@@ -14,6 +14,8 @@ public interface ExchangeService {
 
     void cancelExchange(ExchangeOrder order);
 
+    void freezeExchange(ExchangeOrder order);
+
     void deleteExchange(ExchangeOrder order);
 
     ExchangeOrder findOrderById(Long id);

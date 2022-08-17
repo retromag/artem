@@ -47,6 +47,12 @@ public class ExchangeServiceImpl implements ExchangeService {
     }
 
     @Override
+    public void freezeExchange(ExchangeOrder order) {
+        order.setStatus("Order frozen");
+        exchangeRepository.save(order);
+    }
+
+    @Override
     public void deleteExchange(ExchangeOrder order) {
         exchangeRepository.delete(order);
     }

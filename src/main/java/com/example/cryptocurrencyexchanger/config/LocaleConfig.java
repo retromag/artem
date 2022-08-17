@@ -1,5 +1,6 @@
 package com.example.cryptocurrencyexchanger.config;
 
+import org.json.Cookie;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,6 +8,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
@@ -21,10 +23,20 @@ public class LocaleConfig implements WebMvcConfigurer {
         return localeResolver;
     }
 
+//    @Bean
+//    public LocaleResolver localeResolver() {
+//        CookieLocaleResolver localeResolver = new CookieLocaleResolver();
+////        localeResolver.setDefaultLocale(Locale.US);
+//        localeResolver.setDefaultLocale(new Locale("ru"));
+//        localeResolver.setCookieName("local");
+//        return localeResolver;
+//    }
+
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
         localeChangeInterceptor.setParamName("lang");
+
         return localeChangeInterceptor;
     }
 
