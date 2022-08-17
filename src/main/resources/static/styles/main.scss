@@ -1379,6 +1379,29 @@ footer {
           width: 100%;
         }
 
+        & .history_item_amount {
+          @include max-screen(md) {
+            text-align: center;
+            font-size: 14px;
+          }
+        }
+
+        & .history_item_result {
+          @include max-screen(md) {
+            text-align: center;
+            font-size: 14px;
+          }
+        }
+
+        & .history_item_wallet {
+          @include max-screen(md) {
+            font-size: 10px;
+            line-height: 12px;
+          }
+        }
+
+
+
         &_coins {
 
           //display: none;
@@ -1435,6 +1458,10 @@ footer {
       color: #8D54E0;
       font-size: 22px;
       margin-bottom: 5px;
+
+      @include max-screen(md) {
+        font-size: 14px;
+      }
     }
     &_subtitle {
       color: #11181F;
