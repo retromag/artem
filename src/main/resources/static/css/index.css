@@ -1667,6 +1667,24 @@ footer {
     width: 100%;
   }
 }
+@media only screen and (max-width: 991px) {
+  .history_item_right_col_mobile .history_item_amount {
+    text-align: center;
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .history_item_right_col_mobile .history_item_result {
+    text-align: center;
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .history_item_right_col_mobile .history_item_wallet {
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
 .history_item_right_col_mobile_coins {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1725,6 +1743,11 @@ footer {
   color: #8D54E0;
   font-size: 22px;
   margin-bottom: 5px;
+}
+@media only screen and (max-width: 991px) {
+  .history_item_title {
+    font-size: 14px;
+  }
 }
 .history_item_subtitle {
   color: #11181F;
@@ -2809,6 +2832,22 @@ footer {
   font-size: 26px;
   line-height: 130%;
   margin-bottom: 20px;
+}
+
+.status_img_wrapper {
+  width: 20px;
+  height: 20px;
+}
+@media only screen and (max-width: 991px) {
+  .status_img_wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-item-align: center;
+        align-self: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
 
 /* Breakpoint sizes */
