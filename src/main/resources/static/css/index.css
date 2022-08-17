@@ -90,6 +90,12 @@ body {
   background-size: 800px;
   background-repeat: no-repeat;
 }
+@media only screen and (max-width: 767px) {
+  .main-wrapper {
+    background-size: 310px;
+    background-position: center 110px;
+  }
+}
 
 header {
   background-color: #FFFFFF;
@@ -1051,6 +1057,17 @@ footer {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .footer_bottom_row {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 .footer_bottom_rules {
@@ -2390,11 +2407,6 @@ footer {
 
 .hidden_break {
   display: none;
-}
-@media only screen and (max-width: 767px) {
-  .hidden_break {
-    display: block;
-  }
 }
 
 .user_item {

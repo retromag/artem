@@ -21,6 +21,11 @@ body {
   //margin-top: 200px;
   //height: 100vh;
   //background-color: red;
+
+  @include max-screen(sm) {
+    background-size: 310px;
+    background-position: center 110px;
+  }
 }
 header {
   background-color: #FFFFFF;
@@ -856,6 +861,22 @@ footer {
       @include max-screen(xs) {
         margin-top: 10px;
         justify-content: center;
+      }
+
+      @include max-screen(sm) {
+        align-items: center;
+        flex-direction: column;
+      }
+
+      & .copyright {
+        //@include max-screen(sm) {
+        //  width: 100%;
+        //}
+      }
+      & a {
+        @include max-screen(sm) {
+          //width: 100%;
+        }
       }
     }
     &_rules {
@@ -2035,9 +2056,9 @@ footer {
 }
 .hidden_break {
   display: none;
-  @include max-screen(sm) {
-    display: block;
-  }
+  //@include max-screen(sm) {
+  //  display: block;
+  //}
 }
 
 .user {
