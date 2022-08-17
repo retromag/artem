@@ -32,13 +32,13 @@
                 </div>
                 <div class="lang_cab_wrapper">
                     <ul class="mobile_lang_wrapper">
-                        <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'ru_RU'}">
+                        <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'ru'}">
                             <a th:href="@{${#httpServletRequest.requestURI}(lang='en_US')}">
                                 <i><img src="/images/en.png" alt="" class="flag"></i>
                             </a>
                         </li>
                         <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'en_US'}">
-                            <a th:href="@{${#httpServletRequest.requestURI}(lang='ru_RU')}">
+                            <a th:href="@{${#httpServletRequest.requestURI}(lang='ru')}">
                                 <i><img src="/images/ru.png" alt="" class="flag"></i>
                             </a>
                         </li>
@@ -452,14 +452,14 @@
                 <div class="fast_exchanges">
                     <div class="fast_exchanges_left_col">
                         <div class="fast_exchanges_img_wrapper">
-                            <img src="../static/images/fast_exchange.png" alt="" class="fast_exchanges_img">
+                            <img src="/images/fast_exchange.png" alt="" class="fast_exchanges_img">
                         </div>
                     </div>
 
                     <div class="fast_exchanges_right_col">
                         <div class="fast_exchanges_block_text">
-                            <h4>Максимально быстрые обмены</h4>
-                            <p>Онлайн-ресурс Helmetswap предоставляет возможность проводить быстрые обмены криптовалют с мобильного телефона. Данная функция имеет ряд преимуществ перед работой с web-версией сервиса. Функции обменного сервиса просты и понятны даже для начинающего пользователя сервисом, а скорость оформления заявок значительно выше.</p>
+                            <h4 th:text="#{index.h4}">Максимально быстрые обмены</h4>
+                            <p th:text="#{index.p}">Онлайн-ресурс Helmetswap предоставляет возможность проводить быстрые обмены криптовалют с мобильного телефона. Данная функция имеет ряд преимуществ перед работой с web-версией сервиса. Функции обменного сервиса просты и понятны даже для начинающего пользователя сервисом, а скорость оформления заявок значительно выше.</p>
                         </div>
 
                     </div>

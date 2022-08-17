@@ -17,7 +17,7 @@ public class LocaleController {
 
     @GetMapping(value = "/international")
     public String changeLocale(@RequestParam(name = "lang") String lang, HttpSession session, HttpServletRequest request) {
-        session.setAttribute("local", lang);
+        session.setAttribute("locale", lang);
 
         String referer = request.getHeader("Referer");
         return "redirect:" + referer;

@@ -391,6 +391,7 @@ public class UserController {
     @Secured("ROLE_ADMIN")
     @PostMapping("/order/confirm/{id}")
     public String confirmOrder(@PathVariable("id") Long id, HttpServletRequest request) {
+
         exchangeService.completeExchange(exchangeService.findOrderById(id));
 
         return getPreviousPageByRequest(request).orElse("/");
