@@ -118,9 +118,13 @@ public class UserController {
             result.rejectValue("email", null, "There is already an account registered with that email");
         }
 
-        if (result.hasErrors()) {
-            return "registration";
+        if (!userService.checkConfirmPassword(userModel)) {
+            result.rejectValue("confirmPassword", null, "Confirm password must be the same");
         }
+
+//        if (result.hasErrors()) {
+//            return "registration";
+//        }
 
         userService.saveNewUser(userModel);
         final ExchangerUser user = userService.findByEmail(userModel.getEmail());

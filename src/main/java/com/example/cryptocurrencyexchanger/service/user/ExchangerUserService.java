@@ -75,6 +75,11 @@ public class ExchangerUserService implements UserService {
     }
 
     @Override
+    public boolean checkConfirmPassword(UserModel userModel) {
+        return userModel.getPassword().equals(userModel.getConfirmPassword());
+    }
+
+    @Override
     public List<ExchangerUser> getAllUsers() {
         return userRepository.findAll();
     }

@@ -18,6 +18,8 @@ public interface UserService extends UserDetailsService {
 
     boolean checkIfValidOldPassword(ExchangerUser user, String oldPassword);
 
+    boolean checkConfirmPassword(UserModel userModel);
+
     List<ExchangerUser> getAllUsers();
 
     void changeUserWalletAmount(ExchangerUser user, BigDecimal amount);

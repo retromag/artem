@@ -1,7 +1,7 @@
 package com.example.cryptocurrencyexchanger.entity.user;
 
 import com.example.cryptocurrencyexchanger.util.annotation.FieldMatch;
-import com.example.cryptocurrencyexchanger.util.annotation.PasswordMatches;
+import com.example.cryptocurrencyexchanger.util.annotation.PasswordValueMatch;
 import lombok.*;
 
 import javax.validation.constraints.Email;
@@ -12,10 +12,17 @@ import javax.validation.constraints.NotEmpty;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@FieldMatch.List({
-        @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
-        @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")})
-@PasswordMatches
+//@FieldMatch.List({
+//        @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
+//        @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")})
+
+@PasswordValueMatch.List({
+        @PasswordValueMatch(
+                field = "password",
+                fieldMatch = "confirmPassword",
+                message = "Passwords do not match!"
+        )
+})
 public class UserModel {
 
     @NonNull

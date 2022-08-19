@@ -56,13 +56,45 @@ public class BinanceRestService implements BinanceService {
         }
     }
 
+//    private BigDecimal getResultPriceIfFirstInputUSDT(BigDecimal amount, String symbol) {
+//        BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(symbol);
+//        BigDecimal amountOfTakenCoin = amount.divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
+//        BigDecimal marginOfTakenCoin = getCoinMargin(symbol);
+//        BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100), 7, RoundingMode.HALF_UP);
+//
+//        return amountOfTakenCoin.subtract(resultMargin);
+//    }
+//
+//    private BigDecimal getResultPriceIfSecondInputUSDT(BigDecimal amount, String symbol) {
+//        BigDecimal coinPriceInUSDT = getCoinPriceInUSDT(symbol);
+//        BigDecimal amountOfTakenCoin = amount.multiply(coinPriceInUSDT);
+//        BigDecimal marginOfTakenCoin = getCoinMargin(symbol);
+//        BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100), 7, RoundingMode.HALF_UP);
+//
+//        return amountOfTakenCoin.add(resultMargin);
+//    }
+//
+//    private BigDecimal getPriceFirstInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
+//        BigDecimal amountOfTakenCoin = calculateResultAmountTakenCoins(amount, firstSymbol, secondSymbol);
+//        BigDecimal resultMargin = calculateResultMargin(amountOfTakenCoin, secondSymbol);
+//
+//        return amountOfTakenCoin.subtract(resultMargin);
+//    }
+//
+//    private BigDecimal getPriceSecondInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
+//        BigDecimal amountOfTakenCoin = calculateResultAmountTakenCoins(amount, firstSymbol, secondSymbol);
+//        BigDecimal resultMargin = calculateResultMargin(amountOfTakenCoin, secondSymbol);
+//
+//        return amountOfTakenCoin.add(resultMargin);
+//    }
+
     private BigDecimal getResultPriceIfFirstInputUSDT(BigDecimal amount, String symbol) {
         BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(symbol);
         BigDecimal amountOfTakenCoin = amount.divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
         BigDecimal marginOfTakenCoin = getCoinMargin(symbol);
         BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100), 7, RoundingMode.HALF_UP);
 
-        return amountOfTakenCoin.subtract(resultMargin);
+        return amountOfTakenCoin.add(resultMargin);
     }
 
     private BigDecimal getResultPriceIfSecondInputUSDT(BigDecimal amount, String symbol) {
@@ -71,21 +103,21 @@ public class BinanceRestService implements BinanceService {
         BigDecimal marginOfTakenCoin = getCoinMargin(symbol);
         BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100), 7, RoundingMode.HALF_UP);
 
-        return amountOfTakenCoin.add(resultMargin);
+        return amountOfTakenCoin.subtract(resultMargin);
     }
 
     private BigDecimal getPriceFirstInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
         BigDecimal amountOfTakenCoin = calculateResultAmountTakenCoins(amount, firstSymbol, secondSymbol);
         BigDecimal resultMargin = calculateResultMargin(amountOfTakenCoin, secondSymbol);
 
-        return amountOfTakenCoin.subtract(resultMargin);
+        return amountOfTakenCoin.add(resultMargin);
     }
 
     private BigDecimal getPriceSecondInput(BigDecimal amount, String firstSymbol, String secondSymbol) {
         BigDecimal amountOfTakenCoin = calculateResultAmountTakenCoins(amount, firstSymbol, secondSymbol);
         BigDecimal resultMargin = calculateResultMargin(amountOfTakenCoin, secondSymbol);
 
-        return amountOfTakenCoin.add(resultMargin);
+        return amountOfTakenCoin.subtract(resultMargin);
     }
 
     private BigDecimal calculateResultAmountTakenCoins(BigDecimal amount, String firstSymbol, String secondSymbol) {
