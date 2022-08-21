@@ -3153,7 +3153,9 @@ input:checked + .slider:before {
   fill: #0E82EF;
   cursor: pointer;
 }
-
+.check_page_wallet {
+  word-break: break-all;
+}
 /* Breakpoint sizes */
 /**/
 /* Create the mixin (usually in a separate .scss file) */
