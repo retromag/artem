@@ -173,7 +173,7 @@
                                                      class="dropdown_img_coin"
                                                      th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${order.givenCoin}}">
                                             </div>
-                                            <p class="dropdown_title">Bitcoin</p>
+                                            <p class="dropdown_title" th:text="${givenCoin}">Bitcoin</p>
                                             <input type="text" readonly th:value="${order.givenCoin}"
                                                    class="order_hidden_input_abbr js-top_order_hidden_input_abbr">
                                         </div>
