@@ -174,7 +174,7 @@
                                                      th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${order.givenCoin}}">
                                             </div>
                                             <p class="dropdown_title">Bitcoin</p>
-                                            <input type="text" readonly th:text="${order.givenCoin}"
+                                            <input type="text" readonly th:value="${order.givenCoin}"
                                                    class="order_hidden_input_abbr js-top_order_hidden_input_abbr">
                                         </div>
                                     </div>
@@ -210,7 +210,7 @@
                                     </div>
                                     <div class="dropdown_footer">
                                         <p class="dropdown_footer_left_col"><span
-                                                class="dropdown_text">На счет </span><span
+                                                class="dropdown_text">На счет </span><span class="check_page_wallet"
                                                 th:text="${order.wallet}"></span><span
                                                 class="dropdown_text_account"></span></p>
                                     </div>
