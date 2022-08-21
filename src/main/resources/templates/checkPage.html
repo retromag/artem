@@ -182,7 +182,7 @@
                                         <input type="text" class="dropdown_input" placeholder="Сумма" readonly
                                                value="29"
                                                th:value="${order.givenAmount}">
-                                        <div class="coin_abbr">BTC</div>
+                                        <div class="coin_abbr" th:value="${givenCoin}"></div>
                                     </div>
                                 </div>
                             </div>
@@ -197,7 +197,7 @@
                                                      th:src="@{'https://exchanger-bucket.s3.eu-west-1.amazonaws.com/coin/image/'+${order.takenCoin}}">
                                             </div>
                                             <p class="dropdown_title" th:text="${takenCoin}">Solana</p>
-                                            <input type="text" readonly th:text="${order.takenCoin}"
+                                            <input type="text" readonly th:value="${order.takenCoin}"
                                                    class="order_hidden_input_abbr js-bottom_order_hidden_input_abbr">
                                         </div>
 
@@ -206,7 +206,7 @@
                                         <input type="text" class="dropdown_input" placeholder="Сумма" readonly
                                                value="900"
                                                th:value="${order.takenAmount}">
-                                        <div class="coin_abbr" th:text="${givenCoin}">SOL</div>
+                                        <div class="coin_abbr" th:value="${takenCoin}"></div>
                                     </div>
                                     <div class="dropdown_footer">
                                         <p class="dropdown_footer_left_col"><span
