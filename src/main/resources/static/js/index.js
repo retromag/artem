@@ -1,6 +1,7 @@
 // const env = 'http://localhost:8080';
-// const env = 'https://helmetswap.herokuapp.com';
-const env = 'https://helmet-swap.com';
+const env = 'https://cryptocurrency-exchanger.herokuapp.com';
+// const env = 'https://helmet-swap.com';
+
 
 //top dropdown elements
 const dropdownTop = document.querySelector('.js-top-dropdown');
