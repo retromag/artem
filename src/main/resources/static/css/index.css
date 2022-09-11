@@ -79,7 +79,7 @@ a {
 /* Create the mixin (usually in a separate .scss file) */
 body {
   font-family: "Cera Pro";
-  background-image: url("../images/bc_main1.jpg");
+  background-image: url("../images/bc_main1.png");
   background-position: center center;
   background-size: 100% 100%;
 }
@@ -198,7 +198,7 @@ header {
   display: block;
 }
 .logo_img_wrapper {
-  width: 50px;
+  width: 60px;
   height: 50px;
 }
 @media only screen and (max-width: 991px) {
