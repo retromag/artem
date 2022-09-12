@@ -79,7 +79,7 @@ public class ConstructEmail {
 
     private SimpleMailMessage constructEmail(String subject, String body, ExchangerUser user) {
         SimpleMailMessage email = new SimpleMailMessage();
-        email.setFrom("noreply@HELMETSWAP.com");
+        email.setFrom("hungryswap@gmail.com");
         email.setSubject(subject);
         email.setText(body);
         email.setTo(user.getEmail());
