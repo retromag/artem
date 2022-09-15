@@ -2,7 +2,6 @@ package com.example.cryptocurrencyexchanger.event;
 
 import com.example.cryptocurrencyexchanger.entity.user.ExchangerUser;
 import com.example.cryptocurrencyexchanger.service.token.TokenService;
-import com.example.cryptocurrencyexchanger.service.user.UserService;
 import com.example.cryptocurrencyexchanger.util.mail.ConstructEmail;
 import com.example.cryptocurrencyexchanger.util.mail.Mail;
 import lombok.AccessLevel;
@@ -12,14 +11,11 @@ import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.ApplicationListener;
-import org.springframework.context.MessageSource;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.MimeMailMessage;
-import org.springframework.stereotype.Component;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
