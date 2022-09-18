@@ -12,10 +12,6 @@ import javax.validation.constraints.NotEmpty;
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-//@FieldMatch.List({
-//        @FieldMatch(first = "password", second = "confirmPassword", message = "The password fields must match"),
-//        @FieldMatch(first = "email", second = "confirmEmail", message = "The email fields must match")})
-
 @PasswordValueMatch.List({
         @PasswordValueMatch(
                 field = "password",
@@ -36,6 +32,8 @@ public class UserModel {
     @Email
     @NotEmpty
     private String email;
+
+    private String coupon;
 
     private boolean allPrivileges;
 }

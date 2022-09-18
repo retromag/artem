@@ -166,6 +166,14 @@
                    th:field="*{email}"
             ><br>
         </div>
+        <div>
+            <input type="text"
+                   id="coupon"
+                   class="email input_email input_general input_auth"
+                   th:placeholder="#{massage.coupon.box}"
+                   th:field="*{coupon}"
+            ><br>
+        </div>
         <div th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
             <p th:each="error : ${#fields.errors('password')}"
                th:text="${error}" class="invalid_data">Validation error</p>
@@ -240,5 +248,6 @@
 <script src="/js/checkButton.js"></script>
 <script src="/js/burger.js"></script>
 <script src="/js/checkButton.js"></script>
+<script src="//code.tidio.co/npnx909lsqytqmhv5empuucr3bp47qhu.js" async></script>
 </body>
 </html>

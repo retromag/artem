@@ -114,6 +114,9 @@ public class ExchangerUserService implements UserService {
         ExchangerUser user = new ExchangerUser();
         user.setEmail(userModel.getEmail());
         user.setPassword(PasswordEncoder.passwordEncoder().encode(userModel.getPassword()));
+        if (userModel.getCoupon() != null) {
+            user.setCoupon(user.getCoupon());
+        }
         user.setRoles(Collections.singletonList(new UserRole("ROLE_USER")));
         user.setAllPrivileges(false);
         user.setNonLocked(true);

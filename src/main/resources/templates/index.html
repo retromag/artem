@@ -286,9 +286,9 @@
                     <div class="props_inputs_wrapper">
                         <div class="props_input_wrapper">
                             <label class="props_input_label" th:text="#{massage.email.box}">Ваш E-mail ящик</label>
-                            <input type="email" id="props_email" th:placeholder="${email}"
+                            <input type="email" id="props_email" th:placeholder="#{placeholder.your.email}"
                                    class="input_general props_input"
-                                   th:field="*{email}">
+                                   th:field="*{user.email}">
                         </div>
                         <div class="props_input_wrapper">
                             <label class="props_input_label" th:text="#{massage.wallet.receipt}">Кошелёк для
@@ -299,7 +299,7 @@
                         <div class="props_input_wrapper">
                             <label class="props_input_label" th:text="#{massage.coupon}">Купон</label>
                             <input type="text" id="props_coupon" class="input_general props_input"
-                                   th:placeholder="#{placeholder.coupon.kod}" th:field="*{coupon}">
+                                   th:placeholder="#{placeholder.coupon.kod}" th:field="*{user.coupon}">
                         </div>
                     </div>
                     <div class="props_btn_start_exchange_wrapper">
@@ -567,5 +567,6 @@
 </footer>
 <script src="/js/index.js"></script>
 <script src="/js/burger.js"></script>
+<script src="//code.tidio.co/npnx909lsqytqmhv5empuucr3bp47qhu.js" async></script>
 </body>
 </html>

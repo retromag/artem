@@ -37,6 +37,10 @@ public class ExchangerUser {
     @Column(name = "password")
     private String password;
 
+    @NotEmpty
+    @Column(name = "сoupon")
+    private String coupon;
+
     @Column(name = "walletAmount")
     private BigDecimal walletAmount;
 

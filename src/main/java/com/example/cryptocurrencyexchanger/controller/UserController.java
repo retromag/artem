@@ -122,9 +122,9 @@ public class UserController {
             result.rejectValue("confirmPassword", null, "Confirm password must be the same");
         }
 
-//        if (result.hasErrors()) {
-//            return "registration";
-//        }
+        if (result.hasErrors()) {
+            return "registration";
+        }
 
         userService.saveNewUser(userModel);
         final ExchangerUser user = userService.findByEmail(userModel.getEmail());
