@@ -77,9 +77,11 @@ public class UserController {
             note.setUser(user);
             model.addAttribute("note", note);
             if (user != null) {
+                model.addAttribute("user", user);
                 model.addAttribute("walletAmount", user.getWalletAmount());
                 model.addAttribute("userMargin", user.getUserMargin());
                 model.addAttribute("email", user.getEmail());
+                model.addAttribute("coupon", user.getCoupon());
             }
         }
 
@@ -357,6 +359,8 @@ public class UserController {
         ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
         if (user != null) {
             order.setUser(user);
+            order.setEmail(user.getEmail());
+            order.setCoupon(user.getCoupon());
         }
 
         String code = UUID.randomUUID().toString();
