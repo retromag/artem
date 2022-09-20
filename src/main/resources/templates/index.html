@@ -306,7 +306,7 @@
                                    th:field="*{wallet}">
                         </div>
                         <div class="props_input_wrapper">
-                            <th:block th:if="${user != null && #strings.isEmpty(coupon) == false}">
+                            <th:block th:if="${user != null || #strings.isEmpty(coupon) == false}">
                                 <label class="props_input_label" th:text="#{massage.coupon}">Купон</label>
                                 <input type="text" id="props_coupon_user" class="input_general props_input"
                                        th:placeholder="${coupon}"
