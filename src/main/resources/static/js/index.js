@@ -1,6 +1,6 @@
 // const env = 'http://localhost:8080';
 // const env = 'https://cryptocurrency-exchanger.herokuapp.com';
-const env = 'https://hungryswap.com';
+const env = 'https://hungry-swap.com';
 
 
 //top dropdown elements
