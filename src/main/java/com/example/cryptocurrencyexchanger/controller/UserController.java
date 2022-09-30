@@ -586,6 +586,17 @@ public class UserController {
         return "update_password";
     }
 
+    @GetMapping("/about-us")
+    public String showAboutUsPage(Model model) {
+        ExchangerUser user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (user != null) {
+            model.addAttribute("walletAmount", user.getWalletAmount());
+            model.addAttribute("userMargin", user.getUserMargin());
+        }
+
+        return "about_us";
+    }
+
     private Optional<String> getPreviousPageByRequest(HttpServletRequest request) {
         return Optional.ofNullable(request.getHeader("Referer")).map(requestUrl -> "redirect:" + requestUrl);
     }

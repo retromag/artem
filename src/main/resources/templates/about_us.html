@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="expires" content="0"/>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="shortcut icon" href="/images/logo.ico" type="image/x-icon">
+    <title th:text="#{title.accApproved}">Document</title>
+</head>
+
+<body>
+<div class="content">
+    <div class="header_mobile">
+        <div class="header_mobile_wrapper">
+            <div class="container">
+                <div class="header_top_row">
+                    <div class="burger_icon_wrapper js-burger-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                            <path d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/>
+                        </svg>
+                    </div>
+                    <div class="logo_wrapper">
+                        <div class="logo_img_wrapper">
+                            <a href="/">
+                                <img src="/images/logo.png" alt="" class="logo_img">
+                            </a>
+                        </div>
+                        <a href="/">
+                            <p class="logo_text">HUNGRYSWAP</p>
+                        </a>
+                    </div>
+                    <div class="lang_cab_wrapper">
+                        <ul class="mobile_lang_wrapper">
+                            <li class="nav_menu__item nav_menu__item_flag_wrapper"
+                                th:if="${#locale.toString() == 'ru_RU'}">
+                                <a th:href="@{${#httpServletRequest.requestURI}(lang='en_US')}">
+                                    <i><img src="/images/en.png" alt="" class="flag"></i>
+                                </a>
+                            </li>
+                            <li class="nav_menu__item nav_menu__item_flag_wrapper"
+                                th:if="${#locale.toString() == 'en_US'}">
+                                <a th:href="@{${#httpServletRequest.requestURI}(lang='ru_RU')}">
+                                    <i><img src="/images/ru.png" alt="" class="flag"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <div>
+                            <div sec:authorize="!isAuthenticated()">
+                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg"
+                                                                                              alt=""></a>
+                            </div>
+
+                            <div sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')" class="btns_auth_wrapper">
+                                <div>
+                                    <a href="/account/history" class="btn_cabinet_wrapper">
+                                        <span class="btn_cabinet_user"><img src="/images/user-1.svg" alt=""></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--    <div class="burger_menu_wrapper js-burger-menu">-->
+
+        <div class="overlay js-overlay"></div>
+        <div class="burger_menu js-burger-menu">
+
+            <ul class="menu_list_top">
+                <li><a href="/" th:text="#{button.start.exchange}">Начать обмен</a></li>
+                <li><a href="/reserves" th:text="#{button.our.reserves}">Наши резервы</a></li>
+            </ul>
+            <ul class="menu_list_middle">
+                <li><a href="/rules" th:text="#{button.rules}">Правила</a></li>
+                <li><a href="/aml" th:text="#{massage.exchange.aml}">AML</a></li>
+                <li><a href="/contacts" th:text="#{button.contacts}">Контакты</a></li>
+            </ul>
+            <ul class="menu_list_bottom">
+                <p class="copyright">Copyright © 2022 HelmetSwap</p>
+                <a href="/privacy-policy" class="footer_bottom_rules" th:text="#{button.privacy.policy}">Политика
+                    конфиденциальности</a>
+                <a href="/rules" class="footer_bottom_rules" th:text="#{button.terms.of.service}">Пользовательское
+                    соглашение</a>
+            </ul>
+            <!--          </div>-->
+        </div>
+
+    </div>
+    <header>
+        <div class="container header_desktop">
+            <div class="header_block">
+                <div class="logo_wrapper">
+                    <div class="logo_img_wrapper">
+                        <a href="/">
+                            <img src="/images/logo.png" alt="" class="logo_img">
+                        </a>
+                    </div>
+                    <a href="/">
+                        <p class="logo_text">HELMETSWAP</p>
+                    </a>
+                </div>
+                <nav class="nav_menu_wrapper">
+                    <ul class="nav_menu">
+                        <li class="nav_menu__item"><a href="/" class="nav_menu__item_link"
+                                                      th:text="#{button.do.exchange}">Выполнить
+                            обмен</a></li>
+                        <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link"
+                                                      th:text="#{button.reserves}">Резервы</a></li>
+
+                        <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'ru_RU'}">
+                            <a th:href="@{${#httpServletRequest.requestURI}(lang='en_US')}">
+                                <i><img src="/images/en.png" alt="" class="flag"></i>
+                            </a>
+                        </li>
+                        <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'en_US'}">
+                            <a th:href="@{${#httpServletRequest.requestURI}(lang='ru_RU')}">
+                                <i><img src="/images/ru.png" alt="" class="flag"></i>
+                            </a>
+                        </li>
+
+                        <li sec:authorize="!isAuthenticated()">
+                            <div class="nav_menu__item">
+                                <a href="/registration" class="btn_authorization btn_general"
+                                   th:text="#{button.authorization}">Авторизация</a>
+                                <a href="/registration" class="btn_authorization_mobile"><img src="/images/user.svg"
+                                                                                              alt=""></a>
+                            </div>
+                        </li>
+                        <li sec:authorize="hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')" class="btns_auth_wrapper">
+                            <div>
+                                <a href="/account/history" class="btn_cabinet_wrapper">
+                                    <span class="btn_cabinet_user"><img src="/images/user-1.svg" alt=""></span>
+                                    <div class="btn_cabinet_text">
+                                        <p th:text="#{button.personal.account}">Личный кабинет</p>
+                                        <div class="header_percent_wrapper">
+                                            <div class="header_wallet">
+                                                <span><img src="/images/wallet.png" alt=""></span>
+                                                <span><span th:text="${walletAmount}"></span><span> $</span></span>
+                                            </div>
+                                            <div class="header_wallet header_margin">
+                                                <span><img src="/images/percent.png" alt=""></span>
+                                                <span><span th:text="${userMargin}"></span><span> %</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </div>
+                            <div><a href="/logout" class="btn_logout">
+                                <img src="/images/exit.png" alt="">
+                            </a></div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div style="text-align: center;">О компании</div>
+    <h1>Мы - обменный сервис с централизованным (CEX) управлением, мы выполняем функции обмена криптовалюты. Представляем собой платформу для торговых операций, на которой все сделки обрабатываются собственными серверами. </h1>
+
+</div>
+<footer>
+    <div class="container">
+        <div class="footer_wrapper">
+            <div class="footer_top_row">
+                <div class="footer_logo_wrapper">
+                    <div class="logo_img_wrapper">
+                        <a href="/">
+                            <img src="/images/logo.png" alt="" class="logo_img">
+                        </a>
+                    </div>
+                    <a href="/">
+                        <p class="logo_text">HUNGRYSWAP</p>
+                    </a>
+                </div>
+                <ul class="footer_col">
+                    <li class="footer_col_item"><a href="/" th:text="#{button.start.exchange}">Начать обмен</a></li>
+                    <li class="footer_col_item"><a href="/reserves" th:text="#{button.our.reserves}">Наши резервы</a>
+                    </li>
+                </ul>
+                <ul class="footer_col">
+                    <li class="footer_col_item"><a href="/rules" th:text="#{button.rules}">Правила</a></li>
+                    <li class="footer_col_item"><a href="/aml" th:text="#{massage.exchange.aml}">AML</a></li>
+                </ul>
+                <ul class="footer_col">
+                    <li class="footer_col_item"><a href="/contacts" th:text="#{button.contacts}">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer_bottom_row">
+                <p class="copyright">Copyright © 2022 HUNGRYSWAP</p><br class="hidden_break">
+                <a href="/privacy-policy" class="footer_bottom_rules" th:text="#{button.privacy.policy}">Политика
+                    конфиденциальности</a>
+                <a href="/rules" class="footer_bottom_rules" th:text="#{button.terms.of.service}">Пользовательское
+                    соглашение</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="//code.tidio.co/0kpk6bun36uy3tzegam5lq7ovislt8vy.js" async></script>
+<script src="/js/burger.js"></script>
+</body>
+</html>
