@@ -833,7 +833,7 @@ footer {
 .footer {
   &_top_row {
     display: flex;
-    width: 50%;
+    width: 100%;
     justify-content: space-between;
     @include max-screen(md) {
       width: 90%;
@@ -897,7 +897,7 @@ footer {
   &_logo {
     &_wrapper {
       display: flex;
-      align-items: center;
+      //align-items: center;
 
       @include max-screen(xs) {
         width: 100%;
@@ -920,6 +920,34 @@ footer {
         &:hover {
           color: #0E82EF;
         }
+      }
+    }
+    &_img {
+      &_uk {
+        width: 130px;
+        height: 30px;
+      }
+      &_ssl {
+        width: 115px;
+        height: 100px;
+      }
+      &_verisign {
+        width: 80px;
+        height: 55px;
+      }
+    }
+    &_imgs {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      & img {
+        //width: 50px;
+        //height: 20px;
+      }
+
+      & li {
+        margin-left: 5px;
+        margin-right: 5px;
       }
     }
   }
@@ -2474,5 +2502,180 @@ footer {
     align-self: center;
     margin-top: 10px;
     margin-bottom: 10px;
+  }
+}
+
+.page {
+  &_about {
+    padding-top: 75px;
+    padding-bottom: 75px;
+
+    &_title {
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 56px;
+      color: rgb(20, 22, 24);
+      padding-bottom: 24px;
+      text-align: center;
+    }
+    &_text {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 27.84px;
+      color: rgb(20, 22, 24);
+      padding-bottom: 48px;
+      text-align: center;
+    }
+    &_block {
+      display: flex;
+      justify-content: space-between;
+      &_wrapper {
+        background-color: rgb(247, 248, 251);
+        margin-bottom: 50px;
+        color: rgb(20, 22, 24);
+        border-radius: 12px;
+        padding: 64px 35px 48px 48px;
+      }
+
+      &_title {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 36px;
+        padding-bottom: 24px;
+      }
+
+      &_text {
+        ont-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 27.84px;
+        max-width: 432px;
+      }
+
+      &_left_col {
+        width: 60%;
+      }
+      &_right_col {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+      }
+
+      &_rights {
+        &_title {
+          font-style: normal;
+          font-weight: 700;
+          font-size: 24px;
+          line-height: 28px;
+          color: rgb(20, 22, 24);
+          padding-bottom: 24px;
+          text-align: center;
+        }
+        &_text {
+          font-style: normal;
+          font-weight: 300;
+          font-size: 16px;
+          line-height: 27.84px;
+          color: rgb(93, 98, 109);
+          max-width: 980px;
+          text-align: center;
+        }
+      }
+    }
+    &_img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      &_wrapper {
+        width: 335px;
+        //height: 200px;
+      }
+    }
+    &_management {
+      &_title {
+        margin-top: 100px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 56px;
+        padding-bottom: 24px;
+        color: rgb(20, 22, 24);
+        text-align: center;
+      }
+      &_text {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 27.84px;
+        color: rgb(20, 22, 24);
+        padding-bottom: 60px;
+        text-align: center;
+      }
+      &_images {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &_image {
+        width: 100%;
+        //height: 240px;
+        border-radius: 50%;
+        object-fit: cover;
+
+        &_wrapper {
+          width: 350px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+.documentation {
+  &_link {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: rgb(87, 102, 236);
+    padding-right: 11px;
+    &_wrapper {
+
+    }
+  }
+}
+.person {
+  &_wrapper {
+    width: 30%;
+
+  }
+  &_title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36px;
+    color: rgb(20, 22, 24);
+    padding-bottom: 24px;
+  }
+  &_prof {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: rgb(20, 22, 24);
+    padding-bottom: 24px;
+  }
+  &_description {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 27.84px;
+    color: rgb(93, 98, 109);
+    padding-bottom: 32px;
+    max-width: 360px;
   }
 }
