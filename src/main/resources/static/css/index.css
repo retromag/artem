@@ -79,7 +79,7 @@ a {
 /* Create the mixin (usually in a separate .scss file) */
 body {
   font-family: "Cera Pro";
-  background-image: url("../images/bc_main1.png");
+  background-image: url("../images/bc_main1.jpg");
   background-position: center center;
   background-size: 100% 100%;
 }
@@ -198,12 +198,12 @@ header {
   display: block;
 }
 .logo_img_wrapper {
-  width: 60px;
+  width: 50px;
   height: 50px;
 }
 @media only screen and (max-width: 991px) {
   .logo_img_wrapper {
-    width: 39px;
+    width: 35px;
     height: 35px;
   }
 }
@@ -1012,7 +1012,7 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 50%;
+  width: 100%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -1092,9 +1092,6 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 @media only screen and (max-width: 479px) {
   .footer_logo_wrapper {
@@ -1119,6 +1116,56 @@ footer {
 }
 .footer_col_item a:hover {
   color: #0E82EF;
+}
+.footer_col_img_uk {
+  width: 130px;
+  height: 30px;
+}
+@media only screen and (max-width: 479px) {
+  .footer_col_img_uk {
+    width: 80px;
+    height: 20px;
+  }
+}
+.footer_col_img_ssl {
+  width: 115px;
+  height: 100px;
+}
+@media only screen and (max-width: 479px) {
+  .footer_col_img_ssl {
+    width: 90px;
+    height: 85px;
+  }
+}
+.footer_col_img_verisign {
+  width: 80px;
+  height: 55px;
+}
+@media only screen and (max-width: 479px) {
+  .footer_col_img_verisign {
+    width: 80px;
+    height: 45px;
+  }
+}
+.footer_col_imgs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@media only screen and (max-width: 479px) {
+  .footer_col_imgs {
+    width: 100%;
+  }
+}
+.footer_col_imgs li {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .copyright {
@@ -2850,6 +2897,236 @@ footer {
   }
 }
 
+.page_about {
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+.page_about_title {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  color: rgb(20, 22, 24);
+  padding-bottom: 24px;
+  text-align: center;
+}
+.page_about_text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27.84px;
+  color: rgb(20, 22, 24);
+  padding-bottom: 48px;
+  text-align: center;
+}
+.page_about_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+@media only screen and (max-width: 479px) {
+  .page_about_block {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+.page_about_block_wrapper {
+  background-color: rgb(247, 248, 251);
+  margin-bottom: 50px;
+  color: rgb(20, 22, 24);
+  border-radius: 12px;
+  padding: 64px 35px 48px 48px;
+}
+@media only screen and (max-width: 479px) {
+  .page_about_block_wrapper {
+    padding: 20px;
+  }
+}
+.page_about_block_title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 36px;
+  padding-bottom: 24px;
+}
+.page_about_block_text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27.84px;
+  max-width: 432px;
+}
+.page_about_block_left_col {
+  width: 60%;
+}
+@media only screen and (max-width: 479px) {
+  .page_about_block_left_col {
+    width: 100%;
+  }
+}
+.page_about_block_right_col {
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+@media only screen and (max-width: 479px) {
+  .page_about_block_right_col {
+    width: 100%;
+  }
+}
+.page_about_block_rights_title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: rgb(20, 22, 24);
+  padding-bottom: 24px;
+  text-align: center;
+}
+.page_about_block_rights_text {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 27.84px;
+  color: rgb(93, 98, 109);
+  max-width: 980px;
+  text-align: center;
+}
+.page_about_img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.page_about_img_wrapper {
+  width: 335px;
+}
+@media only screen and (max-width: 479px) {
+  .page_about_img_wrapper {
+    width: 200px;
+  }
+}
+.page_about_management_title {
+  margin-top: 100px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  padding-bottom: 24px;
+  color: rgb(20, 22, 24);
+  text-align: center;
+}
+.page_about_management_text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27.84px;
+  color: rgb(20, 22, 24);
+  padding-bottom: 60px;
+  text-align: center;
+}
+.page_about_management_images {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+@media only screen and (max-width: 479px) {
+  .page_about_management_images {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+.page_about_management_image {
+  width: 100%;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.page_about_management_image_wrapper {
+  width: 350px;
+  margin-bottom: 20px;
+}
+@media only screen and (max-width: 479px) {
+  .page_about_management_image_wrapper {
+    width: 200px;
+  }
+}
+
+.documentation_link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: rgb(87, 102, 236);
+  padding-right: 11px;
+}
+.person_wrapper {
+  width: 30%;
+}
+@media only screen and (max-width: 479px) {
+  .person_wrapper {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+.person_title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 36px;
+  color: rgb(20, 22, 24);
+  padding-bottom: 24px;
+}
+.person_prof {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: rgb(20, 22, 24);
+  padding-bottom: 24px;
+}
+.person_description {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 27.84px;
+  color: rgb(93, 98, 109);
+  padding-bottom: 32px;
+  max-width: 360px;
+}
+@media only screen and (max-width: 479px) {
+  .person_description {
+    text-align: center;
+  }
+}
+
 /* Breakpoint sizes */
 /**/
 /* Create the mixin (usually in a separate .scss file) */
@@ -3153,9 +3430,7 @@ input:checked + .slider:before {
   fill: #0E82EF;
   cursor: pointer;
 }
-.check_page_wallet {
-  word-break: break-all;
-}
+
 /* Breakpoint sizes */
 /**/
 /* Create the mixin (usually in a separate .scss file) */
