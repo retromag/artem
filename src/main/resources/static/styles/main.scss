@@ -926,20 +926,39 @@ footer {
       &_uk {
         width: 130px;
         height: 30px;
+
+        @include max-screen(xs) {
+          width: 80px;
+          height: 20px;
+        }
       }
       &_ssl {
         width: 115px;
         height: 100px;
+
+        @include max-screen(xs) {
+          width: 90px;
+          height: 85px;
+        }
       }
       &_verisign {
         width: 80px;
         height: 55px;
+
+        @include max-screen(xs) {
+          width: 80px;
+          height: 45px;
+        }
       }
     }
     &_imgs {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      @include max-screen(xs) {
+        width: 100%;
+      }
       & img {
         //width: 50px;
         //height: 20px;
@@ -2530,12 +2549,23 @@ footer {
     &_block {
       display: flex;
       justify-content: space-between;
+
+      @include max-screen(xs) {
+        flex-direction: column;
+        //position: relative;
+      }
       &_wrapper {
         background-color: rgb(247, 248, 251);
         margin-bottom: 50px;
         color: rgb(20, 22, 24);
         border-radius: 12px;
         padding: 64px 35px 48px 48px;
+
+
+        @include max-screen(xs) {
+          padding: 20px;
+        }
+
       }
 
       &_title {
@@ -2547,7 +2577,7 @@ footer {
       }
 
       &_text {
-        ont-style: normal;
+        font-style: normal;
         font-weight: 400;
         font-size: 16px;
         line-height: 27.84px;
@@ -2556,11 +2586,19 @@ footer {
 
       &_left_col {
         width: 60%;
+
+        @include max-screen(xs) {
+          width: 100%;
+        }
       }
       &_right_col {
         width: 40%;
         display: flex;
         justify-content: center;
+
+        @include max-screen(xs) {
+          width: 100%;
+        }
       }
 
       &_rights {
@@ -2591,6 +2629,12 @@ footer {
 
       &_wrapper {
         width: 335px;
+
+        @include max-screen(xs) {
+          width: 200px;
+        }
+
+
         //height: 200px;
       }
     }
@@ -2617,6 +2661,10 @@ footer {
       &_images {
         display: flex;
         justify-content: space-between;
+
+        @include max-screen(xs) {
+          flex-direction: column;
+        }
       }
 
       &_image {
@@ -2628,6 +2676,10 @@ footer {
         &_wrapper {
           width: 350px;
           margin-bottom: 20px;
+
+          @include max-screen(xs) {
+            width: 200px;
+          }
         }
       }
     }
@@ -2650,6 +2702,14 @@ footer {
 .person {
   &_wrapper {
     width: 30%;
+
+    @include max-screen(xs) {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
   }
   &_title {
@@ -2677,5 +2737,9 @@ footer {
     color: rgb(93, 98, 109);
     padding-bottom: 32px;
     max-width: 360px;
+
+    @include max-screen(xs) {
+      text-align: center;
+    }
   }
 }
