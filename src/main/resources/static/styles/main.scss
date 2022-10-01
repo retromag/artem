@@ -926,6 +926,7 @@ footer {
       &_uk {
         width: 105px;
         height: 25px;
+        margin-top: 5px;
 
         @include max-screen(xs) {
           width: 80px;

@@ -1120,6 +1120,7 @@ footer {
 .footer_col_img_uk {
   width: 105px;
   height: 25px;
+  margin-top: 5px;
 }
 @media only screen and (max-width: 479px) {
   .footer_col_img_uk {
