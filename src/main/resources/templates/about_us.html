@@ -9,10 +9,10 @@
     <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate"/>
     <meta http-equiv="pragma" content="no-cache"/>
     <meta http-equiv="expires" content="0"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
     <link rel="shortcut icon" href="/images/logo.ico" type="image/x-icon">
-    <title th:text="#{title.accApproved}">Document</title>
+    <title th:text="#{title.about.us}">Document</title>
 </head>
 
 <body>
@@ -79,7 +79,7 @@
             <ul class="menu_list_top">
                 <li><a href="/" th:text="#{button.start.exchange}">Начать обмен</a></li>
                 <li><a href="/reserves" th:text="#{button.our.reserves}">Наши резервы</a></li>
-                <li><a href="/" th:text="#{button.our.reserves}">О нас</a></li>
+                <li><a href="/about-us" th:text="#{button.about.us}">О нас</a></li>
             </ul>
             <ul class="menu_list_middle">
                 <li><a href="/rules" th:text="#{button.rules}">Правила</a></li>
@@ -118,8 +118,8 @@
                         <li class="nav_menu__item"><a href="/reserves" class="nav_menu__item_link"
                                                       th:text="#{button.reserves}">Резервы</a></li>
 
-                        <li class="nav_menu__item"><a href="/" class="nav_menu__item_link"
-                                                      th:text="#{button.reserves}">О нас</a></li>
+                        <li class="nav_menu__item"><a href="/about-us" class="nav_menu__item_link"
+                                                      th:text="#{button.about.us}">О нас</a></li>
 
                         <li class="nav_menu__item nav_menu__item_flag_wrapper" th:if="${#locale.toString() == 'ru_RU'}">
                             <a th:href="@{${#httpServletRequest.requestURI}(lang='en_US')}">
@@ -172,75 +172,77 @@
 
     <div class="page_about">
         <div class="container">
-            <h3 class="page_about_title">О компании</h3>
-            <p class="page_about_text">Мы - обменный сервис <b>с централизованным (CEX) управлением, мы выполняем функции обмена криптовалюты.</b> Представляем собой платформу для торговых операций, на которой все сделки обрабатываются собственными серверами. </p>
+            <h3 class="page_about_title" th:text="#{about.us.title}">О компании</h3>
+            <p class="page_about_text"><span th:text="#{about.us.t1}">Мы - обменный сервис </span> <b> <span th:text="#{about.us.t1-1}">с централизованным (CEX) управлением, мы выполняем функции обмена криптовалюты.</span></b>
+                <span th:text="#{about.us.t1-2}">Представляем собой платформу для торговых операций, на которой все сделки обрабатываются собственными серверами.</span></p>
             <div class="page_about_block_wrapper">
                 <div class="page_about_block">
                     <div class="page_about_block_left_col">
                         <h3 class="page_about_block_title">Hungryswap Exchanger LTD</h3>
-                        <p class="page_about_block_text">Компания зарегистрирована и действующая в соответсвии законодательством Англии, номер компании 14386826, адрес: 40 Бейсингхолл-стрит, Лондон EC2V 5DE.</p>
+                        <p class="page_about_block_text" th:text="#{about.us.t2}">Компания зарегистрирована и действующая в соответсвии законодательством Англии, номер компании 14386826, адрес: 40 Бейсингхолл-стрит, Лондон EC2V 5DE.</p>
                     </div>
                     <div class="page_about_block_right_col">
                         <div class="page_about_img_wrapper">
-                            <img src="../static/images/building.png" alt="" class="page_about_img">
+                            <img src="/images/building.png" alt="" class="page_about_img">
                         </div>
                     </div>
                 </div>
 
                 <div class="documentation_link_wrapper">
-                    <a href="https://find-and-update.company-information.service.gov.uk/company/14386826" class="documentation_link">Документация &nbsp;&nbsp;    →</a>
+                    <a href="https://find-and-update.company-information.service.gov.uk/company/14386826" class="documentation_link"><span th:text="#{about.us.link}">Документация </span> &nbsp;&nbsp;    →</a>
                 </div>
             </div>
 
             <div class="page_about_block_wrapper">
                 <div class="page_about_block">
                     <div class="page_about_block_left_col">
-                        <h3 class="page_about_block_title">Компания имеет сертификат GDPR</h3>
-                        <p class="page_about_block_text"><b>Hungryswap</b> обслуживает <b>100K+ пользователей</b> и соблюдает GDPR (Регламент Европейского Парламента и Совета "О защите физических лиц в отношении обработки личных данных и о свободном движении таких данных").</p>
+                        <h3 class="page_about_block_title" th:text="#{about.us.t3}">Компания имеет сертификат GDPR</h3>
+                        <p class="page_about_block_text"><b>Hungryswap</b> <span th:text="#{about.us.t4}"> обслуживает </span>
+                            <b><span th:text="#{about.us.t5}"> 100K+ пользователей</span> </b> <span th:text="#{about.us.t6}"> и соблюдает GDPR (Регламент Европейского Парламента и Совета "О защите физических лиц в отношении обработки личных данных и о свободном движении таких данных").</span></p>
                     </div>
                     <div class="page_about_block_right_col">
                         <div class="page_about_img_wrapper">
-                            <img src="../static/images/gddpr.png" alt="" class="page_about_img">
+                            <img src="/images/gddpr.png" alt="" class="page_about_img">
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="page_about_block_rights">
-                <h3 class="page_about_block_rights_title">Все права защищены &#174; © </h3>
-                <p class="page_about_block_rights_text">Сайт и другие компоненты услуг защищены законами об интеллектуальной собственности с 2022 года. Все права защищены. Доступ к услугам и сайту предоставляется под зарегистрированным в Британской системе товарным знаком Hungryswap, который охватывает Великобританию, Армению, Азербайджан, Беларусь, Грузию, Казахстан, Российскую Федерацию,Турцию, Казахстан, Грузию, Европейский Союз.</p>
+                <h3 class="page_about_block_rights_title"><span th:text="#{about.us.t7}">Все права защищены</span> &#174; © </h3>
+                <p class="page_about_block_rights_text" th:text="#{about.us.t8}">Сайт и другие компоненты услуг защищены законами об интеллектуальной собственности с 2022 года. Все права защищены. Доступ к услугам и сайту предоставляется под зарегистрированным в Британской системе товарным знаком Hungryswap, который охватывает Великобританию, Армению, Азербайджан, Беларусь, Грузию, Казахстан, Российскую Федерацию,Турцию, Казахстан, Грузию, Европейский Союз.</p>
             </div>
 
             <div class="page_about_management">
-                <h3 class="page_about_management_title">Руководство HUNGRYSWAP!</h3>
-                <p class="page_about_management_text">Все члены нашей Команды обладают огромным опытом работы на рынке финансовых технологий и обладают знаниями виртуальных активов. Мы работаем с лучшими специалистами со всего мира. А у руля у нас только активные и энергичные люди с большим опытом. Кстати, вот они:</p>
+                <h3 class="page_about_management_title" th:text="#{about.us.t9}">Руководство HUNGRYSWAP!</h3>
+                <p class="page_about_management_text" th:text="#{about.us.t10}">Все члены нашей Команды обладают огромным опытом работы на рынке финансовых технологий и обладают знаниями виртуальных активов. Мы работаем с лучшими специалистами со всего мира. А у руля у нас только активные и энергичные люди с большим опытом. Кстати, вот они:</p>
                 
                 <div class="page_about_management_images">
                     <div class="person_wrapper">
                         <div class="page_about_management_image_wrapper">
-                            <img src="../static/images/person2.jpg" alt="" class="page_about_management_image">
+                            <img src="/images/person2.jpg" alt="" class="page_about_management_image">
                         </div>
                         <h3 class="person_title">Oliver Boyd</h3>
                         <p class="person_prof">Company Director</p>
-                        <p class="person_description">Предприниматель в сфере финансовых технологий. Он имеет степень бакалавра экономики Университета Сити, Лондонский университет. 15 лет опыта руководящей работы на рынке Интернет сервисов и профессионально изучает Blockchain экосистемы с 2011 года.</p>
+                        <p class="person_description" th:text="#{about.us.t11}">Предприниматель в сфере финансовых технологий. Он имеет степень бакалавра экономики Университета Сити, Лондонский университет. 15 лет опыта руководящей работы на рынке Интернет сервисов и профессионально изучает Blockchain экосистемы с 2011 года.</p>
                     </div>
 
                     <div class="person_wrapper">
                         <div class="page_about_management_image_wrapper">
-                            <img src="../static/images/person1.jpg" alt="" class="page_about_management_image">
+                            <img src="/images/person1.jpg" alt="" class="page_about_management_image">
                         </div>
                         <h3 class="person_title">David Gibbs</h3>
                         <p class="person_prof">Financial Director</p>
-                        <p class="person_description">Один из первых участников Hungryswap. Совместно с Mr Oliver Boyd разрабатывал проект, начиная с 2015 года.</p>
+                        <p class="person_description" th:text="#{about.us.t12}">Один из первых участников Hungryswap. Совместно с Mr Oliver Boyd разрабатывал проект, начиная с 2015 года.</p>
                     </div>
 
                     <div class="person_wrapper">
                         <div class="page_about_management_image_wrapper">
-                            <img src="../static/images/person3.jpg" alt="" class="page_about_management_image">
+                            <img src="/images/person3.jpg" alt="" class="page_about_management_image">
                         </div>
                         <h3 class="person_title">Ronald Walker</h3>
                         <p class="person_prof">Company Director</p>
-                        <p class="person_description">Company Secretary - отвечает за эффективное управление компании и за обеспечение выполнения решений совета директоров.</p>
+                        <p class="person_description" th:text="#{about.us.t13}">Company Secretary - отвечает за эффективное управление компании и за обеспечение выполнения решений совета директоров.</p>
                     </div>
                 </div>
             </div>
