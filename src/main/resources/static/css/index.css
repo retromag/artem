@@ -79,7 +79,7 @@ a {
 /* Create the mixin (usually in a separate .scss file) */
 body {
   font-family: "Cera Pro";
-  background-image: url("../images/bc_main1.jpg");
+  background-image: url("../images/bc_main1.png");
   background-position: center center;
   background-size: 100% 100%;
 }
@@ -1118,8 +1118,9 @@ footer {
   color: #0E82EF;
 }
 .footer_col_img_uk {
-  width: 130px;
-  height: 30px;
+  width: 105px;
+  height: 25px;
+  margin-top: 5px;
 }
 @media only screen and (max-width: 479px) {
   .footer_col_img_uk {
@@ -1129,7 +1130,7 @@ footer {
 }
 .footer_col_img_ssl {
   width: 115px;
-  height: 100px;
+  height: 50px;
 }
 @media only screen and (max-width: 479px) {
   .footer_col_img_ssl {
@@ -1146,6 +1147,10 @@ footer {
     width: 80px;
     height: 45px;
   }
+}
+.footer_col_img_cams {
+  width: 50px;
+  height: 50px;
 }
 .footer_col_imgs {
   display: -webkit-box;
@@ -2997,7 +3002,6 @@ footer {
   font-size: 16px;
   line-height: 27.84px;
   color: rgb(93, 98, 109);
-  max-width: 980px;
   text-align: center;
 }
 .page_about_img {

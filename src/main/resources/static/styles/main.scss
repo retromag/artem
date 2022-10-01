@@ -3,7 +3,7 @@
 
 body {
   font-family: 'Cera Pro';
-  background-image: url("../images/bc_main1.jpg");
+  background-image: url("../images/bc_main1.png");
   background-position: center center;
   background-size: 100% 100%;
   //
@@ -924,8 +924,9 @@ footer {
     }
     &_img {
       &_uk {
-        width: 130px;
-        height: 30px;
+        width: 105px;
+        height: 25px;
+        margin-top: 5px;
 
         @include max-screen(xs) {
           width: 80px;
@@ -934,7 +935,7 @@ footer {
       }
       &_ssl {
         width: 115px;
-        height: 100px;
+        height: 50px;
 
         @include max-screen(xs) {
           width: 90px;
@@ -949,6 +950,10 @@ footer {
           width: 80px;
           height: 45px;
         }
+      }
+      &_cams {
+        width: 50px;
+        height: 50px;
       }
     }
     &_imgs {
@@ -2617,7 +2622,6 @@ footer {
           font-size: 16px;
           line-height: 27.84px;
           color: rgb(93, 98, 109);
-          max-width: 980px;
           text-align: center;
         }
       }
