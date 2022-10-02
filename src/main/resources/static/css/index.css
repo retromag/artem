@@ -1119,28 +1119,32 @@ footer {
 }
 .footer_col_img_uk {
   width: 105px;
-  height: 25px;
+  height: 40px;
   margin-top: 5px;
+  margin-right: -10px;
 }
 @media only screen and (max-width: 479px) {
   .footer_col_img_uk {
     width: 80px;
-    height: 20px;
+    height: 30px;
   }
 }
 .footer_col_img_ssl {
   width: 115px;
   height: 50px;
+  margin-bottom: 5px;
 }
 @media only screen and (max-width: 479px) {
   .footer_col_img_ssl {
     width: 90px;
-    height: 85px;
+    height: 60px;
   }
 }
 .footer_col_img_verisign {
-  width: 80px;
+  width: 90px;
   height: 55px;
+  margin-bottom: 5px;
+  margin-left: -5px;
 }
 @media only screen and (max-width: 479px) {
   .footer_col_img_verisign {
