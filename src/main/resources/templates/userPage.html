@@ -175,7 +175,10 @@
                 <tr th:each="user : ${users}">
                     <div class="user_item">
                         <form th:action="@{/user/update/wallet}" method="post" class="user_item_email_wallet_wrapper">
-                            <input class="user_item_title" th:value="${user.email}" name="email">
+                            <div>
+                                <input class="user_item_title input_general input_edit_wallet" th:value="${user.email}" name="email">
+                                <input class="user_item_title input_general input_edit_wallet" th:value="${user.coupon}" name="coupon" placeholder="User coupon">
+                            </div>
                             <div class="input_wallet_wrapper">
                                 <div class="wallet_img_wrapper user_item_img_wrapper">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
