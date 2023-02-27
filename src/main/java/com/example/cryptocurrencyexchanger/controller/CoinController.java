@@ -85,7 +85,7 @@ public class CoinController {
                                                                  @RequestParam("firstSymbol") String firstSymbol,
                                                                  @RequestParam("secondSymbol") String secondSymbol) {
         BigDecimal bigDecimalAmount = new BigDecimal(amount);
-        return ResponseEntity.ok(binanceService.getResultPriceFirstInput(bigDecimalAmount, firstSymbol, secondSymbol));
+        return ResponseEntity.ok(binanceService.getResultPriceSecondInput(bigDecimalAmount, firstSymbol, secondSymbol));
     }
 
     @GetMapping("/app/get/price")

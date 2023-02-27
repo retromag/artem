@@ -25,6 +25,7 @@ public class ExchangerCoinService implements CoinService {
 
     @Override
     public Coin addNewCoin(Coin coin) {
+
         return coinRepository.save(coin);
     }
 
