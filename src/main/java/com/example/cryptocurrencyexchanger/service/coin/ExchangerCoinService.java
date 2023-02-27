@@ -3,6 +3,7 @@ package com.example.cryptocurrencyexchanger.service.coin;
 import com.example.cryptocurrencyexchanger.entity.coin.Coin;
 import com.example.cryptocurrencyexchanger.repo.CoinRepository;
 import com.google.common.collect.Sets;
+import java.math.RoundingMode;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -42,7 +43,20 @@ public class ExchangerCoinService implements CoinService {
 
     @Override
     public Set<Coin> getAllCoins() {
-        return Sets.newHashSet(coinRepository.findAll());
+        Set<Coin> coinList = Sets.newHashSet(coinRepository.findAll());
+
+        for (Coin coin: coinList) {
+            if (coin.getSymbol().startsWith("UAH") || coin.getSymbol().startsWith("RUB") || coin.getSymbol().startsWith("USD")) {
+                coin.setSymbol(coin.getSymbol().substring(0, 3));
+                coin.setAmount(coin.getAmount().setScale(2, RoundingMode.HALF_DOWN));
+            }
+            if (coin.getSymbol().startsWith("USD") && coin.getSymbol().equals("USDT") ) {
+                coin.setSymbol(coin.getSymbol().substring(0, 3));
+                coin.setAmount(coin.getAmount().setScale(2, RoundingMode.HALF_DOWN));
+            }
+        }
+
+        return coinList;
     }
 
     @Override

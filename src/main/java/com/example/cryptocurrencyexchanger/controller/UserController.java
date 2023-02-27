@@ -16,6 +16,7 @@ import com.example.cryptocurrencyexchanger.service.security.SecurityService;
 import com.example.cryptocurrencyexchanger.service.token.TokenService;
 import com.example.cryptocurrencyexchanger.service.user.UserService;
 import com.example.cryptocurrencyexchanger.util.mail.ConstructEmail;
+import java.math.RoundingMode;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
