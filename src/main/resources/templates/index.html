@@ -193,7 +193,7 @@
                             <div class="dropdown_input_wrapper">
                                 <input type="text" class="dropdown_input js-top-input" th:placeholder="#{index.amount}"
                                        th:field="*{givenAmount}">
-                                <div class="coin_abbr js-top-main-coin-abbr">BTC</div>
+                                <div class="coin_abbr js-top-main-coin-abbr" data-top-abbr="BTC">BTC</div>
                             </div>
                             <div class="dropdown_footer">
                                 <p class="dropdown_footer_left_col"><span class="dropdown_text"
@@ -220,7 +220,7 @@
                                             <p class="dropdown_coin_name" data-coin-name="coin-name"
                                                th:text="${coin.name}">Bitcoin</p>
                                         </div>
-                                        <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr"
+                                        <p class="dropdown_coin_abbr" th:data-coin-abbr="${coin.symbol}"
                                            th:text="${coin.symbol}">BTC</p>
                                     </div>
                                 </div>
@@ -252,7 +252,7 @@
                                 <input type="text" class="dropdown_input js-bottom-input"
                                        th:placeholder="#{index.amount}"
                                        th:field="*{takenAmount}">
-                                <div class="coin_abbr js-bottom-main-coin-abbr">SOL</div>
+                                <div class="coin_abbr js-bottom-main-coin-abbr" data-bottom-abbr="SOL">SOL</div>
                             </div>
                             <div class="dropdown_footer">
                                 <p class="dropdown_footer_left_col"><span class="dropdown_text"
@@ -276,7 +276,7 @@
                                             <p class="dropdown_coin_name" data-coin-name="coin-name"
                                                th:text="${coin.name}">Solana</p>
                                         </div>
-                                        <p class="dropdown_coin_abbr" data-coin-abbr="coin_abbr"
+                                        <p class="dropdown_coin_abbr" th:data-coin-abbr="${coin.symbol}"
                                            th:text="${coin.symbol}">SOL</p>
                                     </div>
                                 </div>
@@ -302,7 +302,7 @@
                             </th:block>
                         </div>
                         <div class="props_input_wrapper">
-                            <label class="props_input_label" th:text="#{massage.wallet.receipt}">Кошелёк для
+                            <label class="props_input_label wallet_label" th:text="#{massage.wallet.receipt}">Кошелёк для
                                 получения</label>
                             <input type="text" id="props_wallet" class="input_general props_input"
                                    placeholder="0x8a7E45F7c6723f644EeA5E0Cc45B70F27D9b812e"

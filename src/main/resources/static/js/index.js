@@ -37,6 +37,13 @@ const testInputTop = document.querySelector('.js-hidden_input-top');
 const testInputBottom = document.querySelector('.js-hidden_input-bottom');
 /////
 
+// elements: label and input for changing information about according to currency
+const labelWallet = document.querySelector('.wallet_label');
+const inputWallet = document.querySelector('#props_wallet');
+
+
+//data attributes of inputs with full short name
+// const dataFullTopAbbr = mainCoinAbbrBottom..getAttribute("data-value");
 const removeItemFromDropdown = (dropdown, coinName) => {
     dropdown.forEach((option) => {
         option.classList.remove('hidden');
@@ -46,16 +53,29 @@ const removeItemFromDropdown = (dropdown, coinName) => {
     })
 }
 
-const setCoinInHeader = (option, imgHeader, coinNameHeader, coinAbbrHeader, testInput) => {
+const setCoinInHeader = (option, imgHeader, coinNameHeader, coinAbbrHeader, testInput,dataValueAbbr) => {
     topInput.value = '';
     bottomInput.value = '';
     const coinName = option.querySelector('[data-coin-name]').textContent;
-    const coinAbbr = option.querySelector('[data-coin-abbr]').textContent;
+    let coinAbbr = option.querySelector('[data-coin-abbr]').getAttribute('data-coin-abbr');
     const coinSrcImg = option.querySelector('[data-coin-img]').getAttribute('src');
+    coinAbbrHeader.setAttribute(dataValueAbbr, coinAbbr);
 
-    imgHeader.setAttribute('src', `${coinSrcImg}`);
+    const coinAbbrFullData = coinAbbrHeader.getAttribute(dataValueAbbr);
+
+        imgHeader.setAttribute('src', `${coinSrcImg}`);
+
+    if (coinAbbrFullData === 'UAHM' ||
+        coinAbbrFullData === 'UAHP' ||
+        coinAbbrFullData === 'USDC'
+    ) {
+        let shortCoinAbbr = coinAbbr.substring(0, 3);
+        coinAbbrHeader.textContent = shortCoinAbbr;
+    } else {
+        coinAbbrHeader.textContent = coinAbbr;
+    }
+
     coinNameHeader.textContent = coinName;
-    coinAbbrHeader.textContent = coinAbbr;
 
     return coinAbbr;
 }
@@ -64,18 +84,44 @@ const setCoinInHeader = (option, imgHeader, coinNameHeader, coinAbbrHeader, test
 const getCourse = async (firstSymbol, secondSymbol) => {
     const response = await fetch(`${env}/api/app/get/price/?firstSymbol=${firstSymbol}&secondSymbol=${secondSymbol}`);
     const data = await response.json();
-    rateElement.textContent = `1 ${firstSymbol} - ${data} ${secondSymbol}`;
     hiddenInputRateElement.value = `1 ${firstSymbol} - ${data} ${secondSymbol}`;
+    if (firstSymbol === 'UAHM' ||
+        firstSymbol === 'UAHP' ||
+        firstSymbol === 'USDC'
+    ) {
+        firstSymbol = firstSymbol.substring(0, 3);
+    }
+
+    if (secondSymbol === 'UAHM' ||
+        secondSymbol === 'UAHP' ||
+        secondSymbol === 'USDC'
+    ) {
+        secondSymbol = secondSymbol.substring(0, 3);
+    }
+
+    rateElement.textContent = `1 ${firstSymbol} - ${data} ${secondSymbol}`;
+
+
+
 }
 //get min and max amount of coins and set them to appropriate element
 const getMinAndMaxAmountOfCoins = async (coinAbbr) => {
     const responseMinAmount = await fetch(`${env}/api/coin/min/amount/?symbol=${coinAbbr}`);
     const dataMinAmount = await responseMinAmount.json();
-    minCoinAmount.textContent = `${dataMinAmount} ${coinAbbr}`;
+
 
     const responseMaxAmount = await fetch(`${env}/api/coin/max/amount/?symbol=${coinAbbr}`);
     const dataMaxAmount = await responseMaxAmount.json();
+
+    if (coinAbbr === 'UAHM' ||
+        coinAbbr === 'UAHP' ||
+        coinAbbr === 'USDC'
+    ) {
+        coinAbbr = coinAbbr.substring(0, 3);
+    }
+    minCoinAmount.textContent = `${dataMinAmount} ${coinAbbr}`;
     maxCoinAmount.textContent = `${dataMaxAmount} ${coinAbbr}`;
+
 }
 
 testInputTop.value = mainCoinAbbrTop.textContent;
@@ -85,12 +131,12 @@ removeItemFromDropdown(dropdownOptionBottom, coinNameHeaderTop.textContent);
 removeItemFromDropdown(dropdownOptionTop, coinNameHeaderBottom.textContent);
 
 getCourse(mainCoinAbbrTop.textContent, mainCoinAbbrBottom.textContent);
-getMinAndMaxAmountOfCoins(mainCoinAbbrTop.textContent);
+getMinAndMaxAmountOfCoins(mainCoinAbbrTop.getAttribute('data-top-abbr'));
 
 topInput.addEventListener('input', async () => {
     // topInput.value = '';
     if (topInput.value !== '') {
-        const response = await fetch(`${env}/api/app/get/taken/?amount=${+topInput.value}&firstSymbol=${mainCoinAbbrTop.textContent}&secondSymbol=${mainCoinAbbrBottom.textContent}`);
+        const response = await fetch(`${env}/api/app/get/taken/?amount=${+topInput.value}&firstSymbol=${mainCoinAbbrTop.getAttribute('data-top-abbr')}&secondSymbol=${mainCoinAbbrBottom.getAttribute('data-bottom-abbr')}`);
         const data = await response.json();
         console.log('data from topInput', topInput.value);
         console.log('data top', data);
@@ -106,7 +152,7 @@ topInput.addEventListener('input', async () => {
 
 bottomInput.addEventListener('input', async () => {
     if (bottomInput.value !== '') {
-        const response = await fetch(`${env}/api/app/get/given/?amount=${+bottomInput.value}&firstSymbol=${mainCoinAbbrBottom.textContent}&secondSymbol=${mainCoinAbbrTop.textContent}`);
+        const response = await fetch(`${env}/api/app/get/given/?amount=${+bottomInput.value}&firstSymbol=${mainCoinAbbrBottom.getAttribute('data-bottom-abbr')}&secondSymbol=${mainCoinAbbrTop.getAttribute('data-top-abbr')}`);
         const data = await response.json();
         console.log('data from bottomInput', bottomInput.value);
         console.log('data bottom', data);
@@ -121,16 +167,26 @@ bottomInput.addEventListener('input', async () => {
 
 
 dropdownOptionTop.forEach((option) => {
+    let coinAbbrInOption = option.querySelector('.dropdown_coin_abbr');
+    if (coinAbbrInOption.textContent === 'UAHM' ||
+        coinAbbrInOption.textContent === 'UAHP' ||
+        coinAbbrInOption.textContent === 'USDC'
+    ) {
+        coinAbbrInOption.textContent = coinAbbrInOption.textContent.substring(0, 3);
+    }
+
     option.addEventListener('click', () => {
         //find and set coin from option to header
-        const currentCoinAbbr = setCoinInHeader(option, mainCoinImgTop, coinNameHeaderTop, mainCoinAbbrTop, testInputBottom);
+        const currentCoinAbbr = setCoinInHeader(option, mainCoinImgTop, coinNameHeaderTop, mainCoinAbbrTop, testInputBottom, 'data-top-abbr');
         testInputTop.value = currentCoinAbbr;
+        console.log('currentCoinAbbr dropdown', currentCoinAbbr)
 
         //removing item from other dropdown
         dropdownTop.classList.remove('opened');
         removeItemFromDropdown(dropdownOptionBottom, coinNameHeaderTop.textContent);
 
         //calculating course
+        // if ()
         getCourse(currentCoinAbbr, mainCoinAbbrBottom.textContent);
 
         //get and set min and max coins value
@@ -144,10 +200,31 @@ headerDropdownTop.addEventListener('click', () => {
 });
 
 dropdownOptionBottom.forEach((option) => {
+    let coinAbbrInOption = option.querySelector('.dropdown_coin_abbr');
+    if (coinAbbrInOption.textContent === 'UAHM' ||
+        coinAbbrInOption.textContent === 'UAHP' ||
+        coinAbbrInOption.textContent === 'USDC'
+    ) {
+        coinAbbrInOption.textContent = coinAbbrInOption.textContent.substring(0, 3);
+    }
     option.addEventListener('click', () => {
         //find and set coin from option to header
-        const currentCoinAbbr = setCoinInHeader(option, mainCoinImgBottom, coinNameHeaderBottom, mainCoinAbbrBottom, testInputTop);
+        const currentCoinAbbr = setCoinInHeader(option, mainCoinImgBottom, coinNameHeaderBottom, mainCoinAbbrBottom, testInputTop, 'data-bottom-abbr');
         testInputBottom.value = currentCoinAbbr;
+
+        console.log('=====currentCoinAbbr', currentCoinAbbr);
+
+        if (currentCoinAbbr === 'UAHM' ||
+            currentCoinAbbr === 'UAHP' ||
+            currentCoinAbbr === 'RUB' ||
+            currentCoinAbbr === 'USDC'
+        ) {
+            labelWallet.textContent = 'Введите номер карты';
+            inputWallet.placeholder = '5610591081018250';
+        } else {
+            labelWallet.textContent = 'Кошелёк для получения';
+            inputWallet.placeholder = '0x8a7E45F7c6723f644EeA5E0Cc45B70F27D9b812e';
+        }
 
         //removing item from dropdown
         dropdownBottom.classList.remove('opened');
@@ -157,7 +234,7 @@ dropdownOptionBottom.forEach((option) => {
         getCourse(mainCoinAbbrTop.textContent, currentCoinAbbr);
 
         //get and set min and max coins value
-        getMinAndMaxAmountOfCoins(mainCoinAbbrTop.textContent);
+        getMinAndMaxAmountOfCoins(mainCoinAbbrTop.getAttribute('data-top-abbr'));
     });
 })
 
