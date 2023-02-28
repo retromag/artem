@@ -35,7 +35,7 @@ public class BinanceRestService implements BinanceService {
         } else if (isFiatCoin(firstSymbol)) {
             return getPriceFirstInputFiat(amount, firstSymbol, secondSymbol);
         } else if (isBothSymbolsUSD(firstSymbol, secondSymbol)) {
-            return new BigDecimal(1).multiply(amount).setScale(2, RoundingMode.HALF_UP);
+            return getResultPriceForBothUSDFirstInput(amount, secondSymbol);
         } else {
             return getPriceFirstInput(amount, firstSymbol, secondSymbol);
         }
@@ -50,7 +50,7 @@ public class BinanceRestService implements BinanceService {
         } else if (isFiatCoin(secondSymbol)) {
             return getPriceSecondInputFiat(amount, firstSymbol, secondSymbol);
         } else if (isBothSymbolsUSD(firstSymbol, secondSymbol)) {
-            return new BigDecimal(1).multiply(amount).setScale(2, RoundingMode.HALF_UP);
+            return getResultPriceForBothUSDSecondInput(amount, firstSymbol);
         } else {
             return getPriceSecondInput(amount, firstSymbol, secondSymbol);
         }
@@ -141,6 +141,21 @@ public class BinanceRestService implements BinanceService {
 
         return amountOfTakenCoin.subtract(resultMargin);
     }
+
+    private BigDecimal getResultPriceForBothUSDFirstInput(BigDecimal amount, String firstSymbol) {
+        BigDecimal priceInUSD = new BigDecimal(1).multiply(amount).setScale(2, RoundingMode.HALF_UP);
+        BigDecimal resultMargin = calculateResultMarginFiat(priceInUSD, firstSymbol);
+
+        return priceInUSD.subtract(resultMargin);
+    }
+
+    private BigDecimal getResultPriceForBothUSDSecondInput(BigDecimal amount, String firstSymbol) {
+        BigDecimal priceInUSD = new BigDecimal(1).multiply(amount).setScale(2, RoundingMode.HALF_UP);
+        BigDecimal resultMargin = calculateResultMarginFiat(priceInUSD, firstSymbol);
+
+        return priceInUSD.add(resultMargin);
+    }
+
 
     private BigDecimal calculateResultAmountTakenCoins(BigDecimal amount, String firstSymbol, String secondSymbol) {
         BigDecimal givenCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
