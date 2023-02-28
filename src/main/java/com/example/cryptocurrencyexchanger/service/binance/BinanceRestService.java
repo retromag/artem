@@ -18,6 +18,10 @@ public class BinanceRestService implements BinanceService {
 
     private static final String USDT_SYMBOL = "USDT";
     private static final String USD_SYMBOL = "USD";
+    private static final String UAH_SYMBOL = "UAH";
+    private static final String EUR_SYMBOL = "EUR";
+    private static final String PLN_SYMBOL = "PLN";
+    private static final String RUB_SYMBOL = "RUB";
 
     BinanceApi binanceApi;
     CoinService coinService;
@@ -55,14 +59,13 @@ public class BinanceRestService implements BinanceService {
     @Override
     public BigDecimal getPairPrice(String firstSymbol, String secondSymbol) {
         if (isFirstSymbolUSD(firstSymbol) && !isBothSymbolsUSD(firstSymbol, secondSymbol)) {
-            BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
-            return BigDecimal.ONE.divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
+            return resultPriceFirstInputUSD(secondSymbol);
         } else if (isSecondSymbolUSD(secondSymbol) && !isBothSymbolsUSD(firstSymbol, secondSymbol)) {
             return getCoinPriceInUSDT(firstSymbol);
         } else if (isFiatCoin(firstSymbol) && isFiatCoin(secondSymbol)) {
             return getPriceWhenFirstInputFiat(firstSymbol, secondSymbol);
         } else if (isBothSymbolsUSD(firstSymbol, secondSymbol)) {
-            return BigDecimal.ONE.setScale(2, RoundingMode.HALF_UP);
+            return new BigDecimal(1).setScale(2, RoundingMode.HALF_UP);
         } else {
             BigDecimal firstCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
             BigDecimal secondCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
@@ -77,6 +80,11 @@ public class BinanceRestService implements BinanceService {
 
     private BigDecimal getResultPriceIfFirstInputUSDT(BigDecimal amount, String symbol) {
         BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(symbol);
+
+        if (isFiatCoin(symbol)) {
+            return amount.multiply(takenCoinInUSDT);
+        }
+
         BigDecimal amountOfTakenCoin = amount.divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
         BigDecimal marginOfTakenCoin = getCoinMargin(symbol);
         BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100), 7, RoundingMode.HALF_UP);
@@ -86,6 +94,11 @@ public class BinanceRestService implements BinanceService {
 
     private BigDecimal getResultPriceIfSecondInputUSDT(BigDecimal amount, String symbol) {
         BigDecimal coinPriceInUSDT = getCoinPriceInUSDT(symbol);
+
+        if (isFiatCoin(symbol)) {
+            return amount.divide(coinPriceInUSDT, 2, RoundingMode.HALF_UP);
+        }
+
         BigDecimal amountOfTakenCoin = amount.multiply(coinPriceInUSDT);
         BigDecimal marginOfTakenCoin = getCoinMargin(symbol);
         BigDecimal resultMargin = amountOfTakenCoin.multiply(marginOfTakenCoin).divide(new BigDecimal(100), 7, RoundingMode.HALF_UP);
@@ -142,8 +155,9 @@ public class BinanceRestService implements BinanceService {
         BigDecimal givenCoinInUSDT = getCoinPriceInUSDT(firstSymbol);
         BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(secondSymbol);
 
-        if (isFiatCoin(firstSymbol)) {
-            return amount.divide(givenCoinInUSDT, 7, RoundingMode.HALF_DOWN).multiply(new BigDecimal(1).divide(takenCoinInUSDT, 7, RoundingMode.HALF_DOWN));
+        if (isFiatCoin(firstSymbol) || isFiatCoin(secondSymbol)) {
+            return amount.divide(givenCoinInUSDT, 2, RoundingMode.HALF_DOWN)
+                .multiply(new BigDecimal(1).divide(takenCoinInUSDT, 2, RoundingMode.HALF_DOWN));
         } else {
             return givenCoinInUSDT.multiply(takenCoinInUSDT).multiply(amount);
         }
@@ -171,8 +185,17 @@ public class BinanceRestService implements BinanceService {
             .multiply(new BigDecimal(1).divide(secondSymbolInUSD, 7, RoundingMode.HALF_DOWN));
     }
 
+    private BigDecimal resultPriceFirstInputUSD(String symbol) {
+        BigDecimal takenCoinInUSDT = getCoinPriceInUSDT(symbol);
+        if (isFiatCoin(symbol)) {
+            return takenCoinInUSDT.setScale(2,  RoundingMode.HALF_UP);
+        }
+        return new BigDecimal(1).divide(takenCoinInUSDT, 7, RoundingMode.HALF_UP);
+    }
+
     private boolean isFiatCoin(String symbol) {
-        return symbol.startsWith("UAH") || symbol.startsWith("RUB");
+        return symbol.startsWith(UAH_SYMBOL) || symbol.startsWith(RUB_SYMBOL)
+            || symbol.startsWith(PLN_SYMBOL) || symbol.startsWith(EUR_SYMBOL);
     }
 
     private boolean isBothSymbolsUSD(String firstSymbol, String secondSymbol) {
@@ -190,7 +213,15 @@ public class BinanceRestService implements BinanceService {
 
     @SneakyThrows
     private BigDecimal getCoinPriceInUSDT(String symbol) {
-        if(symbol.startsWith("UAH") || symbol.startsWith("RUB")) {
+        if (symbol.startsWith(EUR_SYMBOL)) {
+            return binanceApi.pricesMap().get(symbol.substring(0, 3) + USDT_SYMBOL);
+        }
+
+        if(isFiatCoin(symbol) ) {
+            BigDecimal fiatPriceUSDT = binanceApi.pricesMap().get(USDT_SYMBOL + symbol.substring(0, 3));
+            if (fiatPriceUSDT == null) {
+                return binanceApi.pricesMap().get("BUSD" + symbol.substring(0, 3));
+            }
             return binanceApi.pricesMap().get(USDT_SYMBOL + symbol.substring(0, 3));
         }
 

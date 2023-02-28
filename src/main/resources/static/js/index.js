@@ -1,6 +1,6 @@
-// const env = 'http://localhost:8080';
+const env = 'http://localhost:8080';
 // const env = 'https://cryptocurrency-exchanger.herokuapp.com';
-const env = 'https://hungry-swap.com';
+// const env = 'https://hungry-swap.com';
 
 
 //top dropdown elements
@@ -71,6 +71,8 @@ const setCoinInHeader = (option, imgHeader, coinNameHeader, coinAbbrHeader, test
 
     if (coinAbbrFullData.startsWith('UAH') ||
         coinAbbrFullData.startsWith('RUB') ||
+        coinAbbrFullData.startsWith('PLN') ||
+        coinAbbrFullData.startsWith('EUR') ||
         (coinAbbrFullData.startsWith('USD')  &&
         coinAbbrFullData !== 'USDT')
     ) {
@@ -92,6 +94,8 @@ const getCourse = async (firstSymbol, secondSymbol) => {
     hiddenInputRateElement.value = `1 ${firstSymbol} - ${data} ${secondSymbol}`;
     if (firstSymbol.startsWith('UAH') ||
         firstSymbol.startsWith('RUB') ||
+        firstSymbol.startsWith('PLN') ||
+        firstSymbol.startsWith('EUR') ||
         firstSymbol.startsWith('USD') && firstSymbol !== 'USDT'
     ) {
         firstSymbol = firstSymbol.substring(0, 3);
@@ -99,6 +103,8 @@ const getCourse = async (firstSymbol, secondSymbol) => {
 
     if (secondSymbol.startsWith('UAH') ||
         secondSymbol.startsWith('RUB') ||
+        secondSymbol.startsWith('PLN') ||
+        secondSymbol.startsWith('EUR') ||
         secondSymbol.startsWith('USD') && secondSymbol !== 'USDT'
     ) {
         secondSymbol = secondSymbol.substring(0, 3);
@@ -120,6 +126,8 @@ const getMinAndMaxAmountOfCoins = async (coinAbbr) => {
 
     if (coinAbbr.startsWith('UAH') ||
         coinAbbr.startsWith('RUB') ||
+        coinAbbr.startsWith('PLN') ||
+        coinAbbr.startsWith('EUR') ||
         coinAbbr.startsWith('USD') &&
         coinAbbr !== 'USDT'
     ) {
@@ -170,6 +178,8 @@ dropdownOptionTop.forEach((option) => {
     let coinAbbrInOption = option.querySelector('.dropdown_coin_abbr');
     if (coinAbbrInOption.textContent.startsWith('UAH') ||
         coinAbbrInOption.textContent.startsWith('RUB') ||
+        coinAbbrInOption.textContent.startsWith('PLN') ||
+        coinAbbrInOption.textContent.startsWith('EUR') ||
         coinAbbrInOption.textContent.startsWith('USD') &&
         coinAbbrInOption.textContent !== 'USDT'
     ) {
@@ -203,6 +213,8 @@ dropdownOptionBottom.forEach((option) => {
     let coinAbbrInOption = option.querySelector('.dropdown_coin_abbr');
     if (coinAbbrInOption.textContent.startsWith('UAH') ||
         coinAbbrInOption.textContent.startsWith('RUB') ||
+        coinAbbrInOption.textContent.startsWith('PLN') ||
+        coinAbbrInOption.textContent.startsWith('EUR') ||
         coinAbbrInOption.textContent.startsWith('USD') &&
         coinAbbrInOption.textContent !== 'USDT'
     ) {
@@ -215,6 +227,8 @@ dropdownOptionBottom.forEach((option) => {
 
         if (currentCoinAbbr.startsWith('UAH') ||
             currentCoinAbbr.startsWith('RUB') ||
+            currentCoinAbbr.startsWith('PLN') ||
+            currentCoinAbbr.startsWith('EUR') ||
             currentCoinAbbr.startsWith('USD') &&
             currentCoinAbbr !== 'USDT'
         ) {
