@@ -47,11 +47,9 @@ public class ExchangerCoinService implements CoinService {
 
         for (Coin coin: coinList) {
             if (coin.getSymbol().startsWith("UAH") || coin.getSymbol().startsWith("RUB") || coin.getSymbol().startsWith("USD")) {
-                coin.setSymbol(coin.getSymbol().substring(0, 3));
                 coin.setAmount(coin.getAmount().setScale(2, RoundingMode.HALF_DOWN));
             }
             if (coin.getSymbol().startsWith("USD") && coin.getSymbol().equals("USDT") ) {
-                coin.setSymbol(coin.getSymbol().substring(0, 3));
                 coin.setAmount(coin.getAmount().setScale(2, RoundingMode.HALF_DOWN));
             }
         }
