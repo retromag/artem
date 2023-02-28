@@ -175,7 +175,7 @@
                                     </div>
                                     <div class="reserves__item_right_col">
                                         <span class="coin_amount" th:text="${coin.amount}">44</span>
-                                        <span class="coin_amount" th:text="${coin.symbol}">BTC</span>
+                                        <span class="coin_amount js-coin-amount" th:text="${coin.symbol}">BTC</span>
                                     </div>
                                     <div sec:authorize="hasAnyAuthority('ROLE_ADMIN')" class="reserves_btns_edit_wrapper">
                                         <span>+</span><span class="coin_amount"
@@ -256,6 +256,7 @@
     </div>
 </footer>
 <script src="/js/burger.js"></script>
+<script src="/js/reserves.js"></script>
 <script src="//code.tidio.co/0kpk6bun36uy3tzegam5lq7ovislt8vy.js" async></script>
 </body>
 </html>

@@ -290,7 +290,7 @@
                         <div class="props_input_wrapper">
                             <th:block th:if="${user != null && #strings.isEmpty(email) == false}">
                                 <label class="props_input_label" th:text="#{massage.email.box}">Ваш E-mail ящик</label>
-                                <input type="email" id="props_email_user" class="input_general props_input"
+                                <input type="email" id="props_email_user" class="input_general props_input js-input-email"
                                        th:placeholder="${email}"
                                        th:field="*{email}">
                             </th:block>
@@ -324,7 +324,7 @@
                         </div>
                     </div>
                     <div class="props_btn_start_exchange_wrapper">
-                        <button type="submit" class="btn_general props_btn_start_exchange"
+                        <button type="submit" class="btn_general props_btn_start_exchange js-btn-exchange"
                                 th:text="#{massage.start.exchange.low}">начать обмен
                         </button>
                         <p class="props_text_agree"><span th:text="#{massage.start.exchange}">Нажимая кнопку "Начать обмен", вы соглашаетесь с</span><a

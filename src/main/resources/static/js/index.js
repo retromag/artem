@@ -41,6 +41,11 @@ const testInputBottom = document.querySelector('.js-hidden_input-bottom');
 const labelWallet = document.querySelector('.wallet_label');
 const inputWallet = document.querySelector('#props_wallet');
 
+//
+const emailInput = document.querySelector('#props_email');
+const exchangeBtn = document.querySelector('.js-btn-exchange');
+
+console.log('emailInput',emailInput);
 
 //data attributes of inputs with full short name
 // const dataFullTopAbbr = mainCoinAbbrBottom..getAttribute("data-value");
@@ -65,9 +70,9 @@ const setCoinInHeader = (option, imgHeader, coinNameHeader, coinAbbrHeader, test
 
         imgHeader.setAttribute('src', `${coinSrcImg}`);
 
-    if (coinAbbrFullData === 'UAHM' ||
-        coinAbbrFullData === 'UAHP' ||
-        coinAbbrFullData === 'USDC'
+    if (coinAbbrFullData.startsWith('UAH') ||
+        coinAbbrFullData.startsWith('RUB') ||
+        coinAbbrFullData.startsWith('USD')
     ) {
         let shortCoinAbbr = coinAbbr.substring(0, 3);
         coinAbbrHeader.textContent = shortCoinAbbr;
@@ -85,16 +90,16 @@ const getCourse = async (firstSymbol, secondSymbol) => {
     const response = await fetch(`${env}/api/app/get/price/?firstSymbol=${firstSymbol}&secondSymbol=${secondSymbol}`);
     const data = await response.json();
     hiddenInputRateElement.value = `1 ${firstSymbol} - ${data} ${secondSymbol}`;
-    if (firstSymbol === 'UAHM' ||
-        firstSymbol === 'UAHP' ||
-        firstSymbol === 'USDC'
+    if (firstSymbol.startsWith('UAH') ||
+        firstSymbol.startsWith('RUB') ||
+        firstSymbol.startsWith('USD')
     ) {
         firstSymbol = firstSymbol.substring(0, 3);
     }
 
-    if (secondSymbol === 'UAHM' ||
-        secondSymbol === 'UAHP' ||
-        secondSymbol === 'USDC'
+    if (secondSymbol.startsWith('UAH') ||
+        secondSymbol.startsWith('RUB') ||
+        secondSymbol.startsWith('USD')
     ) {
         secondSymbol = secondSymbol.substring(0, 3);
     }
@@ -113,9 +118,9 @@ const getMinAndMaxAmountOfCoins = async (coinAbbr) => {
     const responseMaxAmount = await fetch(`${env}/api/coin/max/amount/?symbol=${coinAbbr}`);
     const dataMaxAmount = await responseMaxAmount.json();
 
-    if (coinAbbr === 'UAHM' ||
-        coinAbbr === 'UAHP' ||
-        coinAbbr === 'USDC'
+    if (coinAbbr.startsWith('UAH') ||
+        coinAbbr.startsWith('RUB') ||
+        coinAbbr.startsWith('USD')
     ) {
         coinAbbr = coinAbbr.substring(0, 3);
     }
@@ -134,7 +139,6 @@ getCourse(mainCoinAbbrTop.textContent, mainCoinAbbrBottom.textContent);
 getMinAndMaxAmountOfCoins(mainCoinAbbrTop.getAttribute('data-top-abbr'));
 
 topInput.addEventListener('input', async () => {
-    // topInput.value = '';
     if (topInput.value !== '') {
         const response = await fetch(`${env}/api/app/get/taken/?amount=${+topInput.value}&firstSymbol=${mainCoinAbbrTop.getAttribute('data-top-abbr')}&secondSymbol=${mainCoinAbbrBottom.getAttribute('data-bottom-abbr')}`);
         const data = await response.json();
@@ -168,9 +172,9 @@ bottomInput.addEventListener('input', async () => {
 
 dropdownOptionTop.forEach((option) => {
     let coinAbbrInOption = option.querySelector('.dropdown_coin_abbr');
-    if (coinAbbrInOption.textContent === 'UAHM' ||
-        coinAbbrInOption.textContent === 'UAHP' ||
-        coinAbbrInOption.textContent === 'USDC'
+    if (coinAbbrInOption.textContent.startsWith('UAH') ||
+        coinAbbrInOption.textContent.startsWith('RUB') ||
+        coinAbbrInOption.textContent.startsWith('USD')
     ) {
         coinAbbrInOption.textContent = coinAbbrInOption.textContent.substring(0, 3);
     }
@@ -201,9 +205,9 @@ headerDropdownTop.addEventListener('click', () => {
 
 dropdownOptionBottom.forEach((option) => {
     let coinAbbrInOption = option.querySelector('.dropdown_coin_abbr');
-    if (coinAbbrInOption.textContent === 'UAHM' ||
-        coinAbbrInOption.textContent === 'UAHP' ||
-        coinAbbrInOption.textContent === 'USDC'
+    if (coinAbbrInOption.textContent.startsWith('UAH') ||
+        coinAbbrInOption.textContent.startsWith('RUB') ||
+        coinAbbrInOption.textContent.startsWith('USD')
     ) {
         coinAbbrInOption.textContent = coinAbbrInOption.textContent.substring(0, 3);
     }
@@ -213,12 +217,13 @@ dropdownOptionBottom.forEach((option) => {
         testInputBottom.value = currentCoinAbbr;
 
         console.log('=====currentCoinAbbr', currentCoinAbbr);
+        console.log('labelWallet', labelWallet.getAttribute('th:text'))
 
-        if (currentCoinAbbr === 'UAHM' ||
-            currentCoinAbbr === 'UAHP' ||
-            currentCoinAbbr === 'RUB' ||
-            currentCoinAbbr === 'USDC'
+        if (currentCoinAbbr.startsWith('UAH') ||
+            currentCoinAbbr.startsWith('RUB') ||
+            currentCoinAbbr.startsWith('USD')
         ) {
+            console.log(labelWallet);
             labelWallet.textContent = 'Введите номер карты';
             inputWallet.placeholder = '5610591081018250';
         } else {
@@ -285,3 +290,36 @@ buttonsExchangeShortcut.forEach((button) => {
         bottomInput.value = '';
     })
 });
+
+
+// disabling button
+// topInput
+// bottomInput
+// emailInput
+// inputWallet
+
+
+const validateInputs = () => {
+    if (topInput.value === '' ||
+        bottomInput.value === '' ||
+        emailInput.value === '' ||
+        inputWallet.value === ''
+    ) {
+        exchangeBtn.disabled = true;
+    } else {
+        exchangeBtn.disabled = false;
+    }
+}
+validateInputs();
+topInput.addEventListener('input', () => {
+    validateInputs();
+})
+bottomInput.addEventListener('input', () => {
+    validateInputs();
+})
+emailInput.addEventListener('input', () => {
+    validateInputs();
+})
+inputWallet.addEventListener('input', () => {
+    validateInputs();
+})
