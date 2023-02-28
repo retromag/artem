@@ -72,7 +72,8 @@ const setCoinInHeader = (option, imgHeader, coinNameHeader, coinAbbrHeader, test
 
     if (coinAbbrFullData.startsWith('UAH') ||
         coinAbbrFullData.startsWith('RUB') ||
-        coinAbbrFullData.startsWith('USD')
+        (coinAbbrFullData.startsWith('USD')  &&
+        coinAbbrFullData !== 'USDT')
     ) {
         let shortCoinAbbr = coinAbbr.substring(0, 3);
         coinAbbrHeader.textContent = shortCoinAbbr;
@@ -92,14 +93,14 @@ const getCourse = async (firstSymbol, secondSymbol) => {
     hiddenInputRateElement.value = `1 ${firstSymbol} - ${data} ${secondSymbol}`;
     if (firstSymbol.startsWith('UAH') ||
         firstSymbol.startsWith('RUB') ||
-        firstSymbol.startsWith('USD')
+        firstSymbol.startsWith('USD') && firstSymbol !== 'USDT'
     ) {
         firstSymbol = firstSymbol.substring(0, 3);
     }
 
     if (secondSymbol.startsWith('UAH') ||
         secondSymbol.startsWith('RUB') ||
-        secondSymbol.startsWith('USD')
+        secondSymbol.startsWith('USD') && secondSymbol !== 'USDT'
     ) {
         secondSymbol = secondSymbol.substring(0, 3);
     }
@@ -120,7 +121,8 @@ const getMinAndMaxAmountOfCoins = async (coinAbbr) => {
 
     if (coinAbbr.startsWith('UAH') ||
         coinAbbr.startsWith('RUB') ||
-        coinAbbr.startsWith('USD')
+        coinAbbr.startsWith('USD') &&
+        coinAbbr !== 'USDT'
     ) {
         coinAbbr = coinAbbr.substring(0, 3);
     }
@@ -142,14 +144,11 @@ topInput.addEventListener('input', async () => {
     if (topInput.value !== '') {
         const response = await fetch(`${env}/api/app/get/taken/?amount=${+topInput.value}&firstSymbol=${mainCoinAbbrTop.getAttribute('data-top-abbr')}&secondSymbol=${mainCoinAbbrBottom.getAttribute('data-bottom-abbr')}`);
         const data = await response.json();
-        console.log('data from topInput', topInput.value);
-        console.log('data top', data);
         bottomInput.value = data;
         if (topInput.value === '') {
             bottomInput.value = '';
         }
     } else {
-        console.log('bootom input val = 0', topInput.value);
         bottomInput.value = '';
     }
 });
@@ -158,8 +157,6 @@ bottomInput.addEventListener('input', async () => {
     if (bottomInput.value !== '') {
         const response = await fetch(`${env}/api/app/get/given/?amount=${+bottomInput.value}&firstSymbol=${mainCoinAbbrBottom.getAttribute('data-bottom-abbr')}&secondSymbol=${mainCoinAbbrTop.getAttribute('data-top-abbr')}`);
         const data = await response.json();
-        console.log('data from bottomInput', bottomInput.value);
-        console.log('data bottom', data);
         topInput.value = data;
         if (bottomInput.value === '') {
             topInput.value = '';
@@ -174,7 +171,8 @@ dropdownOptionTop.forEach((option) => {
     let coinAbbrInOption = option.querySelector('.dropdown_coin_abbr');
     if (coinAbbrInOption.textContent.startsWith('UAH') ||
         coinAbbrInOption.textContent.startsWith('RUB') ||
-        coinAbbrInOption.textContent.startsWith('USD')
+        coinAbbrInOption.textContent.startsWith('USD') &&
+        coinAbbrInOption.textContent !== 'USDT'
     ) {
         coinAbbrInOption.textContent = coinAbbrInOption.textContent.substring(0, 3);
     }
@@ -183,7 +181,6 @@ dropdownOptionTop.forEach((option) => {
         //find and set coin from option to header
         const currentCoinAbbr = setCoinInHeader(option, mainCoinImgTop, coinNameHeaderTop, mainCoinAbbrTop, testInputBottom, 'data-top-abbr');
         testInputTop.value = currentCoinAbbr;
-        console.log('currentCoinAbbr dropdown', currentCoinAbbr)
 
         //removing item from other dropdown
         dropdownTop.classList.remove('opened');
@@ -207,7 +204,8 @@ dropdownOptionBottom.forEach((option) => {
     let coinAbbrInOption = option.querySelector('.dropdown_coin_abbr');
     if (coinAbbrInOption.textContent.startsWith('UAH') ||
         coinAbbrInOption.textContent.startsWith('RUB') ||
-        coinAbbrInOption.textContent.startsWith('USD')
+        coinAbbrInOption.textContent.startsWith('USD') &&
+        coinAbbrInOption.textContent !== 'USDT'
     ) {
         coinAbbrInOption.textContent = coinAbbrInOption.textContent.substring(0, 3);
     }
@@ -216,18 +214,13 @@ dropdownOptionBottom.forEach((option) => {
         const currentCoinAbbr = setCoinInHeader(option, mainCoinImgBottom, coinNameHeaderBottom, mainCoinAbbrBottom, testInputTop, 'data-bottom-abbr');
         testInputBottom.value = currentCoinAbbr;
 
-        console.log('=====currentCoinAbbr', currentCoinAbbr);
-        console.log('labelWallet', labelWallet.getAttribute('th:text'))
-
         if (currentCoinAbbr.startsWith('UAH') ||
             currentCoinAbbr.startsWith('RUB') ||
-            currentCoinAbbr.startsWith('USD')
+            currentCoinAbbr.startsWith('USD') &&
+            currentCoinAbbr !== 'USDT'
         ) {
-            console.log(labelWallet);
-            labelWallet.textContent = 'Введите номер карты';
             inputWallet.placeholder = '5610591081018250';
         } else {
-            labelWallet.textContent = 'Кошелёк для получения';
             inputWallet.placeholder = '0x8a7E45F7c6723f644EeA5E0Cc45B70F27D9b812e';
         }
 
@@ -290,14 +283,6 @@ buttonsExchangeShortcut.forEach((button) => {
         bottomInput.value = '';
     })
 });
-
-
-// disabling button
-// topInput
-// bottomInput
-// emailInput
-// inputWallet
-
 
 const validateInputs = () => {
     if (topInput.value === '' ||
